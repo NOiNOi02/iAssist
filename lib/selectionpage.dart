@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
-import 'package:iassist/main.dart';
+import 'package:iassist/student/studentfrontpage.dart';
+import 'package:iassist/teacher/teacherfrontpage.dart';
 
 class SelectionPage extends StatefulWidget{
   @override
@@ -128,7 +129,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                           width: size.width * .6,
                           margin: const EdgeInsets.only(top: 190, left: 82),
                           child:OutlinedButton.icon(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectionPage(),),);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => StudentFrontPage(),),);
                           },
                             icon: Icon(MyFlutterApp.studentbtn, color: Color(0xFFBA494B),), 
                             label: Text("STUDENT",  
@@ -153,7 +154,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                           width: size.width * .6,
                           margin: const EdgeInsets.only(top: 270, left: 82),
                           child:OutlinedButton.icon(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelectionPage(),),);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherFrontPage(),),);
                           },
                             icon: Icon(MyFlutterApp.teacherbtn, color: Color(0xFFBA494B),), 
                             label: Text(" TEACHER",  
@@ -184,47 +185,44 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(30.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          child: Container(
-            // height: size.height * 0.1,
-            // width: size.width,
-            child: TabBar(
-              labelColor: Color(0xFF4785B4),
-              unselectedLabelColor: Color(0xFFBA494B),
-              labelStyle:TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold) ,
-              indicator: UnderlineTabIndicator(
-                borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
-              ),
-              tabs: <Widget>[
-                Tab(
-                  icon: Icon(Icons.info_outline),
-                  text: 'About',
-                ),
-                Tab(
-                  icon: Icon(Icons.settings),
-                  text: 'Settings',
-                ),
-                Tab(
-                  icon: Icon(Icons.exit_to_app_outlined),
-                  text: 'Exit',
-                ),
-              ],
-              controller:  _tabController,
+        padding: EdgeInsets.only(left:35.0, right: 35.0, bottom: 45.0),
+        child: Container(
+          child: TabBar(
+            labelColor: Color(0xFF4785B4),
+            unselectedLabelColor: Color(0xFFBA494B),
+            labelStyle:TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold) ,
+            indicator: UnderlineTabIndicator(
+              borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
             ),
-            decoration: BoxDecoration(  
-              border: Border.all(color: Color(0xFFBA494B), width: 2),        
-                            // boxShadow: [
-                            //   BoxShadow(
-                            //     color: Colors.grey.shade300.withOpacity(1),
-                            //     // spreadRadius: 4,
-                            //     blurRadius: 10,
-                            //   ),
-                            // ],
-                          ),
-                        
+            tabs: <Widget>[
+              Tab(
+                icon: Icon(Icons.info_outline),
+                text: 'About',
+              ),
+              Tab(
+                icon: Icon(Icons.settings),
+                text: 'Settings',
+              ),
+              Tab(
+                icon: Icon(Icons.exit_to_app_outlined),
+                text: 'Exit',
+              ),
+            ],
+            controller:  _tabController,
           ),
+              decoration: BoxDecoration(  
+                color: Colors.white,
+            // border: Border.all(color: Colors.black, width: 2),
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),        
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade500.withOpacity(.7),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      
+                    ),
+                  ],
+                ),         
         ),
       ),
     );
