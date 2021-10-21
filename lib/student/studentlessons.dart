@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:iassist/icon.dart';
-import 'package:iassist/student/studentlessons.dart';
+import 'package:iassist/student/lessons/Newton1st.dart';
+import 'package:iassist/student/lessons/Newton2nd.dart';
+import 'package:iassist/student/lessons/Newton3rd.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
-class StudentFrontPage extends StatefulWidget {
+class StudentLessons extends StatefulWidget {
   @override
-  _StudentFrontPageState createState() => _StudentFrontPageState();
+  _StudentLessonsState createState() => _StudentLessonsState();
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +15,25 @@ class StudentFrontPage extends StatefulWidget {
   }
 }
 
-class _StudentFrontPageState extends State<StudentFrontPage>{
+class _StudentLessonsState extends State<StudentLessons> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState(){
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose(){
+    super.dispose();
+    _tabController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      // backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: 
@@ -80,33 +93,34 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 45),
-                          height: size.height * 0.65,
+                          height: size.height * 0.58,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(.8),
+                                color: Colors.grey.withOpacity(1),
                                 // spreadRadius: 4,
-                                blurRadius: 6,
+                                blurRadius: 8,
                               ),
                             ],
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 55),
-                          height: size.height * .13,
+                          margin: EdgeInsets.only(top: 20),
+                          height: size.height * .14,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage('assets/images/StudentHeader.png'),
+                              image: AssetImage('assets/images/StudentLessonsPic.png'),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 180,),
-                          child: Text('Hello Student', 
+                          padding: const EdgeInsets.only(top: 160,),
+                          child: Text('Newton’s\nLaw of Motion',
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 22,
@@ -115,30 +129,17 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
                           ),
                         ),
                         Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 210),
-                          child: Text('You can read the lessons first and then\nplay games!', 
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Color(0xFFFFB79D),
-                            ),
-                          ),
-                        ),
-                        Container(
                           width: size.width * .6,
-                          margin: const EdgeInsets.only(top: 270, left: 82),
-                          child:OutlinedButton.icon(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => StudentLessons(),),);
+                          margin: const EdgeInsets.only(top: 230, left: 82),
+                          child:OutlinedButton(onPressed:(){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => FirstNewtonLaw(),),);
                           },
-                            icon: Icon(MyFlutterApp.lessons, color: Color(0xFFBA494B), size: 50), 
-                            label: Text("LESSONS",
+                            child: Text("1st Law of Motion",
                               textAlign: TextAlign.center,   
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 26,
+                                fontSize: 21,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -148,23 +149,47 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 25, bottom: 25),
+                                  ),padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20, bottom: 20),
+                                ),
+                          ),
+                        ),
+                        Container(
+                          width: size.width * .6,
+                          margin: const EdgeInsets.only(top: 310, left: 82),
+                          child:OutlinedButton(onPressed:(){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SecondNewtonLaw(),),);
+                          },
+                            child: Text("2nd Law of Motion",
+                              textAlign: TextAlign.center,   
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFBA494B),
+                                fontSize: 21,
+                              )),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                  width: 2.5,
+                                  color: Color(0xFFBA494B),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    
+                                  ),padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20, bottom: 20),
                                 ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
                           margin: const EdgeInsets.only(top: 390, left: 82),
-                          child:OutlinedButton.icon(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => StudentFrontPage(),),);
+                          child:OutlinedButton(onPressed:(){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ThirdNewtonLaw(),),);
                           },
-                            icon: Icon(MyFlutterApp.games, color: Color(0xFFBA494B), size: 50), 
-                            label: Text("GAMES",
+                            child: Text("3rd Law of Motion",
                               textAlign: TextAlign.center,   
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 26,
+                                fontSize: 21,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -174,7 +199,7 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(right: 20, top: 25, bottom: 25),
+                                  ),padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20, bottom: 20),
                                 ),
                           ),
                         ),
@@ -185,6 +210,47 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
               ),
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.only(left:35.0, right: 35.0, bottom: 45.0),
+        child: Container(
+          child: TabBar(
+            labelColor: Color(0xFF4785B4),
+            unselectedLabelColor: Color(0xFFBA494B),
+            labelStyle:TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold) ,
+            indicator: UnderlineTabIndicator(
+              borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
+            ),
+            tabs: <Widget>[
+              Tab(
+                icon: Icon(Icons.home_rounded),
+                text: 'Home',
+              ),
+              Tab(
+                icon: Icon(Icons.settings),
+                text: 'Settings',
+              ),
+              Tab(
+                icon: Icon(Icons.exit_to_app_outlined),
+                text: 'Exit',
+              ),
+            ],
+            controller:  _tabController,
+          ),
+              decoration: BoxDecoration(  
+                color: Theme.of(context).primaryColor,
+            // border: Border.all(color: Colors.black, width: 2),
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),        
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade500.withOpacity(.7),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      
+                    ),
+                  ],
+                ),         
         ),
       ),
     );
