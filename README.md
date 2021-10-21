@@ -1,6 +1,6 @@
 # iassist
 
-A new Flutter project. 000000000000000000000000000
+A new Flutter project.
 
 ## Getting Started
 
