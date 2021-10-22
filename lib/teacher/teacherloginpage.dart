@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
-import 'package:iassist/student/studentfrontpage.dart';
 import 'package:iassist/teacher/teacherfrontpage.dart';
-import 'package:iassist/teacher/teacherloginpage.dart';
 
-class SelectionPage extends StatefulWidget{
+class TeacherLoginPage extends StatefulWidget{
   @override
-  _SelectionPageState createState() => _SelectionPageState();
+  _TeacherLoginPageState createState() => _TeacherLoginPageState();
 }
 
-class _SelectionPageState extends State<SelectionPage> with SingleTickerProviderStateMixin{
+class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerProviderStateMixin{
   late TabController _tabController;
 
   @override
@@ -84,7 +82,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 45),
-                          height: size.height * 0.48,
+                          height: size.height * 0.55,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -98,7 +96,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                           ),
                         ),
                         Container(
-                          height: size.height * .15,
+                          height: size.height * .1,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -108,8 +106,8 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                         ),
                         Container(
                           alignment: Alignment(0.0,-1.0),
-                          padding: const EdgeInsets.only(top: 132),
-                          child: Text('Let’s get started', 
+                          padding: const EdgeInsets.only(top: 100),
+                          child: Text('Welcome', 
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 22,
@@ -118,9 +116,9 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                           ),
                         ),
                         Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 158),
-                          child: Text('Please choose a mode', 
+                          alignment: Alignment(0.0,-1.0),
+                          padding: const EdgeInsets.only(top: 130),
+                          child: Text('Please Login to your account.', 
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
@@ -129,53 +127,72 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                           ),
                         ),
                         Container(
-                          // alignment: Alignment(0.0, 1.0),
-                          width: size.width * 0.6,
-                          margin: const EdgeInsets.only(top: 195, left: 83),
-                          child:OutlinedButton.icon(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => StudentFrontPage(),),);
-                          },
-                            icon: const Icon(MyFlutterApp.studentbtn, color: Color(0xFFBA494B),), 
-                            label: Text("STUDENT",  
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFBA494B),
-                                fontSize: 18,
-                              )),
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                  width: 2.3,
-                                  color: Color(0xFFBA494B),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),padding: EdgeInsets.only(left: 35.0, right: 35.0, top: 20, bottom: 20),
-                                ),
+                          alignment: Alignment(0.0,-1.0),
+                          padding: const EdgeInsets.only(top: 170, right: 170),
+                          child: Text('Username', 
+                            style: const TextStyle(
+                              // fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xFFBA494B),
+                            ),
                           ),
                         ),
+                        RoundedInputField(
+                          onChanged: (value) {},
+                          hintText: 'Enter username or E-mail',
+                        ),
                         Container(
-                          width: size.width * .6,
-                          margin: EdgeInsets.only(top: 280, left: 83), 
-                          child:OutlinedButton.icon(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherLoginPage(),),);
+                          alignment: Alignment(0.0,-1.0),
+                          padding: const EdgeInsets.only(top: 260, right: 170),
+                          child: Text('Password', 
+                            style: const TextStyle(
+                              // fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xFFBA494B),
+                            ),
+                          ),
+                        ),
+                        RoundedPasswordField(
+                          hintText: 'Enter Password',
+                          onChanged: (value) {},
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomRight,
+                              colors: <Color>[
+                                Color(0xFFBA494B),
+                                Color(0xFFFFB79D),
+                              ],
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(.8),
+                                spreadRadius: 1,
+                                offset: Offset(1,1),
+                                blurRadius: 4,
+                              )
+                            ],
+                          ),
+                          alignment: Alignment(0.0,-1.0),
+                          width: 100,
+                          margin: EdgeInsets.only(top: 360, left: size.width*.37),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 5
+                              ),
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              primary: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              elevation: 0,
+                            ),
+                            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherFrontPage(),),);
                           },
-                            icon: Icon(MyFlutterApp.teacherbtn, color: Color(0xFFBA494B),), 
-                            label: Text(" TEACHER",  
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFBA494B),
-                                fontSize: 18,
-                              )),
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                  width: 2.3,
-                                  color: Color(0xFFBA494B),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    
-                                  ),padding: EdgeInsets.only(left: 35.0, right: 35.0, top: 20, bottom: 20),
-                                ),
+                            child: Text('Login'),
                           ),
                         ),
                       ],
@@ -228,6 +245,100 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                 ),         
         ),
       ),
+    );
+  }
+}
+
+class TextFieldContainer extends StatelessWidget {
+  final Widget child;
+  const TextFieldContainer({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context){
+    Size size = MediaQuery.of(context).size;
+      return Container(
+      padding: EdgeInsets.only(left: 10),
+      width: size.width * 0.6,
+      height: 45,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 1.5,
+          color: const Color(0xFFBA494B)),
+        borderRadius: BorderRadius.circular(3), 
+      ),
+      child: child,
+    );
+  }
+}
+
+class RoundedInputField extends StatelessWidget {
+  final String hintText;
+  final IconData icon;
+  final ValueChanged<String> onChanged;
+  const RoundedInputField({
+    Key? key,
+    required this.hintText,
+    this.icon = Icons.person,
+    required this.onChanged,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+    margin: EdgeInsets.symmetric(horizontal: size.width * 0.2, vertical: size.height * 0.22),
+    child: TextFieldContainer(
+      child: TextField(
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          icon: Icon(
+            icon,
+            color: Color(0xFFBA494B),
+          ),
+          hintText: hintText,
+        ),
+      ),
+    ),
+    );
+  }
+}
+
+class RoundedPasswordField extends StatelessWidget {
+  final String hintText;
+  final IconData icon;
+  final ValueChanged<String> onChanged;
+  const RoundedPasswordField({
+    Key? key,
+    required this.hintText,
+    this.icon = Icons.vpn_key_sharp,
+    required this.onChanged,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+    margin: EdgeInsets.symmetric(horizontal: size.width * 0.2, vertical: size.height * 0.325),
+    child: TextFieldContainer(
+      child: TextField(
+        obscureText: true,
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          icon: Icon(
+            icon,
+            color: Color(0xFFBA494B,),
+          ),
+          suffixIcon: Icon(
+            Icons.visibility_outlined,
+            color: Color(0xFFBA494B),
+          ),
+          hintText: hintText,
+        ),
+      ),
+    ),
     );
   }
 }
