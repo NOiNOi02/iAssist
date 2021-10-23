@@ -1,9 +1,12 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/studentfrontpage.dart';
+import 'package:iassist/student/games/level.dart';
+import 'package:iassist/student/games/level_1/level_1.dart';
+
 
 class GameFrontPage extends StatefulWidget {
   @override
@@ -11,6 +14,7 @@ class GameFrontPage extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: todo
     // TODO: implement build
     throw UnimplementedError();
   }
@@ -20,6 +24,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    int current_level = getCurrentLevel();
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -130,7 +135,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             top: 225,
                           ),
                           child: Text(
-                            'Level 1',
+                            'Level ' + (current_level).toString(),
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 22,
@@ -187,7 +192,23 @@ class _GameFrontPageState extends State<GameFrontPage> {
                               shadowColor:
                                   MaterialStateProperty.all(Colors.transparent),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              //navigate to what level is the current level
+                              if (current_level == 1){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => Level1(),),);
+                              }else if(current_level == 2){
+                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level2(),),);
+                              }
+                              else if(current_level == 3){
+                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level3(),),);
+                              }
+                              else if(current_level == 4){
+                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level4(),),);
+                              }
+                              else if(current_level == 5){
+                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level5(),),);
+                              }
+                            },
                             child: Padding(
                               padding: const EdgeInsets.only(
                                 top: 10,
