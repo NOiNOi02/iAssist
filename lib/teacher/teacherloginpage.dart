@@ -1,6 +1,10 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/teacher/teacherfrontpage.dart';
+import 'package:sizer/sizer.dart';
 
 class TeacherLoginPage extends StatefulWidget{
   @override
@@ -24,6 +28,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
 
   @override
   Widget build(BuildContext context){
+    
     Size size = MediaQuery.of(context).size;
     
     return Scaffold(
@@ -37,7 +42,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
               child: Stack(
                 children:<Widget>[
                   Container(
-                    height: size.height * 0.29,
+                    height: SizeConfig.safeBlockVertical! * 30,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -50,39 +55,40 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(.8),
-                          blurRadius: 5,
+                          blurRadius: 7,
+                          spreadRadius: 4,
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 30, left:22),
+                    margin: EdgeInsets.only(top: 5.h, left:6.w),
                     child: Text('Welcome to I-Assist', 
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 32,
+                        fontSize: 26.sp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 68, left:25),
+                    margin: EdgeInsets.only(top: 11.2.h, left:6.5.w),
                     child: Text('Offline educational application designed\nfor Eight Graders to learn more about\nthe concept of Newton’s Law of Motion',
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.274,
+                    top: SizeConfig.safeBlockVertical! * 29.4,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 45),
-                          height: size.height * 0.55,
+                          margin: EdgeInsets.symmetric(horizontal: 12.w),
+                          height: SizeConfig.safeBlockVertical! * 60,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -96,7 +102,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                           ),
                         ),
                         Container(
-                          height: size.height * .1,
+                          height: SizeConfig.safeBlockVertical! * 12,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -106,33 +112,33 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                         ),
                         Container(
                           alignment: Alignment(0.0,-1.0),
-                          padding: const EdgeInsets.only(top: 100),
+                          padding: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 12),
                           child: Text('Welcome', 
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 22,
+                              fontSize: 17.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment(0.0,-1.0),
-                          padding: const EdgeInsets.only(top: 130),
+                          padding: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 16),
                           child: Text('Please Login to your account.', 
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFFFB79D),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment(0.0,-1.0),
-                          padding: const EdgeInsets.only(top: 170, right: 170),
+                          margin: EdgeInsets.only(top: 20.h, right: 44.w),
                           child: Text('Username', 
-                            style: const TextStyle(
+                            style: TextStyle(
                               // fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.5.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
@@ -143,11 +149,11 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                         ),
                         Container(
                           alignment: Alignment(0.0,-1.0),
-                          padding: const EdgeInsets.only(top: 260, right: 170),
+                          padding: EdgeInsets.only(top: 33.5.h, right: 44.w),
                           child: Text('Password', 
-                            style: const TextStyle(
+                            style: TextStyle(
                               // fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.5.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
@@ -178,12 +184,12 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                           ),
                           alignment: Alignment(0.0,-1.0),
                           width: 100,
-                          margin: EdgeInsets.only(top: 360, left: size.width*.37),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 50, left: 40.w, right: 40.w),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 5
+                                horizontal: 2.w,
+                                vertical: 1.h
                               ),
                               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                               primary: Colors.transparent,
@@ -205,12 +211,12 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.only(left:35.0, right: 35.0, bottom: 45.0),
+        padding: EdgeInsets.only(left: 7.w, right: 7.w, bottom: 3.h),
         child: Container(
           child: TabBar(
             labelColor: Color(0xFF4785B4),
             unselectedLabelColor: Color(0xFFBA494B),
-            labelStyle:TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold) ,
+            labelStyle:TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold) ,
             indicator: UnderlineTabIndicator(
               borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
             ),
@@ -258,11 +264,10 @@ class TextFieldContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    Size size = MediaQuery.of(context).size;
       return Container(
-      padding: EdgeInsets.only(left: 10),
-      width: size.width * 0.6,
-      height: 45,
+      padding: EdgeInsets.only(left: 1.5.w),
+      width: SizeConfig.safeBlockHorizontal! * 60,
+      height: 6.h,
       decoration: BoxDecoration(
         border: Border.all(
           width: 1.5,
@@ -287,9 +292,8 @@ class RoundedInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
-    margin: EdgeInsets.symmetric(horizontal: size.width * 0.2, vertical: size.height * 0.22),
+    margin: EdgeInsets.only(left: 20.w, right: 20.w, top: SizeConfig.safeBlockVertical! * 25),
     child: TextFieldContainer(
       child: TextField(
         onChanged: onChanged,
@@ -319,9 +323,8 @@ class RoundedPasswordField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
-    margin: EdgeInsets.symmetric(horizontal: size.width * 0.2, vertical: size.height * 0.325),
+    margin: EdgeInsets.only(left: 20.w, right: 20.w, top: SizeConfig.safeBlockVertical! * 39),
     child: TextFieldContainer(
       child: TextField(
         obscureText: true,

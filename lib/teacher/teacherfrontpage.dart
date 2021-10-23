@@ -1,9 +1,13 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/teacher/LessonPlans.dart';
 import 'package:iassist/teacher/PPT.dart';
 import 'package:iassist/teacher/Worksheet.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 
 class TeacherFrontPage extends StatefulWidget {
   @override
@@ -42,7 +46,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Color(0xFFBA494B),
-                fontSize: 16,
+                fontSize: 12.sp,
               ),
             ),
         centerTitle: true,
@@ -56,32 +60,32 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
         ),
         actions: <Widget>[
           ChangeThemeButtonWidget(),
-          SizedBox(width: 25)
+          SizedBox(width: 3.5.w)
         ], 
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-              height: size.height,
+              height: SizeConfig.safeBlockVertical! * 100,
               child: Stack(
                 children:<Widget>[
                   Container(
-                    height: size.height * 0.15,
+                    height: SizeConfig.safeBlockVertical! * 16,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage('assets/images/header.png'),
                       ),
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(17),
-                        bottomRight: Radius.circular(17),
+                        bottomLeft: Radius.circular(18),
+                        bottomRight: Radius.circular(18),
                       ),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(.9),
-                          spreadRadius: 3,
-                          blurRadius: 6,
+                          spreadRadius: 4,
+                          blurRadius: 7,
                         ),
                       ],
                     ),
@@ -93,8 +97,8 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 45),
-                          height: size.height * 0.63,
+                          margin: EdgeInsets.symmetric(horizontal: 11.w),
+                          height: SizeConfig.safeBlockVertical! * 67,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -108,8 +112,8 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 40),
-                          height: size.height * .12,
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 4),
+                          height: SizeConfig.safeBlockVertical! * 14,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -118,31 +122,31 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.only(
-                            top: 160,
-                            left: 130),
+                          padding: EdgeInsets.only(
+                            top: SizeConfig.safeBlockVertical! * 19,
+                            left: 31.w, right: 31.w),
                           child: Text('Hello Teacher!',
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 23,
+                              fontSize: 17.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.only(top: 190, left: 60),
+                          padding: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 23, left: 14.w, right: 14.w),
                           child: Text('You can view the Lesson Plans, Powerpoint\nPresentations, and Worksheets here.', 
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFFFB79D),
                             ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: const EdgeInsets.only(top: 250, left: 82),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 30, left: 20.w, right: 20.w),
                           child:OutlinedButton.icon(onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => LessonPlans(),),);
                           },
@@ -152,7 +156,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 20,
+                                fontSize: 15.sp,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -162,13 +166,13 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20, bottom: 20),
+                                  ),padding: EdgeInsets.only(left: 2.w, right: 2.w, top: 2.5.h, bottom: 2.5.h),
                                 ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: const EdgeInsets.only(top: 332, left: 82),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 41, left: 20.w, right: 20.w),
                           child:OutlinedButton.icon(onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => PPT(),),);
                           },
@@ -178,7 +182,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 20,
+                                fontSize: 15.sp,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -188,13 +192,13 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(left: 10.0, top: 20, bottom: 20),
+                                  ),padding: EdgeInsets.only(left: 1.w, top: 2.h, bottom: 2.h),
                                 ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: const EdgeInsets.only(top: 436, left: 82),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 54, left: 20.w, right: 20.w),
                           child:OutlinedButton.icon(onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => Worksheet(),),);
                           },
@@ -204,7 +208,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 20,
+                                fontSize: 15.sp,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -214,7 +218,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(right: 15.0, top: 20, bottom: 20),
+                                  ),padding: EdgeInsets.only(right: 5.w, top: 2.5.h, bottom: 2.5.h),
                                 ),
                           ),
                         ),
@@ -228,12 +232,12 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.only(left:35.0, right: 35.0, bottom: 45.0),
+        padding: EdgeInsets.only(left: 7.w, right: 7.w, bottom: 3.h),
         child: Container(
           child: TabBar(
             labelColor: Color(0xFF4785B4),
             unselectedLabelColor: Color(0xFFBA494B),
-            labelStyle:TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold) ,
+            labelStyle:TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold) ,
             indicator: UnderlineTabIndicator(
               borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
             ),

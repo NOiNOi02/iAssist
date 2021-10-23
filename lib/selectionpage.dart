@@ -1,8 +1,12 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/studentfrontpage.dart';
 import 'package:iassist/teacher/teacherfrontpage.dart';
 import 'package:iassist/teacher/teacherloginpage.dart';
+import 'package:sizer/sizer.dart';
 
 class SelectionPage extends StatefulWidget{
   @override
@@ -39,7 +43,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
               child: Stack(
                 children:<Widget>[
                   Container(
-                    height: size.height * 0.29,
+                    height: SizeConfig.safeBlockVertical! * 30,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -52,26 +56,27 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(.8),
-                          blurRadius: 5,
+                          spreadRadius: 3,
+                          blurRadius: 6,
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 30, left:22),
+                    margin: EdgeInsets.only(top: 5.h, left:6.w),
                     child: Text('Welcome to I-Assist', 
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 32,
+                        fontSize: 27.sp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 68, left:25),
+                    margin: EdgeInsets.only(top: 11.2.h, left:6.5.w),
                     child: Text('Offline educational application designed\nfor Eight Graders to learn more about\nthe concept of Newton’s Law of Motion',
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
@@ -83,8 +88,8 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 45),
-                          height: size.height * 0.48,
+                          margin: EdgeInsets.symmetric(horizontal: 12.w),
+                          height: SizeConfig.safeBlockVertical! * 51,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -98,7 +103,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                           ),
                         ),
                         Container(
-                          height: size.height * .15,
+                          height: SizeConfig.safeBlockVertical! * 16,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -108,22 +113,22 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                         ),
                         Container(
                           alignment: Alignment(0.0,-1.0),
-                          padding: const EdgeInsets.only(top: 132),
+                          padding: EdgeInsets.only(top: 15.h),
                           child: Text('Let’s get started', 
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 22,
+                              fontSize: 17.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 158),
+                          padding: EdgeInsets.only(top: 19.h),
                           child: Text('Please choose a mode', 
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFFFB79D),
                             ),
                           ),
@@ -131,7 +136,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                         Container(
                           // alignment: Alignment(0.0, 1.0),
                           width: size.width * 0.6,
-                          margin: const EdgeInsets.only(top: 195, left: 83),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 25, left: 20.w, right: 20.w),
                           child:OutlinedButton.icon(onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => StudentFrontPage(),),);
                           },
@@ -140,7 +145,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 18,
+                                fontSize: 14.sp,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -149,13 +154,13 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                                   ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
-                                  ),padding: EdgeInsets.only(left: 35.0, right: 35.0, top: 20, bottom: 20),
+                                  ),padding: EdgeInsets.only(left: 3.5.w, right: 3.5.w, top: 2.3.h, bottom: 2.3.h),
                                 ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: EdgeInsets.only(top: 280, left: 83), 
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 37, left: 20.w, right: 20.w), 
                           child:OutlinedButton.icon(onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherLoginPage(),),);
                           },
@@ -164,7 +169,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 18,
+                                fontSize: 14.sp,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -174,7 +179,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(left: 35.0, right: 35.0, top: 20, bottom: 20),
+                                  ),padding: EdgeInsets.only(left: 3.5.w, right: 3.5.w, top: 2.3.h, bottom: 2.3.h),
                                 ),
                           ),
                         ),
@@ -188,12 +193,12 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.only(left:35.0, right: 35.0, bottom: 45.0),
+        padding: EdgeInsets.only(left: 7.w, right: 7.w, bottom: 4.h),
         child: Container(
           child: TabBar(
             labelColor: Color(0xFF4785B4),
             unselectedLabelColor: Color(0xFFBA494B),
-            labelStyle:TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold) ,
+            labelStyle:TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold) ,
             indicator: UnderlineTabIndicator(
               borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
             ),
