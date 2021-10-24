@@ -27,6 +27,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
     int current_level = getCurrentLevel();
     var questions = getQuestions();
     var choices = getChoices();
+    var answer;
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -120,6 +121,24 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             ],
                           ),
                         ),
+                        //lives
+                        for (int i = 0; i < getCurrentLives(); i++)
+                          Container(
+                            height: size.height * 0.03,
+                            width: size.width * 0.06,
+                            margin:
+                                EdgeInsets.only(left: (i + 1) * 25, top: 10),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.contain,
+                                image: AssetImage('assets/images/life.png'),
+                              ),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(17),
+                                bottomRight: Radius.circular(17),
+                              ),
+                            ),
+                          ),
                         //questions
                         Container(
                           alignment: Alignment(0.0, -1.0),
@@ -137,10 +156,14 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                           ),
                         ),
                         //choices
-                        for (int i = 0; i < choices[getCurrentNumber()].length; i++)
+                        for (int i = 0;
+                            i < choices[getCurrentNumber()].length;
+                            i++)
+                          //loop trough all choices and create a rectangle
                           Container(
                             width: size.width * 0.74,
-                            margin: EdgeInsets.only(top: (i+2)*80.toDouble(), left: 53.5),
+                            margin: EdgeInsets.only(
+                                top: (i + 2) * 80.toDouble(), left: 53.5),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -167,13 +190,9 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     Colors.transparent),
                               ),
                               onPressed: () {
-                                //if pushed proceeed to questions
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level1(),
-                                  ),
-                                );
+                                //if pushed proceeed set the value of answer
+                                answer = i;
+                                print(answer);
                               },
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -230,7 +249,14 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
-                              setCurrentNumber();
+                              var answerResult =
+                                  checkAnswer(answer, getCurrentNumber()+1);
+                              if (answerResult) {
+                                //the answer is corret, proceed to next question
+                                setCurrentNumber();
+                              } else {
+                                setCurrentLives();
+                              }
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
