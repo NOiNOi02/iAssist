@@ -7,7 +7,6 @@ import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 
-
 class Level1 extends StatefulWidget {
   @override
   _Level1State createState() => _Level1State();
@@ -84,6 +83,30 @@ class _Level1State extends State<Level1> {
                       ],
                     ),
                   ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: size.height * 0.03, right: size.width * 0.77),
+                    height: size.height * .08,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.contain,
+                        image: AssetImage('assets/images/game1.png'),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment(0.0, -1.0),
+                    padding: const EdgeInsets.only(top: 40, left: 35),
+                    child: Text(
+                      'Level 1\nIntroduction to Newton\'s Law of Motion',
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                   Positioned(
                     top: size.height * 0.108,
                     left: 0,
@@ -105,9 +128,15 @@ class _Level1State extends State<Level1> {
                             ],
                           ),
                         ),
-                        
                         GestureDetector(
-                          onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => GameFrontPage(),),);},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => GameFrontPage(),
+                              ),
+                            );
+                          },
                           child: Container(
                             margin: EdgeInsets.only(
                                 top: 10, right: (size.width * 1) - 80),
@@ -120,56 +149,32 @@ class _Level1State extends State<Level1> {
                             ),
                           ),
                         ),
-                         Container(
-                          margin: EdgeInsets.only(top: 10),
-                          height: size.height * .13,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage('assets/images/game1.png'),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 100),
-                          height: size.height * .13,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage('assets/images/Game.png'),
-                            ),
-                          ),
-                        ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(
-                            top: 225,
-                          ),
+                          padding: const EdgeInsets.only(top: 14),
                           child: Text(
-                            'Level ' + (current_level).toString(),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 255),
-                          child: Text(
-                            'Introduction to Newton\'s \nLaw of Motion',
+                            'Unlock the game\'s character by answering \n correctly the following questions',
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 25,
+                              fontSize: 15,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
-                          width: size.width * .5,
-                          margin: const EdgeInsets.only(top: 365, left: 110),
+                          margin: EdgeInsets.only(top: 80),
+                          height: size.height * 0.57,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.contain,
+                              image: AssetImage('assets/images/Group45.png'),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: size.width * 0.74,
+                          margin: const EdgeInsets.only(top: 555, left: 53.5),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -186,8 +191,7 @@ class _Level1State extends State<Level1> {
                                 Color(0XFFFFB79D),
                               ],
                             ),
-                            color: Colors.deepPurple.shade300,
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(5),
                           ),
                           child: ElevatedButton(
                             style: ButtonStyle(
@@ -204,21 +208,13 @@ class _Level1State extends State<Level1> {
                                   MaterialStateProperty.all(Colors.transparent),
                             ),
                             onPressed: () {
-                              //navigate to what level is the current level
-                              if (current_level == 1){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Level1(),),);
-                              }else if(current_level == 2){
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level2(),),);
-                              }
-                              else if(current_level == 3){
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level3(),),);
-                              }
-                              else if(current_level == 4){
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level4(),),);
-                              }
-                              else if(current_level == 5){
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level5(),),);
-                              }
+                              //if pushed proceeed to questions
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Level1(),
+                                ),
+                              );
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -226,9 +222,9 @@ class _Level1State extends State<Level1> {
                                 bottom: 10,
                               ),
                               child: Text(
-                                "START",
+                                "Answer now!",
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),
