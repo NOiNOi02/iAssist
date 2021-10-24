@@ -6,12 +6,11 @@ import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
-import 'package:iassist/student/games/level_1/questions.dart';
+import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
 
-
-class Level1 extends StatefulWidget {
+class QuestionsLevel1 extends StatefulWidget {
   @override
-  _Level1State createState() => _Level1State();
+  _QuestionsLevel1State createState() => _QuestionsLevel1State();
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +20,13 @@ class Level1 extends StatefulWidget {
   }
 }
 
-class _Level1State extends State<Level1> {
+class _QuestionsLevel1State extends State<QuestionsLevel1> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int current_level = getCurrentLevel();
+    var questions = getQuestions();
+    var choices = getChoices();
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -66,11 +67,11 @@ class _Level1State extends State<Level1> {
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: size.height * 0.15,
+                    height: size.height * 0.25,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('assets/images/Group42.png'),
+                        image: AssetImage('assets/images/Group48.png'),
                       ),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(17),
@@ -78,39 +79,28 @@ class _Level1State extends State<Level1> {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(.9),
+                          color: Color(0xFFBA494B).withOpacity(.9),
                           spreadRadius: 3,
-                          blurRadius: 6,
+                          blurRadius: 8,
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
-                    height: size.height * .08,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.contain,
-                        image: AssetImage('assets/images/game1.png'),
-                      ),
-                    ),
-                  ),
-                  Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 40, left: 35),
+                    padding:
+                        const EdgeInsets.only(top: 40, left: 0, right: 100),
                     child: Text(
-                      'Level 1\nIntroduction to Newton\'s Law of Motion',
+                      'Level 1\nIntroduction to Newton\'s \nLaw of Motion',
                       textAlign: TextAlign.left,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          color: Colors.white.withOpacity(0.72)),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: size.height * 0.180,
                     left: 0,
                     right: 0,
                     child: Stack(
@@ -130,32 +120,14 @@ class _Level1State extends State<Level1> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image: AssetImage('assets/images/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
+                        //questions
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 14),
+                          padding: const EdgeInsets.only(
+                              top: 50, left: 30, right: 30),
                           child: Text(
-                            'Unlock the game\'s character by answering \n correctly the following questions',
+                            //getting the questions based from what current number is
+                            questions[getCurrentNumber()],
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -164,19 +136,66 @@ class _Level1State extends State<Level1> {
                             ),
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 80),
-                          height: size.height * 0.57,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage('assets/images/Group45.png'),
+                        //choices
+                        for (int i = 0; i < choices[getCurrentNumber()].length; i++)
+                          Container(
+                            width: size.width * 0.74,
+                            margin: EdgeInsets.only(top: (i+2)*80.toDouble(), left: 53.5),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black38,
+                                    offset: Offset(0, 4),
+                                    blurRadius: 5.0),
+                              ],
+                              border: Border.all(color: Color(0xFFBA494B)),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                ),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent),
+                                // elevation: MaterialStateProperty.all(3),
+                                shadowColor: MaterialStateProperty.all(
+                                    Colors.transparent),
+                              ),
+                              onPressed: () {
+                                //if pushed proceeed to questions
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Level1(),
+                                  ),
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 10,
+                                  bottom: 10,
+                                ),
+                                child: Text(
+                                  choices[getCurrentNumber()][i],
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    // fontWeight: FontWeight.w700,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                        //next
                         Container(
                           width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 555, left: 53.5),
+                          margin: const EdgeInsets.only(top: 480, left: 53.5),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -211,6 +230,7 @@ class _Level1State extends State<Level1> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
+                              setCurrentNumber();
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -224,7 +244,7 @@ class _Level1State extends State<Level1> {
                                 bottom: 10,
                               ),
                               child: Text(
-                                "Answer now!",
+                                "NEXT",
                                 style: TextStyle(
                                   fontSize: 16,
                                   // fontWeight: FontWeight.w700,
