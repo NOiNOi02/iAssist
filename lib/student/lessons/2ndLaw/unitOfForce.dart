@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
-class LawOfInertia extends StatefulWidget {
+class UnitOfForce extends StatefulWidget {
   @override
-  _LawOfInertiaState createState() => _LawOfInertiaState();
+  _UnitOfForceState createState() => _UnitOfForceState();
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class LawOfInertia extends StatefulWidget {
   }
 }
 
-class _LawOfInertiaState extends State<LawOfInertia> {
+class _UnitOfForceState extends State<UnitOfForce> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -20,7 +20,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          'FIRST LAW OF MOTION',
+          'SECOND LAW OF MOTION',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -41,9 +41,21 @@ class _LawOfInertiaState extends State<LawOfInertia> {
         child: Column(children: <Widget>[
           Container(
             margin: const EdgeInsets.only(top: 30),
+            child: Text(
+              "Mass and Acceleration",
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Color(0xFF000000),
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 30),
             child: Center(
               child: Text(
-                "LAW OF INERTIA",
+                "UNIT OF FORCE",
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -57,7 +69,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Law of Inertia states that: “An object at rest will remain at rest or an object in motion will remain in motion and travel in straight line unless acted upon by an unbalanced external net force."',
+                'There are three units of force. The two are variations of the metric system CGS and MKS and the other one is the English system, FPS.',
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -73,47 +85,16 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.contain,
-                image: AssetImage('assets/images/firstLawOfMotion/1.png'),
+                image: AssetImage('assets/images/secondLawOfMotion/9.png'),
               ),
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 3, left: 25, right: 25),
+            margin: const EdgeInsets.only(top: 25, left: 30, right: 25),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Source:https://lh3.googleusercontent.com/Zga7xqrgOCl6MLLUR0FP4KPvsfzcUHtufRJCOXylkKaBKUZTKnY8jbL6Q2_MWhHHUQED=s138',
-                style: const TextStyle(
-                  fontSize: 9,
-                  letterSpacing: 1.4,
-                  color: Color(0xFF888888),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'Figure 1. Motion of an object with and without outside forces applied.',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 14,
-                  letterSpacing: 1.4,
-                  color: Color(0xFF000000),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Let us consider a specific situation as shown in Figure 1. Object A is at rest and remains at rest of the absence of outside force. However object B, which is in motion, will remain in motion, unless an outside force will be applied to make it stop.',
+                'This can be expressed in the equation form as:',
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -123,21 +104,70 @@ class _LawOfInertiaState extends State<LawOfInertia> {
               ),
             ),
           ),
+          Container(
+            margin: const EdgeInsets.only(top: 25, left: 35, right: 25),
+            child: Center(
+              child: Text(
+                'Acceleration = Net force / Mass',
+                textAlign: TextAlign.justify,
+                style: const TextStyle(
+                  fontSize: 16,
+                  letterSpacing: 1.4,
+                  color: Color(0xFF000000),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 10, left: 25, right: 25),
+            height: size.height * .22,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.contain,
+                image: AssetImage('assets/images/secondLawOfMotion/1.png'),
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Therefore, the force acting on an object is equal to the mass of that object times its acceleration. Where force has a unit expresses in Newton (N). One Newton is defined as the amount of force required to give a 1-kg mass of acceleration of 1m/s/s or',
+                textAlign: TextAlign.justify,
+                style: const TextStyle(
+                  fontSize: 16,
+                  letterSpacing: 1.4,
+                  color: Color(0xFF000000),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            child: Center(
+              child: Text(
+                '1N = (1kg) (m/s^2)',
+                textAlign: TextAlign.justify,
+                style: const TextStyle(
+                  fontSize: 16,
+                  letterSpacing: 1.4,
+                  color: Color(0xFF000000),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 25),
+            height: size.height * .22,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.contain,
+                image: AssetImage('assets/images/secondLawOfMotion/2.png'),
+              ),
+            ),
+          ),
         ]),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
-            title: Text("Previous"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_forward),
-            label: 'Intertia',
-          ),
-        ],
-        // currentIndex: _selectedIndex,
-        // onTap: _onItemTapped,
       ),
     );
   }

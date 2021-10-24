@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
-class LawOfInertia extends StatefulWidget {
+class StaticFriction extends StatefulWidget {
   @override
-  _LawOfInertiaState createState() => _LawOfInertiaState();
+  _StaticFrictionState createState() => _StaticFrictionState();
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class LawOfInertia extends StatefulWidget {
   }
 }
 
-class _LawOfInertiaState extends State<LawOfInertia> {
+class _StaticFrictionState extends State<StaticFriction> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -41,9 +41,21 @@ class _LawOfInertiaState extends State<LawOfInertia> {
         child: Column(children: <Widget>[
           Container(
             margin: const EdgeInsets.only(top: 30),
+            child: Text(
+              "TYPES OF FRICTION",
+              textAlign: TextAlign.left,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Color(0xFF000000),
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 30),
             child: Center(
               child: Text(
-                "LAW OF INERTIA",
+                "STATIC FRICTION",
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -57,7 +69,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Law of Inertia states that: “An object at rest will remain at rest or an object in motion will remain in motion and travel in straight line unless acted upon by an unbalanced external net force."',
+                "Static friction is the force of friction between an object and the surface it is put on or a force acting on stationary or at rest object. When a force is exerted to an object sitting on a surface, it must be greater than the surface's friction force. It also reduces friction. Static friction is found in walking, rock climbing, etc.",
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -73,7 +85,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.contain,
-                image: AssetImage('assets/images/firstLawOfMotion/1.png'),
+                image: AssetImage('assets/images/firstLawOfMotion/8.png'),
               ),
             ),
           ),
@@ -82,7 +94,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Source:https://lh3.googleusercontent.com/Zga7xqrgOCl6MLLUR0FP4KPvsfzcUHtufRJCOXylkKaBKUZTKnY8jbL6Q2_MWhHHUQED=s138',
+                'Source:https://lh3.googleusercontent.com/ThTZkL1vu17Gpi7pPPelpQcR1Yqg3tU5OXt6biBDobTmMMIbtAk91Aax1TN5nxQ4lvt6vqY=s114',
                 style: const TextStyle(
                   fontSize: 9,
                   letterSpacing: 1.4,
@@ -96,7 +108,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.center,
               child: Text(
-                'Figure 1. Motion of an object with and without outside forces applied.',
+                'Figure 8. Frictional/Static Force acting on sofa',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
@@ -113,7 +125,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Let us consider a specific situation as shown in Figure 1. Object A is at rest and remains at rest of the absence of outside force. However object B, which is in motion, will remain in motion, unless an outside force will be applied to make it stop.',
+                'Illustrated in Figure 8, a sofa stationary on the ground is acted upon by a frictional/static force.',
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -124,20 +136,6 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             ),
           ),
         ]),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
-            title: Text("Previous"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_forward),
-            label: 'Intertia',
-          ),
-        ],
-        // currentIndex: _selectedIndex,
-        // onTap: _onItemTapped,
       ),
     );
   }

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
+import '3rdLaw/actionForceAndReactionForce.dart';
+import '3rdLaw/exampleOfBalancedForce.dart';
+import '3rdLaw/interactionForcesVsBalancedForces.dart';
+import '3rdLaw/lawOfInteraction.dart';
+
 class ThirdNewtonLaw extends StatefulWidget {
   @override
   _ThirdNewtonLawState createState() => _ThirdNewtonLawState();
@@ -83,12 +88,12 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LawOfInteraction(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -135,12 +140,12 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ActionForceAndReactionForce(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -174,12 +179,12 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => InteractionForcesVsBalancedForces(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -213,12 +218,12 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ExampleOfBalancedForce(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),

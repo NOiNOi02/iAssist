@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
-class LawOfInertia extends StatefulWidget {
+class FluidFriction extends StatefulWidget {
   @override
-  _LawOfInertiaState createState() => _LawOfInertiaState();
+  _FluidFrictionState createState() => _FluidFrictionState();
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class LawOfInertia extends StatefulWidget {
   }
 }
 
-class _LawOfInertiaState extends State<LawOfInertia> {
+class _FluidFrictionState extends State<FluidFriction> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -41,9 +41,21 @@ class _LawOfInertiaState extends State<LawOfInertia> {
         child: Column(children: <Widget>[
           Container(
             margin: const EdgeInsets.only(top: 30),
+            child: Text(
+              "TYPES OF FRICTION",
+              textAlign: TextAlign.left,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Color(0xFF000000),
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 30),
             child: Center(
               child: Text(
-                "LAW OF INERTIA",
+                "FLUID FRICTION",
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -57,7 +69,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Law of Inertia states that: “An object at rest will remain at rest or an object in motion will remain in motion and travel in straight line unless acted upon by an unbalanced external net force."',
+                "A fluid is a substance that has the ability to flow and conform to the shape of the container in which it is kept. Fluid friction is defined as the force exerted by a liquid or a gas against a moving object. The air resistance force, often known as the drag force, is the frictional force exerted by the air. Due to the existence of fluid friction, walking in a pool of water during a storm is difficult.",
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -73,7 +85,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.contain,
-                image: AssetImage('assets/images/firstLawOfMotion/1.png'),
+                image: AssetImage('assets/images/firstLawOfMotion/10.png'),
               ),
             ),
           ),
@@ -82,7 +94,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Source:https://lh3.googleusercontent.com/Zga7xqrgOCl6MLLUR0FP4KPvsfzcUHtufRJCOXylkKaBKUZTKnY8jbL6Q2_MWhHHUQED=s138',
+                'Source:https://lh3.googleusercontent.com/NzqnC5E28vL_AxlcqCSk5L3caQOnVVqyCbQvE6djwpArtLX4i-2Pd3h-VHTcABLjEf_72qA=s157',
                 style: const TextStyle(
                   fontSize: 9,
                   letterSpacing: 1.4,
@@ -96,7 +108,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.center,
               child: Text(
-                'Figure 1. Motion of an object with and without outside forces applied.',
+                'Figure 10. Fluid Friction',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
@@ -113,7 +125,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Let us consider a specific situation as shown in Figure 1. Object A is at rest and remains at rest of the absence of outside force. However object B, which is in motion, will remain in motion, unless an outside force will be applied to make it stop.',
+                'Figure 10 exhibits the Fluid friction that is action upon a certain object as it passes or goes through a fluid (air or water). Just like the other types of friction, fluid friction’s direction is opposite to the direction of the motion of the object.',
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -124,20 +136,6 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             ),
           ),
         ]),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
-            title: Text("Previous"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_forward),
-            label: 'Intertia',
-          ),
-        ],
-        // currentIndex: _selectedIndex,
-        // onTap: _onItemTapped,
       ),
     );
   }

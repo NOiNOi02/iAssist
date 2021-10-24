@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import '1stLaw/Friction.dart';
 import '1stLaw/balancedForces.dart';
+import '1stLaw/fluidFriction.dart';
 import '1stLaw/inertia.dart';
 import '1stLaw/lawOfIntertia.dart';
+import '1stLaw/rollingFriction.dart';
 import '1stLaw/slidingFriction.dart';
+import '1stLaw/staticFriction.dart';
 import '1stLaw/unbalancedForces.dart';
 
 class FirstNewtonLaw extends StatefulWidget {
@@ -350,12 +353,12 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => StaticFriction(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -389,12 +392,12 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RollingFriction(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -428,12 +431,12 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FluidFriction(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),

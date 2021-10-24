@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
+import '2ndLaw/acceleration.dart';
+import '2ndLaw/circularMotionAndNewtonsSecondLawOfMotion.dart';
+import '2ndLaw/freeFallAndNewtonsSecondLawOfMotion.dart';
+import '2ndLaw/lawOfAcceleration.dart';
+import '2ndLaw/massAndAcceleration.dart';
+import '2ndLaw/netForceAndAcceleration.dart';
+import '2ndLaw/sampleMathematicalProblem.dart';
+import '2ndLaw/unitOfForce.dart';
+
 class SecondNewtonLaw extends StatefulWidget {
   @override
   _SecondNewtonLawState createState() => _SecondNewtonLawState();
@@ -83,12 +92,12 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LawOfAcceleration(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -135,12 +144,12 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Acceleration(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -187,12 +196,12 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NetForceAndAcceleration(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -226,12 +235,12 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MassAndAcceleration(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -265,12 +274,90 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
         Container(
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FirstNewtonLaw(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UnitOfForce(),
+                ),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+              width: size.width * .9,
+              margin: const EdgeInsets.only(top: 8, left: 35.0),
+              decoration: BoxDecoration(
+                  border: Border(
+                bottom: BorderSide(
+                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
+              )),
+              child: Row(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                  ),
+                  Container(
+                    // margin: const EdgeInsets.only(),
+                    child: Text("- Units of Force",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFFBA494B),
+                          fontSize: 18,
+                        )),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+        Container(
+          child: TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SampleMathematicalProblem(),
+                ),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+              width: size.width * .9,
+              margin: const EdgeInsets.only(top: 8, left: 35.0),
+              decoration: BoxDecoration(
+                  border: Border(
+                bottom: BorderSide(
+                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
+              )),
+              child: Row(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                  ),
+                  Container(
+                    // margin: const EdgeInsets.only(),
+                    child: Text("- Sample Mathematical Problem",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFFBA494B),
+                          fontSize: 18,
+                        )),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+        Container(
+          child: TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FreeFallAndNewtonsSecondLawOfMotion(),
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -294,6 +381,47 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                           fontWeight: FontWeight.bold,
                           color: Color(0xFFBA494B),
                           fontSize: 16,
+                        )),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+        Container(
+          child: TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      CircularMotionAndNewtonsSecondLawOfMotion(),
+                ),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+              width: size.width * .9,
+              margin: const EdgeInsets.only(top: 8, left: 35.0),
+              decoration: BoxDecoration(
+                  border: Border(
+                bottom: BorderSide(
+                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
+              )),
+              child: Row(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                  ),
+                  Container(
+                    // margin: const EdgeInsets.only(),
+                    child: Text(
+                        "- Circular Motion and Newton’s Second Law of Motion.",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFFBA494B),
+                          fontSize: 14,
                         )),
                   )
                 ],

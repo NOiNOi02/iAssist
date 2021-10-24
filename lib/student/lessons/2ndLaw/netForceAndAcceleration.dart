@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
-class LawOfInertia extends StatefulWidget {
+class NetForceAndAcceleration extends StatefulWidget {
   @override
-  _LawOfInertiaState createState() => _LawOfInertiaState();
+  _NetForceAndAccelerationState createState() =>
+      _NetForceAndAccelerationState();
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class LawOfInertia extends StatefulWidget {
   }
 }
 
-class _LawOfInertiaState extends State<LawOfInertia> {
+class _NetForceAndAccelerationState extends State<NetForceAndAcceleration> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -20,7 +21,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          'FIRST LAW OF MOTION',
+          'SECOND LAW OF MOTION',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -43,7 +44,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             margin: const EdgeInsets.only(top: 30),
             child: Center(
               child: Text(
-                "LAW OF INERTIA",
+                "NET FORCE AND ACCELERATION",
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -57,7 +58,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Law of Inertia states that: “An object at rest will remain at rest or an object in motion will remain in motion and travel in straight line unless acted upon by an unbalanced external net force."',
+                'With the same mass, when the Net force (total force) increases, the objects acceleration also increases. If the net force is doubled, acceleration also doubled. Analyze the image below. Compare the first car to the second car. What did you observe?',
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -73,7 +74,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.contain,
-                image: AssetImage('assets/images/firstLawOfMotion/1.png'),
+                image: AssetImage('assets/images/secondLawOfMotion/3.png'),
               ),
             ),
           ),
@@ -82,7 +83,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Source:https://lh3.googleusercontent.com/Zga7xqrgOCl6MLLUR0FP4KPvsfzcUHtufRJCOXylkKaBKUZTKnY8jbL6Q2_MWhHHUQED=s138',
+                'Source:https://lh3.googleusercontent.com/qJtywTEycUljGprYwmw7jXx2WKv5PJVUpXalfLb1f4e88C4CMRRVuBYZbAKCVVq_54ASrA=s113',
                 style: const TextStyle(
                   fontSize: 9,
                   letterSpacing: 1.4,
@@ -96,7 +97,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.center,
               child: Text(
-                'Figure 1. Motion of an object with and without outside forces applied.',
+                'Figure 1. Relation of force and acceleration',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
@@ -113,7 +114,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Let us consider a specific situation as shown in Figure 1. Object A is at rest and remains at rest of the absence of outside force. However object B, which is in motion, will remain in motion, unless an outside force will be applied to make it stop.',
+                'Notice that in Figure 1, the first car has a small force and contains small acceleration. However, the second has a doubled force and possesses doubled acceleration. The comparison of the two cars exhibits the direct relationship between force and acceleration.',
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -124,20 +125,6 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             ),
           ),
         ]),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
-            title: Text("Previous"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_forward),
-            label: 'Intertia',
-          ),
-        ],
-        // currentIndex: _selectedIndex,
-        // onTap: _onItemTapped,
       ),
     );
   }

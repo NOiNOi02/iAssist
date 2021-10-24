@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
-class LawOfInertia extends StatefulWidget {
+class InteractionForcesVsBalancedForces extends StatefulWidget {
   @override
-  _LawOfInertiaState createState() => _LawOfInertiaState();
+  _InteractionForcesVsBalancedForcesState createState() =>
+      _InteractionForcesVsBalancedForcesState();
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,8 @@ class LawOfInertia extends StatefulWidget {
   }
 }
 
-class _LawOfInertiaState extends State<LawOfInertia> {
+class _InteractionForcesVsBalancedForcesState
+    extends State<InteractionForcesVsBalancedForces> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -20,7 +22,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          'FIRST LAW OF MOTION',
+          'THIRD LAW OF MOTION',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -43,7 +45,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             margin: const EdgeInsets.only(top: 30),
             child: Center(
               child: Text(
-                "LAW OF INERTIA",
+                "ACTION FORCES VS REACTION FORCES",
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -57,7 +59,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Law of Inertia states that: “An object at rest will remain at rest or an object in motion will remain in motion and travel in straight line unless acted upon by an unbalanced external net force."',
+                'The difference between the forces related to Law of Interaction and forces in a balanced state are as follows:',
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -73,7 +75,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.contain,
-                image: AssetImage('assets/images/firstLawOfMotion/1.png'),
+                image: AssetImage('assets/images/secondLawOfMotion/16.png'),
               ),
             ),
           ),
@@ -82,7 +84,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Source:https://lh3.googleusercontent.com/Zga7xqrgOCl6MLLUR0FP4KPvsfzcUHtufRJCOXylkKaBKUZTKnY8jbL6Q2_MWhHHUQED=s138',
+                'Source:https://lh3.googleusercontent.com/2ok8jEccmnjzhI5TC061WMr63B9HRiQoJ5ghkTWSzoGJIx14BSxMYnV1DF-7zvWWHuIdg=s170',
                 style: const TextStyle(
                   fontSize: 9,
                   letterSpacing: 1.4,
@@ -92,11 +94,12 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 10, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.center,
               child: Text(
-                'Figure 1. Motion of an object with and without outside forces applied.',
+                'Table 1. Differences between interaction and balanced forces.',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
@@ -108,36 +111,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
               ),
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Let us consider a specific situation as shown in Figure 1. Object A is at rest and remains at rest of the absence of outside force. However object B, which is in motion, will remain in motion, unless an outside force will be applied to make it stop.',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
-                  color: Color(0xFF000000),
-                ),
-              ),
-            ),
-          ),
         ]),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
-            title: Text("Previous"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_forward),
-            label: 'Intertia',
-          ),
-        ],
-        // currentIndex: _selectedIndex,
-        // onTap: _onItemTapped,
       ),
     );
   }
