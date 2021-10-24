@@ -48,6 +48,10 @@ void setCurrentNumber() {
   currentNumber++;
 }
 
+void resetCurrentNumber() {
+  currentNumber = 0;
+}
+
 bool checkAnswer(int answer, int number) {
   //wll return true or false, depends on the answer and the correct answer
   print("answer" + answer.toString());

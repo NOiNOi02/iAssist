@@ -243,11 +243,13 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                 shadowColor: MaterialStateProperty.all(
                                     Colors.transparent),
                               ),
-                              onPressed: () {
-                                //if pushed proceeed set the value of answer
-                                answer = i;
-                                setState(() {});
-                              },
+                              onPressed: (answerResult != null)
+                                  ? null
+                                  : () {
+                                      //if pushed proceeed set the value of answer
+                                      answer = i;
+                                      setState(() {});
+                                    },
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                   top: 10,
@@ -308,27 +310,29 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     shadowColor: MaterialStateProperty.all(
                                         Colors.transparent),
                                   ),
-                                  onPressed: () {
-                                    //if pushed proceeed to questions
-                                    answerResult = checkAnswer(
-                                        answer, getCurrentNumber() + 1);
-                                    if (answerResult) {
-                                      //the answer is corret, proceed to showing of trivia
-                                      triviaFlag = true;
-                                      nextFlag[0] = 0;
-                                      nextFlag[1] = 1;
-                                    } else {
-                                      //proceed to showing of not correct answer page
-                                      setCurrentLives();
-                                      answerResult = null;
-                                      nextFlag[0] = 0;
-                                      nextFlag[2] = 1;
-                                    }
-                                    //resetting the values
-                                    prev_answer = answer;
-                                    answer = "";
-                                    setState(() {});
-                                  },
+                                  onPressed: (answer == null)
+                                      ? null
+                                      : () {
+                                          //if pushed proceeed to questions
+                                          answerResult = checkAnswer(
+                                              answer, getCurrentNumber() + 1);
+                                          if (answerResult) {
+                                            //the answer is corret, proceed to showing of trivia
+                                            triviaFlag = true;
+                                            nextFlag[0] = 0;
+                                            nextFlag[1] = 1;
+                                          } else {
+                                            //proceed to showing of not correct answer page
+                                            setCurrentLives();
+                                            answerResult = false;
+                                            nextFlag[0] = 0;
+                                            nextFlag[2] = 1;
+                                          }
+                                          //resetting the values
+                                          prev_answer = answer;
+                                          answer = null;
+                                          setState(() {});
+                                        },
                                   child: Padding(
                                     padding: const EdgeInsets.only(
                                       top: 10,
@@ -363,9 +367,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                   ),
                                   onPressed: () {
                                     //if pushed proceeed to questions
-                                    answer = 
-                                    prev_answer =
-                                    answerResult = null;
+                                    answer = prev_answer = answerResult = null;
                                     triviaFlag = false;
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
@@ -406,12 +408,16 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                   onPressed: () {
                                     //if pushed retake question
                                     //resetting the values
-                                    answer = 
-                                    prev_answer =
-                                    answerResult = null;
+                                    answer = prev_answer = answerResult = null;
                                     triviaFlag = false;
                                     nextFlag = [1, 0, 0];
-                                    setState(() {});
+                                    if (getCurrentLives() <= 0) {
+                                      resetCurrentLives();
+                                      resetCurrentNumber();
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Level1(),),);
+                                    } else {
+                                      setState(() {});
+                                    }
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(
