@@ -217,7 +217,10 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                   ? (answerResult == true && i == prev_answer)
                                       ? Border.all(
                                           color: Color(0xFF00FF0A), width: 3)
-                                      : Border.all(color: Color(0xFFBA494B))
+                                      : (i == prev_answer)
+                                          ? Border.all(
+                                              color: Colors.red, width: 3)
+                                          : Border.all(color: Color(0xFFEB9785))
                                   : Border.all(color: Color(0xFFBA494B)),
                               color: (i == answer)
                                   ? _colorContainerButton[1]
@@ -226,7 +229,9 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                               image: (answerResult != null)
                                   ? (answerResult == true && i == prev_answer)
                                       ? checkImage
-                                      : wrongImage
+                                      : (i == prev_answer)
+                                          ? wrongImage
+                                          : noImage
                                   : noImage,
                             ),
                             child: ElevatedButton(
@@ -414,7 +419,12 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Level1(),),);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Level1(),
+                                        ),
+                                      );
                                     } else {
                                       setState(() {});
                                     }
