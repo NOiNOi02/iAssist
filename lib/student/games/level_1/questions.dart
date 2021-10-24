@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables, non_constant_identifier_names, unused_local_variable
+// ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables, non_constant_identifier_names, unused_local_variable, unused_element, avoid_init_to_null
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
@@ -23,7 +23,23 @@ class QuestionsLevel1 extends StatefulWidget {
 //color container for selected choices
 List<Color> _colorContainerText = [Color(0xFFBA494B), Colors.white];
 List<Color> _colorContainerButton = [Colors.white, Colors.black];
+DecorationImage checkImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/check.png'));
+DecorationImage wrongImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/wrong.png'));
+DecorationImage noImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/noImage.png'));
+List<int> nextFlag = [1, 0, 0];
+var triviaFlag = false;
 var answer;
+var prev_answer;
+var answerResult = null;
 
 class _QuestionsLevel1State extends State<QuestionsLevel1> {
   @override
@@ -32,6 +48,9 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
     int current_level = getCurrentLevel();
     var questions = getQuestions();
     var choices = getChoices();
+    var trivia = getTrivias();
+    var incorrectMessage = "Your answer is incorrect! Try again!";
+
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -159,6 +178,25 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             ),
                           ),
                         ),
+                        //Trivias
+                        if (triviaFlag)
+                          Container(
+                            alignment: Alignment(0.0, -1.0),
+                            padding: EdgeInsets.only(
+                                top: size.height * 0.47,
+                                left: size.width * 0.10,
+                                right: size.width * 0.10),
+                            child: Text(
+                              //getting the questions based from what current number is
+                              trivia[getCurrentNumber()],
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                color: Color(0xFFBA494B),
+                              ),
+                            ),
+                          ),
                         //choices
                         for (int i = 0;
                             i < choices[getCurrentNumber()].length;
@@ -175,11 +213,21 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     offset: Offset(0, 4),
                                     blurRadius: 5.0),
                               ],
-                              border: Border.all(color: Color(0xFFBA494B)),
+                              border: (answerResult != null)
+                                  ? (answerResult == true && i == prev_answer)
+                                      ? Border.all(
+                                          color: Color(0xFF00FF0A), width: 3)
+                                      : Border.all(color: Color(0xFFBA494B))
+                                  : Border.all(color: Color(0xFFBA494B)),
                               color: (i == answer)
                                   ? _colorContainerButton[1]
                                   : _colorContainerButton[0],
                               borderRadius: BorderRadius.circular(5),
+                              image: (answerResult != null)
+                                  ? (answerResult == true && i == prev_answer)
+                                      ? checkImage
+                                      : wrongImage
+                                  : noImage,
                             ),
                             child: ElevatedButton(
                               style: ButtonStyle(
@@ -241,51 +289,146 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             ),
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
+                          child: Column(
+                            children: [
+                              //next 1st state
+                              if (nextFlag[0] == 1)
+                                ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                    ),
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Colors.transparent),
+                                    // elevation: MaterialStateProperty.all(3),
+                                    shadowColor: MaterialStateProperty.all(
+                                        Colors.transparent),
+                                  ),
+                                  onPressed: () {
+                                    //if pushed proceeed to questions
+                                    answerResult = checkAnswer(
+                                        answer, getCurrentNumber() + 1);
+                                    if (answerResult) {
+                                      //the answer is corret, proceed to showing of trivia
+                                      triviaFlag = true;
+                                      nextFlag[0] = 0;
+                                      nextFlag[1] = 1;
+                                    } else {
+                                      //proceed to showing of not correct answer page
+                                      setCurrentLives();
+                                      answerResult = null;
+                                      nextFlag[0] = 0;
+                                      nextFlag[2] = 1;
+                                    }
+                                    //resetting the values
+                                    prev_answer = answer;
+                                    answer = "";
+                                    setState(() {});
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 10,
+                                    ),
+                                    child: Text(
+                                      "NEXT",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        // fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.transparent),
-                              // elevation: MaterialStateProperty.all(3),
-                              shadowColor:
-                                  MaterialStateProperty.all(Colors.transparent),
-                            ),
-                            onPressed: () {
-                              //if pushed proceeed to questions
-                              var answerResult =
-                                  checkAnswer(answer, getCurrentNumber() + 1);
-                              if (answerResult) {
-                                //the answer is corret, proceed to next question
-                                setCurrentNumber();
-                              } else {
-                                setCurrentLives();
-                              }
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => QuestionsLevel1(),
+                              //next 2nd state
+                              if (nextFlag[1] == 1)
+                                ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                    ),
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Colors.transparent),
+                                    // elevation: MaterialStateProperty.all(3),
+                                    shadowColor: MaterialStateProperty.all(
+                                        Colors.transparent),
+                                  ),
+                                  onPressed: () {
+                                    //if pushed proceeed to questions
+                                    answer = 
+                                    prev_answer =
+                                    answerResult = null;
+                                    triviaFlag = false;
+                                    nextFlag = [1, 0, 0];
+                                    setCurrentNumber();
+                                    setState(() {});
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 10,
+                                    ),
+                                    child: Text(
+                                      "NEXT",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        // fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                top: 10,
-                                bottom: 10,
-                              ),
-                              child: Text(
-                                "NEXT",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  // fontWeight: FontWeight.w700,
-                                  color: Colors.white,
+                              //next 3rd state
+                              if (nextFlag[2] == 1)
+                                ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                    ),
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Colors.transparent),
+                                    // elevation: MaterialStateProperty.all(3),
+                                    shadowColor: MaterialStateProperty.all(
+                                        Colors.transparent),
+                                  ),
+                                  onPressed: () {
+                                    //if pushed retake question
+                                    //resetting the values
+                                    answer = 
+                                    prev_answer =
+                                    answerResult = null;
+                                    triviaFlag = false;
+                                    nextFlag = [1, 0, 0];
+                                    setState(() {});
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 10,
+                                    ),
+                                    child: Text(
+                                      incorrectMessage,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        // fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
+                            ], //children
                           ),
                         ),
                       ],
