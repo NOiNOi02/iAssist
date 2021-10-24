@@ -1,8 +1,12 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/lessons/Newton1st.dart';
 import 'package:iassist/student/lessons/Newton2nd.dart';
 import 'package:iassist/student/lessons/Newton3rd.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 
 class StudentLessons extends StatefulWidget {
   @override
@@ -41,7 +45,7 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Color(0xFFBA494B),
-                fontSize: 16,
+                fontSize: 12.sp,
               ),
             ),
         centerTitle: true,
@@ -55,7 +59,7 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
         ),
         actions: <Widget>[
           ChangeThemeButtonWidget(),
-          SizedBox(width: 25)
+          SizedBox(width: 3.5.w)
         ], 
       ),
       body: SingleChildScrollView(
@@ -66,21 +70,21 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
               child: Stack(
                 children:<Widget>[
                   Container(
-                    height: size.height * 0.15,
+                    height: SizeConfig.safeBlockVertical! * 16,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage('assets/images/header.png'),
                       ),
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(17),
-                        bottomRight: Radius.circular(17),
+                        bottomLeft: Radius.circular(18),
+                        bottomRight: Radius.circular(18),
                       ),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(.9),
-                          spreadRadius: 3,
-                          blurRadius: 6,
+                          spreadRadius: 4,
+                          blurRadius: 7,
                         ),
                       ],
                     ),
@@ -92,8 +96,8 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 45),
-                          height: size.height * 0.58,
+                          margin: EdgeInsets.symmetric(horizontal: 11.w),
+                          height: SizeConfig.safeBlockVertical! * 69,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -107,8 +111,8 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 20),
-                          height: size.height * .14,
+                          margin: EdgeInsets.only(top: 5.w),
+                          height: SizeConfig.safeBlockVertical! * 16,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -118,19 +122,19 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 160,),
+                          margin: EdgeInsets.only(top: 18.5.h,),
                           child: Text('Newton’s\nLaw of Motion',
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 22,
+                              fontSize: 17.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: const EdgeInsets.only(top: 230, left: 82),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 30, left: 20.w, right: 20.w),
                           child:OutlinedButton(onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => FirstNewtonLaw(),),);
                           },
@@ -139,7 +143,7 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 21,
+                                fontSize: 16.sp,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -149,13 +153,13 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20, bottom: 20),
+                                  ),padding: EdgeInsets.only(left: 2.5.w, right: 2.5.w, top: 2.5.h, bottom: 2.5.h),
                                 ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: const EdgeInsets.only(top: 310, left: 82),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 43, left: 20.w, right: 20.w),
                           child:OutlinedButton(onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => SecondNewtonLaw(),),);
                           },
@@ -164,7 +168,7 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 21,
+                                fontSize: 16.sp,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -174,13 +178,13 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20, bottom: 20),
+                                  ),padding: EdgeInsets.only(left: 2.5.w, right: 2.5.w, top: 2.5.h, bottom: 2.5.h),
                                 ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: const EdgeInsets.only(top: 390, left: 82),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 56, left: 20.w, right:20.w),
                           child:OutlinedButton(onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => ThirdNewtonLaw(),),);
                           },
@@ -189,7 +193,7 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 21,
+                                fontSize: 16.sp,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -199,7 +203,7 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20, bottom: 20),
+                                  ),padding: EdgeInsets.only(left: 2.5.w, right: 2.5.w, top: 2.5.h, bottom: 2.5.h),
                                 ),
                           ),
                         ),
@@ -213,12 +217,12 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.only(left:35.0, right: 35.0, bottom: 45.0),
+        padding: EdgeInsets.only(left: 7.w, right: 7.w, bottom: 3.h),
         child: Container(
           child: TabBar(
             labelColor: Color(0xFF4785B4),
             unselectedLabelColor: Color(0xFFBA494B),
-            labelStyle:TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold) ,
+            labelStyle:TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold) ,
             indicator: UnderlineTabIndicator(
               borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
             ),
