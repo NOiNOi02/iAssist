@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables, non_constant_identifier_names, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
@@ -20,6 +20,11 @@ class QuestionsLevel1 extends StatefulWidget {
   }
 }
 
+//color container for selected choices
+List<Color> _colorContainerText = [Color(0xFFBA494B), Colors.white];
+List<Color> _colorContainerButton = [Colors.white, Colors.black];
+var answer;
+
 class _QuestionsLevel1State extends State<QuestionsLevel1> {
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,6 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
     int current_level = getCurrentLevel();
     var questions = getQuestions();
     var choices = getChoices();
-    var answer;
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -172,7 +176,9 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     blurRadius: 5.0),
                               ],
                               border: Border.all(color: Color(0xFFBA494B)),
-                              color: Colors.white,
+                              color: (i == answer)
+                                  ? _colorContainerButton[1]
+                                  : _colorContainerButton[0],
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: ElevatedButton(
@@ -192,7 +198,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                               onPressed: () {
                                 //if pushed proceeed set the value of answer
                                 answer = i;
-                                print(answer);
+                                setState(() {});
                               },
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -204,7 +210,9 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     // fontWeight: FontWeight.w700,
-                                    color: Color(0xFFBA494B),
+                                    color: (i == answer)
+                                        ? _colorContainerText[1]
+                                        : _colorContainerText[0],
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -250,7 +258,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             onPressed: () {
                               //if pushed proceeed to questions
                               var answerResult =
-                                  checkAnswer(answer, getCurrentNumber()+1);
+                                  checkAnswer(answer, getCurrentNumber() + 1);
                               if (answerResult) {
                                 //the answer is corret, proceed to next question
                                 setCurrentNumber();
