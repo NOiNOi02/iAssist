@@ -265,9 +265,16 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     // fontWeight: FontWeight.w700,
-                                    color: (i == answer)
-                                        ? _colorContainerText[1]
-                                        : _colorContainerText[0],
+                                    color: (answerResult != null)
+                                        ? (answerResult == true &&
+                                                i == prev_answer)
+                                            ? Color(0xFFBA494B)
+                                            : (i == prev_answer)
+                                                ? Color(0xFFBA494B)
+                                                : Color(0xFFEB9785)
+                                        : (i == answer)
+                                            ? _colorContainerText[1]
+                                            : _colorContainerText[0],
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
