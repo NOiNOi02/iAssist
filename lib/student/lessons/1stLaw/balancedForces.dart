@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
+import '../Newton1st.dart';
+import 'inertia.dart';
+import 'unbalancedForces.dart';
+
 class BalancedForces extends StatefulWidget {
   @override
   _BalancedForcesState createState() => _BalancedForcesState();
@@ -33,7 +37,12 @@ class _BalancedForcesState extends State<BalancedForces> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FirstNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
@@ -182,6 +191,43 @@ class _BalancedForcesState extends State<BalancedForces> {
           ),
         ]),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Inertia",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: 'Unbalanced Forces',
+          ),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
+        unselectedItemColor: Color(0xFFBA494B),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Inertia(),
+          ),
+        );
+      }
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => UnbalancedForces(),
+          ),
+        );
+      }
+    });
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/student/lessons/3rdLaw/interactionForcesVsBalancedForces.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+
+import '../Newton3rd.dart';
 
 class ExampleOfBalancedForce extends StatefulWidget {
   @override
@@ -33,17 +36,23 @@ class _ExampleOfBalancedForceState extends State<ExampleOfBalancedForce> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ThirdNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 30, left: 25, right: 25),
             child: Center(
               child: Text(
                 "EXAMPLE OF BALANCE FORCE",
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -97,6 +106,43 @@ class _ExampleOfBalancedForceState extends State<ExampleOfBalancedForce> {
           ),
         ]),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Interaction Forces vs Balanced Forces",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: '',
+          ),
+        ],
+        currentIndex: 0,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
+        // unselectedItemColor: Color(0xFFBA494B),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => InteractionForcesVsBalancedForces(),
+          ),
+        );
+      }
+      // if (index == 1) {
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => ExampleOfBalancedForce(),
+      //     ),
+      //   );
+      // }
+    });
   }
 }

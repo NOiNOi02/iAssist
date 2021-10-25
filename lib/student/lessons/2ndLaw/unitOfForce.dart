@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
+import '../Newton2nd.dart';
+import 'massAndAcceleration.dart';
+import 'sampleMathematicalProblem.dart';
+
 class UnitOfForce extends StatefulWidget {
   @override
   _UnitOfForceState createState() => _UnitOfForceState();
@@ -33,7 +37,12 @@ class _UnitOfForceState extends State<UnitOfForce> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SecondNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
@@ -169,6 +178,43 @@ class _UnitOfForceState extends State<UnitOfForce> {
           ),
         ]),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Mass and Acceleration",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: 'Sample Mathematical Problem',
+          ),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
+        unselectedItemColor: Color(0xFFBA494B),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MassAndAcceleration(),
+          ),
+        );
+      }
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SampleMathematicalProblem(),
+          ),
+        );
+      }
+    });
   }
 }

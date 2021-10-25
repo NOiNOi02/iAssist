@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import '../Newton1st.dart';
+import 'inertia.dart';
 
 class LawOfInertia extends StatefulWidget {
   @override
@@ -33,7 +35,12 @@ class _LawOfInertiaState extends State<LawOfInertia> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FirstNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
@@ -109,7 +116,8 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -126,19 +134,41 @@ class _LawOfInertiaState extends State<LawOfInertia> {
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_back),
-            title: Text("Previous"),
+            label: "",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_forward),
             label: 'Intertia',
           ),
         ],
-        // currentIndex: _selectedIndex,
-        // onTap: _onItemTapped,
+        currentIndex: 1,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
       ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      // if (index == 0) {
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => Inertia(),
+      //     ),
+      //   );
+      // }
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Inertia(),
+          ),
+        );
+      }
+    });
   }
 }

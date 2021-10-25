@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
+import '../Newton3rd.dart';
+import 'actionForceAndReactionForce.dart';
+import 'exampleOfBalancedForce.dart';
+
 class InteractionForcesVsBalancedForces extends StatefulWidget {
   @override
   _InteractionForcesVsBalancedForcesState createState() =>
@@ -35,17 +39,23 @@ class _InteractionForcesVsBalancedForcesState
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ThirdNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 30, left: 25, right: 25),
             child: Center(
               child: Text(
-                "ACTION FORCES VS REACTION FORCES",
+                "INTERACTION FORCES VS BALANCED FORCES",
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -113,6 +123,43 @@ class _InteractionForcesVsBalancedForcesState
           ),
         ]),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Action Force and Balanced Force",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: 'Example of Balanced Force',
+          ),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
+        unselectedItemColor: Color(0xFFBA494B),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ActionForceAndReactionForce(),
+          ),
+        );
+      }
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ExampleOfBalancedForce(),
+          ),
+        );
+      }
+    });
   }
 }

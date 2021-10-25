@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
+import '../Newton2nd.dart';
+import 'freeFallAndNewtonsSecondLawOfMotion.dart';
+import 'unitOfForce.dart';
+
 class SampleMathematicalProblem extends StatefulWidget {
   @override
   _SampleMathematicalProblemState createState() =>
@@ -34,7 +38,12 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SecondNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
@@ -251,6 +260,43 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
           ),
         ]),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Unit of Forces",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: 'Free Fall and Newton’s Second Law of Motion',
+          ),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
+        unselectedItemColor: Color(0xFFBA494B),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => UnitOfForce(),
+          ),
+        );
+      }
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FreeFallAndNewtonsSecondLawOfMotion(),
+          ),
+        );
+      }
+    });
   }
 }

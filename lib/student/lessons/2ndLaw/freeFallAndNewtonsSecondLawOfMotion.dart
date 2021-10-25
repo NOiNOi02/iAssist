@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
+import '../Newton2nd.dart';
+import 'circularMotionAndNewtonsSecondLawOfMotion.dart';
+import 'sampleMathematicalProblem.dart';
+
 class FreeFallAndNewtonsSecondLawOfMotion extends StatefulWidget {
   @override
   _FreeFallAndNewtonsSecondLawOfMotionState createState() =>
@@ -35,7 +39,12 @@ class _FreeFallAndNewtonsSecondLawOfMotionState
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SecondNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
@@ -144,6 +153,43 @@ class _FreeFallAndNewtonsSecondLawOfMotionState
           ),
         ]),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Sample Mathematical Problem",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: 'Circular Motion and Newton’s Second Law of Motion',
+          ),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
+        unselectedItemColor: Color(0xFFBA494B),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SampleMathematicalProblem(),
+          ),
+        );
+      }
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CircularMotionAndNewtonsSecondLawOfMotion(),
+          ),
+        );
+      }
+    });
   }
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/student/lessons/2ndLaw/circularMotionAndNewtonsSecondLawOfMotion.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+
+import '../Newton3rd.dart';
+import 'actionForceAndReactionForce.dart';
 
 class LawOfInteraction extends StatefulWidget {
   @override
@@ -33,7 +37,12 @@ class _LawOfInteractionState extends State<LawOfInteraction> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ThirdNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
@@ -53,7 +62,8 @@ class _LawOfInteractionState extends State<LawOfInteraction> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -69,6 +79,43 @@ class _LawOfInteractionState extends State<LawOfInteraction> {
           ),
         ]),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Circular Motion and Newton’s Second Law of Motion",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: 'Action Force and Reaction Force',
+          ),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
+        unselectedItemColor: Color(0xFFBA494B),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CircularMotionAndNewtonsSecondLawOfMotion(),
+          ),
+        );
+      }
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ActionForceAndReactionForce(),
+          ),
+        );
+      }
+    });
   }
 }

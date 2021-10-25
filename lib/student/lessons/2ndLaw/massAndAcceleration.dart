@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
+import '../Newton2nd.dart';
+import 'netForceAndAcceleration.dart';
+import 'unitOfForce.dart';
+
 class MassAndAcceleration extends StatefulWidget {
   @override
   _MassAndAccelerationState createState() => _MassAndAccelerationState();
@@ -33,7 +37,12 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SecondNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
@@ -214,7 +223,7 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 10, left: 25, right: 25),
+            margin: EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 25),
             height: size.height * .05,
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -225,6 +234,43 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
           ),
         ]),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Net Force and Acceleration",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: 'Unit of Force',
+          ),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
+        unselectedItemColor: Color(0xFFBA494B),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NetForceAndAcceleration(),
+          ),
+        );
+      }
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => UnitOfForce(),
+          ),
+        );
+      }
+    });
   }
 }

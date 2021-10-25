@@ -421,7 +421,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Color(0xFFBA494B),
-                          fontSize: 14,
+                          fontSize: 13.5,
                         )),
                   )
                 ],

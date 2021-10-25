@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/student/lessons/2ndLaw/lawOfAcceleration.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+
+import '../Newton1st.dart';
+import 'rollingFriction.dart';
 
 class FluidFriction extends StatefulWidget {
   @override
@@ -33,7 +37,12 @@ class _FluidFrictionState extends State<FluidFriction> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FirstNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
@@ -121,7 +130,8 @@ class _FluidFrictionState extends State<FluidFriction> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -137,6 +147,43 @@ class _FluidFrictionState extends State<FluidFriction> {
           ),
         ]),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Rolling Friction",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: 'Law of Acceleration',
+          ),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
+        unselectedItemColor: Color(0xFFBA494B),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RollingFriction(),
+          ),
+        );
+      }
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LawOfAcceleration(),
+          ),
+        );
+      }
+    });
   }
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/student/lessons/3rdLaw/lawOfInteraction.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+
+import '../Newton2nd.dart';
+import 'freeFallAndNewtonsSecondLawOfMotion.dart';
 
 class CircularMotionAndNewtonsSecondLawOfMotion extends StatefulWidget {
   @override
@@ -35,14 +39,19 @@ class _CircularMotionAndNewtonsSecondLawOfMotionState
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SecondNewtonLaw(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 30, left: 25, right: 25),
             child: Center(
               child: Text(
                 "CIRCULAR MOTION AND NEWTON'S SECOND LAW OF MOTION",
@@ -110,7 +119,8 @@ class _CircularMotionAndNewtonsSecondLawOfMotionState
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 10, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.center,
               child: Text(
@@ -128,6 +138,43 @@ class _CircularMotionAndNewtonsSecondLawOfMotionState
           ),
         ]),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: "Free Fall and Newton’s Second Law of Motion",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: 'Law of Interaction',
+          ),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Color(0xFFBA494B),
+        onTap: _onItemTapped,
+        unselectedItemColor: Color(0xFFBA494B),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FreeFallAndNewtonsSecondLawOfMotion(),
+          ),
+        );
+      }
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LawOfInteraction(),
+          ),
+        );
+      }
+    });
   }
 }
