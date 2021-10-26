@@ -1,7 +1,13 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/Game_Front_Page.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/studentlessons.dart';
+import 'package:iassist/student/games/Game_Front_Page.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 
 class StudentFrontPage extends StatefulWidget {
   @override
@@ -28,7 +34,7 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Color(0xFFBA494B),
-                fontSize: 16,
+                fontSize: 12.sp,
               ),
             ),
         centerTitle: true,
@@ -42,31 +48,31 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
         ),
         actions: <Widget>[
           ChangeThemeButtonWidget(),
-          SizedBox(width: 25)
+          SizedBox(width: 3.5.w)
         ], 
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-              height: size.height,
+              height: SizeConfig.safeBlockVertical! * 100,
               child: Stack(
                 children:<Widget>[
                   Container(
-                    height: size.height * 0.15,
+                    height: SizeConfig.safeBlockVertical! * 16,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage('assets/images/header.png'),
                       ),
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(17),
-                        bottomRight: Radius.circular(17),
+                        bottomLeft: Radius.circular(18),
+                        bottomRight: Radius.circular(18),
                       ),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(.9),
-                          spreadRadius: 3,
+                          spreadRadius: 4,
                           blurRadius: 6,
                         ),
                       ],
@@ -79,8 +85,8 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 45),
-                          height: size.height * 0.65,
+                          margin: EdgeInsets.symmetric(horizontal: 12.w),
+                          height: SizeConfig.safeBlockVertical! * 70,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -94,8 +100,8 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 55),
-                          height: size.height * .13,
+                          margin: EdgeInsets.only(top: 5.h),
+                          height: SizeConfig.safeBlockVertical! * 15,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -105,40 +111,40 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 180,),
+                          padding: EdgeInsets.only(top: 20.h,),
                           child: Text('Hello Student', 
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 22,
+                              fontSize: 17.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 210),
+                          padding: EdgeInsets.only(top: 24.h),
                           child: Text('You can read the lessons first and then\nplay games!', 
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFFFB79D),
                             ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: const EdgeInsets.only(top: 270, left: 82),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 35, left: 20.w, right: 20.w),
                           child:OutlinedButton.icon(onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => StudentLessons(),),);
                           },
-                            icon: Icon(MyFlutterApp.lessons, color: Color(0xFFBA494B), size: 50), 
+                            icon: Icon(MyFlutterApp.lessons, color: Color(0xFFBA494B), size: 37.sp), 
                             label: Text("LESSONS",
                               textAlign: TextAlign.center,   
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 26,
+                                fontSize: 20.sp,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -148,23 +154,23 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 25, bottom: 25),
+                                  ),padding: EdgeInsets.only(left: 3.w, right: 3.w, top: 2.5.h, bottom: 2.5.h),
                                 ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: const EdgeInsets.only(top: 390, left: 82),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 51, left: 20.w, right: 20.w),
                           child:OutlinedButton.icon(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => StudentFrontPage(),),);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => GameFrontPage(),),);
                           },
-                            icon: Icon(MyFlutterApp.games, color: Color(0xFFBA494B), size: 50), 
+                            icon: Icon(MyFlutterApp.games, color: Color(0xFFBA494B), size: 37.sp), 
                             label: Text("GAMES",
                               textAlign: TextAlign.center,   
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFBA494B),
-                                fontSize: 26,
+                                fontSize: 20.sp,
                               )),
                                 style: OutlinedButton.styleFrom(
                                   side: BorderSide(
@@ -174,7 +180,7 @@ class _StudentFrontPageState extends State<StudentFrontPage>{
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
                                     
-                                  ),padding: EdgeInsets.only(right: 20, top: 25, bottom: 25),
+                                  ),padding: EdgeInsets.only(right: 2.w, top: 2.5.h, bottom: 2.5.h),
                                 ),
                           ),
                         ),
