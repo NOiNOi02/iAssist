@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
@@ -20,6 +22,12 @@ class NewtPuzzle extends StatefulWidget {
     throw UnimplementedError();
   }
 }
+
+double newtSize = 0.57;
+double newtMargin = 0.10;
+double newtMarginLeft = 0;
+Alignment newtAlignment = Alignment.topCenter;
+bool showDialogBox = false;
 
 class _NewtPuzzleState extends State<NewtPuzzle> {
   @override
@@ -92,7 +100,8 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image: AssetImage('assets/images/games/Level 1/game1.png'),
+                        image:
+                            AssetImage('assets/images/games/Level 1/game1.png'),
                       ),
                     ),
                   ),
@@ -148,15 +157,48 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 80),
-                          height: size.height * 0.57,
+                          margin: EdgeInsets.only(
+                              top: size.height * newtMargin,
+                              left: size.width * newtMarginLeft),
+                          height: size.height * newtSize,
                           decoration: BoxDecoration(
                             image: DecorationImage(
+                              alignment: newtAlignment,
                               fit: BoxFit.contain,
-                              image: AssetImage('assets/images/games/Level 1/robot.png'),
+                              image: AssetImage(
+                                  'assets/images/games/Level 1/robot.png'),
                             ),
                           ),
                         ),
+                        if (showDialogBox)
+                          Container(
+                            margin: EdgeInsets.only(
+                                top: size.height * 0.15,
+                                right: size.width * 0.10),
+                            height: size.height * 0.25,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                alignment: Alignment.topRight,
+                                fit: BoxFit.contain,
+                                image: AssetImage(
+                                    'assets/images/games/Level 1/dialogBox.png'),
+                              ),
+                            ),
+                          ),
+                        if (showDialogBox)
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: size.width*0.41, top: size.height * 0.22),
+                            child: Text(
+                              "Hi! My name is NEWT. I \nwill be your guide as you\nlearn Newton’s three laws \nof motion.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: (size.height * size.width) * 0.000045,
+                                // fontWeight: FontWeight.w700,
+                                color: Color(0xFFBA494B),
+                              ),
+                            ),
+                          ),
                         for (int i = 0; i < 5 - getCurrentNumber(); i++)
                           Container(
                             margin: (i == 0)
@@ -220,6 +262,9 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
+                              if(showDialogBox){
+                                //continue to level 2
+                              }
                               if (getCurrentNumber() != 5) {
                                 Navigator.push(
                                   context,
@@ -227,8 +272,13 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                     builder: (context) => QuestionsLevel1(),
                                   ),
                                 );
-                              }else{
-
+                              } else {
+                                showDialogBox = true;
+                                newtSize = 0.35;
+                                newtMargin = 0.33;
+                                newtMarginLeft = 0.05;
+                                newtAlignment = Alignment.bottomLeft;
+                                setState(() {});
                               }
                             },
                             child: Padding(
