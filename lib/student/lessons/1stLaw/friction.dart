@@ -62,7 +62,8 @@ class _FrictionState extends State<Friction> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -123,16 +124,20 @@ class _FrictionState extends State<Friction> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.skip_previous),
             label: "Unbalanced Forces",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_forward),
+            icon: Icon(Icons.skip_next),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.skip_next),
             label: 'Sliding Friction',
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: Color(0xFFBA494B),
+        selectedItemColor: Color(0xFFFFFFFF),
         onTap: _onItemTapped,
         unselectedItemColor: Color(0xFFBA494B),
       ),
@@ -149,7 +154,7 @@ class _FrictionState extends State<Friction> {
           ),
         );
       }
-      if (index == 1) {
+      if (index == 2) {
         Navigator.push(
           context,
           MaterialPageRoute(

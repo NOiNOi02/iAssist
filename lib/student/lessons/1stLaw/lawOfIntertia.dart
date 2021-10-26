@@ -60,7 +60,8 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -106,6 +107,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
                 'Figure 1. Motion of an object with and without outside forces applied.',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
+                  fontFamily: 'Roboto',
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                   fontSize: 14,
@@ -136,16 +138,21 @@ class _LawOfInertiaState extends State<LawOfInertia> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.skip_previous),
             label: "",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_forward),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.skip_next),
             label: 'Intertia',
           ),
         ],
-        currentIndex: 1,
+        currentIndex: 2,
         selectedItemColor: Color(0xFFBA494B),
+        unselectedItemColor: Color(0xFFFFFFFF),
         onTap: _onItemTapped,
       ),
     );
@@ -161,7 +168,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
       //     ),
       //   );
       // }
-      if (index == 1) {
+      if (index == 2) {
         Navigator.push(
           context,
           MaterialPageRoute(

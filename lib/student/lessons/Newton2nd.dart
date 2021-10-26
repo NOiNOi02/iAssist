@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
+import '../studentlessons.dart';
 import '2ndLaw/acceleration.dart';
 import '2ndLaw/circularMotionAndNewtonsSecondLawOfMotion.dart';
 import '2ndLaw/freeFallAndNewtonsSecondLawOfMotion.dart';
@@ -42,7 +43,12 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentLessons(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),

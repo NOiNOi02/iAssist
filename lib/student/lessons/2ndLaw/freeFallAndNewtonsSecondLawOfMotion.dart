@@ -156,16 +156,20 @@ class _FreeFallAndNewtonsSecondLawOfMotionState
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.skip_previous),
             label: "Sample Mathematical Problem",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_forward),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.skip_next),
             label: 'Circular Motion and Newton’s Second Law of Motion',
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: Color(0xFFBA494B),
+        selectedItemColor: Color(0xFFFFFFFF),
         onTap: _onItemTapped,
         unselectedItemColor: Color(0xFFBA494B),
       ),
@@ -182,7 +186,7 @@ class _FreeFallAndNewtonsSecondLawOfMotionState
           ),
         );
       }
-      if (index == 1) {
+      if (index == 2) {
         Navigator.push(
           context,
           MaterialPageRoute(

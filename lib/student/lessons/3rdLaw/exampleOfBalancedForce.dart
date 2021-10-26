@@ -109,18 +109,22 @@ class _ExampleOfBalancedForceState extends State<ExampleOfBalancedForce> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
-            label: "Interaction Forces vs Balanced Forces",
+            icon: Icon(Icons.skip_previous),
+            label: "Interaction Forces...",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_forward),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.skip_next),
             label: '',
           ),
         ],
         currentIndex: 0,
         selectedItemColor: Color(0xFFBA494B),
         onTap: _onItemTapped,
-        // unselectedItemColor: Color(0xFFBA494B),
+        unselectedItemColor: Color(0xFFFFFFFF),
       ),
     );
   }

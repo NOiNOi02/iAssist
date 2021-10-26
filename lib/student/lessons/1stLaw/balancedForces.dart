@@ -62,7 +62,8 @@ class _BalancedForcesState extends State<BalancedForces> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -111,6 +112,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                   fontSize: 14,
+                  fontFamily: 'Roboto',
                   letterSpacing: 1.4,
                   color: Color(0xFF000000),
                 ),
@@ -125,6 +127,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                 "Visualize a physics book on a tabletop. The book is affected by two forces. One force, Earth's gravitational attraction, pulls downward. The table's pressure on the book (sometimes called a normal force) pushes the book higher. The equal magnitude and opposite direction of these two forces balance each other. Balanced forces make the book at rest and these forces must lie along the same line. The book is deemed to be balanced. There is no uneven or unbalanced force acting on the book, therefore it stays in motion. When all the forces acting on an object are balanced, the object is at rest and does not accelerate.",
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
+                  fontFamily: 'Roboto',
                   fontSize: 16,
                   letterSpacing: 1.4,
                   color: Color(0xFF000000),
@@ -164,6 +167,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                 'Figure 4. Showing a balanced force acting on the car.',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
+                  fontFamily: 'Roboto',
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                   fontSize: 14,
@@ -182,6 +186,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                 "Figure 1.4 depicts balanced forces. Balanced forces result in a force of zero. The car above, acted on by two balanced forces, remains in an equilibrium state. As a result, there is no difference in speed. In addition, balanced forces make objects to continue moving at constant velocity.",
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
+                  fontFamily: 'Roboto',
                   fontSize: 16,
                   letterSpacing: 1.4,
                   color: Color(0xFF000000),
@@ -194,16 +199,20 @@ class _BalancedForcesState extends State<BalancedForces> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.skip_previous),
             label: "Inertia",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_forward),
+            icon: Icon(Icons.skip_next),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.skip_next),
             label: 'Unbalanced Forces',
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: Color(0xFFBA494B),
+        selectedItemColor: Color(0xFFFFFFFF),
         onTap: _onItemTapped,
         unselectedItemColor: Color(0xFFBA494B),
       ),
@@ -220,7 +229,7 @@ class _BalancedForcesState extends State<BalancedForces> {
           ),
         );
       }
-      if (index == 1) {
+      if (index == 2) {
         Navigator.push(
           context,
           MaterialPageRoute(

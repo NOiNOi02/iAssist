@@ -237,16 +237,20 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.skip_previous),
             label: "Net Force and Acceleration",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_forward),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.skip_next),
             label: 'Unit of Force',
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: Color(0xFFBA494B),
+        selectedItemColor: Color(0xFFFFFFFF),
         onTap: _onItemTapped,
         unselectedItemColor: Color(0xFFBA494B),
       ),
@@ -263,7 +267,7 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
           ),
         );
       }
-      if (index == 1) {
+      if (index == 2) {
         Navigator.push(
           context,
           MaterialPageRoute(

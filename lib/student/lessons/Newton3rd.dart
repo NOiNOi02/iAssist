@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 
+import '../studentlessons.dart';
 import '3rdLaw/actionForceAndReactionForce.dart';
 import '3rdLaw/exampleOfBalancedForce.dart';
 import '3rdLaw/interactionForcesVsBalancedForces.dart';
@@ -38,7 +39,12 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentLessons(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),

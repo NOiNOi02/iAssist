@@ -62,7 +62,8 @@ class _InertiaState extends State<Inertia> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -110,6 +111,7 @@ class _InertiaState extends State<Inertia> {
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
+                  fontFamily: 'Roboto',
                   fontSize: 14,
                   letterSpacing: 1.4,
                   color: Color(0xFF000000),
@@ -127,6 +129,7 @@ class _InertiaState extends State<Inertia> {
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
+                  fontFamily: 'Roboto',
                   letterSpacing: 1.4,
                   color: Color(0xFF000000),
                 ),
@@ -138,16 +141,20 @@ class _InertiaState extends State<Inertia> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.skip_previous),
             label: "Law of Inertia",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_forward),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.skip_next),
             label: 'Balanced Forces',
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: Color(0xFFBA494B),
+        selectedItemColor: Color(0xFFFFFFFF),
         onTap: _onItemTapped,
         unselectedItemColor: Color(0xFFBA494B),
       ),
@@ -164,7 +171,7 @@ class _InertiaState extends State<Inertia> {
           ),
         );
       }
-      if (index == 1) {
+      if (index == 2) {
         Navigator.push(
           context,
           MaterialPageRoute(

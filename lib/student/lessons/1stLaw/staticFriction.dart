@@ -74,7 +74,8 @@ class _StaticFrictionState extends State<StaticFriction> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -122,6 +123,7 @@ class _StaticFrictionState extends State<StaticFriction> {
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
+                  fontFamily: 'Roboto',
                   fontSize: 14,
                   letterSpacing: 1.4,
                   color: Color(0xFF000000),
@@ -150,16 +152,20 @@ class _StaticFrictionState extends State<StaticFriction> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.skip_previous),
             label: "Sliding Friction",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_forward),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.skip_next),
             label: 'Rolling Friction',
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: Color(0xFFBA494B),
+        selectedItemColor: Color(0xFFFFFFFF),
         onTap: _onItemTapped,
         unselectedItemColor: Color(0xFFBA494B),
       ),
@@ -176,7 +182,7 @@ class _StaticFrictionState extends State<StaticFriction> {
           ),
         );
       }
-      if (index == 1) {
+      if (index == 2) {
         Navigator.push(
           context,
           MaterialPageRoute(

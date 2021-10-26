@@ -62,11 +62,28 @@ class _UnbalancedForcesState extends State<UnbalancedForces> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            margin:
+                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 'If an object initially at rest is under an unbalanced force, it moves in the direction of the unbalanced force. In the other hand, an object in motion will eventually will stop or change its motion if there is an unbalanced force acting on it.',
+                textAlign: TextAlign.justify,
+                style: const TextStyle(
+                  fontSize: 16,
+                  letterSpacing: 1.4,
+                  color: Color(0xFF000000),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            margin:
+                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'As the ball rolls to right as shown in figure 5, friction acts to the left to retard its motion. Because there is no continuous force applied to the ball, there is no force present to balance the frictional force. As a result, the ball started to slow down before coming to a complete stop. The unbalanced opposite force acting between the surfaces of the ball and the desk called friction.',
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -110,6 +127,7 @@ class _UnbalancedForcesState extends State<UnbalancedForces> {
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
+                  fontFamily: 'Roboto',
                   fontSize: 14,
                   letterSpacing: 1.4,
                   color: Color(0xFF000000),
@@ -138,16 +156,20 @@ class _UnbalancedForcesState extends State<UnbalancedForces> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.skip_previous),
             label: "Balanced Forces",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_forward),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.skip_next),
             label: 'Friction',
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: Color(0xFFBA494B),
+        selectedItemColor: Color(0xFFFFFFFF),
         onTap: _onItemTapped,
         unselectedItemColor: Color(0xFFBA494B),
       ),
@@ -164,7 +186,7 @@ class _UnbalancedForcesState extends State<UnbalancedForces> {
           ),
         );
       }
-      if (index == 1) {
+      if (index == 2) {
         Navigator.push(
           context,
           MaterialPageRoute(

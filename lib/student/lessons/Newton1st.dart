@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import '../studentlessons.dart';
 import '1stLaw/Friction.dart';
 import '1stLaw/balancedForces.dart';
 import '1stLaw/fluidFriction.dart';
@@ -43,7 +44,12 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentLessons(),
+            ),
+          ),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
