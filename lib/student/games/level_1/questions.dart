@@ -146,13 +146,42 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             ],
                           ),
                         ),
+                        //points
+                        Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.only(
+                              top: 15),
+                          child: Text(
+                            "Current Points: " + getCurrentPoints().toString()+ "pts",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xFFBA494B),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topRight,
+                          padding: const EdgeInsets.only(
+                              top: 15, right: 30),
+                          child: Text(
+                            "Total Points: " + getTotalPoints().toString(),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xFF4785B4),
+                            ),
+                          ),
+                        ),
                         //lives
                         for (int i = 0; i < getCurrentLives(); i++)
                           Container(
                             height: size.height * 0.03,
                             width: size.width * 0.06,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 25, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -169,7 +198,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             height: size.height * 0.03,
                             width: size.width * 0.06,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 25, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -355,6 +384,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                           } else {
                                             //proceed to showing of not correct answer page
                                             setCurrentLives();
+                                            setCurrentPoints(getCurrentLives());
                                             answerResult = false;
                                             nextFlag[0] = 0;
                                             nextFlag[2] = 1;

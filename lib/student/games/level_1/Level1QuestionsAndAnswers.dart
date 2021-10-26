@@ -27,6 +27,7 @@ var trivia = [
 
 List<int> answers = [0, 0, 2, 1, 2];
 var currentNumber = 0;
+var currentPoints = 5;
 
 List getQuestions() {
   return questions;
@@ -44,9 +45,30 @@ int getCurrentNumber() {
   return currentNumber;
 }
 
+int getCurrentPoints() {
+  return currentPoints;
+}
+
+void setCurrentPoints(int lives){
+  if (lives == 3){
+    currentPoints = 5;
+  }
+  else if (lives == 2){
+    currentPoints = 3;
+  }
+   else if (lives == 1){
+    currentPoints = 2;
+  }
+}
+
+void resetCurrentPoints(){
+  currentPoints = 5;
+}
+
 void setCurrentNumber() {
   currentNumber++;
 }
+
 
 void resetCurrentNumber() {
   currentNumber = 0;

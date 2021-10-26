@@ -266,6 +266,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                 //continue to level 2
                               }
                               if (getCurrentNumber() != 5) {
+                                setTotalPoints(getCurrentPoints());
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
