@@ -3,16 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
-import 'package:iassist/student/studentfrontpage.dart';
+import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
-import 'package:iassist/student/games/level_1/level_1.dart';
-import 'package:iassist/student/games/level_2/level_2.dart';
 import 'package:iassist/student/games/level_3/level_3.dart';
-import 'package:iassist/student/games/level_4/level_4.dart';
+import 'package:iassist/student/games/level_3/level_3a.dart';
+import 'package:iassist/student/games/level_3/questions.dart';
 
-class GameFrontPage extends StatefulWidget {
+class Level3b extends StatefulWidget {
   @override
-  _GameFrontPageState createState() => _GameFrontPageState();
+  _Level3State createState() => _Level3State();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class GameFrontPage extends StatefulWidget {
   }
 }
 
-class _GameFrontPageState extends State<GameFrontPage> {
+class _Level3State extends State<Level3b> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -86,6 +85,30 @@ class _GameFrontPageState extends State<GameFrontPage> {
                       ],
                     ),
                   ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: size.height * 0.03, right: size.width * 0.77),
+                    height: size.height * .08,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.contain,
+                        image: AssetImage('assets/images/game1.png'),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment(0.0, -1.0),
+                    padding: const EdgeInsets.only(top: 20, left: 15),
+                    child: Text(
+                      'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                   Positioned(
                     top: size.height * 0.108,
                     left: 0,
@@ -112,7 +135,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => StudentFrontPage(),
+                                builder: (context) => GameFrontPage(),
                               ),
                             );
                           },
@@ -123,51 +146,25 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/games/Level 1/Back.png'),
+                                image: AssetImage('assets/images/Back.png'),
                               ),
                             ),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 100),
-                          height: size.height * .13,
+                          margin: const EdgeInsets.only(top: 100, right: 25),
+                          height: size.height * 0.60,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage('assets/images/games/Level 1/Game.png'),
+                              image: AssetImage(
+                                  'assets/images/games/level3/Group 62.png'),
                             ),
                           ),
                         ),
                         Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(
-                            top: 225,
-                          ),
-                          child: Text(
-                            'Level ' + (current_level).toString(),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 255),
-                          child: Text(
-                            'Introduction to Newton\'s \nLaw of Motion',
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * .5,
-                          margin: const EdgeInsets.only(top: 365, left: 110),
+                          width: size.width * 0.74,
+                          margin: const EdgeInsets.only(top: 555, left: 53.5),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -184,8 +181,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 Color(0XFFFFB79D),
                               ],
                             ),
-                            color: Colors.deepPurple.shade300,
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(5),
                           ),
                           child: ElevatedButton(
                             style: ButtonStyle(
@@ -202,38 +198,13 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                   MaterialStateProperty.all(Colors.transparent),
                             ),
                             onPressed: () {
-                              //navigate to what level is the current level
-                              if (current_level == 1) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level1(),
-                                  ),
-                                );
-                              } else if (current_level == 2) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level2(),
-                                  ),
-                                );
-                              } else if (current_level == 3) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level3(),
-                                  ),
-                                );
-                              } else if (current_level == 4) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level4(),
-                                  ),
-                                );
-                              } else if (current_level == 5) {
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level5(),),);
-                              }
+                              //if pushed proceeed to questions
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => QuestionsLevel3(),
+                                ),
+                              );
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -241,9 +212,9 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 bottom: 10,
                               ),
                               child: Text(
-                                "START",
+                                "Continue",
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),

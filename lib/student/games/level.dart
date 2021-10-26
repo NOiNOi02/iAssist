@@ -1,9 +1,8 @@
-
-int level = 1; 
+int level = 1;
 var currentLives = 3;
 var totalPoints = 0;
 
-int getCurrentLevel(){
+int getCurrentLevel() {
   return level;
 }
 
@@ -15,7 +14,7 @@ int getTotalPoints() {
   return totalPoints;
 }
 
-void setTotalPoints(int points){
+void setTotalPoints(int points) {
   totalPoints = totalPoints + points;
 }
 
@@ -26,10 +25,11 @@ void setCurrentLives() {
 void resetCurrentLives() {
   currentLives = 3;
 }
-void setCurrentLevel(bool status){
-  if (status){
-    level++;  
-  }else{
+
+void setCurrentLevel(bool status) {
+  if (status) {
+    level++;
+  } else {
     level--;
   }
 }

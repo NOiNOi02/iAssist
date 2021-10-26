@@ -63,6 +63,9 @@ flutter:
   assets:
     - assets/images/
     - assets/images/games/
+    - assets/images/games/level2/
+    - assets/images/games/level3/
+    - assets/images/games/level4/
     - assets/images/games/Level 1/
     - assets/images/firstLawOfMotion/
     - assets/images/secondLawOfMotion/

@@ -3,16 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
-import 'package:iassist/student/studentfrontpage.dart';
+import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
-import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_2/level_2.dart';
-import 'package:iassist/student/games/level_3/level_3.dart';
-import 'package:iassist/student/games/level_4/level_4.dart';
+import 'package:iassist/student/games/level_2/Level2QuestionsAndAnswers.dart';
 
-class GameFrontPage extends StatefulWidget {
+class QuestionsLevel2 extends StatefulWidget {
   @override
-  _GameFrontPageState createState() => _GameFrontPageState();
+  _QuestionsLevel2State createState() => _QuestionsLevel2State();
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +20,14 @@ class GameFrontPage extends StatefulWidget {
   }
 }
 
-class _GameFrontPageState extends State<GameFrontPage> {
+class _QuestionsLevel2State extends State<QuestionsLevel2> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int current_level = getCurrentLevel();
+    var questions = getQuestions();
+    var choices = getChoices();
+    var images = getImages();
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -67,11 +68,11 @@ class _GameFrontPageState extends State<GameFrontPage> {
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: size.height * 0.15,
+                    height: size.height * 0.25,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('assets/images/Group42.png'),
+                        image: AssetImage('assets/images/Group48.png'),
                       ),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(17),
@@ -79,11 +80,23 @@ class _GameFrontPageState extends State<GameFrontPage> {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(.9),
+                          color: Color(0xFFBA494B).withOpacity(.9),
                           spreadRadius: 3,
-                          blurRadius: 6,
+                          blurRadius: 8,
                         ),
                       ],
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment(0.0, -1.0),
+                    padding: const EdgeInsets.only(top: 40, left: 35),
+                    child: Text(
+                      'Level 2\nNewton\'s First Law of Motion: Inertia',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Colors.white.withOpacity(0.72)),
                     ),
                   ),
                   Positioned(
@@ -107,67 +120,113 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => StudentFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image: AssetImage('assets/images/games/Level 1/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
+
                         Container(
-                          margin: EdgeInsets.only(top: 100),
-                          height: size.height * .13,
+                          margin: const EdgeInsets.only(top: 40),
+                          height: size.height * 0.30,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage('assets/images/games/Level 1/Game.png'),
+                              image: AssetImage(
+                                  'assets/images/games/level2/Group 59.png'),
                             ),
                           ),
                         ),
+
+                        Container(
+                          margin: const EdgeInsets.only(top: 250),
+                          height: size.height * 0.10,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.contain,
+                              image: AssetImage(images[getCurrentNumber()]),
+                            ),
+                          ),
+                        ),
+                        //questions
                         Container(
                           alignment: Alignment(0.0, -1.0),
                           padding: const EdgeInsets.only(
-                            top: 225,
-                          ),
+                              top: 100, left: 100, right: 10),
                           child: Text(
-                            'Level ' + (current_level).toString(),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 255),
-                          child: Text(
-                            'Introduction to Newton\'s \nLaw of Motion',
+                            //getting the questions based from what current number is
+                            questions[getCurrentNumber()],
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 25,
+                              fontSize: 13,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
+
+                        //choices
+                        for (int i = 0;
+                            i < choices[getCurrentNumber()].length;
+                            i++)
+                          Container(
+                            width: size.width * 0.74,
+                            height: size.height * 0.08,
+                            margin: (getCurrentNumber() == 12)
+                                ? EdgeInsets.only(
+                                    top: (i + 5) * 50.toDouble(), left: 53.5)
+                                : EdgeInsets.only(
+                                    top: (i + 7) * 50.toDouble(), left: 53.5),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black38,
+                                    offset: Offset(0, 4),
+                                    blurRadius: 5.0),
+                              ],
+                              border: Border.all(color: Color(0xFFBA494B)),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                ),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.transparent),
+                                // elevation: MaterialStateProperty.all(3),
+                                shadowColor: MaterialStateProperty.all(
+                                    Colors.transparent),
+                              ),
+                              onPressed: () {
+                                //if pushed proceeed to questions
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Level2(),
+                                  ),
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 10,
+                                  bottom: 10,
+                                ),
+                                child: Text(
+                                  choices[getCurrentNumber()][i],
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    // fontWeight: FontWeight.w700,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ),
+                        //next
                         Container(
-                          width: size.width * .5,
-                          margin: const EdgeInsets.only(top: 365, left: 110),
+                          width: size.width * 0.74,
+                          margin: const EdgeInsets.only(top: 600, left: 53.5),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -184,8 +243,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 Color(0XFFFFB79D),
                               ],
                             ),
-                            color: Colors.deepPurple.shade300,
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(5),
                           ),
                           child: ElevatedButton(
                             style: ButtonStyle(
@@ -202,38 +260,14 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                   MaterialStateProperty.all(Colors.transparent),
                             ),
                             onPressed: () {
-                              //navigate to what level is the current level
-                              if (current_level == 1) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level1(),
-                                  ),
-                                );
-                              } else if (current_level == 2) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level2(),
-                                  ),
-                                );
-                              } else if (current_level == 3) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level3(),
-                                  ),
-                                );
-                              } else if (current_level == 4) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level4(),
-                                  ),
-                                );
-                              } else if (current_level == 5) {
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level5(),),);
-                              }
+                              //if pushed proceeed to questions
+                              setCurrentNumber();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => QuestionsLevel2(),
+                                ),
+                              );
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -241,9 +275,9 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 bottom: 10,
                               ),
                               child: Text(
-                                "START",
+                                "NEXT",
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),
