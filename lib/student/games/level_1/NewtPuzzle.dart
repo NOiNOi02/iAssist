@@ -10,6 +10,7 @@ import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/questions.dart';
+import 'package:iassist/student/games/game_front_page.dart';
 
 class NewtPuzzle extends StatefulWidget {
   @override
@@ -188,7 +189,8 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                         if (showDialogBox)
                           Container(
                             margin: EdgeInsets.only(
-                                left: size.width*0.41, top: size.height * 0.22),
+                                left: size.width * 0.41,
+                                top: size.height * 0.22),
                             child: Text(
                               "Hi! My name is NEWT. I \nwill be your guide as you\nlearn Newton’s three laws \nof motion.",
                               textAlign: TextAlign.center,
@@ -262,8 +264,16 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
-                              if(showDialogBox){
+                              if (showDialogBox) {
                                 //continue to level 2
+                                setCurrentLevel();
+                                resetCurrentLives();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => GameFrontPage(),
+                                  ),
+                                );
                               }
                               if (getCurrentNumber() != 5) {
                                 setTotalPoints(getCurrentPoints());

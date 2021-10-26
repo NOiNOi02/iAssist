@@ -26,10 +26,6 @@ void resetCurrentLives() {
   currentLives = 3;
 }
 
-void setCurrentLevel(bool status) {
-  if (status) {
-    level++;
-  } else {
-    level--;
-  }
+void setCurrentLevel() {
+  level++;
 }

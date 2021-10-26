@@ -7,8 +7,8 @@ import 'package:iassist/student/studentfrontpage.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_2/level_2.dart';
-import 'package:iassist/student/games/level_3/level_3.dart';
-import 'package:iassist/student/games/level_4/level_4.dart';
+// import 'package:iassist/student/games/level_3/level_3.dart';
+// import 'package:iassist/student/games/level_4/level_4.dart';
 
 class GameFrontPage extends StatefulWidget {
   @override
@@ -123,7 +123,8 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/games/Level 1/Back.png'),
+                                image: AssetImage(
+                                    'assets/images/games/Level 1/Back.png'),
                               ),
                             ),
                           ),
@@ -134,7 +135,8 @@ class _GameFrontPageState extends State<GameFrontPage> {
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage('assets/images/games/Level 1/Game.png'),
+                              image: AssetImage(
+                                  'assets/images/games/Level 1/Game.png'),
                             ),
                           ),
                         ),
@@ -144,7 +146,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             top: 225,
                           ),
                           child: Text(
-                            'Level ' + (current_level).toString(),
+                            'Level ' + (getCurrentLevel()).toString(),
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 22,
@@ -156,7 +158,11 @@ class _GameFrontPageState extends State<GameFrontPage> {
                           alignment: Alignment(0.0, -1.0),
                           padding: const EdgeInsets.only(top: 255),
                           child: Text(
-                            'Introduction to Newton\'s \nLaw of Motion',
+                            (getCurrentLevel() == 1)
+                                ? 'Introduction to Newton\'s \nLaw of Motion'
+                                : (getCurrentLevel() == 2)
+                                    ? 'Newton’s First Law of Motion: \nInertia'
+                                    : 'Second law of Motion: Law of Acceleration',
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -217,23 +223,24 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                     builder: (context) => Level2(),
                                   ),
                                 );
-                              } else if (current_level == 3) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level3(),
-                                  ),
-                                );
-                              } else if (current_level == 4) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level4(),
-                                  ),
-                                );
-                              } else if (current_level == 5) {
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level5(),),);
                               }
+                              // else if (current_level == 3) {
+                              //   // Navigator.push(
+                              //   //   context,
+                              //   //   MaterialPageRoute(
+                              //   //     builder: (context) => Level3(),
+                              //   //   ),
+                              //   );
+                              // } else if (current_level == 4) {
+                              //   // Navigator.push(
+                              //   //   context,
+                              //   //   MaterialPageRoute(
+                              //   //     builder: (context) => Level4(),
+                              //   //   ),
+                              //   );
+                              // } else if (current_level == 5) {
+                              //   // Navigator.push(context, MaterialPageRoute(builder: (context) => Level5(),),);
+                              // }
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(

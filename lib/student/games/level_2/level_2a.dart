@@ -92,7 +92,7 @@ class _Level2State extends State<Level2a> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image: AssetImage('assets/images/game1.png'),
+                        image: AssetImage('assets/images/games/Level 1/game1.png'),
                       ),
                     ),
                   ),
@@ -146,7 +146,7 @@ class _Level2State extends State<Level2a> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/Back.png'),
+                                image: AssetImage('assets/images/games/Level 1/Back.png'),
                               ),
                             ),
                           ),
