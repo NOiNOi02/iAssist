@@ -7,6 +7,8 @@ import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
+import 'package:iassist/student/games/level_1/NewtPuzzle.dart';
+
 
 class QuestionsLevel1 extends StatefulWidget {
   @override
@@ -26,15 +28,15 @@ List<Color> _colorContainerButton = [Colors.white, Colors.black];
 DecorationImage checkImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/check.png'));
+    image: AssetImage('assets/images/games/Level 1/check.png'));
 DecorationImage wrongImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/wrong.png'));
+    image: AssetImage('assets/images/games/Level 1/wrong.png'));
 DecorationImage noImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/noImage.png'));
+    image: AssetImage('assets/images/games/Level 1/noImage.png'));
 List<int> nextFlag = [1, 0, 0];
 var triviaFlag = false;
 var answer;
@@ -154,7 +156,24 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/life.png'),
+                                image: AssetImage('assets/images/games/Level 1/life.png'),
+                              ),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(17),
+                                bottomRight: Radius.circular(17),
+                              ),
+                            ),
+                          ),
+                        for (int i = 0; i<3; i++)
+                          Container(
+                            height: size.height * 0.03,
+                            width: size.width * 0.06,
+                            margin:
+                                EdgeInsets.only(left: (i + 1) * 25, top: 10),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.contain,
+                                image: AssetImage('assets/images/games/Level 1/lives2.png'),
                               ),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(17),
@@ -383,7 +402,8 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     triviaFlag = false;
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
-                                    setState(() {});
+                                    // setState(() {});
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => NewtPuzzle(),),);
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(

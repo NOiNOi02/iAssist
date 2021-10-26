@@ -2,16 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/questions.dart';
 
-
-class Level1 extends StatefulWidget {
+class NewtPuzzle extends StatefulWidget {
   @override
-  _Level1State createState() => _Level1State();
+  _NewtPuzzleState createState() => _NewtPuzzleState();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Level1 extends StatefulWidget {
   }
 }
 
-class _Level1State extends State<Level1> {
+class _NewtPuzzleState extends State<NewtPuzzle> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -130,32 +130,15 @@ class _Level1State extends State<Level1> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image: AssetImage('assets/images/games/Level 1/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 14),
+                          padding: EdgeInsets.only(top: size.height * 0.03),
                           child: Text(
-                            'Unlock the game\'s character by answering \n correctly the following questions',
+                            (getCurrentNumber() == 5)
+                                ? 'Very good! \nAll questions done, Character unlocked!'
+                                : 'Good work! \n' +
+                                    (getCurrentNumber()).toString() +
+                                    " question done, keep going",
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -170,10 +153,36 @@ class _Level1State extends State<Level1> {
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage('assets/images/games/Level 1/Group45.png'),
+                              image: AssetImage('assets/images/games/Level 1/robot.png'),
                             ),
                           ),
                         ),
+                        for (int i = 0; i < 5 - getCurrentNumber(); i++)
+                          Container(
+                            margin: (i == 0)
+                                ? EdgeInsets.only(left: 85, top: 252)
+                                : (i == 1)
+                                    ? EdgeInsets.only(left: 85, top: 375)
+                                    : (i == 2)
+                                        ? EdgeInsets.only(left: 213, top: 130)
+                                        : (i == 3)
+                                            ? EdgeInsets.only(
+                                                left: 213, top: 375)
+                                            : EdgeInsets.only(
+                                                left: 213, top: 375),
+                            height: size.height * 0.15,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                alignment: Alignment.centerLeft,
+                                fit: BoxFit.contain,
+                                image: (i == 0)
+                                    ? AssetImage(
+                                        'assets/images/games/Level 1/rectangleLock.png')
+                                    : AssetImage(
+                                        'assets/images/games/Level 1/squareLock.png'),
+                              ),
+                            ),
+                          ),
                         Container(
                           width: size.width * 0.74,
                           margin: const EdgeInsets.only(top: 555, left: 53.5),
@@ -211,12 +220,16 @@ class _Level1State extends State<Level1> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => QuestionsLevel1(),
-                                ),
-                              );
+                              if (getCurrentNumber() != 5) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => QuestionsLevel1(),
+                                  ),
+                                );
+                              }else{
+
+                              }
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -224,7 +237,7 @@ class _Level1State extends State<Level1> {
                                 bottom: 10,
                               ),
                               child: Text(
-                                "Answer now!",
+                                "Continue",
                                 style: TextStyle(
                                   fontSize: 16,
                                   // fontWeight: FontWeight.w700,
