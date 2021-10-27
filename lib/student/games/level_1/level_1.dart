@@ -7,6 +7,7 @@ import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/questions.dart';
+import 'package:iassist/student/games/Modals.dart';
 
 class Level1 extends StatefulWidget {
   @override
@@ -26,104 +27,6 @@ class _Level1State extends State<Level1> {
     Size size = MediaQuery.of(context).size;
     int current_level = getCurrentLevel();
     //modal lives
-    void showDialog() {
-      showGeneralDialog(
-        barrierLabel: "Barrier",
-        barrierDismissible: true,
-        barrierColor: Colors.black.withOpacity(0.5),
-        transitionDuration: Duration(milliseconds: 700),
-        context: context,
-        pageBuilder: (_, __, ___) {
-          return Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-                height: size.height * 0.35,
-                width: size.width * 0.7,
-                margin: EdgeInsets.only(
-                    bottom: size.height * 0.3, left: 12, right: 12),
-                decoration: BoxDecoration(
-                  color: Color(0xFFFCFBC2),
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: Stack(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: size.height * 0.08,
-                          left: size.width * 0.09,
-                          right: size.width * 0.09,
-                          bottom: size.height * 0.04),
-                      decoration: BoxDecoration(
-                        color: Color(0xFFFEC192),
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                    ),
-                    Container(
-                      height: 100,
-                      width: 100,
-                      margin:
-                          EdgeInsets.only(top: 100, left: size.width * 0.23),
-                      alignment: Alignment.bottomCenter,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.contain,
-                          image: AssetImage('assets/images/games/heart.png'),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.topCenter,
-                      margin: EdgeInsets.only(top: 15),
-                      child: Text(
-                        'You will have 3 lives \nin this level',
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                          color: Color(0xffCB2D3F),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.topCenter,
-                      margin: EdgeInsets.only(top: 200),
-                      child: Text(
-                        'Lives Remaining',
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Color(0xffCB2D3F),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.topCenter,
-                      margin: EdgeInsets.only(top: 130),
-                      child: Text(
-                        '3',
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
-          );
-        },
-        transitionBuilder: (_, anim, __, child) {
-          return SlideTransition(
-            position:
-                Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(anim),
-            child: child,
-          );
-        },
-      );
-    }
-
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -191,7 +94,7 @@ class _Level1State extends State<Level1> {
                       image: DecorationImage(
                         fit: BoxFit.contain,
                         image:
-                            AssetImage('assets/images/games/Level 1/game1.png'),
+                            AssetImage('assets/images/games/Level1/game1.png'),
                       ),
                     ),
                   ),
@@ -246,7 +149,7 @@ class _Level1State extends State<Level1> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: AssetImage(
-                                    'assets/images/games/Level 1/Back.png'),
+                                    'assets/images/games/Level1/Back.png'),
                               ),
                             ),
                           ),
@@ -271,7 +174,7 @@ class _Level1State extends State<Level1> {
                             image: DecorationImage(
                               fit: BoxFit.contain,
                               image: AssetImage(
-                                  'assets/images/games/Level 1/Group45.png'),
+                                  'assets/images/games/Level1/Group45.png'),
                             ),
                           ),
                         ),
@@ -318,7 +221,7 @@ class _Level1State extends State<Level1> {
                                   builder: (context) => QuestionsLevel1(),
                                 ),
                               );
-                              showDialog();
+                              showLivesModal(context, size);
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(

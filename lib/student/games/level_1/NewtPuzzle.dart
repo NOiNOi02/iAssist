@@ -102,7 +102,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                       image: DecorationImage(
                         fit: BoxFit.contain,
                         image:
-                            AssetImage('assets/images/games/Level 1/game1.png'),
+                            AssetImage('assets/images/games/Level1/game1.png'),
                       ),
                     ),
                   ),
@@ -167,7 +167,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                               alignment: newtAlignment,
                               fit: BoxFit.contain,
                               image: AssetImage(
-                                  'assets/images/games/Level 1/robot.png'),
+                                  'assets/images/games/Level1/robot.png'),
                             ),
                           ),
                         ),
@@ -182,7 +182,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                 alignment: Alignment.topRight,
                                 fit: BoxFit.contain,
                                 image: AssetImage(
-                                    'assets/images/games/Level 1/dialogBox.png'),
+                                    'assets/images/games/Level1/dialogBox.png'),
                               ),
                             ),
                           ),
@@ -221,9 +221,9 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                 fit: BoxFit.contain,
                                 image: (i == 0)
                                     ? AssetImage(
-                                        'assets/images/games/Level 1/rectangleLock.png')
+                                        'assets/images/games/Level1/rectangleLock.png')
                                     : AssetImage(
-                                        'assets/images/games/Level 1/squareLock.png'),
+                                        'assets/images/games/Level1/squareLock.png'),
                               ),
                             ),
                           ),

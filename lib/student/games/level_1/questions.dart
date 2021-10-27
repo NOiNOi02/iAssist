@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/Modals.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
@@ -27,15 +28,15 @@ List<Color> _colorContainerButton = [Colors.white, Colors.black];
 DecorationImage checkImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/games/Level 1/check.png'));
+    image: AssetImage('assets/images/games/Level1/check.png'));
 DecorationImage wrongImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/games/Level 1/wrong.png'));
+    image: AssetImage('assets/images/games/Level1/wrong.png'));
 DecorationImage noImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/games/Level 1/noImage.png'));
+    image: AssetImage('assets/images/games/Level1/noImage.png'));
 List<int> nextFlag = [1, 0, 0];
 var triviaFlag = false;
 var answer;
@@ -186,7 +187,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: AssetImage(
-                                    'assets/images/games/Level 1/life.png'),
+                                    'assets/images/games/Level1/life.png'),
                               ),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(17),
@@ -204,7 +205,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: AssetImage(
-                                    'assets/images/games/Level 1/lives2.png'),
+                                    'assets/images/games/Level1/lives2.png'),
                               ),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(17),
@@ -483,12 +484,14 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();
+                                      //push to leaderboards
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => Level1(),
                                         ),
                                       );
+                                      showNoLivesModal(context, size);
                                     } else {
                                       setState(() {});
                                     }

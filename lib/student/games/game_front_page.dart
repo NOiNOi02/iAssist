@@ -124,7 +124,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: AssetImage(
-                                    'assets/images/games/Level 1/Back.png'),
+                                    'assets/images/games/Level1/Back.png'),
                               ),
                             ),
                           ),
@@ -136,7 +136,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             image: DecorationImage(
                               fit: BoxFit.contain,
                               image: AssetImage(
-                                  'assets/images/games/Level 1/Game.png'),
+                                  'assets/images/games/Level1/Game.png'),
                             ),
                           ),
                         ),
