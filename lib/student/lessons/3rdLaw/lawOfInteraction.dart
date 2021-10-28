@@ -72,7 +72,6 @@ class _LawOfInteractionState extends State<LawOfInteraction> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -80,6 +79,7 @@ class _LawOfInteractionState extends State<LawOfInteraction> {
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).primaryColor,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.skip_previous),
@@ -95,7 +95,7 @@ class _LawOfInteractionState extends State<LawOfInteraction> {
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: Color(0xFFFFFFFF),
+        selectedItemColor: Theme.of(context).primaryColor,
         onTap: _onItemTapped,
         unselectedItemColor: Color(0xFFBA494B),
       ),

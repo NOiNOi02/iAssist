@@ -22,13 +22,16 @@ class MyThemes {
     scaffoldBackgroundColor: Colors.black87,
     primaryColor: Colors.black87,
     primaryTextTheme: Typography().white,
-    textTheme: Typography().white,
+    textTheme: const TextTheme(bodyText2: TextStyle(color: Colors.white70)),
+    // textTheme: Typography().white,
   );
 
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.white,
     primaryTextTheme: Typography().black,
-    textTheme: Typography().black,
+    // textTheme: const TextTheme(bodyText2: TextStyle(color: Colors.black87)),
+    // textTheme: Typography().white,
+    // textTheme: Typography().black,
   );
 }

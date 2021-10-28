@@ -70,7 +70,6 @@ class _LawOfInertiaState extends State<LawOfInertia> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -112,7 +111,6 @@ class _LawOfInertiaState extends State<LawOfInertia> {
                   fontStyle: FontStyle.italic,
                   fontSize: 14,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -128,7 +126,6 @@ class _LawOfInertiaState extends State<LawOfInertia> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -136,6 +133,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).primaryColor,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.skip_previous),
@@ -152,7 +150,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
         ],
         currentIndex: 2,
         selectedItemColor: Color(0xFFBA494B),
-        unselectedItemColor: Color(0xFFFFFFFF),
+        unselectedItemColor: Theme.of(context).primaryColor,
         onTap: _onItemTapped,
       ),
     );

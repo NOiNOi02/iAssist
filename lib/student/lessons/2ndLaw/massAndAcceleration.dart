@@ -71,7 +71,6 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -112,7 +111,6 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
                   fontStyle: FontStyle.italic,
                   fontSize: 14,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -127,7 +125,6 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -152,7 +149,6 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -167,7 +163,6 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -192,7 +187,6 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -217,7 +211,6 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -235,6 +228,7 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).primaryColor,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.skip_previous),
@@ -250,7 +244,7 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: Color(0xFFFFFFFF),
+        selectedItemColor: Theme.of(context).primaryColor,
         onTap: _onItemTapped,
         unselectedItemColor: Color(0xFFBA494B),
       ),
