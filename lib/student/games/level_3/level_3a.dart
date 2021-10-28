@@ -5,7 +5,7 @@ import 'package:iassist/icon.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
-// import 'package:iassist/student/games/level_3/level_3.dart';
+import 'package:iassist/student/games/level_2/level_3.dart';
 import 'package:iassist/student/games/level_3/level_3a.dart';
 import 'package:iassist/student/games/level_3/level_3b.dart';
 import 'package:iassist/student/games/level_3/questions.dart';
@@ -147,7 +147,8 @@ class _Level3State extends State<Level3a> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/games/Back.png'),
+                                image:
+                                    AssetImage('assets/images/games/Back.png'),
                               ),
                             ),
                           ),

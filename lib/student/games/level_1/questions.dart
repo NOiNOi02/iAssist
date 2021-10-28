@@ -45,7 +45,6 @@ var prev_answer;
 var answerResult = null;
 
 class _QuestionsLevel1State extends State<QuestionsLevel1> {
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -187,8 +186,8 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage(
-                                    'assets/images/games/life.png'),
+                                image:
+                                    AssetImage('assets/images/games/life.png'),
                               ),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(17),

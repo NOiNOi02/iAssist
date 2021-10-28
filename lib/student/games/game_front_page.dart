@@ -11,8 +11,10 @@ import 'package:iassist/student/games/level_1/level_1.dart';
 
 import '../../selectionpage.dart';
 import 'package:iassist/student/games/level_2/level_2.dart';
-// import 'package:iassist/student/games/level_3/level_3.dart';
-// import 'package:iassist/student/games/level_4/level_4.dart';
+import 'package:iassist/student/games/level_2/level_3.dart';
+import 'package:iassist/student/games/level_3/level_4.dart';
+import 'package:iassist/student/games/level_4/level_4a.dart';
+import 'package:iassist/student/games/level_5/level_5.dart';
 
 class GameFrontPage extends StatefulWidget {
   @override
@@ -284,7 +286,28 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Level3a(),
+                                    builder: (context) => Level2(),
+                                  ),
+                                );
+                              } else if (current_level == 3) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Level3(),
+                                  ),
+                                );
+                              } else if (current_level == 4) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Level4a(),
+                                  ),
+                                );
+                              } else if (current_level == 5) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Level5(),
                                   ),
                                 );
                               }
