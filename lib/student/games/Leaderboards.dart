@@ -76,6 +76,21 @@ class _LeaderboardsState extends State<Leaderboards> {
                       ),
                     ),
                   ),
+                    Container(
+                        margin: EdgeInsets.only(
+                        top: size.height * 0.02),
+                      alignment: Alignment.topRight,
+                   
+                    height: size.height * .08,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        alignment: Alignment.topRight,
+                        fit: BoxFit.contain,
+                        image:
+                            AssetImage('assets/images/logo.png'),
+                      ),
+                    ),
+                  ),
                   Container(
                     alignment: Alignment.topLeft,
                     padding: EdgeInsets.only(
