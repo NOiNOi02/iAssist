@@ -121,30 +121,39 @@ class _LeaderboardsState extends State<Leaderboards> {
                             children: [
                               TableRow(children: [
                                 Text('Rank',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(color: Color(0xff6D5D5D))),
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xff6D5D5D))),
                                 Text('Player Name',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(color: Color(0xff6D5D5D))),
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xff6D5D5D))),
                                 Text('Score',
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(color: Color(0xff6D5D5D))),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xff6D5D5D))),
                               ]),
                               //loop through all players and scores
                               for (int i = 0; i < playerNames.length; i++)
                                 TableRow(children: [
-                                  Text((i+1).toString(),
-                                      textAlign: TextAlign.center,
-                                      style:
-                                          TextStyle(color: Color(0xff6D5D5D))),
+                                  Text((i + 1).toString(),
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xffBA494B))),
                                   Text(getPlayerNames(i),
-                                      textAlign: TextAlign.center,
-                                      style:
-                                          TextStyle(color: Color(0xff6D5D5D))),
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xffBA494B))),
                                   Text(getPlayerScores(i).toString(),
                                       textAlign: TextAlign.center,
-                                      style:
-                                          TextStyle(color: Color(0xff6D5D5D))),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xffBA494B))),
                                 ]),
                             ],
                           ),
@@ -195,7 +204,6 @@ class _LeaderboardsState extends State<Leaderboards> {
                               resetCurrentLives();
                               resetCurrentPoints();
                               resetTotalPoints();
-
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
