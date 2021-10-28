@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/student/games/Leaderboards.dart';
 import 'package:iassist/student/games/level.dart';
+import 'package:iassist/student/studentfrontpage.dart';
+
 
 //#TODOS: Modal designs, floating button and input player design
 
@@ -359,6 +361,7 @@ void showInputPlayerName(BuildContext context, Size size) {
               onPressed: () {
                 // setState(() {
                 Navigator.pop(context);
+                showDontSave(context, size);
                 inputName = "";
 
                 // });
@@ -381,3 +384,55 @@ void showInputPlayerName(BuildContext context, Size size) {
         );
       });
 }
+
+
+void showDontSave(BuildContext context, Size size) {
+  TextEditingController _textFieldController = TextEditingController();
+  String inputName = "";
+  showDialog(
+      barrierLabel: "Barrier",
+      barrierDismissible: false,
+      barrierColor: Colors.black.withOpacity(0.5),
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Color(0xffFCFBC2),
+          title: Text('Don\'t save to leaderboards?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Color(0xffCB2D3F), fontWeight: FontWeight.bold)),
+          actions: <Widget>[
+            FlatButton(
+              color: Colors.red,
+              textColor: Colors.white,
+              child: Text('No'),
+              onPressed: () {
+                // setState(() {
+                Navigator.pop(context);
+                showInputPlayerName(context, size);
+                // });
+              },
+            ),
+            FlatButton(
+              color: Colors.green,
+              textColor: Colors.white,
+              child: Text('Yes'),
+              onPressed: () {
+                // setState(() {
+                //   codeDialog = valueText;
+                Navigator.pop(context);
+                 Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => StudentFrontPage(),
+                                ),
+                              );
+                
+                // });
+              },
+            ),
+          ],
+        );
+      });
+}
+
