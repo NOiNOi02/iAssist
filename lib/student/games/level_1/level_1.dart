@@ -7,7 +7,7 @@ import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/questions.dart';
-
+import 'package:iassist/student/games/Modals.dart';
 
 class Level1 extends StatefulWidget {
   @override
@@ -26,6 +26,7 @@ class _Level1State extends State<Level1> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int current_level = getCurrentLevel();
+    //modal lives
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -92,7 +93,7 @@ class _Level1State extends State<Level1> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image: AssetImage('assets/images/game1.png'),
+                        image: AssetImage('assets/images/games/game1.png'),
                       ),
                     ),
                   ),
@@ -146,7 +147,8 @@ class _Level1State extends State<Level1> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/Back.png'),
+                                image:
+                                    AssetImage('assets/images/games/Back.png'),
                               ),
                             ),
                           ),
@@ -170,7 +172,8 @@ class _Level1State extends State<Level1> {
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage('assets/images/Group45.png'),
+                              image: AssetImage(
+                                  'assets/images/games/Level1/Group45.png'),
                             ),
                           ),
                         ),
@@ -217,6 +220,7 @@ class _Level1State extends State<Level1> {
                                   builder: (context) => QuestionsLevel1(),
                                 ),
                               );
+                              showLivesModal(context, size);
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(

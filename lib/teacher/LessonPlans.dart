@@ -24,8 +24,8 @@ class LessonPlans extends StatefulWidget {
 
 class _LessonPlansState extends State<LessonPlans>
     with SingleTickerProviderStateMixin {
-  late String filename;
   late TabController _tabController;
+  late String filename;
 
   @override
   void initState() {
