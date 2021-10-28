@@ -5,13 +5,13 @@ import 'package:iassist/icon.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
-import 'package:iassist/student/games/level_1/level_1.dart';
-import 'package:iassist/student/games/level_1/questions.dart';
-import 'package:iassist/student/games/Modals.dart';
+import 'package:iassist/student/games/level_2/level_3.dart';
+import 'package:iassist/student/games/level_3/level_3a.dart';
+import 'package:iassist/student/games/level_3/questions.dart';
 
-class Level1 extends StatefulWidget {
+class Level3 extends StatefulWidget {
   @override
-  _Level1State createState() => _Level1State();
+  _Level3State createState() => _Level3State();
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +21,11 @@ class Level1 extends StatefulWidget {
   }
 }
 
-class _Level1State extends State<Level1> {
+class _Level3State extends State<Level3> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int current_level = getCurrentLevel();
-    //modal lives
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -93,20 +92,19 @@ class _Level1State extends State<Level1> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image:
-                            AssetImage('assets/images/games/game1.png'),
+                        image: AssetImage('assets/images/game1.png'),
                       ),
                     ),
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 40, left: 35),
+                    padding: const EdgeInsets.only(top: 20, left: 15),
                     child: Text(
-                      'Level 1\nIntroduction to Newton\'s Law of Motion',
+                      'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
                       textAlign: TextAlign.left,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 13,
                         color: Colors.white,
                       ),
                     ),
@@ -148,33 +146,19 @@ class _Level1State extends State<Level1> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage(
-                                    'assets/images/games/Back.png'),
+                                image: AssetImage('assets/images/Back.png'),
                               ),
                             ),
                           ),
                         ),
                         Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 14),
-                          child: Text(
-                            'Unlock the game\'s character by answering \n correctly the following questions',
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 80),
-                          height: size.height * 0.57,
+                          margin: const EdgeInsets.only(top: 100, right: 25),
+                          height: size.height * 0.60,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
                               image: AssetImage(
-                                  'assets/images/games/Level1/Group45.png'),
+                                  'assets/images/games/level3/Group 60.png'),
                             ),
                           ),
                         ),
@@ -218,10 +202,9 @@ class _Level1State extends State<Level1> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => QuestionsLevel1(),
+                                  builder: (context) => Level3a(),
                                 ),
                               );
-                              showLivesModal(context, size);
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -229,7 +212,7 @@ class _Level1State extends State<Level1> {
                                 bottom: 10,
                               ),
                               child: Text(
-                                "Answer now!",
+                                "Continue",
                                 style: TextStyle(
                                   fontSize: 16,
                                   // fontWeight: FontWeight.w700,

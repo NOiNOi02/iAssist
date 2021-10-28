@@ -2,11 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/Modals.dart';
+import 'package:iassist/student/games/Leaderboards.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
+import 'package:iassist/student/games/level_1/NewtPuzzle.dart';
 
 class QuestionsLevel1 extends StatefulWidget {
   @override
@@ -26,15 +29,15 @@ List<Color> _colorContainerButton = [Colors.white, Colors.black];
 DecorationImage checkImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/check.png'));
+    image: AssetImage('assets/images/games/check.png'));
 DecorationImage wrongImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/wrong.png'));
+    image: AssetImage('assets/images/games/wrong.png'));
 DecorationImage noImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/noImage.png'));
+    image: AssetImage('assets/images/games/noImage.png'));
 List<int> nextFlag = [1, 0, 0];
 var triviaFlag = false;
 var answer;
@@ -42,6 +45,7 @@ var prev_answer;
 var answerResult = null;
 
 class _QuestionsLevel1State extends State<QuestionsLevel1> {
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -144,17 +148,65 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             ],
                           ),
                         ),
+                        //points
+                        Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Text(
+                            "Current Points: " +
+                                getCurrentPoints().toString() +
+                                "pts",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xFFBA494B),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topRight,
+                          padding: const EdgeInsets.only(top: 15, right: 30),
+                          child: Text(
+                            "Total Points: " + getTotalPoints().toString(),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xFF4785B4),
+                            ),
+                          ),
+                        ),
                         //lives
                         for (int i = 0; i < getCurrentLives(); i++)
                           Container(
                             height: size.height * 0.03,
                             width: size.width * 0.06,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 25, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/life.png'),
+                                image: AssetImage(
+                                    'assets/images/games/life.png'),
+                              ),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(17),
+                                bottomRight: Radius.circular(17),
+                              ),
+                            ),
+                          ),
+                        for (int i = 0; i < 3; i++)
+                          Container(
+                            height: size.height * 0.03,
+                            width: size.width * 0.06,
+                            margin:
+                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.contain,
+                                image: AssetImage(
+                                    'assets/images/games/lives2.png'),
                               ),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(17),
@@ -336,6 +388,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                           } else {
                                             //proceed to showing of not correct answer page
                                             setCurrentLives();
+                                            setCurrentPoints(getCurrentLives());
                                             answerResult = false;
                                             nextFlag[0] = 0;
                                             nextFlag[2] = 1;
@@ -383,7 +436,13 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     triviaFlag = false;
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
-                                    setState(() {});
+                                    // setState(() {});
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => NewtPuzzle(),
+                                      ),
+                                    );
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(
@@ -426,12 +485,16 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Level1(),
-                                        ),
-                                      );
+                                      resetTotalPoints();
+                                      resetCurrentPoints();
+                                      //push to leaderboards
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => (),
+                                      //   ),
+                                      // );
+                                      showNoLivesModal(context, size);
                                     } else {
                                       setState(() {});
                                     }

@@ -1,17 +1,20 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/questions.dart';
-import 'package:iassist/student/games/Modals.dart';
+import 'package:iassist/student/games/game_front_page.dart';
 
-class Level1 extends StatefulWidget {
+class NewtPuzzle extends StatefulWidget {
   @override
-  _Level1State createState() => _Level1State();
+  _NewtPuzzleState createState() => _NewtPuzzleState();
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +24,17 @@ class Level1 extends StatefulWidget {
   }
 }
 
-class _Level1State extends State<Level1> {
+double newtSize = 0.57;
+double newtMargin = 0.10;
+double newtMarginLeft = 0;
+Alignment newtAlignment = Alignment.topCenter;
+bool showDialogBox = false;
+
+class _NewtPuzzleState extends State<NewtPuzzle> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int current_level = getCurrentLevel();
-    //modal lives
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -132,33 +140,15 @@ class _Level1State extends State<Level1> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image: AssetImage(
-                                    'assets/images/games/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 14),
+                          padding: EdgeInsets.only(top: size.height * 0.03),
                           child: Text(
-                            'Unlock the game\'s character by answering \n correctly the following questions',
+                            (getCurrentNumber() == 5)
+                                ? 'Very good! \nAll questions done, Character unlocked!'
+                                : 'Good work! \n' +
+                                    (getCurrentNumber()).toString() +
+                                    " question done, keep going",
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -168,16 +158,75 @@ class _Level1State extends State<Level1> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 80),
-                          height: size.height * 0.57,
+                          margin: EdgeInsets.only(
+                              top: size.height * newtMargin,
+                              left: size.width * newtMarginLeft),
+                          height: size.height * newtSize,
                           decoration: BoxDecoration(
                             image: DecorationImage(
+                              alignment: newtAlignment,
                               fit: BoxFit.contain,
                               image: AssetImage(
-                                  'assets/images/games/Level1/Group45.png'),
+                                  'assets/images/games/Level1/robot.png'),
                             ),
                           ),
                         ),
+                        if (showDialogBox)
+                          Container(
+                            margin: EdgeInsets.only(
+                                top: size.height * 0.15,
+                                right: size.width * 0.10),
+                            height: size.height * 0.25,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                alignment: Alignment.topRight,
+                                fit: BoxFit.contain,
+                                image: AssetImage(
+                                    'assets/images/games/Level1/dialogBox.png'),
+                              ),
+                            ),
+                          ),
+                        if (showDialogBox)
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: size.width * 0.41,
+                                top: size.height * 0.22),
+                            child: Text(
+                              "Hi! My name is NEWT. I \nwill be your guide as you\nlearn Newton’s three laws \nof motion.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: (size.height * size.width) * 0.000045,
+                                // fontWeight: FontWeight.w700,
+                                color: Color(0xFFBA494B),
+                              ),
+                            ),
+                          ),
+                        for (int i = 0; i < 5 - getCurrentNumber(); i++)
+                          Container(
+                            margin: (i == 0)
+                                ? EdgeInsets.only(left: 85, top: 252)
+                                : (i == 1)
+                                    ? EdgeInsets.only(left: 85, top: 375)
+                                    : (i == 2)
+                                        ? EdgeInsets.only(left: 213, top: 130)
+                                        : (i == 3)
+                                            ? EdgeInsets.only(
+                                                left: 213, top: 375)
+                                            : EdgeInsets.only(
+                                                left: 213, top: 375),
+                            height: size.height * 0.15,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                alignment: Alignment.centerLeft,
+                                fit: BoxFit.contain,
+                                image: (i == 0)
+                                    ? AssetImage(
+                                        'assets/images/games/Level1/rectangleLock.png')
+                                    : AssetImage(
+                                        'assets/images/games/Level1/squareLock.png'),
+                              ),
+                            ),
+                          ),
                         Container(
                           width: size.width * 0.74,
                           margin: const EdgeInsets.only(top: 555, left: 53.5),
@@ -215,13 +264,33 @@ class _Level1State extends State<Level1> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => QuestionsLevel1(),
-                                ),
-                              );
-                              showLivesModal(context, size);
+                              if (showDialogBox) {
+                                //continue to level 2
+                                setCurrentLevel();
+                                resetCurrentLives();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => GameFrontPage(),
+                                  ),
+                                );
+                              }
+                              if (getCurrentNumber() != 5) {
+                                setTotalPoints(getCurrentPoints());
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => QuestionsLevel1(),
+                                  ),
+                                );
+                              } else {
+                                showDialogBox = true;
+                                newtSize = 0.35;
+                                newtMargin = 0.33;
+                                newtMarginLeft = 0.05;
+                                newtAlignment = Alignment.bottomLeft;
+                                setState(() {});
+                              }
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -229,7 +298,7 @@ class _Level1State extends State<Level1> {
                                 bottom: 10,
                               ),
                               child: Text(
-                                "Answer now!",
+                                "Continue",
                                 style: TextStyle(
                                   fontSize: 16,
                                   // fontWeight: FontWeight.w700,
