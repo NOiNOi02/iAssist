@@ -8,6 +8,7 @@ import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/questions.dart';
+import 'package:iassist/student/games/game_front_page.dart';
 
 class NewtPuzzle extends StatefulWidget {
   @override
@@ -99,7 +100,11 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                       image: DecorationImage(
                         fit: BoxFit.contain,
                         image:
+<<<<<<< HEAD
                             AssetImage('assets/images/games/Level1/game1.png'),
+=======
+                            AssetImage('assets/images/games/game1.png'),
+>>>>>>> 49a5e614a0478b2715543621ebff5274c5a40763
                       ),
                     ),
                   ),
@@ -263,6 +268,14 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                               //if pushed proceeed to questions
                               if (showDialogBox) {
                                 //continue to level 2
+                                setCurrentLevel();
+                                resetCurrentLives();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => GameFrontPage(),
+                                  ),
+                                );
                               }
                               if (getCurrentNumber() != 5) {
                                 setTotalPoints(getCurrentPoints());

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/Modals.dart';
+import 'package:iassist/student/games/Leaderboards.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
@@ -27,6 +29,7 @@ List<Color> _colorContainerButton = [Colors.white, Colors.black];
 DecorationImage checkImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
+<<<<<<< HEAD
     image: AssetImage('assets/images/games/Level1/check.png'));
 DecorationImage wrongImage = DecorationImage(
     alignment: Alignment.centerLeft,
@@ -36,6 +39,17 @@ DecorationImage noImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
     image: AssetImage('assets/images/games/Level1/noImage.png'));
+=======
+    image: AssetImage('assets/images/games/check.png'));
+DecorationImage wrongImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/games/wrong.png'));
+DecorationImage noImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/games/noImage.png'));
+>>>>>>> 49a5e614a0478b2715543621ebff5274c5a40763
 List<int> nextFlag = [1, 0, 0];
 var triviaFlag = false;
 var answer;
@@ -43,6 +57,7 @@ var prev_answer;
 var answerResult = null;
 
 class _QuestionsLevel1State extends State<QuestionsLevel1> {
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -185,7 +200,11 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: AssetImage(
+<<<<<<< HEAD
                                     'assets/images/games/Level1/life.png'),
+=======
+                                    'assets/images/games/life.png'),
+>>>>>>> 49a5e614a0478b2715543621ebff5274c5a40763
                               ),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(17),
@@ -203,7 +222,11 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: AssetImage(
+<<<<<<< HEAD
                                     'assets/images/games/Level1/lives2.png'),
+=======
+                                    'assets/images/games/lives2.png'),
+>>>>>>> 49a5e614a0478b2715543621ebff5274c5a40763
                               ),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(17),
@@ -482,12 +505,16 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Level1(),
-                                        ),
-                                      );
+                                      resetTotalPoints();
+                                      resetCurrentPoints();
+                                      //push to leaderboards
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => (),
+                                      //   ),
+                                      // );
+                                      showNoLivesModal(context, size);
                                     } else {
                                       setState(() {});
                                     }

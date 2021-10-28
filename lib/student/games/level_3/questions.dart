@@ -21,6 +21,27 @@ class QuestionsLevel3 extends StatefulWidget {
   }
 }
 
+//color container for selected choices
+List<Color> _colorContainerText = [Color(0xFFBA494B), Colors.white];
+List<Color> _colorContainerButton = [Colors.white, Colors.black];
+DecorationImage checkImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/games/check.png'));
+DecorationImage wrongImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/games/wrong.png'));
+DecorationImage noImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/games/noImage.png'));
+List<int> nextFlag = [1, 0, 0];
+var triviaFlag = false;
+var answer;
+var prev_answer;
+var answerResult = null;
+
 class _QuestionsLevel3State extends State<QuestionsLevel3> {
   @override
   Widget build(BuildContext context) {
@@ -86,6 +107,17 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                           blurRadius: 8,
                         ),
                       ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: size.height * 0.03, right: size.width * 0.77),
+                    height: size.height * .08,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.contain,
+                        image: AssetImage('assets/images/games/game1.png'),
+                      ),
                     ),
                   ),
                   Container(
@@ -167,7 +199,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                             i++)
                           Container(
                             width: size.width * 0.74,
-                            height: size.height * 0.08,
+                            height: (getCurrentNumber() == 8) ? size.height * 0.08: size.height * 0.05,
                             margin: (getCurrentNumber() == 8)
                                 ? EdgeInsets.only(
                                     top: (i + 5) * 50.toDouble(), left: 53.5)
@@ -180,9 +212,26 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     offset: Offset(0, 4),
                                     blurRadius: 5.0),
                               ],
-                              border: Border.all(color: Color(0xFFBA494B)),
-                              color: Colors.white,
+                              border: (answerResult != null)
+                                  ? (answerResult == true && i == prev_answer)
+                                      ? Border.all(
+                                          color: Color(0xFF00FF0A), width: 3)
+                                      : (i == prev_answer)
+                                          ? Border.all(
+                                              color: Colors.red, width: 3)
+                                          : Border.all(color: Color(0xFFEB9785))
+                                  : Border.all(color: Color(0xFFBA494B)),
+                              color: (i == answer)
+                                  ? _colorContainerButton[1]
+                                  : _colorContainerButton[0],
                               borderRadius: BorderRadius.circular(5),
+                              image: (answerResult != null)
+                                  ? (answerResult == true && i == prev_answer)
+                                      ? checkImage
+                                      : (i == prev_answer)
+                                          ? wrongImage
+                                          : noImage
+                                  : noImage,
                             ),
                             child: ElevatedButton(
                               style: ButtonStyle(
@@ -197,6 +246,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                 // elevation: MaterialStateProperty.all(3),
                                 shadowColor: MaterialStateProperty.all(
                                     Colors.transparent),
+
                               ),
                               onPressed: () {
                                 //if pushed proceeed to questions
@@ -215,7 +265,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                 child: Text(
                                   choices[getCurrentNumber()][i],
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 16,
                                     // fontWeight: FontWeight.w700,
                                     color: Color(0xFFBA494B),
                                   ),

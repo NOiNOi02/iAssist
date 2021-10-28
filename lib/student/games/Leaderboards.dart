@@ -2,21 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
-<<<<<<< HEAD
-import 'package:iassist/student/games/level_3/level_4.dart';
-=======
-// import 'package:iassist/student/games/level_4/level_4.dart';
->>>>>>> 49a5e614a0478b2715543621ebff5274c5a40763
-import 'package:iassist/student/games/level_4/level_4a.dart';
-import 'package:iassist/student/games/level_4/level_4b.dart';
-import 'package:iassist/student/games/level_4/questions.dart';
+import 'package:iassist/student/games/level_1/level_1.dart';
+import 'package:iassist/student/games/level_1/questions.dart';
+import 'package:iassist/student/games/Modals.dart';
+import 'package:iassist/student/studentfrontpage.dart';
 
-class Level4a extends StatefulWidget {
+class Leaderboards extends StatefulWidget {
   @override
-  _Level4State createState() => _Level4State();
+  _LeaderboardsState createState() => _LeaderboardsState();
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +23,11 @@ class Level4a extends StatefulWidget {
   }
 }
 
-class _Level4State extends State<Level4a> {
+class _LeaderboardsState extends State<Leaderboards> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    int current_level = getCurrentLevel();
+    //modal lives
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -58,58 +55,52 @@ class _Level4State extends State<Level4a> {
         child: Column(
           children: <Widget>[
             Container(
+              margin: EdgeInsets.only(top: 0),
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-                  Color(0XFFFFB79D),
-                  Color(0xFFBA494B),
-                ],
-              )),
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/images/VectorStart.png")),
+              ),
               height: size.height,
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: size.height * 0.15,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('assets/images/Group42.png'),
-                      ),
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(17),
-                        bottomRight: Radius.circular(17),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(.9),
-                          spreadRadius: 3,
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
                     margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
+                        top: size.height * 0.001, right: size.width * 0.77),
                     height: size.height * .08,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image: AssetImage('assets/images/game1.png'),
+                        image:
+                            AssetImage('assets/images/games/Level1/game1.png'),
+                      ),
+                    ),
+                  ),
+                    Container(
+                        margin: EdgeInsets.only(
+                        top: size.height * 0.02),
+                      alignment: Alignment.topRight,
+                   
+                    height: size.height * .08,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        alignment: Alignment.topRight,
+                        fit: BoxFit.contain,
+                        image:
+                            AssetImage('assets/images/logo.png'),
                       ),
                     ),
                   ),
                   Container(
-                    alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 20, left: 15),
+                    alignment: Alignment.topLeft,
+                    padding: EdgeInsets.only(
+                        top: size.height * 0.03, left: size.width * 0.2),
                     child: Text(
-                      'Level 4\nNewton\'s Third Law of Motion: \nLaw of Interaction',
+                      'Leaderboards',
                       textAlign: TextAlign.left,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 13,
+                        fontSize: 18,
                         color: Colors.white,
                       ),
                     ),
@@ -124,8 +115,10 @@ class _Level4State extends State<Level4a> {
                           margin: EdgeInsets.symmetric(horizontal: 15),
                           height: size.height * 1,
                           decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
+                            color: Color(0xffFCFBC2),
                             borderRadius: BorderRadius.all(Radius.circular(12)),
+                            border: Border.all(
+                                color: Color(0xffBA494B), width: 4.0),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(.8),
@@ -135,36 +128,49 @@ class _Level4State extends State<Level4a> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image: AssetImage('assets/images/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
-                          margin: const EdgeInsets.only(top: 100, right: 25),
-                          height: size.height * 0.60,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage(
-                                  'assets/images/games/level4/Group 66.png'),
-                            ),
+                          color: Colors.transparent,
+                          padding: EdgeInsets.only(top: 20, left: 50),
+                          child: Table(
+                            border: TableBorder.all(style: BorderStyle.none),
+                            children: [
+                              TableRow(children: [
+                                Text('Rank',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xff6D5D5D))),
+                                Text('Player Name',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xff6D5D5D))),
+                                Text('Score',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xff6D5D5D))),
+                              ]),
+                              //loop through all players and scores
+                              for (int i = 0; i < playerNames.length; i++)
+                                TableRow(children: [
+                                  Text((i + 1).toString(),
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xffBA494B))),
+                                  Text(getPlayerNames(i),
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xffBA494B))),
+                                  Text(getPlayerScores(i).toString(),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xffBA494B))),
+                                ]),
+                            ],
                           ),
                         ),
                         Container(
@@ -207,9 +213,12 @@ class _Level4State extends State<Level4a> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Level4b(),
+                                  builder: (context) => StudentFrontPage(),
                                 ),
                               );
+                              resetCurrentLives();
+                              resetCurrentPoints();
+                              resetTotalPoints();
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -217,7 +226,7 @@ class _Level4State extends State<Level4a> {
                                 bottom: 10,
                               ),
                               child: Text(
-                                "Continue",
+                                "HOME!",
                                 style: TextStyle(
                                   fontSize: 16,
                                   // fontWeight: FontWeight.w700,
