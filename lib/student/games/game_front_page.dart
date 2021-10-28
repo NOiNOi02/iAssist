@@ -10,6 +10,7 @@ import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_2/level_2.dart';
 import 'package:iassist/student/games/level_2/level_3.dart';
 import 'package:iassist/student/games/level_3/level_4.dart';
+import 'package:iassist/student/games/level_4/level_4a.dart';
 import 'package:iassist/student/games/level_5/level_5.dart';
 
 class GameFrontPage extends StatefulWidget {
@@ -235,7 +236,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Level4(),
+                                    builder: (context) => Level4a(),
                                   ),
                                 );
                               } else if (current_level == 5) {

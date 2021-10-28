@@ -95,11 +95,20 @@ var images = [
   '',
   '',
 ];
+var trivia_image = [
+  'assets/images/games/level2/trivia_image 1.png',
+  'assets/images/games/level2/trivia_image 2.png',
+  'assets/images/games/level2/trivia_image 3.png',
+];
 
 var currentPoints = 5;
 
 List getQuestions() {
   return questions;
+}
+
+List getTriviaImage() {
+  return trivia_image;
 }
 
 List getImages() {

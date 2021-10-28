@@ -99,12 +99,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image:
-<<<<<<< HEAD
-                            AssetImage('assets/images/games/Level1/game1.png'),
-=======
-                            AssetImage('assets/images/games/game1.png'),
->>>>>>> 49a5e614a0478b2715543621ebff5274c5a40763
+                        image: AssetImage('assets/images/games/game1.png'),
                       ),
                     ),
                   ),

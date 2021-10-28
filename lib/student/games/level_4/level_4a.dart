@@ -5,11 +5,7 @@ import 'package:iassist/icon.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
-<<<<<<< HEAD
 import 'package:iassist/student/games/level_3/level_4.dart';
-=======
-// import 'package:iassist/student/games/level_4/level_4.dart';
->>>>>>> 49a5e614a0478b2715543621ebff5274c5a40763
 import 'package:iassist/student/games/level_4/level_4a.dart';
 import 'package:iassist/student/games/level_4/level_4b.dart';
 import 'package:iassist/student/games/level_4/questions.dart';

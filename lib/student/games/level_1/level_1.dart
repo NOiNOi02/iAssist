@@ -7,10 +7,7 @@ import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/questions.dart';
-<<<<<<< HEAD
-=======
 import 'package:iassist/student/games/Modals.dart';
->>>>>>> 49a5e614a0478b2715543621ebff5274c5a40763
 
 class Level1 extends StatefulWidget {
   @override
@@ -96,12 +93,7 @@ class _Level1State extends State<Level1> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image:
-<<<<<<< HEAD
-                            AssetImage('assets/images/games/Level1/game1.png'),
-=======
-                            AssetImage('assets/images/games/game1.png'),
->>>>>>> 49a5e614a0478b2715543621ebff5274c5a40763
+                        image: AssetImage('assets/images/games/game1.png'),
                       ),
                     ),
                   ),
@@ -155,12 +147,8 @@ class _Level1State extends State<Level1> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage(
-<<<<<<< HEAD
-                                    'assets/images/games/Level1/Back.png'),
-=======
-                                    'assets/images/games/Back.png'),
->>>>>>> 49a5e614a0478b2715543621ebff5274c5a40763
+                                image:
+                                    AssetImage('assets/images/games/Back.png'),
                               ),
                             ),
                           ),
