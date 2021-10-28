@@ -5,12 +5,12 @@ import 'package:iassist/icon.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
-import 'package:iassist/student/games/level_3/level_4.dart';
-import 'package:iassist/student/games/level_4/Level4QuestionsAndAnswers.dart';
+import 'package:iassist/student/games/level_5/level_5.dart';
+import 'package:iassist/student/games/level_5/Level5QuestionsAndAnswers.dart';
 
-class QuestionsLevel4 extends StatefulWidget {
+class QuestionsLevel5 extends StatefulWidget {
   @override
-  _QuestionsLevel4State createState() => _QuestionsLevel4State();
+  _QuestionsLevel5State createState() => _QuestionsLevel5State();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class QuestionsLevel4 extends StatefulWidget {
   }
 }
 
-class _QuestionsLevel4State extends State<QuestionsLevel4> {
+class _QuestionsLevel5State extends State<QuestionsLevel5> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -91,7 +91,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                     alignment: Alignment(0.0, -1.0),
                     padding: const EdgeInsets.only(top: 40, left: 35),
                     child: Text(
-                      'Level 2\nNewton\'s First Law of Motion: Inertia',
+                      'Level 5',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -122,20 +122,21 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                         ),
 
                         Container(
-                          margin: const EdgeInsets.only(top: 40),
+                          margin: const EdgeInsets.only(top: 10, left: 20),
                           height: size.height * 0.30,
+                          width: size.width * .70,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
                               image: AssetImage(
-                                  'assets/images/games/level2/Group 59.png'),
+                                  'assets/images/games/level5/Rectangle 47.png'),
                             ),
                           ),
                         ),
 
                         Container(
                           margin: const EdgeInsets.only(top: 250),
-                          height: size.height * 0.10,
+                          height: size.height * 0.40,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -147,7 +148,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                         Container(
                           alignment: Alignment(0.0, -1.0),
                           padding: const EdgeInsets.only(
-                              top: 100, left: 100, right: 10),
+                              top: 88, left: 5, right: 100),
                           child: Text(
                             //getting the questions based from what current number is
                             questions[getCurrentNumber()],
@@ -159,23 +160,30 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             ),
                           ),
                         ),
-
+                        Container(
+                          margin: const EdgeInsets.only(top: 587),
+                          height: size.height * 0.10,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.contain,
+                              image: AssetImage(
+                                  'assets/images/games/level5/Rectangle 12.png'),
+                            ),
+                          ),
+                        ),
                         //choices
                         for (int i = 0;
                             i < choices[getCurrentNumber()].length;
                             i++)
                           Container(
-                            width: size.width * 0.74,
-                            margin: (getCurrentNumber() == 9)
-                                ? EdgeInsets.only(
-                                    top: (i + 5) * 50.toDouble(), left: 53.5)
-                                : EdgeInsets.only(
-                                    top: (i + 7) * 50.toDouble(), left: 53.5),
+                            margin: (i == 0)
+                                ? EdgeInsets.only(top: 610, left: 20)
+                                : EdgeInsets.only(top: 610, left: 280),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.black38,
-                                    offset: Offset(0, 4),
+                                    color: Colors.white,
+                                    offset: Offset(0, 0),
                                     blurRadius: 5.0),
                               ],
                               border: Border.all(color: Color(0xFFBA494B)),
@@ -201,7 +209,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Level4(),
+                                    builder: (context) => Level5(),
                                   ),
                                 );
                               },
@@ -223,67 +231,68 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             ),
                           ),
                         //next
-                        Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 600, left: 53.5),
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black26,
-                                  offset: Offset(0, 4),
-                                  blurRadius: 5.0)
-                            ],
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              stops: [0.0, 1.0],
-                              colors: [
-                                Color(0xFFBA494B),
-                                Color(0XFFFFB79D),
-                              ],
-                            ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                              ),
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.transparent),
-                              // elevation: MaterialStateProperty.all(3),
-                              shadowColor:
-                                  MaterialStateProperty.all(Colors.transparent),
-                            ),
-                            onPressed: () {
-                              //if pushed proceeed to questions
-                              setCurrentNumber();
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => QuestionsLevel4(),
-                                ),
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                top: 10,
-                                bottom: 10,
-                              ),
-                              child: Text(
-                                "NEXT",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  // fontWeight: FontWeight.w700,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+
+                        // Container(
+                        //   width: size.width * 0.74,
+                        //   margin: const EdgeInsets.only(top: 600, left: 53.5),
+                        //   decoration: BoxDecoration(
+                        //     boxShadow: [
+                        //       BoxShadow(
+                        //           color: Colors.black26,
+                        //           offset: Offset(0, 4),
+                        //           blurRadius: 5.0)
+                        //     ],
+                        //     gradient: LinearGradient(
+                        //       begin: Alignment.topLeft,
+                        //       end: Alignment.bottomRight,
+                        //       stops: [0.0, 1.0],
+                        //       colors: [
+                        //         Color(0xFFBA494B),
+                        //         Color(0XFFFFB79D),
+                        //       ],
+                        //     ),
+                        //     borderRadius: BorderRadius.circular(5),
+                        //   ),
+                        //   child: ElevatedButton(
+                        //     style: ButtonStyle(
+                        //       shape: MaterialStateProperty.all<
+                        //           RoundedRectangleBorder>(
+                        //         RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(20.0),
+                        //         ),
+                        //       ),
+                        //       backgroundColor:
+                        //           MaterialStateProperty.all(Colors.transparent),
+                        //       // elevation: MaterialStateProperty.all(3),
+                        //       shadowColor:
+                        //           MaterialStateProperty.all(Colors.transparent),
+                        //     ),
+                        //     onPressed: () {
+                        //       //if pushed proceeed to questions
+                        //       setCurrentNumber();
+                        //       Navigator.push(
+                        //         context,
+                        //         MaterialPageRoute(
+                        //           builder: (context) => QuestionsLevel5(),
+                        //         ),
+                        //       );
+                        //     },
+                        //     child: Padding(
+                        //       padding: const EdgeInsets.only(
+                        //         top: 10,
+                        //         bottom: 10,
+                        //       ),
+                        //       child: Text(
+                        //         "NEXT",
+                        //         style: TextStyle(
+                        //           fontSize: 16,
+                        //           // fontWeight: FontWeight.w700,
+                        //           color: Colors.white,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

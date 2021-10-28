@@ -43,6 +43,26 @@ var choices = [
   ],
   ["The jet airplane sitting on a runway.", "A speeding car."]
 ];
+
+var trivia = [
+  'You\'re answer is correct! The unseen forces acting on the block are the force of gravity and the normal reaction by the surface. The vertical forces are equal and cancels out each other making the block at a rest position',
+  'You\'re answer is correct! Unless acted upon by an unbalanced force, the golf ball would sit still on the tee forever',
+  'You\'re answer is correct! It will fell straight into the water due to its inertia and the gravity pulling it down.',
+  'You\'re answer is correct! The golf ball will eventually stop moving and in decreases its motion',
+  'You\'re answer is correct! An object in motion will slow down if acted on by a force in the direction of motion',
+  'You\'re answer is correct! The ball ceases to move as it bumps into the rock giving it an external force',
+  'You\'re answer is correct! FRICTION is the force that opposes motion and brings ANY object to a rest position',
+  'You\'re answer is correct! SLIDING friction is a friction acting on objects sliding on a surface',
+  'You\'re answer is correct! STATIC friction is a force acting on stationary/ at rest objects',
+  'You\'re answer is correct! ROLLING friction is the friction acting on rolling objects',
+  'You\'re answer is correct! FLUID friction is the friction acting on objects going through a fluid either in water or air',
+  [
+    'You\'re answer is correct! \n A car that is pushed from opposite sides with equal force',
+    'A lizard on a wall in a vertical position.',
+    'An airplane in steady wings level flight'
+  ],
+  'You\'re answer is correct! The jet airplane sitting on a runway will have greater inertia than a speeding car due to its larger mass'
+];
 var answers = [
   0,
   1,
@@ -76,32 +96,67 @@ var images = [
   '',
 ];
 
+var currentPoints = 5;
+
 List getQuestions() {
   return questions;
-}
-
-List getChoices() {
-  return choices;
 }
 
 List getImages() {
   return images;
 }
 
+List getChoices() {
+  return choices;
+}
+
+List getTrivias() {
+  return trivia;
+}
+
 int getCurrentNumber() {
   return currentNumber;
+}
+
+int getCurrentPoints() {
+  return currentPoints;
+}
+
+void setCurrentPoints(int lives) {
+  if (lives == 3) {
+    currentPoints = 5;
+  } else if (lives == 2) {
+    currentPoints = 3;
+  } else if (lives == 1) {
+    currentPoints = 2;
+  }
+}
+
+void resetCurrentPoints() {
+  currentPoints = 5;
 }
 
 void setCurrentNumber() {
   currentNumber++;
 }
 
-bool checkAnswer(var answer, var number) {
-  for (int i = 1; i <= 13; i++) {
+void resetCurrentNumber() {
+  currentNumber = 0;
+}
+
+bool checkAnswer(int answer, int number) {
+  //wll return true or false, depends on the answer and the correct answer
+  print("answer" + answer.toString());
+  for (int i = 1; i <= 5; i++) {
+    print(i.toString() + '==' + number.toString());
     if (i == number) {
-      if (answer == answers[i]) {
+      print(answer == answers[i - 1]);
+      print(answer.toString() + '==' + answers[i - 1].toString());
+      if (answer == answers[i - 1]) {
+        print('correct');
         return true;
       } else {
+        print('wrong');
         return false;
       }
     }
