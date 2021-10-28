@@ -94,7 +94,7 @@ class _Level1State extends State<Level1> {
                       image: DecorationImage(
                         fit: BoxFit.contain,
                         image:
-                            AssetImage('assets/images/games/Level1/game1.png'),
+                            AssetImage('assets/images/games/game1.png'),
                       ),
                     ),
                   ),
@@ -149,7 +149,7 @@ class _Level1State extends State<Level1> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: AssetImage(
-                                    'assets/images/games/Level1/Back.png'),
+                                    'assets/images/games/Back.png'),
                               ),
                             ),
                           ),

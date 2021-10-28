@@ -92,7 +92,7 @@ class _Level4State extends State<Level4> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image: AssetImage('assets/images/game1.png'),
+                        image: AssetImage('assets/images/games/game1.png'),
                       ),
                     ),
                   ),
@@ -139,17 +139,6 @@ class _Level4State extends State<Level4> {
                               ),
                             );
                           },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image: AssetImage('assets/images/Back.png'),
-                              ),
-                            ),
-                          ),
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 100, right: 25),

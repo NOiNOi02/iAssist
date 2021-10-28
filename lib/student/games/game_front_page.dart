@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/level_3/level_3a.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/studentfrontpage.dart';
 import 'package:iassist/student/games/level.dart';
@@ -124,7 +125,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: AssetImage(
-                                    'assets/images/games/Level1/Back.png'),
+                                    'assets/images/games/Back.png'),
                               ),
                             ),
                           ),
@@ -136,7 +137,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             image: DecorationImage(
                               fit: BoxFit.contain,
                               image: AssetImage(
-                                  'assets/images/games/Level1/Game.png'),
+                                  'assets/images/games/Game.png'),
                             ),
                           ),
                         ),
@@ -220,7 +221,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Level2(),
+                                    builder: (context) => Level3a(),
                                   ),
                                 );
                               }

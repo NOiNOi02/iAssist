@@ -92,7 +92,7 @@ class _Level3State extends State<Level3b> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image: AssetImage('assets/images/game1.png'),
+                        image: AssetImage('assets/images/games/game1.png'),
                       ),
                     ),
                   ),
@@ -146,7 +146,7 @@ class _Level3State extends State<Level3b> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/Back.png'),
+                                image: AssetImage('assets/images/games/Back.png'),
                               ),
                             ),
                           ),
