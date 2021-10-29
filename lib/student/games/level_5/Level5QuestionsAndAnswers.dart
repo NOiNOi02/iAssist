@@ -14,9 +14,10 @@ var choices = [
   ["Increase Acceleration", "Decrease Acceleration"],
   [" ", "Stop Engine"],
 ];
+var trivia = ["", "", "", "", ""];
 var answers = [1, 0, 1, 1, 1];
 var currentNumber = 0;
-
+var currentPoints = 5;
 var images = [
   'assets/images/games/level5/Group 70.png',
   'assets/images/games/level5/Group 71.png',
@@ -38,20 +39,53 @@ List getImages() {
   return images;
 }
 
+List getTrivias() {
+  return trivia;
+}
+
 int getCurrentNumber() {
   return currentNumber;
+}
+
+int getCurrentPoints() {
+  return currentPoints;
+}
+
+void setCurrentPoints(int lives) {
+  if (lives == 3) {
+    currentPoints = 5;
+  } else if (lives == 2) {
+    currentPoints = 3;
+  } else if (lives == 1) {
+    currentPoints = 2;
+  }
+}
+
+void resetCurrentPoints() {
+  currentPoints = 5;
 }
 
 void setCurrentNumber() {
   currentNumber++;
 }
 
-bool checkAnswer(var answer, var number) {
-  for (int i = 1; i <= 10; i++) {
+void resetCurrentNumber() {
+  currentNumber = 0;
+}
+
+bool checkAnswer(int answer, int number) {
+  //wll return true or false, depends on the answer and the correct answer
+  print("answer" + answer.toString());
+  for (int i = 1; i <= 5; i++) {
+    print(i.toString() + '==' + number.toString());
     if (i == number) {
-      if (answer == answers[i]) {
+      print(answer == answers[i - 1]);
+      print(answer.toString() + '==' + answers[i - 1].toString());
+      if (answer == answers[i - 1]) {
+        print('correct');
         return true;
       } else {
+        print('wrong');
         return false;
       }
     }

@@ -20,6 +20,28 @@ class QuestionsLevel5 extends StatefulWidget {
   }
 }
 
+//color container for selected choices
+List<Color> _colorContainerText = [Color(0xFFBA494B), Colors.white];
+List<Color> _colorContainerButton = [Colors.white, Colors.black];
+DecorationImage checkImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/games/check.png'));
+DecorationImage wrongImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/games/wrong.png'));
+DecorationImage noImage = DecorationImage(
+    alignment: Alignment.centerLeft,
+    fit: BoxFit.scaleDown,
+    image: AssetImage('assets/images/games/noImage.png'));
+List<int> nextFlag = [1, 0, 0];
+var triviaFlag = false;
+var answer;
+var prev_answer;
+var answerResult = null;
+var incorrectMessage = "Your answer is incorrect! Try again!";
+
 class _QuestionsLevel5State extends State<QuestionsLevel5> {
   @override
   Widget build(BuildContext context) {
@@ -120,7 +142,72 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                             ],
                           ),
                         ),
-
+                        //points
+                        Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Text(
+                            "Current Points: " +
+                                getCurrentPoints().toString() +
+                                "pts",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xFFBA494B),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topRight,
+                          padding: const EdgeInsets.only(top: 15, right: 30),
+                          child: Text(
+                            "Total Points: " + getTotalPoints().toString(),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xFF4785B4),
+                            ),
+                          ),
+                        ),
+                        //lives
+                        for (int i = 0; i < getCurrentLives(); i++)
+                          Container(
+                            height: size.height * 0.03,
+                            width: size.width * 0.06,
+                            margin:
+                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.contain,
+                                image:
+                                    AssetImage('assets/images/games/life.png'),
+                              ),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(17),
+                                bottomRight: Radius.circular(17),
+                              ),
+                            ),
+                          ),
+                        for (int i = 0; i < 3; i++)
+                          Container(
+                            height: size.height * 0.03,
+                            width: size.width * 0.06,
+                            margin:
+                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.contain,
+                                image: AssetImage(
+                                    'assets/images/games/lives2.png'),
+                              ),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(17),
+                                bottomRight: Radius.circular(17),
+                              ),
+                            ),
+                          ),
                         Container(
                           margin: const EdgeInsets.only(top: 10, left: 20),
                           height: size.height * 0.30,
@@ -186,9 +273,26 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                                     offset: Offset(0, 0),
                                     blurRadius: 5.0),
                               ],
-                              border: Border.all(color: Color(0xFFBA494B)),
-                              color: Colors.white,
+                              border: (answerResult != null)
+                                  ? (answerResult == true && i == prev_answer)
+                                      ? Border.all(
+                                          color: Color(0xFF00FF0A), width: 3)
+                                      : (i == prev_answer)
+                                          ? Border.all(
+                                              color: Colors.red, width: 3)
+                                          : Border.all(color: Color(0xFFEB9785))
+                                  : Border.all(color: Color(0xFFBA494B)),
+                              color: (i == answer)
+                                  ? _colorContainerButton[1]
+                                  : _colorContainerButton[0],
                               borderRadius: BorderRadius.circular(5),
+                              image: (answerResult != null)
+                                  ? (answerResult == true && i == prev_answer)
+                                      ? checkImage
+                                      : (i == prev_answer)
+                                          ? wrongImage
+                                          : noImage
+                                  : noImage,
                             ),
                             child: ElevatedButton(
                               style: ButtonStyle(
@@ -205,13 +309,56 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                                     Colors.transparent),
                               ),
                               onPressed: () {
+                                answer = i;
+                                setState(() {});
+
                                 //if pushed proceeed to questions
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level5(),
-                                  ),
-                                );
+                                answerResult =
+                                    checkAnswer(answer, getCurrentNumber() + 1);
+                                if (answerResult) {
+                                  answer = prev_answer = answerResult = null;
+                                  triviaFlag = false;
+                                  nextFlag = [1, 0, 0];
+                                  setCurrentNumber();
+                                  // setState(() {});
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => QuestionsLevel5(),
+                                    ),
+                                  );
+                                } else {
+                                  //proceed to showing of not correct answer page
+                                  setCurrentLives();
+                                  setCurrentPoints(getCurrentLives());
+                                  answer = prev_answer = answerResult = null;
+                                  triviaFlag = false;
+                                  nextFlag = [1, 0, 0];
+                                  if (getCurrentLives() <= 0) {
+                                    resetCurrentLives();
+                                    resetCurrentNumber();
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Level5(),
+                                      ),
+                                    );
+                                  } else {
+                                    setState(() {});
+                                  }
+                                }
+                                //resetting the values
+                                prev_answer = answer;
+                                answer = null;
+                                setState(() {});
+
+                                //if pushed proceeed to questions
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => Level5(),
+                                //   ),
+                                // );
                               },
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -221,78 +368,24 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                                 child: Text(
                                   choices[getCurrentNumber()][i],
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 16,
                                     // fontWeight: FontWeight.w700,
-                                    color: Color(0xFFBA494B),
+                                    color: (answerResult != null)
+                                        ? (answerResult == true &&
+                                                i == prev_answer)
+                                            ? Color(0xFFBA494B)
+                                            : (i == prev_answer)
+                                                ? Color(0xFFBA494B)
+                                                : Color(0xFFEB9785)
+                                        : (i == answer)
+                                            ? _colorContainerText[1]
+                                            : _colorContainerText[0],
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
                               ),
                             ),
                           ),
-                        //next
-
-                        // Container(
-                        //   width: size.width * 0.74,
-                        //   margin: const EdgeInsets.only(top: 600, left: 53.5),
-                        //   decoration: BoxDecoration(
-                        //     boxShadow: [
-                        //       BoxShadow(
-                        //           color: Colors.black26,
-                        //           offset: Offset(0, 4),
-                        //           blurRadius: 5.0)
-                        //     ],
-                        //     gradient: LinearGradient(
-                        //       begin: Alignment.topLeft,
-                        //       end: Alignment.bottomRight,
-                        //       stops: [0.0, 1.0],
-                        //       colors: [
-                        //         Color(0xFFBA494B),
-                        //         Color(0XFFFFB79D),
-                        //       ],
-                        //     ),
-                        //     borderRadius: BorderRadius.circular(5),
-                        //   ),
-                        //   child: ElevatedButton(
-                        //     style: ButtonStyle(
-                        //       shape: MaterialStateProperty.all<
-                        //           RoundedRectangleBorder>(
-                        //         RoundedRectangleBorder(
-                        //           borderRadius: BorderRadius.circular(20.0),
-                        //         ),
-                        //       ),
-                        //       backgroundColor:
-                        //           MaterialStateProperty.all(Colors.transparent),
-                        //       // elevation: MaterialStateProperty.all(3),
-                        //       shadowColor:
-                        //           MaterialStateProperty.all(Colors.transparent),
-                        //     ),
-                        //     onPressed: () {
-                        //       //if pushed proceeed to questions
-                        //       setCurrentNumber();
-                        //       Navigator.push(
-                        //         context,
-                        //         MaterialPageRoute(
-                        //           builder: (context) => QuestionsLevel5(),
-                        //         ),
-                        //       );
-                        //     },
-                        //     child: Padding(
-                        //       padding: const EdgeInsets.only(
-                        //         top: 10,
-                        //         bottom: 10,
-                        //       ),
-                        //       child: Text(
-                        //         "NEXT",
-                        //         style: TextStyle(
-                        //           fontSize: 16,
-                        //           // fontWeight: FontWeight.w700,
-                        //           color: Colors.white,
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
