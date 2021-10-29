@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
@@ -50,6 +51,7 @@ var answerResult = null;
 int temp = 0;
 
 class _QuestionsLevel3State extends State<QuestionsLevel3> {
+  final CountDownController _timerController = CountDownController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -215,6 +217,27 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                               fontSize: 15,
                               color: Color(0xFF4785B4),
                             ),
+                          ),
+                        ),
+                        //timer
+                        Container(
+                          height: size.height * 0.12,
+                          width: size.width * 0.12,
+                          margin: EdgeInsets.only(left: 30, top: 20),
+                          child: CircularCountDownTimer(
+                            isReverse: true,
+                            isReverseAnimation: true,
+                            ringColor: Color(0xFFEB9785),
+                            fillColor: Color(0xFFBA494B),
+                            width: size.width * 0.15,
+                            height: size.height * 0.15,
+                            duration: 15,
+                            autoStart: true,
+                            textFormat: 's',
+                            controller: _timerController,
+                            onComplete: () {
+                              print("times up");
+                            },
                           ),
                         ),
                         //lives
@@ -499,6 +522,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                                 triviaFlag = true;
                                                 nextFlag[0] = 0;
                                                 nextFlag[1] = 1;
+                                                _timerController.pause();
                                               } else {
                                                 //proceed to showing of not correct answer page
                                                 setCurrentLives();
@@ -531,6 +555,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                             triviaFlag = true;
                                             nextFlag[0] = 0;
                                             nextFlag[1] = 1;
+                                            _timerController.pause();
                                           } else {
                                             //proceed to showing of not correct answer page
                                             setCurrentLives();
@@ -584,7 +609,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     setCurrentNumber();
                                     // setState(() {});
                                     setTotalPoints(getCurrentPoints());
-
+                                    _timerController.restart(duration: 15);
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -635,6 +660,8 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                       resetCurrentNumber();
                                       resetTotalPoints();
                                       resetCurrentPoints();
+                                      _timerController.restart();
+
                                       //push to leaderboards
                                       // Navigator.push(
                                       //   context,
