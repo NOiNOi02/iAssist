@@ -61,19 +61,28 @@ var images = [
 ];
 
 var trivias = [
-  "NEWTON is the SI unit of force where 1N = (1kg) (1m/s2)",
-  "Acceleration is the rate of change in the velocity of an object.",
-  "Heavier objects require more force to accelerate than lighter objects.",
-  "If the net force were doubled, the acceleration of the object would be twice as large",
-  "The acceleration an object experiences is inversely proportional to its mass.",
-  "The full juice bottle reached the ramp first because it has greater mass than the empty juice bottle.",
+  "NEWTON is the SI unit of force \nwhere 1N = (1kg) (1m/s2)",
+  "Acceleration is the rate of change \nin the velocity of an object.",
+  "Heavier objects require more force \nto accelerate than lighter objects.",
+  "If the net force were doubled, \nthe acceleration of the object\n would be twice as large",
+  "The acceleration an object experiences \nis inversely proportional to its mass.",
+  "The full juice bottle reached the ramp \nfirst because it has greater mass than \nthe empty juice bottle.",
   "The sum of all forces acting on a body.",
-  " ",
-  [
-    "Two teams are playing tug-of-war. Team A wins.",
-    "You use the same force to push a truck and a car, the car accelerates than the truck.",
-    "Two people are walking and among the two people, if one is heavier than the other"
-  ]
+  "Using the formula F=ma, \nwhat is the blocks",
+  "Which of the following experience \nthe Law of Acceleration? \nChoose 3"
+];
+
+var triviaImage = [
+  'assets/images/games/noImage.png',
+  'assets/images/games/level3/image 1.png',  
+  'assets/images/games/level3/image 2.png',
+  'assets/images/games/level3/image 3.png',
+  'assets/images/games/level3/trivia 4.png',
+  'assets/images/games/level3/trivia 5.png',
+  'assets/images/games/level3/trivia 6.png',
+  'assets/images/games/noImage.png',
+  'assets/images/games/level3/trivia 8.png',
+  'assets/images/games/noImage.png',
 ];
 
 List getQuestions() {
@@ -86,6 +95,10 @@ List getChoices() {
 
 List getImages() {
   return images;
+}
+
+List getTriviaImages() {
+  return triviaImage;
 }
 
 int getCurrentNumber() {
@@ -133,7 +146,7 @@ bool checkAnswer(var answer, var number) {
 
 List<bool> checkMultipleAnswers(List<int> answer, int number) {
   int counter = 0;
-  List<bool> temp = [false,false,false];
+  List<bool> temp = [false, false, false];
   print("before loop");
   for (int i = 0; i < answer.length; i++) {
     if (answers[number - 1].contains(answer[i])) {

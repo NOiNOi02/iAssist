@@ -57,6 +57,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
     var questions = getQuestions();
     var choices = getChoices();
     var images = getImages();
+    var triviaImages = getTriviaImages();
     // var trivia = getTrivias();
     var incorrectMessage = "Your answer is incorrect! Try again!";
     return Scaffold(
@@ -181,11 +182,13 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage(images[getCurrentNumber()]),
+                              image: (triviaFlag)
+                                  ? AssetImage(triviaImages[getCurrentNumber()])
+                                  : AssetImage(images[getCurrentNumber()]),
                             ),
                           ),
                         ),
-                                 //points
+                        //points
                         Container(
                           alignment: Alignment.center,
                           padding: const EdgeInsets.only(top: 15),
@@ -214,7 +217,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                             ),
                           ),
                         ),
-                          //lives
+                        //lives
                         for (int i = 0; i < getCurrentLives(); i++)
                           Container(
                             height: size.height * 0.03,
@@ -224,8 +227,8 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage(
-                                    'assets/images/games/life.png'),
+                                image:
+                                    AssetImage('assets/images/games/life.png'),
                               ),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(17),
@@ -258,7 +261,9 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                               top: 100, left: 100, right: 10),
                           child: Text(
                             //getting the questions based from what current number is
-                            questions[getCurrentNumber()],
+                            (triviaFlag)
+                                ? trivias[getCurrentNumber()]
+                                : questions[getCurrentNumber()],
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -289,7 +294,8 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     offset: Offset(0, 4),
                                     blurRadius: 5.0),
                               ],
-                              border: (getCurrentNumber() == 8 && nextFlag[0]==0)
+                              border: (getCurrentNumber() == 8 &&
+                                      nextFlag[0] == 0)
                                   ? (prev_multiple_ans_a != -1 &&
                                           prev_multiple_ans_b != -1 &&
                                           prev_multiple_ans_c != -1)
@@ -341,7 +347,8 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                       : (i == prev_answer)
                                           ? wrongImage
                                           : noImage
-                                  : (getCurrentNumber() == 8 && nextFlag[0]==0)
+                                  : (getCurrentNumber() == 8 &&
+                                          nextFlag[0] == 0)
                                       ? (prev_multiple_ans_a != -1 &&
                                               prev_multiple_ans_b != -1 &&
                                               prev_multiple_ans_c != -1)
@@ -507,7 +514,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                                   number9Answers[1];
                                               prev_multiple_ans_c =
                                                   number9Answers[2];
-                                              number9Answers = [-1,-1,-1];
+                                              number9Answers = [-1, -1, -1];
                                               setState(() {});
                                             }
                                           : null
@@ -576,6 +583,8 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
                                     // setState(() {});
+                                    setTotalPoints(getCurrentPoints());
+
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
