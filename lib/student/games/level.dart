@@ -42,6 +42,9 @@ void setCurrentLives() {
 void setCurrentLevel() {
   level++;
 }
+void resetCurrentLevel() {
+  level = 0;
+}
 
 void setPlayerNamesAndScores(String name, int score) {
   int listLength = playerNames.length;

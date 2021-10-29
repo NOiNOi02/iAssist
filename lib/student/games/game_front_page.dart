@@ -214,7 +214,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Level1(),
+                                    builder: (context) => Level3a(),
                                   ),
                                 );
                               } else if (current_level == 2) {

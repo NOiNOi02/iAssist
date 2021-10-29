@@ -36,28 +36,44 @@ var choices = [
   ],
 ];
 var answers = [
-  0,
-  1,
-  0,
-  0,
-  1,
-  1,
-  0,
-  0,
+  [0],
+  [1],
+  [0],
+  [0],
+  [1],
+  [1],
+  [0],
+  [0],
   [0, 2, 4]
 ];
 var currentNumber = 0;
-
+var currentPoints = 5;
 var images = [
-  '',
+  'assets/images/games/noImage.png',
   'assets/images/games/level3/image 1.png',
   'assets/images/games/level3/image 2.png',
   'assets/images/games/level3/image 3.png',
   'assets/images/games/level3/image 4.png',
   'assets/images/games/level3/image 5.png',
-  '',
+  'assets/images/games/noImage.png',
   'assets/images/games/level3/image 6.png',
-  ''
+  'assets/images/games/noImage.png'
+];
+
+var trivias = [
+  "NEWTON is the SI unit of force where 1N = (1kg) (1m/s2)",
+  "Acceleration is the rate of change in the velocity of an object.",
+  "Heavier objects require more force to accelerate than lighter objects.",
+  "If the net force were doubled, the acceleration of the object would be twice as large",
+  "The acceleration an object experiences is inversely proportional to its mass.",
+  "The full juice bottle reached the ramp first because it has greater mass than the empty juice bottle.",
+  "The sum of all forces acting on a body.",
+  " ",
+  [
+    "Two teams are playing tug-of-war. Team A wins.",
+    "You use the same force to push a truck and a car, the car accelerates than the truck.",
+    "Two people are walking and among the two people, if one is heavier than the other"
+  ]
 ];
 
 List getQuestions() {
@@ -76,14 +92,36 @@ int getCurrentNumber() {
   return currentNumber;
 }
 
+void resetCurrentPoints() {
+  currentPoints = 5;
+}
+
 void setCurrentNumber() {
   currentNumber++;
 }
 
+void resetCurrentNumber() {
+  currentNumber = 0;
+}
+
+int getCurrentPoints() {
+  return currentPoints;
+}
+
+void setCurrentPoints(int lives) {
+  if (lives == 3) {
+    currentPoints = 5;
+  } else if (lives == 2) {
+    currentPoints = 3;
+  } else if (lives == 1) {
+    currentPoints = 2;
+  }
+}
+
 bool checkAnswer(var answer, var number) {
-  for (int i = 1; i <= 9; i++) {
+  for (int i = 1; i <= 8; i++) {
     if (i == number) {
-      if (answer == answers[i]) {
+      if (answer == answers[i - 1][0]) {
         return true;
       } else {
         return false;
@@ -91,4 +129,19 @@ bool checkAnswer(var answer, var number) {
     }
   }
   return false;
+}
+
+List<bool> checkMultipleAnswers(List<int> answer, int number) {
+  int counter = 0;
+  List<bool> temp = [false,false,false];
+  print("before loop");
+  for (int i = 0; i < answer.length; i++) {
+    if (answers[number - 1].contains(answer[i])) {
+      temp[i] = true;
+      counter++;
+    }
+  }
+  print("after loop");
+  print(temp);
+  return temp;
 }

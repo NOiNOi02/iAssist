@@ -294,6 +294,7 @@ void showNoLivesModal(BuildContext context, Size size) {
                           builder: (context) => Leaderboards(),
                         ),
                       );
+                      resetCurrentLevel();
                       showInputPlayerName(context, size);
                     },
                     child: Padding(

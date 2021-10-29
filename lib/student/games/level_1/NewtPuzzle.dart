@@ -275,7 +275,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                   ),
                                 );
                               }
-                              if (getCurrentNumber() != 5) {
+                              if (getCurrentNumber() < 5) {
                                 setTotalPoints(getCurrentPoints());
                                 Navigator.push(
                                   context,
