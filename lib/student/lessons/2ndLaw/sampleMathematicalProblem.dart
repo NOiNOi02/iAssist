@@ -57,7 +57,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
-                color: Color(0xFF000000),
               ),
             ),
           ),
@@ -85,7 +84,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                   fontSize: 16,
                   letterSpacing: 1.4,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -100,7 +98,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -125,7 +122,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -140,7 +136,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -156,7 +151,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                   fontSize: 16,
                   letterSpacing: 1.4,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -171,7 +165,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -196,7 +189,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -212,7 +204,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                   fontSize: 16,
                   letterSpacing: 1.4,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -227,7 +218,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -253,7 +243,6 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 1.4,
-                  color: Color(0xFF000000),
                 ),
               ),
             ),
@@ -261,6 +250,7 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).primaryColor,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.skip_previous),
@@ -276,7 +266,7 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: Color(0xFFFFFFFF),
+        selectedItemColor: Theme.of(context).primaryColor,
         onTap: _onItemTapped,
         unselectedItemColor: Color(0xFFBA494B),
       ),
