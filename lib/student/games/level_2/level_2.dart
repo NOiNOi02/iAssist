@@ -8,6 +8,8 @@ import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_2/level_2.dart';
 import 'package:iassist/student/games/level_2/level_2a.dart';
 import 'package:iassist/student/games/level_2/questions.dart';
+import 'package:iassist/student/games/Modals.dart';
+
 
 class Level2 extends StatefulWidget {
   @override

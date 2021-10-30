@@ -201,17 +201,18 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                         for (int i = 0; i < 5 - getCurrentNumber(); i++)
                           Container(
                             margin: (i == 0)
-                                ? EdgeInsets.only(left: 85, top: 252)
+                                ? EdgeInsets.only(left: size.width*0.22, top: size.height*0.323)
                                 : (i == 1)
-                                    ? EdgeInsets.only(left: 85, top: 375)
+                                    ? EdgeInsets.only(left:  size.width*0.22, top: size.height*0.480)
                                     : (i == 2)
-                                        ? EdgeInsets.only(left: 213, top: 130)
+                                        ? EdgeInsets.only(left: size.width*0.545, top: 130)
                                         : (i == 3)
                                             ? EdgeInsets.only(
-                                                left: 213, top: 375)
+                                                left:  size.width*0.545, top: size.height*0.480)
                                             : EdgeInsets.only(
-                                                left: 213, top: 375),
-                            height: size.height * 0.15,
+                                                left:  size.width*0.545, top: size.height*0.480),
+                            height: size.height * 0.156,
+                            width: size.width * 2,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 alignment: Alignment.centerLeft,

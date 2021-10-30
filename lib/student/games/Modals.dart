@@ -3,8 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/student/games/Leaderboards.dart';
 import 'package:iassist/student/games/level.dart';
+import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
+import 'package:iassist/student/games/level_1/questions.dart';
+import 'package:iassist/student/games/level_3/questions.dart';
+import 'package:iassist/student/games/level_4/questions.dart';
+import 'package:iassist/student/games/level_5/questions.dart';
 import 'package:iassist/student/studentfrontpage.dart';
-
+import 'package:iassist/student/games/level_2/questions.dart';
 
 //#TODOS: Modal designs, floating button and input player design
 
@@ -135,6 +140,46 @@ void showLivesModal(
                     onPressed: () {
                       //if pushed proceeed to questions
                       Navigator.pop(context);
+                      if (getCurrentLevel() == 1) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QuestionsLevel1(),
+                          ),
+                        );
+                      }
+                       if (getCurrentLevel() == 2) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QuestionsLevel2(),
+                          ),
+                        );
+                      }
+                       if (getCurrentLevel() == 3) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QuestionsLevel3(),
+                          ),
+                        );
+                      }
+                       if (getCurrentLevel() == 4) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QuestionsLevel4(),
+                          ),
+                        );
+                      }
+                       if (getCurrentLevel() == 5) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QuestionsLevel5(),
+                          ),
+                        );
+                      }
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(
@@ -386,7 +431,6 @@ void showInputPlayerName(BuildContext context, Size size) {
       });
 }
 
-
 void showDontSave(BuildContext context, Size size) {
   TextEditingController _textFieldController = TextEditingController();
   String inputName = "";
@@ -422,13 +466,13 @@ void showDontSave(BuildContext context, Size size) {
                 // setState(() {
                 //   codeDialog = valueText;
                 Navigator.pop(context);
-                 Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => StudentFrontPage(),
-                                ),
-                              );
-                
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => StudentFrontPage(),
+                  ),
+                );
+
                 // });
               },
             ),
@@ -436,4 +480,3 @@ void showDontSave(BuildContext context, Size size) {
         );
       });
 }
-

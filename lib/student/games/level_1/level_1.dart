@@ -26,7 +26,6 @@ class _Level1State extends State<Level1> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int current_level = getCurrentLevel();
-    //modal lives
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,

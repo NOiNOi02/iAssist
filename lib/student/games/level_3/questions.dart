@@ -610,12 +610,24 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     // setState(() {});
                                     setTotalPoints(getCurrentPoints());
                                     _timerController.restart(duration: 15);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => QuestionsLevel3(),
-                                      ),
-                                    );
+                                   if (getCurrentNumber() == 9) {
+                                      resetCurrentNumber();
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              Level4(),
+                                        ),
+                                      );
+                                    }else{
+                                       Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              QuestionsLevel3(),
+                                        ),
+                                      );
+                                    }
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(
@@ -658,17 +670,9 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();
-                                      resetTotalPoints();
                                       resetCurrentPoints();
-                                      _timerController.restart();
-
-                                      //push to leaderboards
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) => (),
-                                      //   ),
-                                      // );
+                                      _timerController.restart(duration: 15);
+                              
                                       showNoLivesModal(context, size);
                                     } else {
                                       setState(() {});

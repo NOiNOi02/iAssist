@@ -130,16 +130,6 @@ class _Level4State extends State<Level4> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                        ),
                         Container(
                           margin: const EdgeInsets.only(top: 100, right: 25),
                           height: size.height * 0.60,
@@ -188,10 +178,12 @@ class _Level4State extends State<Level4> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
+                              setCurrentLevel();
+                              resetCurrentLives();
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Level4a(),
+                                  builder: (context) => GameFrontPage(),
                                 ),
                               );
                             },

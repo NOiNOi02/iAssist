@@ -6,7 +6,10 @@ import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_5/level_5.dart';
+import 'package:iassist/student/games/level_5/level_5a.dart';
 import 'package:iassist/student/games/level_5/Level5QuestionsAndAnswers.dart';
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+
 
 class QuestionsLevel5 extends StatefulWidget {
   @override
@@ -43,6 +46,8 @@ var answerResult = null;
 var incorrectMessage = "Your answer is incorrect! Try again!";
 
 class _QuestionsLevel5State extends State<QuestionsLevel5> {
+  final CountDownController _timerController = CountDownController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -169,6 +174,27 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                               fontSize: 15,
                               color: Color(0xFF4785B4),
                             ),
+                          ),
+                        ),
+                         //timer
+                        Container(
+                          height: size.height * 0.12,
+                          width: size.width * 0.12,
+                          margin: EdgeInsets.only(left: 30, top: 20),
+                          child: CircularCountDownTimer(
+                            isReverse: true,
+                            isReverseAnimation: true,
+                            ringColor: Color(0xFFEB9785),
+                            fillColor: Color(0xFFBA494B),
+                            width: size.width * 0.15,
+                            height: size.height * 0.15,
+                            duration: 15,
+                            autoStart: true,
+                            textFormat: 's',
+                            controller: _timerController,
+                            onComplete: () {
+                              print("times up");
+                            },
                           ),
                         ),
                         //lives
@@ -316,11 +342,20 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                                 answerResult =
                                     checkAnswer(answer, getCurrentNumber() + 1);
                                 if (answerResult) {
+                                   _timerController.restart(duration: 15);
                                   answer = prev_answer = answerResult = null;
                                   triviaFlag = false;
                                   nextFlag = [1, 0, 0];
                                   setCurrentNumber();
-                                  // setState(() {});
+                                  setTotalPoints(getCurrentPoints());
+                                  if(getCurrentNumber() == 6){
+                                     Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Level5a(),
+                                    ),
+                                  );
+                                  }
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

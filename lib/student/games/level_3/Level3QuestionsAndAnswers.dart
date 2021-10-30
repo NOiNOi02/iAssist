@@ -76,7 +76,6 @@ var triviaImage = [
   'assets/images/games/noImage.png',
   'assets/images/games/level3/image 1.png',  
   'assets/images/games/level3/image 2.png',
-  'assets/images/games/level3/image 3.png',
   'assets/images/games/level3/trivia 4.png',
   'assets/images/games/level3/trivia 5.png',
   'assets/images/games/level3/trivia 6.png',

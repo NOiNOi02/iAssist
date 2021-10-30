@@ -8,6 +8,7 @@ import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_2/level_2.dart';
 import 'package:iassist/student/games/level_2/level_2a.dart';
 import 'package:iassist/student/games/level_2/questions.dart';
+import 'package:iassist/student/games/Modals.dart';
 
 class Level2a extends StatefulWidget {
   @override
@@ -92,7 +93,7 @@ class _Level2State extends State<Level2a> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image: AssetImage('assets/images/games/Level 1/game1.png'),
+                        image: AssetImage('assets/images/games/game1.png'),
                       ),
                     ),
                   ),
@@ -146,7 +147,7 @@ class _Level2State extends State<Level2a> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/games/Level 1/Back.png'),
+                                image: AssetImage('assets/images/games/Back.png'),
                               ),
                             ),
                           ),
@@ -211,12 +212,7 @@ class _Level2State extends State<Level2a> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => QuestionsLevel2(),
-                                ),
-                              );
+                              showLivesModal(context, size);
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(

@@ -2,16 +2,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/Modals.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
-import 'package:iassist/student/games/level_2/level_3.dart';
-import 'package:iassist/student/games/level_3/level_3a.dart';
-import 'package:iassist/student/games/level_3/questions.dart';
+import 'package:iassist/student/games/level_3/level_4.dart';
+import 'package:iassist/student/games/level_4/level_4a.dart';
+import 'package:iassist/student/games/level_4/level_4b.dart';
+import 'package:iassist/student/games/level_4/level_4c.dart';
+import 'package:iassist/student/games/level_4/questions.dart';
 
-class Level3 extends StatefulWidget {
+class Level4d extends StatefulWidget {
   @override
-  _Level3State createState() => _Level3State();
+  _Level4State createState() => _Level4State();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,9 @@ class Level3 extends StatefulWidget {
   }
 }
 
-class _Level3State extends State<Level3> {
+Alignment newtAlignment = Alignment.bottomLeft;
+
+class _Level4State extends State<Level4d> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -100,7 +105,7 @@ class _Level3State extends State<Level3> {
                     alignment: Alignment(0.0, -1.0),
                     padding: const EdgeInsets.only(top: 20, left: 15),
                     child: Text(
-                      'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
+                      'Level 4\nNewton\'s Third Law of Motion: \nLaw of Interaction',
                       textAlign: TextAlign.left,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
@@ -146,20 +151,49 @@ class _Level3State extends State<Level3> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image:
-                                    AssetImage('assets/images/games/Back.png'),
+                                image: AssetImage('assets/images/Back.png'),
                               ),
                             ),
                           ),
                         ),
                         Container(
-                          margin: const EdgeInsets.only(top: 100, right: 25),
-                          height: size.height * 0.60,
+                          margin: EdgeInsets.only(
+                              top: 250,
+                              left: 45),
+                          height: 250,
                           decoration: BoxDecoration(
                             image: DecorationImage(
+                              alignment: newtAlignment,
                               fit: BoxFit.contain,
                               image: AssetImage(
-                                  'assets/images/games/level3/Group 60.png'),
+                                  'assets/images/games/Level1/robot.png'),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: size.height * 0.15,
+                              right: size.width * 0.10),
+                          height: size.height * 0.25,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              alignment: Alignment.topRight,
+                              fit: BoxFit.contain,
+                              image: AssetImage(
+                                  'assets/images/games/Level1/dialogBox.png'),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              left: size.width * 0.41, top: size.height * 0.22),
+                          child: Text(
+                            "Level 4 complete! \nCongratulations!\nReady for the next level?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: (size.height * size.width) * 0.000045,
+                              // fontWeight: FontWeight.w700,
+                              color: Color(0xFFBA494B),
                             ),
                           ),
                         ),

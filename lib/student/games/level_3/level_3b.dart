@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/Modals.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
@@ -200,12 +201,7 @@ class _Level3State extends State<Level3b> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => QuestionsLevel3(),
-                                ),
-                              );
+                              showLivesModal(context, size);
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
