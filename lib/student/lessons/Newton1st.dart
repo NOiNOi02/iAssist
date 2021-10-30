@@ -78,7 +78,6 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
               style: const TextStyle(
                 fontSize: 16,
                 letterSpacing: 1.4,
-                color: Color(0xFF000000),
               ),
             ),
           ),

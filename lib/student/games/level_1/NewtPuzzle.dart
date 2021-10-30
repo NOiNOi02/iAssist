@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
@@ -101,8 +99,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image:
-                            AssetImage('assets/images/games/game1.png'),
+                        image: AssetImage('assets/images/games/game1.png'),
                       ),
                     ),
                   ),
