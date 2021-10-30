@@ -35,7 +35,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
     int current_level = getCurrentLevel();
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
-      // resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         // ignore: prefer_const_constructors
         iconTheme: IconThemeData(

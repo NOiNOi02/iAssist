@@ -13,4 +13,5 @@ class MyFlutterApp {
   static const IconData lessonplans = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData wrksht = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData ppt = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData pdf = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

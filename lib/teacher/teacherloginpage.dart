@@ -1,11 +1,13 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, curly_braces_in_flow_control_structures
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
+import 'package:iassist/selectionpage.dart';
 import 'package:iassist/teacher/teacherfrontpage.dart';
 import 'package:sizer/sizer.dart';
 
+TextEditingController usernameController = new TextEditingController();
+TextEditingController passwordController = new TextEditingController();
 class TeacherLoginPage extends StatefulWidget{
   @override
   _TeacherLoginPageState createState() => _TeacherLoginPageState();
@@ -13,7 +15,7 @@ class TeacherLoginPage extends StatefulWidget{
 
 class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerProviderStateMixin{
   late TabController _tabController;
-
+  
   @override
   void initState(){
     super.initState();
@@ -25,7 +27,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
     super.dispose();
     _tabController.dispose();
   }
-
+  bool obscuretext = true;
   @override
   Widget build(BuildContext context){
     
@@ -101,8 +103,22 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                             ],
                           ),
                         ),
+                        GestureDetector(
+                          // behavior: HitTestBehavior.translucent,
+                          onTap: () { usernameController.clear();passwordController.clear();Navigator.pop(context);},
+                          child: AbsorbPointer(
+                          child: Container(
+                            margin: EdgeInsets.only(top: 1.h,left: SizeConfig.safeBlockHorizontal! * 14),
+                            child: Icon(
+                              Icons.logout_outlined,
+                              color: Color(0xFFBA494B),
+                            ),
+                          ),),
+                        ),
                         Container(
                           height: SizeConfig.safeBlockVertical! * 12,
+                          width: SizeConfig.safeBlockHorizontal! * 26,
+                          margin: EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockHorizontal! * 37),
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -112,7 +128,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                         ),
                         Container(
                           alignment: Alignment(0.0,-1.0),
-                          padding: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 12),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 12),
                           child: Text('Welcome', 
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -123,7 +139,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                         ),
                         Container(
                           alignment: Alignment(0.0,-1.0),
-                          padding: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 16),
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 16),
                           child: Text('Please Login to your account.', 
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -149,7 +165,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                         ),
                         Container(
                           alignment: Alignment(0.0,-1.0),
-                          padding: EdgeInsets.only(top: 33.5.h, right: 44.w),
+                          margin: EdgeInsets.only(top: 33.5.h, right: 44.w),
                           child: Text('Password', 
                             style: TextStyle(
                               // fontWeight: FontWeight.bold,
@@ -158,9 +174,35 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                             ),
                           ),
                         ),
-                        RoundedPasswordField(
-                          hintText: 'Enter Password',
-                          onChanged: (value) {},
+                        Container(
+                          margin: EdgeInsets.only(left: 20.w, right: 20.w, top: SizeConfig.safeBlockVertical! * 39),
+                          child: TextFieldContainer(
+                            child: TextField(
+                              controller: passwordController,
+                              onChanged: (value){},
+                              decoration: InputDecoration(
+                                icon: Icon(
+                                  Icons.vpn_key_sharp,
+                                  color: Color(0xFFBA494B,),
+                                ),
+                                suffixIcon: Padding(padding: EdgeInsets.only(left:0.w),
+                                child: InkWell(
+                                onTap: () =>
+                                  setState((){
+                                    obscuretext =! obscuretext;
+                                  }),
+                                child: Icon(obscuretext
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
+                                  color: Color(0xFFBA494B).withOpacity(0.8),
+                                  size: 2.3.h,
+                                ),
+                                ),),
+                                hintText: 'Enter Password',
+                              ),
+                              obscureText: obscuretext,
+                            ),
+                          ),
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -196,7 +238,49 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                               shadowColor: Colors.transparent,
                               elevation: 0,
                             ),
-                            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherFrontPage(),),);
+                            onPressed: () {
+                              if(usernameController.text == "Username" && passwordController.text == "Password") {
+                                usernameController.clear();passwordController.clear();
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherFrontPage()));}
+                              else if(usernameController.text != "Username" && passwordController.text == "Password") showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: Text('Invalid Username!',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                              else if(passwordController.text != "Password" && usernameController.text == "Username") showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: Text('Invalid Password!',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                              else showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: Text('Invalid Username and Password!',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
                           },
                             child: Text('Login'),
                           ),
@@ -296,6 +380,7 @@ class RoundedInputField extends StatelessWidget {
     margin: EdgeInsets.only(left: 20.w, right: 20.w, top: SizeConfig.safeBlockVertical! * 25),
     child: TextFieldContainer(
       child: TextField(
+        controller: usernameController,
         onChanged: onChanged,
         decoration: InputDecoration(
           icon: Icon(
@@ -310,38 +395,3 @@ class RoundedInputField extends StatelessWidget {
   }
 }
 
-class RoundedPasswordField extends StatelessWidget {
-  final String hintText;
-  final IconData icon;
-  final ValueChanged<String> onChanged;
-  const RoundedPasswordField({
-    Key? key,
-    required this.hintText,
-    this.icon = Icons.vpn_key_sharp,
-    required this.onChanged,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-    margin: EdgeInsets.only(left: 20.w, right: 20.w, top: SizeConfig.safeBlockVertical! * 39),
-    child: TextFieldContainer(
-      child: TextField(
-        obscureText: true,
-        onChanged: onChanged,
-        decoration: InputDecoration(
-          icon: Icon(
-            icon,
-            color: Color(0xFFBA494B,),
-          ),
-          suffixIcon: Icon(
-            Icons.visibility_outlined,
-            color: Color(0xFFBA494B),
-          ),
-          hintText: hintText,
-        ),
-      ),
-    ),
-    );
-  }
-}

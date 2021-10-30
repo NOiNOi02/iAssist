@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/pdf_api.dart';
+import 'package:iassist/pdf_viewer_example.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/teacher/LessonPlans.dart';
 import 'package:iassist/teacher/PPT.dart';
@@ -147,8 +151,10 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                         Container(
                           width: size.width * .6,
                           margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 30, left: 20.w, right: 20.w),
-                          child:OutlinedButton.icon(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => LessonPlans(),),);
+                          child:OutlinedButton.icon(onPressed:() async {
+                            final path = 'assets/sample.pdf';
+                            final file = await PDFApi.loadAsset(path);
+                            openPDF(context, file);
                           },
                             icon: Icon(MyFlutterApp.lessonplans, color: Color(0xFFBA494B),), 
                             label: Text("LESSON PLANS",
@@ -274,4 +280,8 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
       ),
     );
   }
+
+   void openPDF(BuildContext context, File file) => Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),
+      );
 }

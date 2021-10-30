@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/student/games/Modals.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
@@ -9,6 +10,8 @@ import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_2/level_3.dart';
 import 'package:iassist/student/games/level_3/level_3a.dart';
 import 'package:iassist/student/games/level_3/questions.dart';
+
+import '../../../selectionpage.dart';
 
 class Level3b extends StatefulWidget {
   @override
@@ -32,6 +35,9 @@ class _Level3State extends State<Level3b> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         // ignore: prefer_const_constructors
+        iconTheme: IconThemeData(
+          color: Color(0xFFBA494B),
+        ),
         title: Text(
           'GAME MODE',
           style: TextStyle(
@@ -43,12 +49,70 @@ class _Level3State extends State<Level3b> {
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        leading: IconButton(
-          // alignment: center,
-          icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFBA494B)),
-          onPressed: () => Navigator.pop(context),
-        ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                  color: Color(0xFFBA494B),
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/SelectionHeader.png"),
+                      fit: BoxFit.cover)),
+              child: Text(
+                'I-Assist',
+                style: const TextStyle(
+                    fontSize: 24,
+                    color: Color(0xFFFFFFFF),
+                    fontFamily: 'MyFlutterApp'),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: const Text(
+                'Home',
+                style:
+                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectionPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text(
+                'Settings',
+                style:
+                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app_outlined),
+              title: const Text(
+                'Exit',
+                style: const TextStyle(
+                    fontSize: 20,
+                    // color: Color(0xFFFFFFFF),
+                    fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Future.delayed(const Duration(milliseconds: 1000), () {
+                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                });
+              },
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
