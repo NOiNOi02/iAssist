@@ -151,7 +151,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                         Container(
                           width: size.width * .6,
                           margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 30, left: 20.w, right: 20.w),
-                          child:OutlinedButton.icon(onPressed:()async {
+                          child:OutlinedButton.icon(onPressed:() async {
                             final path = 'assets/sample.pdf';
                             final file = await PDFApi.loadAsset(path);
                             openPDF(context, file);
