@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:iassist/audioplayer_with_local_asset.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/lessons/Newton1st.dart';
 import 'package:iassist/student/lessons/Newton2nd.dart';
@@ -220,24 +221,19 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
         padding: EdgeInsets.only(left: 7.w, right: 7.w, bottom: 3.h),
         child: Container(
           child: TabBar(
+            padding: EdgeInsets.all(1.h),
             labelColor: Color(0xFF4785B4),
-            unselectedLabelColor: Color(0xFFBA494B),
-            labelStyle:TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold) ,
+            unselectedLabelColor: Color(0xFF4785B4),
             indicator: UnderlineTabIndicator(
               borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
             ),
             tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.home_rounded),
-                text: 'Home',
+                icon: Icon(Icons.home_rounded, size: 4.h),
               ),
+              AudioPlayerWithLocalAsset(),
               Tab(
-                icon: Icon(Icons.settings),
-                text: 'Settings',
-              ),
-              Tab(
-                icon: Icon(Icons.exit_to_app_outlined),
-                text: 'Exit',
+                icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
               ),
             ],
             controller:  _tabController,
