@@ -9,6 +9,8 @@ import 'package:iassist/student/lessons/Newton3rd.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:sizer/sizer.dart';
 
+import 'studentfrontpage.dart';
+
 class StudentLessons extends StatefulWidget {
   @override
   _StudentLessonsState createState() => _StudentLessonsState();
@@ -20,17 +22,18 @@ class StudentLessons extends StatefulWidget {
   }
 }
 
-class _StudentLessonsState extends State<StudentLessons> with SingleTickerProviderStateMixin {
+class _StudentLessonsState extends State<StudentLessons>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     _tabController.dispose();
   }
@@ -41,27 +44,28 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: 
-          Text('STUDENT MODE',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Color(0xFFBA494B),
-                fontSize: 12.sp,
-              ),
-            ),
+        title: Text(
+          'STUDENT MODE',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color(0xFFBA494B),
+            fontSize: 12.sp,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         leading: IconButton(
           // alignment: center,
-          icon: Icon(Icons.arrow_back_rounded,
-          color: Color(0xFFBA494B)), 
-          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFBA494B)),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentFrontPage(),
+            ),
+          ),
         ),
-        actions: <Widget>[
-          ChangeThemeButtonWidget(),
-          SizedBox(width: 3.5.w)
-        ], 
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -69,7 +73,7 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
             Container(
               height: size.height,
               child: Stack(
-                children:<Widget>[
+                children: <Widget>[
                   Container(
                     height: SizeConfig.safeBlockVertical! * 16,
                     decoration: BoxDecoration(
@@ -117,14 +121,18 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage('assets/images/StudentLessonsPic.png'),
+                              image: AssetImage(
+                                  'assets/images/StudentLessonsPic.png'),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          margin: EdgeInsets.only(top: 18.5.h,),
-                          child: Text('Newton’s\nLaw of Motion',
+                          margin: EdgeInsets.only(
+                            top: 18.5.h,
+                          ),
+                          child: Text(
+                            'Newton’s\nLaw of Motion',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -135,77 +143,116 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 30, left: 20.w, right: 20.w),
-                          child:OutlinedButton(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => FirstNewtonLaw(),),);
-                          },
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 30,
+                              left: 20.w,
+                              right: 20.w),
+                          child: OutlinedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => FirstNewtonLaw(),
+                                ),
+                              );
+                            },
                             child: Text("1st Law of Motion",
-                              textAlign: TextAlign.center,   
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFBA494B),
-                                fontSize: 16.sp,
-                              )),
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                  width: 2.5,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    
-                                  ),padding: EdgeInsets.only(left: 2.5.w, right: 2.5.w, top: 2.5.h, bottom: 2.5.h),
-                                ),
+                                  fontSize: 16.sp,
+                                )),
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.5,
+                                color: Color(0xFFBA494B),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              padding: EdgeInsets.only(
+                                  left: 2.5.w,
+                                  right: 2.5.w,
+                                  top: 2.5.h,
+                                  bottom: 2.5.h),
+                            ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 43, left: 20.w, right: 20.w),
-                          child:OutlinedButton(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => SecondNewtonLaw(),),);
-                          },
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 43,
+                              left: 20.w,
+                              right: 20.w),
+                          child: OutlinedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SecondNewtonLaw(),
+                                ),
+                              );
+                            },
                             child: Text("2nd Law of Motion",
-                              textAlign: TextAlign.center,   
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFBA494B),
-                                fontSize: 16.sp,
-                              )),
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                  width: 2.5,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    
-                                  ),padding: EdgeInsets.only(left: 2.5.w, right: 2.5.w, top: 2.5.h, bottom: 2.5.h),
-                                ),
+                                  fontSize: 16.sp,
+                                )),
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.5,
+                                color: Color(0xFFBA494B),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              padding: EdgeInsets.only(
+                                  left: 2.5.w,
+                                  right: 2.5.w,
+                                  top: 2.5.h,
+                                  bottom: 2.5.h),
+                            ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 56, left: 20.w, right:20.w),
-                          child:OutlinedButton(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ThirdNewtonLaw(),),);
-                          },
-                            child: Text("3rd Law of Motion",
-                              textAlign: TextAlign.center,   
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFBA494B),
-                                fontSize: 16.sp,
-                              )),
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                  width: 2.5,
-                                  color: Color(0xFFBA494B),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    
-                                  ),padding: EdgeInsets.only(left: 2.5.w, right: 2.5.w, top: 2.5.h, bottom: 2.5.h),
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 56,
+                              left: 20.w,
+                              right: 20.w),
+                          child: OutlinedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ThirdNewtonLaw(),
                                 ),
+                              );
+                            },
+                            child: Text("3rd Law of Motion",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFFBA494B),
+                                  fontSize: 16.sp,
+                                )),
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.5,
+                                color: Color(0xFFBA494B),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              padding: EdgeInsets.only(
+                                  left: 2.5.w,
+                                  right: 2.5.w,
+                                  top: 2.5.h,
+                                  bottom: 2.5.h),
+                            ),
                           ),
                         ),
                       ],
@@ -223,10 +270,10 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
           child: TabBar(
             padding: EdgeInsets.all(1.h),
             labelColor: Color(0xFF4785B4),
-            unselectedLabelColor: Color(0xFF4785B4),
+            unselectedLabelColor: Color(0xFFBA494B),
+            labelStyle: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold),
             indicator: UnderlineTabIndicator(
-              borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
-            ),
+                borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)),
             tabs: <Widget>[
               Tab(
                 icon: Icon(Icons.home_rounded, size: 4.h),
@@ -236,21 +283,20 @@ class _StudentLessonsState extends State<StudentLessons> with SingleTickerProvid
                 icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
               ),
             ],
-            controller:  _tabController,
+            controller: _tabController,
           ),
-              decoration: BoxDecoration(  
-                color: Theme.of(context).primaryColor,
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
             // border: Border.all(color: Colors.black, width: 2),
-                borderRadius: BorderRadius.all(Radius.circular(15.0)),        
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade500.withOpacity(.7),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      
-                    ),
-                  ],
-                ),         
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.shade500.withOpacity(.7),
+                spreadRadius: 2,
+                blurRadius: 5,
+              ),
+            ],
+          ),
         ),
       ),
     );

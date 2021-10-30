@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  circular_countdown_timer:
   flutter:
     sdk: flutter
   sizer: ^2.0.15
@@ -65,7 +66,14 @@ flutter:
     - assets/sample.pdf
     - assets/sample.mp3
     - assets/images/
-    
+    - assets/images/games/
+    - assets/images/games/level2/
+    - assets/images/games/level3/
+    - assets/images/games/level4/
+    - assets/images/games/level5/
+    - assets/images/games/Level1/
+    - assets/images/firstLawOfMotion/
+    - assets/images/secondLawOfMotion/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
@@ -84,6 +92,10 @@ flutter:
     - family:  MyFlutterApp
       fonts:
         - asset: assets/MyFlutterApp.ttf
+        - asset: assets/Roboto-Regular.ttf
+    - family:  Roboto
+      fonts:
+        - asset: assets/Roboto-Regular.ttf
     # - family: Schyler
     #   fonts:
     #     - asset: fonts/Schyler-Regular.ttf

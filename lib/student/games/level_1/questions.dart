@@ -1,12 +1,18 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables, non_constant_identifier_names, unused_local_variable, unused_element, avoid_init_to_null
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/Modals.dart';
+import 'package:iassist/student/games/Leaderboards.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
+import 'package:iassist/student/games/level_1/NewtPuzzle.dart';
+
+import '../../../selectionpage.dart';
 
 class QuestionsLevel1 extends StatefulWidget {
   @override
@@ -26,15 +32,15 @@ List<Color> _colorContainerButton = [Colors.white, Colors.black];
 DecorationImage checkImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/check.png'));
+    image: AssetImage('assets/images/games/check.png'));
 DecorationImage wrongImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/wrong.png'));
+    image: AssetImage('assets/images/games/wrong.png'));
 DecorationImage noImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
-    image: AssetImage('assets/images/noImage.png'));
+    image: AssetImage('assets/images/games/noImage.png'));
 List<int> nextFlag = [1, 0, 0];
 var triviaFlag = false;
 var answer;
@@ -56,6 +62,9 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         // ignore: prefer_const_constructors
+        iconTheme: IconThemeData(
+          color: Color(0xFFBA494B),
+        ),
         title: Text(
           'GAME MODE',
           style: TextStyle(
@@ -67,12 +76,70 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        leading: IconButton(
-          // alignment: center,
-          icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFBA494B)),
-          onPressed: () => Navigator.pop(context),
-        ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                  color: Color(0xFFBA494B),
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/SelectionHeader.png"),
+                      fit: BoxFit.cover)),
+              child: Text(
+                'I-Assist',
+                style: const TextStyle(
+                    fontSize: 24,
+                    color: Color(0xFFFFFFFF),
+                    fontFamily: 'MyFlutterApp'),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: const Text(
+                'Home',
+                style:
+                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectionPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text(
+                'Settings',
+                style:
+                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app_outlined),
+              title: const Text(
+                'Exit',
+                style: const TextStyle(
+                    fontSize: 20,
+                    // color: Color(0xFFFFFFFF),
+                    fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Future.delayed(const Duration(milliseconds: 1000), () {
+                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                });
+              },
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -144,17 +211,65 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             ],
                           ),
                         ),
+                        //points
+                        Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Text(
+                            "Current Points: " +
+                                getCurrentPoints().toString() +
+                                "pts",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xFFBA494B),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topRight,
+                          padding: const EdgeInsets.only(top: 15, right: 30),
+                          child: Text(
+                            "Total Points: " + getTotalPoints().toString(),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Color(0xFF4785B4),
+                            ),
+                          ),
+                        ),
                         //lives
                         for (int i = 0; i < getCurrentLives(); i++)
                           Container(
                             height: size.height * 0.03,
                             width: size.width * 0.06,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 25, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/life.png'),
+                                image:
+                                    AssetImage('assets/images/games/life.png'),
+                              ),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(17),
+                                bottomRight: Radius.circular(17),
+                              ),
+                            ),
+                          ),
+                        for (int i = 0; i < 3; i++)
+                          Container(
+                            height: size.height * 0.03,
+                            width: size.width * 0.06,
+                            margin:
+                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.contain,
+                                image: AssetImage(
+                                    'assets/images/games/lives2.png'),
                               ),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(17),
@@ -336,6 +451,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                           } else {
                                             //proceed to showing of not correct answer page
                                             setCurrentLives();
+                                            setCurrentPoints(getCurrentLives());
                                             answerResult = false;
                                             nextFlag[0] = 0;
                                             nextFlag[2] = 1;
@@ -383,7 +499,13 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     triviaFlag = false;
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
-                                    setState(() {});
+                                    // setState(() {});
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => NewtPuzzle(),
+                                      ),
+                                    );
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(
@@ -426,12 +548,16 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Level1(),
-                                        ),
-                                      );
+                                      resetTotalPoints();
+                                      resetCurrentPoints();
+                                      //push to leaderboards
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => (),
+                                      //   ),
+                                      // );
+                                      showNoLivesModal(context, size);
                                     } else {
                                       setState(() {});
                                     }

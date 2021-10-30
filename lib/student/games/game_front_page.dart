@@ -1,12 +1,20 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/level_3/level_3a.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/studentfrontpage.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 
+import '../../selectionpage.dart';
+import 'package:iassist/student/games/level_2/level_2.dart';
+import 'package:iassist/student/games/level_2/level_3.dart';
+import 'package:iassist/student/games/level_3/level_4.dart';
+import 'package:iassist/student/games/level_4/level_4a.dart';
+import 'package:iassist/student/games/level_5/level_5.dart';
 
 class GameFrontPage extends StatefulWidget {
   @override
@@ -30,6 +38,9 @@ class _GameFrontPageState extends State<GameFrontPage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         // ignore: prefer_const_constructors
+        iconTheme: IconThemeData(
+          color: Color(0xFFBA494B),
+        ),
         title: Text(
           'GAME MODE',
           style: TextStyle(
@@ -41,12 +52,70 @@ class _GameFrontPageState extends State<GameFrontPage> {
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        leading: IconButton(
-          // alignment: center,
-          icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFBA494B)),
-          onPressed: () => Navigator.pop(context),
-        ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                  color: Color(0xFFBA494B),
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/SelectionHeader.png"),
+                      fit: BoxFit.cover)),
+              child: Text(
+                'I-Assist',
+                style: const TextStyle(
+                    fontSize: 24,
+                    color: Color(0xFFFFFFFF),
+                    fontFamily: 'MyFlutterApp'),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: const Text(
+                'Home',
+                style:
+                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectionPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text(
+                'Settings',
+                style:
+                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app_outlined),
+              title: const Text(
+                'Exit',
+                style: const TextStyle(
+                    fontSize: 20,
+                    // color: Color(0xFFFFFFFF),
+                    fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Future.delayed(const Duration(milliseconds: 1000), () {
+                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                });
+              },
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -106,7 +175,14 @@ class _GameFrontPageState extends State<GameFrontPage> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => StudentFrontPage(),),);},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => StudentFrontPage(),
+                              ),
+                            );
+                          },
                           child: Container(
                             margin: EdgeInsets.only(
                                 top: 10, right: (size.width * 1) - 80),
@@ -114,7 +190,8 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
-                                image: AssetImage('assets/images/Back.png'),
+                                image:
+                                    AssetImage('assets/images/games/Back.png'),
                               ),
                             ),
                           ),
@@ -125,7 +202,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage('assets/images/Game.png'),
+                              image: AssetImage('assets/images/games/Game.png'),
                             ),
                           ),
                         ),
@@ -135,7 +212,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             top: 225,
                           ),
                           child: Text(
-                            'Level ' + (current_level).toString(),
+                            'Level ' + (getCurrentLevel()).toString(),
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 22,
@@ -147,7 +224,11 @@ class _GameFrontPageState extends State<GameFrontPage> {
                           alignment: Alignment(0.0, -1.0),
                           padding: const EdgeInsets.only(top: 255),
                           child: Text(
-                            'Introduction to Newton\'s \nLaw of Motion',
+                            (getCurrentLevel() == 1)
+                                ? 'Introduction to Newton\'s \nLaw of Motion'
+                                : (getCurrentLevel() == 2)
+                                    ? 'Newton’s First Law of Motion: \nInertia'
+                                    : 'Second law of Motion: Law of Acceleration',
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -194,20 +275,59 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             ),
                             onPressed: () {
                               //navigate to what level is the current level
-                              if (current_level == 1){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Level1(),),);
-                              }else if(current_level == 2){
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level2(),),);
+                              if (current_level == 1) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Level3a(),
+                                  ),
+                                );
+                              } else if (current_level == 2) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Level2(),
+                                  ),
+                                );
+                              } else if (current_level == 3) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Level3(),
+                                  ),
+                                );
+                              } else if (current_level == 4) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Level4a(),
+                                  ),
+                                );
+                              } else if (current_level == 5) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Level5(),
+                                  ),
+                                );
                               }
-                              else if(current_level == 3){
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level3(),),);
-                              }
-                              else if(current_level == 4){
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level4(),),);
-                              }
-                              else if(current_level == 5){
-                                // Navigator.push(context, MaterialPageRoute(builder: (context) => Level5(),),);
-                              }
+                              // else if (current_level == 3) {
+                              //   // Navigator.push(
+                              //   //   context,
+                              //   //   MaterialPageRoute(
+                              //   //     builder: (context) => Level3(),
+                              //   //   ),
+                              //   );
+                              // } else if (current_level == 4) {
+                              //   // Navigator.push(
+                              //   //   context,
+                              //   //   MaterialPageRoute(
+                              //   //     builder: (context) => Level4(),
+                              //   //   ),
+                              //   );
+                              // } else if (current_level == 5) {
+                              //   // Navigator.push(context, MaterialPageRoute(builder: (context) => Level5(),),);
+                              // }
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
