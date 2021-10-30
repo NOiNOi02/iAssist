@@ -279,7 +279,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Level3a(),
+                                    builder: (context) => Level1(),
                                   ),
                                 );
                               } else if (current_level == 2) {
@@ -293,7 +293,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Level3(),
+                                    builder: (context) => Level3a(),
                                   ),
                                 );
                               } else if (current_level == 4) {
