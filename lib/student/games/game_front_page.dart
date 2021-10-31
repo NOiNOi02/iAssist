@@ -8,13 +8,14 @@ import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/studentfrontpage.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
-
+import 'package:iassist/responsive/sizeconfig.dart';
 import '../../selectionpage.dart';
 import 'package:iassist/student/games/level_2/level_2.dart';
 import 'package:iassist/student/games/level_2/level_3.dart';
 import 'package:iassist/student/games/level_3/level_4.dart';
 import 'package:iassist/student/games/level_4/level_4a.dart';
 import 'package:iassist/student/games/level_5/level_5.dart';
+import 'package:sizer/sizer.dart';
 
 class GameFrontPage extends StatefulWidget {
   @override
@@ -46,7 +47,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -58,7 +59,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+             DrawerHeader(
               decoration: BoxDecoration(
                   color: Color(0xFFBA494B),
                   image: DecorationImage(
@@ -66,18 +67,18 @@ class _GameFrontPageState extends State<GameFrontPage> {
                       fit: BoxFit.cover)),
               child: Text(
                 'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+                style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: const Text(
+              title:  Text(
                 'Home',
                 style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                     TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.push(
@@ -90,10 +91,10 @@ class _GameFrontPageState extends State<GameFrontPage> {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: const Text(
+              title:   Text(
                 'Settings',
                 style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                      TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -101,10 +102,10 @@ class _GameFrontPageState extends State<GameFrontPage> {
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
+              title:   Text(
                 'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
+                style:   TextStyle(
+                    fontSize: 16.sp,
                     // color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
@@ -130,11 +131,11 @@ class _GameFrontPageState extends State<GameFrontPage> {
                   Color(0xFFBA494B),
                 ],
               )),
-              height: size.height,
+              height: SizeConfig.safeBlockVertical! * 100,
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: size.height * 0.15,
+                    height: SizeConfig.safeBlockVertical! * 17,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -154,14 +155,14 @@ class _GameFrontPageState extends State<GameFrontPage> {
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top:SizeConfig.safeBlockVertical! * 11,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          height: size.height * 1,
+                          margin: EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          height: SizeConfig.safeBlockVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -185,10 +186,11 @@ class _GameFrontPageState extends State<GameFrontPage> {
                           },
                           child: Container(
                             margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
+                                top: SizeConfig.safeBlockVertical!* 1.5, left: SizeConfig.safeBlockHorizontal! * 7),
+                            height:SizeConfig.safeBlockVertical! * 4,
                             decoration: BoxDecoration(
                               image: DecorationImage(
+                                alignment: Alignment.topLeft,
                                 fit: BoxFit.contain,
                                 image:
                                     AssetImage('assets/images/games/Back.png'),
@@ -197,8 +199,8 @@ class _GameFrontPageState extends State<GameFrontPage> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 100),
-                          height: size.height * .13,
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical!* 15),
+                          height: SizeConfig.safeBlockVertical! * 13.5,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -208,21 +210,21 @@ class _GameFrontPageState extends State<GameFrontPage> {
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(
-                            top: 225,
+                          padding: EdgeInsets.only(
+                            top: SizeConfig.safeBlockVertical!* 29,
                           ),
                           child: Text(
                             'Level ' + (getCurrentLevel()).toString(),
-                            style: const TextStyle(
+                            style:  TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 22,
+                              fontSize: 17.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 255),
+                          padding: EdgeInsets.only(top:  SizeConfig.safeBlockVertical!* 35),
                           child: Text(
                             (getCurrentLevel() == 1)
                                 ? 'Introduction to Newton\'s \nLaw of Motion'
@@ -230,16 +232,16 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                     ? 'Newton’s First Law of Motion: \nInertia'
                                     : 'Second law of Motion: Law of Acceleration',
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 25,
+                              fontSize: 20.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
-                          width: size.width * .5,
-                          margin: const EdgeInsets.only(top: 365, left: 110),
+                          width: SizeConfig.safeBlockHorizontal! * 50,
+                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical!* 45, left: SizeConfig.safeBlockHorizontal!* 25),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -330,14 +332,14 @@ class _GameFrontPageState extends State<GameFrontPage> {
                               // }
                             },
                             child: Padding(
-                              padding: const EdgeInsets.only(
-                                top: 10,
-                                bottom: 10,
+                              padding: EdgeInsets.only(
+                                top: SizeConfig.safeBlockVertical!* 1,
+                                bottom: SizeConfig.safeBlockVertical!* 1,
                               ),
                               child: Text(
                                 "START",
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 15.sp,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),

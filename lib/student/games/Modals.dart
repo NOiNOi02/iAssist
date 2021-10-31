@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/games/Leaderboards.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
@@ -10,6 +11,7 @@ import 'package:iassist/student/games/level_4/questions.dart';
 import 'package:iassist/student/games/level_5/questions.dart';
 import 'package:iassist/student/studentfrontpage.dart';
 import 'package:iassist/student/games/level_2/questions.dart';
+import 'package:sizer/sizer.dart';
 
 //#TODOS: Modal designs, floating button and input player design
 
@@ -27,10 +29,12 @@ void showLivesModal(
       return Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-            height: size.height * 0.35,
-            width: size.width * 0.7,
-            margin:
-                EdgeInsets.only(bottom: size.height * 0.3, left: 12, right: 12),
+            height: SizeConfig.safeBlockVertical! * 40,
+            width: SizeConfig.safeBlockHorizontal! * 70,
+            margin: EdgeInsets.only(
+                bottom: SizeConfig.safeBlockVertical! * 30,
+                left: SizeConfig.safeBlockHorizontal! * 12,
+                right: SizeConfig.safeBlockHorizontal! * 12),
             decoration: BoxDecoration(
               color: Color(0xFFFCFBC2),
               borderRadius: BorderRadius.circular(40),
@@ -39,19 +43,19 @@ void showLivesModal(
               children: [
                 Container(
                   margin: EdgeInsets.only(
-                      top: size.height * 0.08,
-                      left: size.width * 0.09,
-                      right: size.width * 0.09,
-                      bottom: size.height * 0.04),
+                      top: SizeConfig.safeBlockVertical! * 8,
+                      left: SizeConfig.safeBlockHorizontal! * 9,
+                      right: SizeConfig.safeBlockHorizontal! * 9,
+                      bottom: SizeConfig.safeBlockVertical! * 4),
                   decoration: BoxDecoration(
                     color: Color(0xFFFEC192),
                     borderRadius: BorderRadius.circular(40),
                   ),
                 ),
                 Container(
-                  height: 100,
-                  width: 100,
-                  margin: EdgeInsets.only(top: 100, left: size.width * 0.23),
+                  height: SizeConfig.safeBlockVertical! * 25,
+                  width: SizeConfig.safeBlockHorizontal! * 25,
+                  margin: EdgeInsets.only(top: 7.h, left: 22.w),
                   alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -62,49 +66,50 @@ void showLivesModal(
                 ),
                 Container(
                   alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 15),
+                  margin: EdgeInsets.only(top: 1.h),
                   child: Text(
                     'You will have 3 lives \nin this level',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                      fontSize: 11.sp,
                       color: Color(0xffCB2D3F),
                     ),
                   ),
                 ),
                 Container(
                   alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 200),
+                  margin: EdgeInsets.only(top: 25.h),
                   child: Text(
                     'Lives Remaining',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 12.sp,
                       color: Color(0xffCB2D3F),
                     ),
                   ),
                 ),
                 Container(
                   alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 130),
+                  margin: EdgeInsets.only(top: 15.h),
                   child: Text(
                     '3',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 22.sp,
                       color: Colors.white,
                     ),
                   ),
                 ),
                 Container(
-                  width: size.width * 0.3,
-                  height: size.height * 0.05,
+                  width: SizeConfig.safeBlockHorizontal! * 30,
+                  height: SizeConfig.safeBlockVertical! * 5,
                   alignment: Alignment.bottomCenter,
                   margin: EdgeInsets.only(
-                      top: size.height * 0.30, left: size.width * 0.22),
+                      top: SizeConfig.safeBlockHorizontal! * 61,
+                      left: SizeConfig.safeBlockVertical! * 11),
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -182,14 +187,14 @@ void showLivesModal(
                       }
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10,
-                        bottom: 10,
+                      padding: EdgeInsets.only(
+                        top: 1.h,
+                        bottom: 1.h,
                       ),
                       child: Text(
                         "Okay",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 12.sp,
                           // fontWeight: FontWeight.w700,
                           color: Colors.white,
                         ),
@@ -210,7 +215,10 @@ void showLivesModal(
   );
 }
 
-void showNoLivesModal(BuildContext context, Size size) {
+void showNoLivesModal(
+  BuildContext context,
+  Size size,
+) {
   showGeneralDialog(
     barrierLabel: "Barrier",
     barrierDismissible: false,
@@ -221,10 +229,12 @@ void showNoLivesModal(BuildContext context, Size size) {
       return Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-            height: size.height * 0.35,
-            width: size.width * 0.7,
-            margin:
-                EdgeInsets.only(bottom: size.height * 0.3, left: 12, right: 12),
+            height: SizeConfig.safeBlockVertical! * 40,
+            width: SizeConfig.safeBlockHorizontal! * 70,
+            margin: EdgeInsets.only(
+                bottom: SizeConfig.safeBlockVertical! * 30,
+                left: SizeConfig.safeBlockHorizontal! * 12,
+                right: SizeConfig.safeBlockHorizontal! * 12),
             decoration: BoxDecoration(
               color: Color(0xFFFCFBC2),
               borderRadius: BorderRadius.circular(40),
@@ -233,19 +243,19 @@ void showNoLivesModal(BuildContext context, Size size) {
               children: [
                 Container(
                   margin: EdgeInsets.only(
-                      top: size.height * 0.08,
-                      left: size.width * 0.09,
-                      right: size.width * 0.09,
-                      bottom: size.height * 0.04),
+                      top: SizeConfig.safeBlockVertical! * 8,
+                      left: SizeConfig.safeBlockHorizontal! * 9,
+                      right: SizeConfig.safeBlockHorizontal! * 9,
+                      bottom: SizeConfig.safeBlockVertical! * 4),
                   decoration: BoxDecoration(
                     color: Color(0xFFFEC192),
                     borderRadius: BorderRadius.circular(40),
                   ),
                 ),
                 Container(
-                  height: 100,
-                  width: 100,
-                  margin: EdgeInsets.only(top: 100, left: size.width * 0.23),
+                  height: SizeConfig.safeBlockVertical! * 25,
+                  width: SizeConfig.safeBlockHorizontal! * 25,
+                  margin: EdgeInsets.only(top: 7.h, left: 22.w),
                   alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -256,49 +266,50 @@ void showNoLivesModal(BuildContext context, Size size) {
                 ),
                 Container(
                   alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 15),
+                  margin: EdgeInsets.only(top: 1.h),
                   child: Text(
-                    'You ran out of lives!',
+                    'You ran out of lives \nin this level',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 11.sp,
                       color: Color(0xffCB2D3F),
                     ),
                   ),
                 ),
                 Container(
                   alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 200),
+                  margin: EdgeInsets.only(top: 25.h),
                   child: Text(
-                    'No lives remaining',
+                    'No Lives Remaining',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 12.sp,
                       color: Color(0xffCB2D3F),
                     ),
                   ),
                 ),
                 Container(
                   alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 130),
+                  margin: EdgeInsets.only(top: 15.h),
                   child: Text(
                     '0',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 22.sp,
                       color: Colors.white,
                     ),
                   ),
                 ),
                 Container(
-                  width: size.width * 0.5,
-                  height: size.height * 0.05,
+                  width: SizeConfig.safeBlockHorizontal! * 50,
+                  height: SizeConfig.safeBlockVertical! * 5,
                   alignment: Alignment.bottomCenter,
                   margin: EdgeInsets.only(
-                      top: size.height * 0.30, left: size.width * 0.10),
+                      top: SizeConfig.safeBlockHorizontal! * 59,
+                      left: SizeConfig.safeBlockVertical! * 5.5),
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -343,14 +354,14 @@ void showNoLivesModal(BuildContext context, Size size) {
                       showInputPlayerName(context, size);
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10,
-                        bottom: 10,
+                      padding: EdgeInsets.only(
+                        top: 1.h,
+                        bottom: 1.h,
                       ),
                       child: Text(
                         "Go to Leaderboards",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 12.sp,
                           // fontWeight: FontWeight.w700,
                           color: Colors.white,
                         ),
@@ -490,7 +501,10 @@ void showDontSave(BuildContext context, Size size) {
       });
 }
 
-void showNoTime(BuildContext context, Size size) {
+void showNoTime(
+  BuildContext context,
+  Size size,
+) {
   showGeneralDialog(
     barrierLabel: "Barrier",
     barrierDismissible: false,
@@ -501,10 +515,12 @@ void showNoTime(BuildContext context, Size size) {
       return Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-            height: size.height * 0.35,
-            width: size.width * 0.7,
-            margin:
-                EdgeInsets.only(bottom: size.height * 0.3, left: 12, right: 12),
+            height: SizeConfig.safeBlockVertical! * 40,
+            width: SizeConfig.safeBlockHorizontal! * 70,
+            margin: EdgeInsets.only(
+                bottom: SizeConfig.safeBlockVertical! * 30,
+                left: SizeConfig.safeBlockHorizontal! * 12,
+                right: SizeConfig.safeBlockHorizontal! * 12),
             decoration: BoxDecoration(
               color: Color(0xFFFCFBC2),
               borderRadius: BorderRadius.circular(40),
@@ -513,19 +529,19 @@ void showNoTime(BuildContext context, Size size) {
               children: [
                 Container(
                   margin: EdgeInsets.only(
-                      top: size.height * 0.08,
-                      left: size.width * 0.09,
-                      right: size.width * 0.09,
-                      bottom: size.height * 0.04),
+                      top: SizeConfig.safeBlockVertical! * 8,
+                      left: SizeConfig.safeBlockHorizontal! * 9,
+                      right: SizeConfig.safeBlockHorizontal! * 9,
+                      bottom: SizeConfig.safeBlockVertical! * 4),
                   decoration: BoxDecoration(
                     color: Color(0xFFFEC192),
                     borderRadius: BorderRadius.circular(40),
                   ),
                 ),
                 Container(
-                  height: 100,
-                  width: 100,
-                  margin: EdgeInsets.only(top: 100, left: size.width * 0.23),
+                  height: SizeConfig.safeBlockVertical! * 25,
+                  width: SizeConfig.safeBlockHorizontal! * 25,
+                  margin: EdgeInsets.only(top: 7.h, left: 22.w),
                   alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -536,23 +552,24 @@ void showNoTime(BuildContext context, Size size) {
                 ),
                 Container(
                   alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 15),
+                  margin: EdgeInsets.only(top: 1.h),
                   child: Text(
-                    'You ran out of Time!',
+                    'You ran out of time!',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 11.sp,
                       color: Color(0xffCB2D3F),
                     ),
                   ),
                 ),
                 Container(
-                  width: size.width * 0.5,
-                  height: size.height * 0.05,
+                  width: SizeConfig.safeBlockHorizontal! * 50,
+                  height: SizeConfig.safeBlockVertical! * 5,
                   alignment: Alignment.bottomCenter,
                   margin: EdgeInsets.only(
-                      top: size.height * 0.30, left: size.width * 0.10),
+                      top: SizeConfig.safeBlockHorizontal! * 59,
+                      left: SizeConfig.safeBlockVertical! * 5.5),
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -600,14 +617,14 @@ void showNoTime(BuildContext context, Size size) {
                       }
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10,
-                        bottom: 10,
+                      padding: EdgeInsets.only(
+                        top: 1.h,
+                        bottom: 1.h,
                       ),
                       child: Text(
-                        "Try Again!",
+                        "Try again!",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 12.sp,
                           // fontWeight: FontWeight.w700,
                           color: Colors.white,
                         ),
