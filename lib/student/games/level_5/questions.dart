@@ -11,7 +11,6 @@ import 'package:iassist/student/games/level_5/level_5a.dart';
 import 'package:iassist/student/games/level_5/Level5QuestionsAndAnswers.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 
-
 import '../../../selectionpage.dart';
 
 class QuestionsLevel5 extends StatefulWidget {
@@ -240,7 +239,7 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                             ),
                           ),
                         ),
-                         //timer
+                        //timer
                         Container(
                           height: size.height * 0.12,
                           width: size.width * 0.12,
@@ -257,7 +256,12 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                             textFormat: 's',
                             controller: _timerController,
                             onComplete: () {
-                              print("times up");
+                              setCurrentLives();
+                              setCurrentPoints(getCurrentLives());
+                              answerResult = false;
+                              nextFlag[0] = 0;
+                              nextFlag[2] = 1;
+                              setState(() {});
                             },
                           ),
                         ),
@@ -406,19 +410,19 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                                 answerResult =
                                     checkAnswer(answer, getCurrentNumber() + 1);
                                 if (answerResult) {
-                                   _timerController.restart(duration: 15);
+                                  _timerController.restart(duration: 15);
                                   answer = prev_answer = answerResult = null;
                                   triviaFlag = false;
                                   nextFlag = [1, 0, 0];
                                   setCurrentNumber();
                                   setTotalPoints(getCurrentPoints());
-                                  if(getCurrentNumber() == 6){
-                                     Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Level5a(),
-                                    ),
-                                  );
+                                  if (getCurrentNumber() == 6) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Level5a(),
+                                      ),
+                                    );
                                   }
                                   Navigator.push(
                                     context,

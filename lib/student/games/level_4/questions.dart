@@ -268,7 +268,13 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             textFormat: 's',
                             controller: _timerController,
                             onComplete: () {
-                              print("times up");
+                              setCurrentLives();
+                              setCurrentPoints(getCurrentLives());
+                              answerResult = false;
+                              answer_result_multiple = [false, false, false];
+                              nextFlag[0] = 0;
+                              nextFlag[2] = 1;
+                              setState(() {});
                             },
                           ),
                         ),
@@ -721,12 +727,11 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                                     answer = prev_answer = answerResult = null;
                                     triviaFlag = false;
                                     nextFlag = [1, 0, 0];
-                                     if (getCurrentLives() <= 0) {
+                                    _timerController.restart(duration:15);
+                                    if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();
                                       resetCurrentPoints();
-                                      _timerController.restart(duration: 15);
-                              
                                       showNoLivesModal(context, size);
                                     } else {
                                       setState(() {});
