@@ -585,10 +585,12 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                                   checkMultipleAnswers(
                                                       number9Answers,
                                                       getCurrentNumber() + 1);
-
-                                              if (answer_result_multiple[0] &&
-                                                  answer_result_multiple[1] &&
-                                                  answer_result_multiple[2]) {
+                                              int correctAnswers =
+                                                  answer_result_multiple
+                                                      .where((item) =>
+                                                          item == true)
+                                                      .length;
+                                              if (correctAnswers >= 1) {
                                                 //the answer is corret, proceed to showing of trivia
                                                 triviaFlag = true;
                                                 nextFlag[0] = 0;
@@ -679,19 +681,35 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
                                     // setState(() {});
+                                    int points = getCurrentPoints();
+                                    if (getCurrentNumber() == 12) {
+                                      setCurrentPoints(getCurrentLives());
+                                      int correctAnswers =
+                                          answer_result_multiple
+                                              .where((item) => item == true)
+                                              .length;
+                                      if (correctAnswers == 3) {
+                                        points = points - 0;
+                                      }
+                                      if (correctAnswers == 2) {
+                                        points = points - 2;
+                                      }
+                                      if (correctAnswers == 1) {
+                                        points = points - 1;
+                                      }
+                                    }
                                     setTotalPoints(getCurrentPoints());
                                     _timerController.restart(duration: 15);
-                                   if (getCurrentNumber() == 9) {
+                                    if (getCurrentNumber() == 9) {
                                       resetCurrentNumber();
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              Level4(),
+                                          builder: (context) => Level4(),
                                         ),
                                       );
-                                    }else{
-                                       Navigator.push(
+                                    } else {
+                                      Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) =>
@@ -738,7 +756,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     answer = prev_answer = answerResult = null;
                                     triviaFlag = false;
                                     nextFlag = [1, 0, 0];
-                                     _timerController.restart(duration: 15);
+                                    _timerController.restart(duration: 15);
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();

@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 //questions, choices and answers for level 1
+import 'package:iassist/student/games/level.dart';
+
 var questions = [
   "What are the 2 unseen \nforces acting on the\n block at a rest position?",
   "The golf ball will \n______ on top of the tee.",
@@ -138,14 +140,25 @@ int getCurrentPoints() {
 }
 
 void setCurrentPoints(int lives) {
-  if (lives == 3) {
-    currentPoints = 5;
-  } else if (lives == 2) {
-    currentPoints = 3;
-  } else if (lives == 1) {
-    currentPoints = 2;
+  if (currentNumber == 11) {
+    if (lives == 3) {
+      currentPoints = 9;
+    } else if (lives == 2) {
+      currentPoints = 6;
+    } else if (lives == 1) {
+      currentPoints = 3;
+    }
+  } else {
+    if (lives == 3) {
+      currentPoints = 5;
+    } else if (lives == 2) {
+      currentPoints = 3;
+    } else if (lives == 1) {
+      currentPoints = 2;
+    }
   }
 }
+
 
 void resetCurrentPoints() {
   currentPoints = 5;

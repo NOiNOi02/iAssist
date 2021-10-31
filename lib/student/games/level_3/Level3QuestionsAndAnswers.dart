@@ -121,12 +121,22 @@ int getCurrentPoints() {
 }
 
 void setCurrentPoints(int lives) {
-  if (lives == 3) {
-    currentPoints = 5;
-  } else if (lives == 2) {
-    currentPoints = 3;
-  } else if (lives == 1) {
-    currentPoints = 2;
+  if (currentNumber == 8) {
+    if (lives == 3) {
+      currentPoints = 9;
+    } else if (lives == 2) {
+      currentPoints = 6;
+    } else if (lives == 1) {
+      currentPoints = 3;
+    }
+  } else {
+    if (lives == 3) {
+      currentPoints = 5;
+    } else if (lives == 2) {
+      currentPoints = 3;
+    } else if (lives == 1) {
+      currentPoints = 2;
+    }
   }
 }
 

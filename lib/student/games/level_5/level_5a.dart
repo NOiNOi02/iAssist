@@ -240,6 +240,9 @@ class _Level5aState extends State<Level5a> {
                                     builder: (context) => Leaderboards(),
                                   ));
                               showInputPlayerName(context, size);
+                              resetCurrentLevel();
+                              resetCurrentLevel();
+
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(

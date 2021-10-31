@@ -575,9 +575,12 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                                       multipleAnswers,
                                                       getCurrentNumber() + 1);
 
-                                              if (answer_result_multiple[0] &&
-                                                  answer_result_multiple[1] &&
-                                                  answer_result_multiple[2]) {
+                                              int correctAnswers =
+                                                  answer_result_multiple
+                                                      .where((item) =>
+                                                          item == true)
+                                                      .length;
+                                              if (correctAnswers >= 1) {
                                                 //the answer is corret, proceed to showing of trivia
                                                 triviaFlag = true;
                                                 nextFlag[0] = 0;
@@ -666,7 +669,24 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                     triviaFlag = false;
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
-                                    setTotalPoints(getCurrentPoints());
+                                    int points = getCurrentPoints();
+                                    if (getCurrentNumber() == 12) {
+                                      setCurrentPoints(getCurrentLives());
+                                      int correctAnswers =
+                                          answer_result_multiple
+                                              .where((item) => item == true)
+                                              .length;
+                                      if (correctAnswers == 3) {
+                                        points = points - 0;
+                                      }
+                                      if (correctAnswers == 2) {
+                                        points = points - 2;
+                                      }
+                                      if (correctAnswers == 1) {
+                                        points = points - 1;
+                                      }
+                                    }
+                                    setTotalPoints(points);
                                     _timerController.restart(duration: 15);
                                     // setState(() {});
                                     if (getCurrentNumber() == 13) {
@@ -724,7 +744,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                     //resetting the values
                                     answer = prev_answer = answerResult = null;
                                     triviaFlag = false;
-                                    nextFlag = [1, 0, 0]; 
+                                    nextFlag = [1, 0, 0];
                                     _timerController.restart(duration: 15);
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
