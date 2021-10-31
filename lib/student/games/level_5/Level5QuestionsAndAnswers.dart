@@ -75,17 +75,11 @@ void resetCurrentNumber() {
 
 bool checkAnswer(int answer, int number) {
   //wll return true or false, depends on the answer and the correct answer
-  print("answer" + answer.toString());
   for (int i = 1; i <= 5; i++) {
-    print(i.toString() + '==' + number.toString());
     if (i == number) {
-      print(answer == answers[i - 1]);
-      print(answer.toString() + '==' + answers[i - 1].toString());
       if (answer == answers[i - 1]) {
-        print('correct');
         return true;
       } else {
-        print('wrong');
         return false;
       }
     }

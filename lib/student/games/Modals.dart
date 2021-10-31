@@ -148,7 +148,7 @@ void showLivesModal(
                           ),
                         );
                       }
-                       if (getCurrentLevel() == 2) {
+                      if (getCurrentLevel() == 2) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -156,7 +156,7 @@ void showLivesModal(
                           ),
                         );
                       }
-                       if (getCurrentLevel() == 3) {
+                      if (getCurrentLevel() == 3) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -164,7 +164,7 @@ void showLivesModal(
                           ),
                         );
                       }
-                       if (getCurrentLevel() == 4) {
+                      if (getCurrentLevel() == 4) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -172,7 +172,7 @@ void showLivesModal(
                           ),
                         );
                       }
-                       if (getCurrentLevel() == 5) {
+                      if (getCurrentLevel() == 5) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -423,6 +423,11 @@ void showInputPlayerName(BuildContext context, Size size) {
                 Navigator.pop(context);
                 setPlayerNamesAndScores(inputName, getTotalPoints());
                 inputName = "";
+                resetCurrentLives();
+                resetCurrentPoints();
+                resetCurrentLevel();
+                resetCurrentNumber();
+                resetTotalPoints();
                 // });
               },
             ),
@@ -472,11 +477,153 @@ void showDontSave(BuildContext context, Size size) {
                     builder: (context) => StudentFrontPage(),
                   ),
                 );
-
+                resetCurrentLives();
+                resetCurrentPoints();
+                resetCurrentLevel();
+                resetCurrentNumber();
+                resetTotalPoints();
                 // });
               },
             ),
           ],
         );
       });
+}
+
+void showNoTime(BuildContext context, Size size) {
+  showGeneralDialog(
+    barrierLabel: "Barrier",
+    barrierDismissible: false,
+    barrierColor: Colors.black.withOpacity(0.5),
+    transitionDuration: Duration(milliseconds: 700),
+    context: context,
+    pageBuilder: (_, __, ___) {
+      return Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+            height: size.height * 0.35,
+            width: size.width * 0.7,
+            margin:
+                EdgeInsets.only(bottom: size.height * 0.3, left: 12, right: 12),
+            decoration: BoxDecoration(
+              color: Color(0xFFFCFBC2),
+              borderRadius: BorderRadius.circular(40),
+            ),
+            child: Stack(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                      top: size.height * 0.08,
+                      left: size.width * 0.09,
+                      right: size.width * 0.09,
+                      bottom: size.height * 0.04),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFEC192),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                ),
+                Container(
+                  height: 100,
+                  width: 100,
+                  margin: EdgeInsets.only(top: 100, left: size.width * 0.23),
+                  alignment: Alignment.bottomCenter,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image: AssetImage('assets/images/games/timer.png'),
+                    ),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.topCenter,
+                  margin: EdgeInsets.only(top: 15),
+                  child: Text(
+                    'You ran out of Time!',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Color(0xffCB2D3F),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: size.width * 0.5,
+                  height: size.height * 0.05,
+                  alignment: Alignment.bottomCenter,
+                  margin: EdgeInsets.only(
+                      top: size.height * 0.30, left: size.width * 0.10),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black26,
+                          offset: Offset(0, 4),
+                          blurRadius: 5.0)
+                    ],
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      stops: [0.0, 1.0],
+                      colors: [
+                        Color(0xFFBA494B),
+                        Color(0XFFFFB79D),
+                      ],
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  //#TODO: DI ko na ffloat si button, naccut kapag tg babaan ko ang margin
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40.0),
+                        ),
+                      ),
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.transparent),
+                      // elevation: MaterialStateProperty.all(3),
+                      shadowColor:
+                          MaterialStateProperty.all(Colors.transparent),
+                    ),
+                    onPressed: () {
+                      //if pushed proceeed to questions
+                      print(getCurrentLives());
+                      if (getCurrentLives() <= 0) {
+                        showNoLivesModal(context, size);
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QuestionsLevel5(),
+                          ),
+                        );
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10,
+                        bottom: 10,
+                      ),
+                      child: Text(
+                        "Try Again!",
+                        style: TextStyle(
+                          fontSize: 16,
+                          // fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )),
+      );
+    },
+    transitionBuilder: (_, anim, __, child) {
+      return SlideTransition(
+        position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(anim),
+        child: child,
+      );
+    },
+  );
 }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/Leaderboards.dart';
 import 'package:iassist/student/games/Modals.dart';
 import 'package:iassist/student/studentfrontpage.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
@@ -158,9 +159,7 @@ class _Level5aState extends State<Level5a> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                              top: 250,
-                              left: 45),
+                          margin: EdgeInsets.only(top: 250, left: 45),
                           height: 250,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -236,11 +235,11 @@ class _Level5aState extends State<Level5a> {
                             onPressed: () {
                               //if pushed proceeed to questions
                               Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => StudentFrontPage(),
-                                ),
-                              );
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Leaderboards(),
+                                  ));
+                              showInputPlayerName(context, size);
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
