@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
+import 'package:iassist/student/games/level_2/Level2QuestionsAndAnswers.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
@@ -10,7 +12,7 @@ import 'package:iassist/student/games/level_2/level_2.dart';
 import 'package:iassist/student/games/level_2/level_2a.dart';
 import 'package:iassist/student/games/level_2/questions.dart';
 import 'package:iassist/student/games/Modals.dart';
-
+import 'package:sizer/sizer.dart';
 
 import '../../../selectionpage.dart';
 
@@ -44,19 +46,19 @@ class _Level2State extends State<Level2> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                   color: Color(0xFFBA494B),
                   image: DecorationImage(
@@ -64,20 +66,24 @@ class _Level2State extends State<Level2> {
                       fit: BoxFit.cover)),
               child: Text(
                 'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+                style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: const Text(
+              title: Text(
                 'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
+                resetCurrentLevel();
+                resetCurrentLives();
+                resetCurrentNumber();
+                resetTotalPoints();
+                resetCurrentPoints();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -88,10 +94,10 @@ class _Level2State extends State<Level2> {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: const Text(
+              title:   Text(
                 'Settings',
                 style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                      TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -99,10 +105,10 @@ class _Level2State extends State<Level2> {
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
+              title:   Text(
                 'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
+                style:   TextStyle(
+                    fontSize: 16.sp,
                     // color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
@@ -132,7 +138,7 @@ class _Level2State extends State<Level2> {
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: size.height * 0.15,
+                    height: SizeConfig.safeBlockVertical! * 17,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -153,10 +159,12 @@ class _Level2State extends State<Level2> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
-                    height: size.height * .08,
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+                        alignment: Alignment.topLeft,
                         fit: BoxFit.contain,
                         image: AssetImage('assets/images/game1.png'),
                       ),
@@ -164,26 +172,27 @@ class _Level2State extends State<Level2> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 40, left: 35),
+                    padding: EdgeInsets.only(top: 4.h, left: 15.w),
                     child: Text(
                       'Level 2\nNewton\'s First Law of Motion: Inertia',
                       textAlign: TextAlign.left,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          height: size.height * 1,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -207,19 +216,21 @@ class _Level2State extends State<Level2> {
                           },
                           child: Container(
                             margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
+                                top: SizeConfig.safeBlockVertical! * 1.5,
+                                left: SizeConfig.safeBlockHorizontal! * 7),
+                            height: SizeConfig.safeBlockVertical! * 4,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
+                                alignment: Alignment.topLeft,
                                 image: AssetImage('assets/images/Back.png'),
                               ),
                             ),
                           ),
                         ),
                         Container(
-                          margin: const EdgeInsets.only(top: 25, left: 30),
-                          height: size.height * 0.38,
+                          margin: EdgeInsets.only(top: 2.5.h, left: 22.w),
+                          height: SizeConfig.safeBlockVertical! * 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -229,11 +240,11 @@ class _Level2State extends State<Level2> {
                           ),
                         ),
                         Container(
-                          margin: const EdgeInsets.only(
-                              top: 180, left: 5, right: 150),
-                          height: size.height * 0.48,
+                          margin: EdgeInsets.only(top: 20.h, left: 1.w),
+                          height: SizeConfig.safeBlockVertical! * 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(
+                              alignment: Alignment.topLeft,
                               fit: BoxFit.contain,
                               image: AssetImage(
                                   'assets/images/games/level2/Character.png'),
@@ -241,8 +252,11 @@ class _Level2State extends State<Level2> {
                           ),
                         ),
                         Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 555, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 70,
+                              left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -292,7 +306,7 @@ class _Level2State extends State<Level2> {
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 12.sp,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),

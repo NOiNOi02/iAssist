@@ -672,22 +672,14 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
                                     // setState(() {});
-                                    int points = getCurrentPoints();
+                                     int points = getCurrentPoints();
+                                    setCurrentPoints(getCurrentLives());
                                     if (getCurrentNumber() == 12) {
-                                      setCurrentPoints(getCurrentLives());
                                       int correctAnswers =
                                           answer_result_multiple
                                               .where((item) => item == true)
                                               .length;
-                                      if (correctAnswers == 3) {
-                                        points = points - 0;
-                                      }
-                                      if (correctAnswers == 2) {
-                                        points = points - 2;
-                                      }
-                                      if (correctAnswers == 1) {
-                                        points = points - 1;
-                                      }
+                                      points = getCurrentLives() * correctAnswers;
                                     }
                                     setTotalPoints(getCurrentPoints());
                                     _timerController.restart(duration: 15);

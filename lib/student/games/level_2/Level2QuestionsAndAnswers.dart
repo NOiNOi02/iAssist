@@ -3,18 +3,18 @@
 import 'package:iassist/student/games/level.dart';
 
 var questions = [
-  "What are the 2 unseen \nforces acting on the\n block at a rest position?",
-  "The golf ball will \n______ on top of the tee.",
-  "What will happen to the egg \nif you hit the paper plate?",
-  "The golf ball will continue \nto move forward \nand in constant motion",
-  "Why then, do we observe everyday \nobjects in motion slowing down \nand becoming motionless seemingly \nwithout an outside force?",
-  "The ball will continue to move \nas it rolls down the cliff.",
-  "You slide a book across the table \nfrom left to right. What is the force \nacting on the book to slow it \ndown to bring it to rest?",
+  "What are the 2 unseen forces acting on the block at a rest position?",
+  "The golf ball will ______ on top of the tee.",
+  "What will happen to the egg if you hit the paper plate?",
+  "The golf ball will continue to move forward and in constant motion",
+  "Why then, do we observe everyday objects in motion slowing down and becoming motionless seemingly without an outside force?",
+  "The ball will continue to move as it rolls down the cliff.",
+  "You slide a book across the table from left to right. What is the force acting on the book to slow it down to bring it to rest?",
   "A boy pushing a box.",
   "Apple on top of the books.",
   "Moving car tires.",
   "Air resistance of a parachute.",
-  "Which of the following is in the \nrest position or constant \nmotion? Choose 3.",
+  "Which of the following is in the rest position or constant motion? Choose 3.",
   "Which has greater inertia?"
 ];
 var choices = [
@@ -97,14 +97,14 @@ var trivia_image = [
   'assets/images/games/level2/trivia_image 1.png',
   'assets/images/games/level2/trivia_image 2.png',
   'assets/images/games/level2/trivia_image 3.png',
+  'assets/images/games/level2/image 7.png',
   'assets/images/games/noImage.png',
-  'assets/images/games/noImage.png',
-  'assets/images/games/noImage.png',
-  'assets/images/games/noImage.png',
-  'assets/images/games/noImage.png',
-  'assets/images/games/noImage.png',
-  'assets/images/games/noImage.png',
-  'assets/images/games/noImage.png',
+  'assets/images/games/level2/image 8.png',
+  'assets/images/games/level2/image 9.png',
+  'assets/images/games/level2/image 10.png',
+  'assets/images/games/level2/image 11.png',
+  'assets/images/games/level2/image 12.png',
+  'assets/images/games/level2/image 13.png',
   'assets/images/games/noImage.png',
   'assets/images/games/noImage.png',
 ];

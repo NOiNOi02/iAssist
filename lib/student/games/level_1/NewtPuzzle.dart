@@ -359,12 +359,21 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                 //continue to level 2
                                 setCurrentLevel();
                                 resetCurrentLives();
+                                resetCurrentPoints();
+                                resetCurrentNumber();
+                                showDialogBox = false;
+                                newtSize = 0.57;
+                                newtMargin = 0.10;
+                                newtMarginLeft = 0;
+                                newtAlignment = Alignment.topCenter;
+
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => GameFrontPage(),
                                   ),
                                 );
+                                return;
                               }
                               if (getCurrentNumber() < 5) {
                                 setTotalPoints(getCurrentPoints());
