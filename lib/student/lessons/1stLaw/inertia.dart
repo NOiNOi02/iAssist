@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 
 import '../Newton1st.dart';
 import 'balancedForces.dart';
@@ -28,7 +30,7 @@ class _InertiaState extends State<Inertia> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -44,93 +46,103 @@ class _InertiaState extends State<Inertia> {
             ),
           ),
         ),
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 30),
-            child: Center(
-              child: Text(
-                "INERTIA",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Color(0xFFBA494B),
+            height: SizeConfig.safeBlockVertical! * 100,
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: SizeConfig.safeBlockVertical! * 10,
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  child: Center(
+                    child: Text(
+                      "INERTIA",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.sp,
+                        color: Color(0xFFBA494B),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Inertia is the property of an object to resist any change in its state of motion. All objects have the tendency to resist changes in their state in motion or keep doing what they are doing. A more massive object which has more inertia is more difficult to move from rest, slow down, speed up, or change its direction.',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  height: SizeConfig.safeBlockVertical! * 32,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Inertia is the property of an object to resist any change in its state of motion. All objects have the tendency to resist changes in their state in motion or keep doing what they are doing. A more massive object which has more inertia is more difficult to move from rest, slow down, speed up, or change its direction.',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10, left: 25, right: 25),
-            height: size.height * .19,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage('assets/images/firstLawOfMotion/2.png'),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 3, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Source:https://lh3.googleusercontent.com/Iuoy0bd7g6BFsj8lapWJO05Cc5SKL9IeQ6fMsm4e6ZiSGnvpMSzPZ7snUs8O-HxKQAJ=s113',
-                style: const TextStyle(
-                  fontSize: 9,
-                  letterSpacing: 1.4,
-                  color: Color(0xFF888888),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 25.5.h),
+                  height: size.height * .19,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image: AssetImage('assets/images/firstLawOfMotion/2.png'),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'Figure 2. Object’s inertia based on mass.',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  fontFamily: 'Roboto',
-                  fontSize: 14,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 43.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Source:https://lh3.googleusercontent.com/Iuoy0bd7g6BFsj8lapWJO05Cc5SKL9IeQ6fMsm4e6ZiSGnvpMSzPZ7snUs8O-HxKQAJ=s113',
+                      style: TextStyle(
+                        fontSize: 6.sp,
+                        letterSpacing: 1.4,
+                        color: Color(0xFF888888),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Figure 2 illustrates how mass affects the force needed to change the motion of an object. The man (left) pushing the 300 kg ball demands a great amount of force to change the ball’s motion due to its great mass. On the other hand, the man on the right, requires only a small amount of force relative to its small mass. Object’s inertia is directly proportional to its mass.',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Roboto',
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 46.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Figure 2. Object’s inertia based on mass.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        fontFamily: 'Roboto',
+                        fontSize: 9.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 37.h),
+                  height: SizeConfig.safeBlockVertical! * 50,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Figure 2 illustrates how mass affects the force needed to change the motion of an object. The man (left) pushing the 300 kg ball demands a great amount of force to change the ball’s motion due to its great mass. On the other hand, the man on the right, requires only a small amount of force relative to its small mass. Object’s inertia is directly proportional to its mass.',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        fontFamily: 'Roboto',
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ]),

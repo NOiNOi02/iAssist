@@ -60,7 +60,7 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
       body: SingleChildScrollView(
           child: Column(children: <Widget>[
         Container(
-          height: SizeConfig.safeBlockVertical! * 100,
+          height: SizeConfig.safeBlockVertical! * 105,
           child: Stack(children: <Widget>[
             Container(
               height: SizeConfig.safeBlockVertical! * 10,
@@ -330,7 +330,7 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 50.h),
+              margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 46.h),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
