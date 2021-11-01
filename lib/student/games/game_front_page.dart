@@ -241,7 +241,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                         ),
                         Container(
                           width: SizeConfig.safeBlockHorizontal! * 50,
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical!* 45, left: SizeConfig.safeBlockHorizontal!* 25),
+                          margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 50.h),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
