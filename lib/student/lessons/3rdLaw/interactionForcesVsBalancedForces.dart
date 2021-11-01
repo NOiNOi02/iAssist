@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 
 import '../Newton3rd.dart';
 import 'actionForceAndReactionForce.dart';
@@ -30,7 +32,7 @@ class _InteractionForcesVsBalancedForcesState
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -46,79 +48,92 @@ class _InteractionForcesVsBalancedForcesState
             ),
           ),
         ),
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 30, left: 25, right: 25),
-            child: Center(
-              child: Text(
-                "INTERACTION FORCES VS BALANCED FORCES",
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Color(0xFFBA494B),
+            height: SizeConfig.safeBlockVertical! * 100,
+            margin: EdgeInsets.symmetric(horizontal: 5.w),
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: SizeConfig.safeBlockVertical! * 10,
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  child: Center(
+                    child: Text(
+                      "INTERACTION FORCES VS BALANCED FORCES",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.sp,
+                        color: Color(0xFFBA494B),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'The difference between the forces related to Law of Interaction and forces in a balanced state are as follows:',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  height: SizeConfig.safeBlockVertical! * 27,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'The difference between the forces related to Law of Interaction and forces in a balanced state are as follows:',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10, left: 25, right: 25),
-            height: size.height * .22,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage('assets/images/secondLawOfMotion/16.png'),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 3, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Source:https://lh3.googleusercontent.com/2ok8jEccmnjzhI5TC061WMr63B9HRiQoJ5ghkTWSzoGJIx14BSxMYnV1DF-7zvWWHuIdg=s170',
-                style: const TextStyle(
-                  fontSize: 9,
-                  letterSpacing: 1.4,
-                  color: Color(0xFF888888),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 16.h),
+                  height: size.height * .22,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image:
+                          AssetImage('assets/images/secondLawOfMotion/16.png'),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 25),
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'Table 1. Differences between interaction and balanced forces.',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 14,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 33.5.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Source:https://lh3.googleusercontent.com/2ok8jEccmnjzhI5TC061WMr63B9HRiQoJ5ghkTWSzoGJIx14BSxMYnV1DF-7zvWWHuIdg=s170',
+                      style: TextStyle(
+                        fontSize: 6.sp,
+                        letterSpacing: 1.4,
+                        color: Color(0xFF888888),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                Container(
+                  margin: EdgeInsets.only(
+                      left: 5.w, right: 5.w, top: 38.h, bottom: 5.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Table 1. Differences between interaction and balanced forces.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 9.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
+          )
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(

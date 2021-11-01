@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 
 import '../Newton2nd.dart';
 import 'massAndAcceleration.dart';
@@ -28,7 +30,7 @@ class _UnitOfForceState extends State<UnitOfForce> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -44,131 +46,149 @@ class _UnitOfForceState extends State<UnitOfForce> {
             ),
           ),
         ),
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 30),
-            child: Text(
-              "Mass and Acceleration",
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-                color: Color(0xFF000000),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 30),
-            child: Center(
-              child: Text(
-                "UNIT OF FORCE",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Color(0xFFBA494B),
+            height: SizeConfig.safeBlockVertical! * 120,
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: SizeConfig.safeBlockVertical! * 15,
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 3.h),
+                  child: Text(
+                    "Mass and Acceleration",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 11.sp,
+                      color: Color(0xFF000000),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'There are three units of force. The two are variations of the metric system CGS and MKS and the other one is the English system, FPS.',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  height: SizeConfig.safeBlockVertical! * 20,
+                  child: Center(
+                    child: Text(
+                      "UNIT OF FORCE",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.sp,
+                        color: Color(0xFFBA494B),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10, left: 25, right: 25),
-            height: size.height * .22,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage('assets/images/secondLawOfMotion/9.png'),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 25, left: 30, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'This can be expressed in the equation form as:',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 14.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'There are three units of force. The two are variations of the metric system CGS and MKS and the other one is the English system, FPS.',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 25, left: 35, right: 25),
-            child: Center(
-              child: Text(
-                'Acceleration = Net force / Mass',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 18.h),
+                  height: size.height * .22,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image:
+                          AssetImage('assets/images/secondLawOfMotion/9.png'),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10, left: 25, right: 25),
-            height: size.height * .22,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage('assets/images/secondLawOfMotion/1.png'),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Therefore, the force acting on an object is equal to the mass of that object times its acceleration. Where force has a unit expresses in Newton (N). One Newton is defined as the amount of force required to give a 1-kg mass of acceleration of 1m/s/s or',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 10.w, right: 5.w, top: 37.5.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'This can be expressed in the equation form as:',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 10.9.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-            child: Center(
-              child: Text(
-                '1N = (1kg) (m/s^2)',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 43.5.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Center(
+                    child: Text(
+                      'Acceleration = Net force / Mass',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 25),
-            height: size.height * .22,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage('assets/images/secondLawOfMotion/2.png'),
-              ),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 47.h),
+                  height: size.height * .22,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image:
+                          AssetImage('assets/images/secondLawOfMotion/1.png'),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 35.h),
+                  height: SizeConfig.safeBlockVertical! * 100,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Therefore, the force acting on an object is equal to the mass of that object times its acceleration. Where force has a unit expresses in Newton (N). One Newton is defined as the amount of force required to give a 1-kg mass of acceleration of 1m/s/s or',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 85.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Center(
+                    child: Text(
+                      '1N = (1kg) (m/s^2)',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                      left: 5.w, right: 5.w, top: 90.h, bottom: 5.w),
+                  height: size.height * .22,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image:
+                          AssetImage('assets/images/secondLawOfMotion/2.png'),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ]),
