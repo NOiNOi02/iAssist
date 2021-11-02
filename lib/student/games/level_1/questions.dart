@@ -195,7 +195,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 21.sp,
+                          fontSize: 18.sp,
                           color: Colors.white.withOpacity(0.72)),
                     ),
                   ),
@@ -308,7 +308,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                           Container(
                             alignment: Alignment(0.0, 0.0),
                             padding: EdgeInsets.only(
-                                top: 48.h, left: 10.w, right: 10.w),
+                                top: 47.h, left: 10.w, right: 10.w),
                             child: Text(
                               //getting the questions based from what current number is
                               trivia[getCurrentNumber()],

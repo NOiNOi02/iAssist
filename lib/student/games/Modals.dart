@@ -434,6 +434,12 @@ void showInputPlayerName(BuildContext context, Size size) {
                 Navigator.pop(context);
                 print(getTotalPoints().toString()+'points');
                 setPlayerNamesAndScores(inputName, getTotalPoints());
+                 Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Leaderboards(),
+                  ),
+                );
                 inputName = "";
                 resetCurrentLives();
                 resetCurrentPoints();

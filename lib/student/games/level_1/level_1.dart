@@ -166,7 +166,7 @@ class _Level1State extends State<Level1> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: EdgeInsets.only(top: 4.h, left: 15.w),
+                    margin: EdgeInsets.only(top: 4.h, left: 17.w),
                     child: Text(
                       'Level 1\nIntroduction to Newton\'s Law of Motion',
                       textAlign: TextAlign.left,
