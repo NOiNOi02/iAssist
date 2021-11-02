@@ -39,6 +39,8 @@ dependencies:
   audioplayers: ^0.20.1
   flutter_pdfview: ^1.2.1
   http: ^0.13.4
+  auto_size_text: ^3.0.0
+  responsive_grid: ^2.0.0
 
 dev_dependencies:
   flutter_test:

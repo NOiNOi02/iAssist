@@ -3,12 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/level_2/Level2QuestionsAndAnswers.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_2/level_3.dart';
 import 'package:iassist/student/games/level_3/level_3a.dart';
 import 'package:iassist/student/games/level_3/questions.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../selectionpage.dart';
 
@@ -42,7 +44,7 @@ class _Level3State extends State<Level3> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -54,7 +56,7 @@ class _Level3State extends State<Level3> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                   color: Color(0xFFBA494B),
                   image: DecorationImage(
@@ -62,20 +64,24 @@ class _Level3State extends State<Level3> {
                       fit: BoxFit.cover)),
               child: Text(
                 'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+                style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: const Text(
+              title: Text(
                 'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
+                resetCurrentLevel();
+                resetCurrentLives();
+                resetCurrentNumber();
+                resetTotalPoints();
+                resetCurrentPoints();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -86,10 +92,9 @@ class _Level3State extends State<Level3> {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: const Text(
+              title: Text(
                 'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -97,10 +102,10 @@ class _Level3State extends State<Level3> {
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
+              title: Text(
                 'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
+                style: TextStyle(
+                    fontSize: 16.sp,
                     // color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),

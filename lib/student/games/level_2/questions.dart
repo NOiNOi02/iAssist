@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/games/Modals.dart';
 import 'package:iassist/student/games/level_2/level_3.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
@@ -11,6 +12,8 @@ import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_2/level_2.dart';
 import 'package:iassist/student/games/level_2/Level2QuestionsAndAnswers.dart';
+import 'package:sizer/sizer.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 import '../../../selectionpage.dart';
 
@@ -78,7 +81,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -90,7 +93,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                   color: Color(0xFFBA494B),
                   image: DecorationImage(
@@ -98,20 +101,24 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                       fit: BoxFit.cover)),
               child: Text(
                 'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+                style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: const Text(
+              title: Text(
                 'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
+                resetCurrentLevel();
+                resetCurrentLives();
+                resetCurrentNumber();
+                resetTotalPoints();
+                resetCurrentPoints();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -122,10 +129,9 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: const Text(
+              title: Text(
                 'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -133,10 +139,10 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
+              title: Text(
                 'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
+                style: TextStyle(
+                    fontSize: 16.sp,
                     // color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
@@ -186,20 +192,33 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                     ),
                   ),
                   Container(
+                    margin: EdgeInsets.only(
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        alignment: Alignment.topLeft,
+                        fit: BoxFit.contain,
+                        image: AssetImage('assets/images/game1.png'),
+                      ),
+                    ),
+                  ),
+                  Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding:
-                        const EdgeInsets.only(top: 40, left: 0, right: 100),
+                    padding: EdgeInsets.only(top: 4.h, left: 15.w),
                     child: Text(
-                      'Level 2\nNewton\'s First Law of Motion: \n Inertia',
+                      'Level 2\nNewton\'s First Law of Motion: Inertia',
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          color: Colors.white.withOpacity(0.72)),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.sp,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.180,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
@@ -222,28 +241,28 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                         //points
                         Container(
                           alignment: Alignment.center,
-                          padding: const EdgeInsets.only(top: 15),
+                          padding: EdgeInsets.only(top: 1.5.h),
                           child: Text(
                             "Current Points: " +
                                 getCurrentPoints().toString() +
                                 "pts",
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment.topRight,
-                          padding: const EdgeInsets.only(top: 15, right: 30),
+                          padding: EdgeInsets.only(top: 1.5.h, right: 6.w),
                           child: Text(
                             "Total Points: " + getTotalPoints().toString(),
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFF4785B4),
                             ),
                           ),
@@ -258,6 +277,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                             isReverseAnimation: true,
                             ringColor: Color(0xFFEB9785),
                             fillColor: Color(0xFFBA494B),
+                            backgroundColor: Colors.white,
                             width: size.width * 0.15,
                             height: size.height * 0.15,
                             duration: 15,
@@ -278,10 +298,10 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                         //lives
                         for (int i = 0; i < getCurrentLives(); i++)
                           Container(
-                            height: size.height * 0.03,
-                            width: size.width * 0.06,
+                            height: 3.h,
+                            width: 6.w,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 7.w, top: 1.h),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -296,10 +316,10 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                           ),
                         for (int i = 0; i < 3; i++)
                           Container(
-                            height: size.height * 0.03,
-                            width: size.width * 0.06,
+                            height: 3.h,
+                            width: 6.w,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 7.w, top: 1.h),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -314,20 +334,53 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                           ),
 
                         Container(
-                          margin: const EdgeInsets.only(top: 40),
-                          height: size.height * 0.30,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage(
-                                  'assets/images/games/level2/Group 59.png'),
+                            margin: EdgeInsets.only(
+                                top: SizeConfig.safeBlockHorizontal! * 12,
+                                right: SizeConfig.safeBlockHorizontal! * 8),
+                            height: SizeConfig.safeBlockVertical! * 25,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: AssetImage(
+                                    'assets/images/games/level2/Group 59.png'),
+                              ),
                             ),
-                          ),
-                        ),
+                            child: Stack(
+                              children: [
+                                //questions
+                                Container(
+                                    alignment: Alignment(0.0, -1.0),
+                                    padding: EdgeInsets.only(
+                                        top: 4.7.h, left: 30.w, right: 10.w),
+                                    child: (!triviaFlag)
+                                        ? AutoSizeText(
+                                            //getting the questions based from what current number is
+                                            questions[getCurrentNumber()],
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 11.sp,
+                                              color: Color(0xFFBA494B),
+                                            ),
+                                            maxLines: 3,
+                                          )
+                                        : AutoSizeText(
+                                            trivia[getCurrentNumber()],
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 6.sp,
+                                              color: Color(0xFFBA494B),
+                                            ),
+                                            maxLines: 9,
+                                          )),
+                              ],
+                            )),
 
                         Container(
-                          margin: const EdgeInsets.only(top: 250),
-                          height: size.height * 0.10,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 30),
+                          height: SizeConfig.safeBlockVertical! * 15,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -337,45 +390,20 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                         triviaImage[getCurrentNumber()])),
                           ),
                         ),
-                        //questions
-                        Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(
-                              top: 100, left: 100, right: 10),
-                          child: (!triviaFlag)
-                              ? Text(
-                                  //getting the questions based from what current number is
-                                  questions[getCurrentNumber()],
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                    color: Color(0xFFBA494B),
-                                  ),
-                                )
-                              : Text(
-                                  //getting the questions based from what current number is
-                                  trivia[getCurrentNumber()],
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                    color: Color(0xFFBA494B),
-                                  ),
-                                ),
-                        ),
+
                         //choices
                         for (int i = 0;
                             i < choices[getCurrentNumber()].length;
                             i++)
                           Container(
-                            width: size.width * 0.74,
-                            height: size.height * 0.08,
+                            alignment: Alignment.center,
+                            width: 74.w,
                             margin: (getCurrentNumber() == 11)
                                 ? EdgeInsets.only(
-                                    top: (i + 5) * 50.toDouble(), left: 53.5)
+                                    top: (i + 3.5) * 8.h.toDouble(), left: 53.5)
                                 : EdgeInsets.only(
-                                    top: (i + 7) * 50.toDouble(), left: 53.5),
+                                    top: (i + 5.5) * 8.h.toDouble(),
+                                    left: 53.5),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -496,7 +524,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                 child: Text(
                                   choices[getCurrentNumber()][i],
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 12.sp,
                                     // fontWeight: FontWeight.w700,
                                     color: (answerResult != null)
                                         ? (answerResult == true &&
@@ -526,8 +554,15 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                           ),
                         //next
                         Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 550, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: (choices[getCurrentNumber()].length >= 4)
+                              ? EdgeInsets.only(
+                                  top: SizeConfig.blockSizeVertical! * 80,
+                                  left: SizeConfig.safeBlockHorizontal! * 12)
+                              : EdgeInsets.only(
+                                  top: SizeConfig.blockSizeVertical! * 70,
+                                  left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -639,7 +674,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                     child: Text(
                                       "NEXT",
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 12.sp,
                                         // fontWeight: FontWeight.w700,
                                         color: Colors.white,
                                       ),
@@ -670,21 +705,13 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
                                     int points = getCurrentPoints();
+                                    setCurrentPoints(getCurrentLives());
                                     if (getCurrentNumber() == 12) {
-                                      setCurrentPoints(getCurrentLives());
                                       int correctAnswers =
                                           answer_result_multiple
                                               .where((item) => item == true)
                                               .length;
-                                      if (correctAnswers == 3) {
-                                        points = points - 0;
-                                      }
-                                      if (correctAnswers == 2) {
-                                        points = points - 2;
-                                      }
-                                      if (correctAnswers == 1) {
-                                        points = points - 1;
-                                      }
+                                      points = getCurrentLives() * correctAnswers;
                                     }
                                     setTotalPoints(points);
                                     _timerController.restart(duration: 15);
@@ -715,7 +742,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                     child: Text(
                                       "NEXT",
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 12.sp,
                                         // fontWeight: FontWeight.w700,
                                         color: Colors.white,
                                       ),
@@ -763,7 +790,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                     child: Text(
                                       incorrectMessage,
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 12.sp,
                                         // fontWeight: FontWeight.w700,
                                         color: Colors.white,
                                       ),

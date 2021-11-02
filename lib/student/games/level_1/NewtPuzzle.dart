@@ -10,8 +10,10 @@ import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/questions.dart';
 import 'package:iassist/student/games/game_front_page.dart';
-
+import 'package:sizer/sizer.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import '../../../selectionpage.dart';
+import 'package:responsive_grid/responsive_grid.dart';
 
 class NewtPuzzle extends StatefulWidget {
   @override
@@ -49,19 +51,19 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                   color: Color(0xFFBA494B),
                   image: DecorationImage(
@@ -69,20 +71,23 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                       fit: BoxFit.cover)),
               child: Text(
                 'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+                style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: const Text(
+              title: Text(
                 'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
+                resetCurrentLives();
+                resetCurrentNumber();
+                resetTotalPoints();
+                resetCurrentPoints();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -93,10 +98,9 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: const Text(
+              title: Text(
                 'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -104,10 +108,10 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
+              title: Text(
                 'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
+                style: TextStyle(
+                    fontSize: 16.sp,
                     // color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
@@ -158,10 +162,12 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
-                    height: size.height * .08,
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+                        alignment: Alignment.topLeft,
                         fit: BoxFit.contain,
                         image: AssetImage('assets/images/games/game1.png'),
                       ),
@@ -169,13 +175,13 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 40, left: 35),
+                    padding: EdgeInsets.only(top: 4.h, left: 15.w),
                     child: Text(
                       'Level 1\nIntroduction to Newton\'s Law of Motion',
                       textAlign: TextAlign.left,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
@@ -187,8 +193,9 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          height: size.height * 1,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -203,7 +210,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: EdgeInsets.only(top: size.height * 0.03),
+                          padding: EdgeInsets.only(top: 3.h),
                           child: Text(
                             (getCurrentNumber() == 5)
                                 ? 'Very good! \nAll questions done, Character unlocked!'
@@ -211,33 +218,34 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                     (getCurrentNumber()).toString() +
                                     " question done, keep going",
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              top: size.height * newtMargin,
-                              left: size.width * newtMarginLeft),
-                          height: size.height * newtSize,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              alignment: newtAlignment,
-                              fit: BoxFit.contain,
-                              image: AssetImage(
-                                  'assets/images/games/Level1/robot.png'),
                             ),
                           ),
                         ),
                         if (showDialogBox)
                           Container(
                             margin: EdgeInsets.only(
-                                top: size.height * 0.15,
-                                right: size.width * 0.10),
-                            height: size.height * 0.25,
+                                top: size.height * 0.33,
+                                left: size.width * 0.05),
+                            height: size.height * 0.35,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                alignment: Alignment.bottomLeft,
+                                fit: BoxFit.contain,
+                                image: AssetImage(
+                                    'assets/images/games/Level1/robot.png'),
+                              ),
+                            ),
+                          ),
+                        if (showDialogBox)
+                          Container(
+                            margin: EdgeInsets.only(
+                                top: SizeConfig.safeBlockVertical! * 15,
+                                right: SizeConfig.safeBlockHorizontal! * 10),
+                            height: SizeConfig.safeBlockVertical! * 25,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 alignment: Alignment.topRight,
@@ -250,48 +258,79 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                         if (showDialogBox)
                           Container(
                             margin: EdgeInsets.only(
-                                left: size.width * 0.41,
-                                top: size.height * 0.22),
+                                left: SizeConfig.blockSizeHorizontal! * 45,
+                                top: SizeConfig.blockSizeVertical! * 21),
                             child: Text(
                               "Hi! My name is NEWT. I \nwill be your guide as you\nlearn Newton’s three laws \nof motion.",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: (size.height * size.width) * 0.000045,
+                                fontSize: 10.sp,
                                 // fontWeight: FontWeight.w700,
                                 color: Color(0xFFBA494B),
                               ),
                             ),
                           ),
-                        for (int i = 0; i < 5 - getCurrentNumber(); i++)
+                        if (!showDialogBox)
                           Container(
-                            margin: (i == 0)
-                                ? EdgeInsets.only(left: size.width*0.22, top: size.height*0.323)
-                                : (i == 1)
-                                    ? EdgeInsets.only(left:  size.width*0.22, top: size.height*0.480)
-                                    : (i == 2)
-                                        ? EdgeInsets.only(left: size.width*0.545, top: 130)
-                                        : (i == 3)
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 17.w, vertical: 11.h),
+                            color: Colors.transparent,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 1.w, vertical: 5.h),
+                                  height:46.h,
+                                  width:100.w,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      alignment: Alignment.topCenter,
+                                      fit: BoxFit.contain,
+                                      image: AssetImage(
+                                          'assets/images/games/Level1/robot.png'),
+                                    ),
+                                  ),
+                                ),
+                                for (int i = 0; i < 5 - getCurrentNumber(); i++)
+                                  Container(
+                                    margin: (i == 0)
+                                        ? EdgeInsets.only(left: 0, top: 20.h)
+                                        : (i == 1)
                                             ? EdgeInsets.only(
-                                                left:  size.width*0.545, top: size.height*0.480)
-                                            : EdgeInsets.only(
-                                                left:  size.width*0.545, top: size.height*0.480),
-                            height: size.height * 0.156,
-                            width: size.width * 2,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                alignment: Alignment.centerLeft,
-                                fit: BoxFit.contain,
-                                image: (i == 0)
-                                    ? AssetImage(
-                                        'assets/images/games/Level1/rectangleLock.png')
-                                    : AssetImage(
-                                        'assets/images/games/Level1/squareLock.png'),
-                              ),
+                                                left: 0, top: 35.5.h)
+                                            : (i == 2)
+                                                ? EdgeInsets.only(
+                                                    left: 33.w, top: 4.5.h)
+                                                : (i == 3)
+                                                    ? EdgeInsets.only(
+                                                        left: 32.5.w,
+                                                        top: 35.5.h)
+                                                    : EdgeInsets.only(
+                                                        left: 32.5.w,
+                                                        top: 35.5.h),
+                                    height: 16.h,
+                                    width: 100.w,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        alignment: Alignment.centerLeft,
+                                        fit: BoxFit.contain,
+                                        image: (i == 0)
+                                            ? AssetImage(
+                                                'assets/images/games/Level1/rectangleLock.png')
+                                            : AssetImage(
+                                                'assets/images/games/Level1/squareLock.png'),
+                                      ),
+                                    ),
+                                  ),
+                              ],
                             ),
                           ),
                         Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 555, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 70,
+                              left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -330,12 +369,21 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                 //continue to level 2
                                 setCurrentLevel();
                                 resetCurrentLives();
+                                resetCurrentPoints();
+                                resetCurrentNumber();
+                                showDialogBox = false;
+                                newtSize = 0.57;
+                                newtMargin = 0.10;
+                                newtMarginLeft = 0;
+                                newtAlignment = Alignment.topCenter;
+
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => GameFrontPage(),
                                   ),
                                 );
+                                return;
                               }
                               if (getCurrentNumber() < 5) {
                                 setTotalPoints(getCurrentPoints());
@@ -346,7 +394,11 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                   ),
                                 );
                               } else {
-                                showDialogBox = true;
+                                if (showDialogBox) {
+                                  showDialogBox = false;
+                                } else {
+                                  showDialogBox = true;
+                                }
                                 newtSize = 0.35;
                                 newtMargin = 0.33;
                                 newtMarginLeft = 0.05;

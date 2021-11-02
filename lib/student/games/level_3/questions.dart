@@ -682,21 +682,14 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     setCurrentNumber();
                                     // setState(() {});
                                     int points = getCurrentPoints();
-                                    if (getCurrentNumber() == 12) {
-                                      setCurrentPoints(getCurrentLives());
+                                    setCurrentPoints(getCurrentLives());
+                                    if (getCurrentNumber() == 9) {
                                       int correctAnswers =
                                           answer_result_multiple
                                               .where((item) => item == true)
                                               .length;
-                                      if (correctAnswers == 3) {
-                                        points = points - 0;
-                                      }
-                                      if (correctAnswers == 2) {
-                                        points = points - 2;
-                                      }
-                                      if (correctAnswers == 1) {
-                                        points = points - 1;
-                                      }
+                                      points =
+                                          getCurrentLives() * correctAnswers;
                                     }
                                     setTotalPoints(getCurrentPoints());
                                     _timerController.restart(duration: 15);
