@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 //questions, choices and answers for level 1
 var questions = [
-  "Oh no! Newt needs to go home.\n Help him launch his backpack rocket! \nASAP",
+  "Oh no! Newt needs to go home.\n Help him launch his backpack rocket! ASAP",
   "Newt has a higher mass\nThe rocket needs to produce...?h",
   "Newt need to accelerate faster, \nyou have to...?",
   "Newt house is near. \nYet he is travelling so fast!",
