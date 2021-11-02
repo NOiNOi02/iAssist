@@ -60,7 +60,7 @@ var images = [
   'assets/images/games/noImage.png'
 ];
 
-var trivias = [
+var trivia = [
   "NEWTON is the SI unit of force \nwhere 1N = (1kg) (1m/s2)",
   "Acceleration is the rate of change \nin the velocity of an object.",
   "Heavier objects require more force \nto accelerate than lighter objects.",
@@ -74,7 +74,7 @@ var trivias = [
 
 var triviaImage = [
   'assets/images/games/noImage.png',
-  'assets/images/games/level3/image 1.png',  
+  'assets/images/games/level3/image 1.png',
   'assets/images/games/level3/image 2.png',
   'assets/images/games/level3/trivia 4.png',
   'assets/images/games/level3/trivia 5.png',
@@ -102,6 +102,10 @@ List getTriviaImages() {
 
 int getCurrentNumber() {
   return currentNumber;
+}
+
+List getTrivias() {
+  return trivia;
 }
 
 void resetCurrentPoints() {

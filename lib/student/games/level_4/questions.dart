@@ -13,7 +13,9 @@ import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_3/level_4.dart';
 import 'package:iassist/student/games/level_4/Level4QuestionsAndAnswers.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
-
+import 'package:iassist/responsive/sizeconfig.dart';
+import 'package:sizer/sizer.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import '../../../selectionpage.dart';
 
 class QuestionsLevel4 extends StatefulWidget {
@@ -82,7 +84,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -94,7 +96,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                   color: Color(0xFFBA494B),
                   image: DecorationImage(
@@ -102,20 +104,24 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                       fit: BoxFit.cover)),
               child: Text(
                 'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+                style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: const Text(
+              title: Text(
                 'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
+                resetCurrentLevel();
+                resetCurrentLives();
+                resetCurrentNumber();
+                resetTotalPoints();
+                resetCurrentPoints();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -126,10 +132,9 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: const Text(
+              title: Text(
                 'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -137,10 +142,10 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
+              title: Text(
                 'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
+                style: TextStyle(
+                    fontSize: 16.sp,
                     // color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
@@ -190,19 +195,33 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                     ),
                   ),
                   Container(
+                    margin: EdgeInsets.only(
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 7,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        alignment: Alignment.topLeft,
+                        fit: BoxFit.contain,
+                        image: AssetImage('assets/images/game1.png'),
+                      ),
+                    ),
+                  ),
+                  Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 40, left: 35),
+                    padding: EdgeInsets.only(top: 1.h, left: 15.w),
                     child: Text(
-                      'Level 4\nNewton\'s Third Law of Motion: Law of Interaction',
+                      'Level 4\nNewton\'s Third Law of Motion: \nLaw of Interaction',
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Colors.white.withOpacity(0.72)),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.sp,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
@@ -317,20 +336,51 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                           ),
 
                         Container(
-                          margin: const EdgeInsets.only(top: 40),
-                          height: size.height * 0.30,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage(
-                                  'assets/images/games/level2/Group 59.png'),
+                            margin: const EdgeInsets.only(top: 40),
+                            height: size.height * 0.30,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.contain,
+                                image: AssetImage(
+                                    'assets/images/games/level2/Group 59.png'),
+                              ),
                             ),
-                          ),
-                        ),
+                            child: Stack(
+                              children: [
+                                //questions
+                                Container(
+                                    alignment: Alignment(0.0, -1.0),
+                                    padding: EdgeInsets.only(
+                                        top: 8.h, left: 30.w, right: 10.w),
+                                    child: (!triviaFlag)
+                                        ? AutoSizeText(
+                                            //getting the questions based from what current number is
+                                            questions[getCurrentNumber()],
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 11.sp,
+                                              color: Color(0xFFBA494B),
+                                            ),
+                                            maxLines: 3,
+                                          )
+                                        : AutoSizeText(
+                                            trivia[getCurrentNumber()],
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 6.sp,
+                                              color: Color(0xFFBA494B),
+                                            ),
+                                            maxLines: 9,
+                                          )),
+                              ],
+                            )),
 
                         Container(
-                          margin: const EdgeInsets.only(top: 250),
-                          height: size.height * 0.10,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 30),
+                          height: SizeConfig.safeBlockVertical! * 15,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -338,45 +388,19 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             ),
                           ),
                         ),
-                        //questions
-                        Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(
-                              top: 100, left: 100, right: 10),
-                          child: (!triviaFlag)
-                              ? Text(
-                                  //getting the questions based from what current number is
-                                  questions[getCurrentNumber()],
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                    color: Color(0xFFBA494B),
-                                  ),
-                                )
-                              : Text(
-                                  //getting the questions based from what current number is
-                                  trivia[getCurrentNumber()],
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                    color: Color(0xFFBA494B),
-                                  ),
-                                ),
-                        ),
-
                         //choices
                         for (int i = 0;
                             i < choices[getCurrentNumber()].length;
                             i++)
                           Container(
-                            width: size.width * 0.74,
+                            alignment: Alignment.center,
+                            width: 74.w,
                             margin: (getCurrentNumber() == 9)
                                 ? EdgeInsets.only(
-                                    top: (i + 5) * 50.toDouble(), left: 53.5)
+                                    top: (i + 4.5) * 8.h.toDouble(), left: 53.5)
                                 : EdgeInsets.only(
-                                    top: (i + 7) * 50.toDouble(), left: 53.5),
+                                    top: (i + 6.5) * 8.h.toDouble(),
+                                    left: 53.5),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -496,7 +520,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                                 child: Text(
                                   choices[getCurrentNumber()][i],
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 12.sp,
                                     // fontWeight: FontWeight.w700,
                                     color: (answerResult != null)
                                         ? (answerResult == true &&
@@ -526,8 +550,15 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                           ),
                         //next
                         Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 480, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: (choices[getCurrentNumber()].length >= 4)
+                              ? EdgeInsets.only(
+                                  top: SizeConfig.blockSizeVertical! * 85,
+                                  left: SizeConfig.safeBlockHorizontal! * 12)
+                              : EdgeInsets.only(
+                                  top: SizeConfig.blockSizeVertical! * 80,
+                                  left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -672,14 +703,15 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
                                     // setState(() {});
-                                     int points = getCurrentPoints();
+                                    int points = getCurrentPoints();
                                     setCurrentPoints(getCurrentLives());
                                     if (getCurrentNumber() == 12) {
                                       int correctAnswers =
                                           answer_result_multiple
                                               .where((item) => item == true)
                                               .length;
-                                      points = getCurrentLives() * correctAnswers;
+                                      points =
+                                          getCurrentLives() * correctAnswers;
                                     }
                                     setTotalPoints(getCurrentPoints());
                                     _timerController.restart(duration: 15);

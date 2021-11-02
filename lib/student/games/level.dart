@@ -1,6 +1,6 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 
-int level = 1;
+int level = 3;
 var currentLives = 3;
 var totalPoints = 0;
 List<String> playerNames = [];
@@ -46,6 +46,7 @@ void setCurrentLives() {
 void setCurrentLevel() {
   level++;
 }
+
 void resetCurrentLevel() {
   level = 1;
 }

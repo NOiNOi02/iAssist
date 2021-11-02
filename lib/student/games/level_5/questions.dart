@@ -11,7 +11,9 @@ import 'package:iassist/student/games/level_5/level_5.dart';
 import 'package:iassist/student/games/level_5/level_5a.dart';
 import 'package:iassist/student/games/level_5/Level5QuestionsAndAnswers.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
-
+import 'package:sizer/sizer.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import '../../../selectionpage.dart';
 
 class QuestionsLevel5 extends StatefulWidget {
@@ -75,7 +77,7 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -87,7 +89,7 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                   color: Color(0xFFBA494B),
                   image: DecorationImage(
@@ -95,18 +97,17 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                       fit: BoxFit.cover)),
               child: Text(
                 'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+                style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: const Text(
+              title: Text(
                 'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.push(
@@ -119,21 +120,25 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: const Text(
+              title: Text(
                 'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
+                resetCurrentLevel();
+                resetCurrentLives();
+                resetCurrentNumber();
+                resetTotalPoints();
+                resetCurrentPoints();
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
+              title: Text(
                 'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
+                style: TextStyle(
+                    fontSize: 16.sp,
                     // color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
               ),
@@ -183,19 +188,33 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                     ),
                   ),
                   Container(
-                    alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 40, left: 35),
+                    margin: EdgeInsets.only(
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        alignment: Alignment.topLeft,
+                        fit: BoxFit.contain,
+                        image: AssetImage('assets/images/game1.png'),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.topLeft,
+                    padding: EdgeInsets.only(top: 6.h, left: 25.w),
                     child: Text(
-                      'Level 5',
+                      'Level 5\n',
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Colors.white.withOpacity(0.72)),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.sp,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
@@ -215,31 +234,32 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                             ],
                           ),
                         ),
+
                         //points
                         Container(
                           alignment: Alignment.center,
-                          padding: const EdgeInsets.only(top: 15),
+                          padding: EdgeInsets.only(top: 1.5.h),
                           child: Text(
                             "Current Points: " +
                                 getCurrentPoints().toString() +
                                 "pts",
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment.topRight,
-                          padding: const EdgeInsets.only(top: 15, right: 30),
+                          padding: EdgeInsets.only(top: 1.5.h, right: 6.w),
                           child: Text(
                             "Total Points: " + getTotalPoints().toString(),
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFF4785B4),
                             ),
                           ),
@@ -272,10 +292,10 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                         //lives
                         for (int i = 0; i < getCurrentLives(); i++)
                           Container(
-                            height: size.height * 0.03,
-                            width: size.width * 0.06,
+                            height: 3.h,
+                            width: 6.w,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 7.w, top: 1.h),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -307,41 +327,48 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                             ),
                           ),
                         Container(
-                          margin: const EdgeInsets.only(top: 10, left: 20),
-                          height: size.height * 0.30,
-                          width: size.width * .70,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage(
-                                  'assets/images/games/level5/Rectangle 47.png'),
+                            margin: EdgeInsets.only(
+                                top: SizeConfig.safeBlockHorizontal! * 10,
+                                left: SizeConfig.safeBlockHorizontal! * 20),
+                            height: SizeConfig.safeBlockVertical! * 15,
+                            width: SizeConfig.safeBlockHorizontal! * 75,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.fill,
+                                alignment: Alignment.topLeft,
+                                image: AssetImage(
+                                    'assets/images/games/level5/Rectangle 47.png'),
+                              ),
                             ),
-                          ),
-                        ),
+                            child: Stack(
+                              children: [
+                                //questions
+                                Container(
+                                    alignment: Alignment(0.0, -1.0),
+                                    padding: EdgeInsets.only(
+                                        top: 3.5.h, left: 11.w, right: 10.w),
+                                    child: AutoSizeText(
+                                      //getting the questions based from what current number is
+                                      questions[getCurrentNumber()],
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 9.sp,
+                                        color: Color(0xFFBA494B),
+                                      ),
+                                      maxLines: 3,
+                                    )),
+                              ],
+                            )),
 
                         Container(
-                          margin: const EdgeInsets.only(top: 250),
-                          height: size.height * 0.40,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 25),
+                          height: SizeConfig.safeBlockVertical! * 50,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
                               image: AssetImage(images[getCurrentNumber()]),
-                            ),
-                          ),
-                        ),
-                        //questions
-                        Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(
-                              top: 88, left: 5, right: 100),
-                          child: Text(
-                            //getting the questions based from what current number is
-                            questions[getCurrentNumber()],
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
-                              color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
@@ -372,12 +399,12 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
         selectedItemColor: Color(0xFFBA494B),
         onTap: (int index) {
           if (getCurrentNumber() == 4) {
-               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Level5a(),
-                  ),
-                );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Level5a(),
+              ),
+            );
           } else {
             setState(() {
               _selectedIndex = index;

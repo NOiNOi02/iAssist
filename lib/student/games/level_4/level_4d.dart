@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/student/games/Modals.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
@@ -11,6 +12,10 @@ import 'package:iassist/student/games/level_4/level_4a.dart';
 import 'package:iassist/student/games/level_4/level_4b.dart';
 import 'package:iassist/student/games/level_4/level_4c.dart';
 import 'package:iassist/student/games/level_4/questions.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
+import 'package:sizer/sizer.dart';
+import 'Level4QuestionsAndAnswers.dart';
+import '../../../selectionpage.dart';
 
 class Level4d extends StatefulWidget {
   @override
@@ -41,7 +46,7 @@ class _Level4State extends State<Level4d> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -52,7 +57,73 @@ class _Level4State extends State<Level4d> {
           icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFBA494B)),
           onPressed: () => Navigator.pop(context),
         ),
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                  color: Color(0xFFBA494B),
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/SelectionHeader.png"),
+                      fit: BoxFit.cover)),
+              child: Text(
+                'I-Assist',
+                style: TextStyle(
+                    fontSize: 20.sp,
+                    color: Color(0xFFFFFFFF),
+                    fontFamily: 'MyFlutterApp'),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text(
+                'Home',
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                resetCurrentLevel();
+                resetCurrentLives();
+                resetCurrentNumber();
+                resetTotalPoints();
+                resetCurrentPoints();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectionPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text(
+                'Settings',
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app_outlined),
+              title: Text(
+                'Exit',
+                style: TextStyle(
+                    fontSize: 16.sp,
+                    // color: Color(0xFFFFFFFF),
+                    fontFamily: 'MyFlutterApp'),
+              ),
+              onTap: () {
+                Future.delayed(const Duration(milliseconds: 1000), () {
+                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                });
+              },
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -71,7 +142,7 @@ class _Level4State extends State<Level4d> {
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: size.height * 0.15,
+                    height: SizeConfig.safeBlockVertical! * 17,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -92,37 +163,40 @@ class _Level4State extends State<Level4d> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
-                    height: size.height * .08,
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
+                        alignment: Alignment.topLeft,
                         image: AssetImage('assets/images/game1.png'),
                       ),
                     ),
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 20, left: 15),
+                    padding: EdgeInsets.only(top: 1.h, left: 15.w),
                     child: Text(
                       'Level 4\nNewton\'s Third Law of Motion: \nLaw of Interaction',
                       textAlign: TextAlign.left,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 13,
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          height: size.height * 1,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -146,60 +220,36 @@ class _Level4State extends State<Level4d> {
                           },
                           child: Container(
                             margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
+                                top: SizeConfig.safeBlockVertical! * 1.5,
+                                left: SizeConfig.safeBlockHorizontal! * 7),
+                            height: SizeConfig.safeBlockVertical! * 4,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
+                                alignment: Alignment.topLeft,
                                 image: AssetImage('assets/images/Back.png'),
                               ),
                             ),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                              top: 250,
-                              left: 45),
-                          height: 250,
+                          margin: EdgeInsets.only(top: 20.h, left: 5.w),
+                          height: SizeConfig.safeBlockVertical! * 50,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              alignment: newtAlignment,
                               fit: BoxFit.contain,
+                              alignment: Alignment.topLeft,
                               image: AssetImage(
-                                  'assets/images/games/Level1/robot.png'),
+                                  'assets/images/games/level4/Group 81.png'),
                             ),
                           ),
                         ),
                         Container(
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
                           margin: EdgeInsets.only(
-                              top: size.height * 0.15,
-                              right: size.width * 0.10),
-                          height: size.height * 0.25,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              alignment: Alignment.topRight,
-                              fit: BoxFit.contain,
-                              image: AssetImage(
-                                  'assets/images/games/Level1/dialogBox.png'),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: size.width * 0.41, top: size.height * 0.22),
-                          child: Text(
-                            "Level 4 complete! \nCongratulations!\nReady for the next level?",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: (size.height * size.width) * 0.000045,
-                              // fontWeight: FontWeight.w700,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 555, left: 53.5),
+                              top: SizeConfig.blockSizeVertical! * 70,
+                              left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -251,7 +301,7 @@ class _Level4State extends State<Level4d> {
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 12.sp,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),
