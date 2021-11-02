@@ -13,7 +13,6 @@ import 'package:iassist/student/games/game_front_page.dart';
 import 'package:sizer/sizer.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import '../../../selectionpage.dart';
-import 'package:responsive_grid/responsive_grid.dart';
 
 class NewtPuzzle extends StatefulWidget {
   @override
@@ -280,8 +279,8 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                 Container(
                                   margin: EdgeInsets.symmetric(
                                       horizontal: 1.w, vertical: 5.h),
-                                  height:46.h,
-                                  width:100.w,
+                                  height: 46.h,
+                                  width: 100.w,
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
                                       alignment: Alignment.topCenter,
