@@ -432,6 +432,7 @@ void showInputPlayerName(BuildContext context, Size size) {
                 // setState(() {
                 //   codeDialog = valueText;
                 Navigator.pop(context);
+                print(getTotalPoints().toString()+'points');
                 setPlayerNamesAndScores(inputName, getTotalPoints());
                 inputName = "";
                 resetCurrentLives();

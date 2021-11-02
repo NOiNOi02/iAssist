@@ -561,7 +561,6 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();
-                                      resetTotalPoints();
                                       resetCurrentPoints();
                                       //push to leaderboards
                                       // Navigator.push(
