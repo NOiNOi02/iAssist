@@ -314,7 +314,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                                         left: 32.5.w,
                                                         top: 35.5.h),
                                     height: 16.h,
-                                    width: 100.w,
+                                    width: (i == 0) ? 100.w : 50.w,
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         alignment: Alignment.centerLeft,

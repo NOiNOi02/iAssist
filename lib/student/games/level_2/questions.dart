@@ -383,7 +383,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
 
                         Container(
                           margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 30),
+                              top: SizeConfig.safeBlockVertical! * 30, left:5.w, right:5.w),
                           height: SizeConfig.safeBlockVertical! * 15,
                           decoration: BoxDecoration(
                             image: DecorationImage(

@@ -174,7 +174,7 @@ class _Level1State extends State<Level1> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: EdgeInsets.only(top: 4.h, left: 15.w),
+                    margin: EdgeInsets.only(top: 4.h, left: 17.w),
                     child: Text(
                       'Level 1\nIntroduction to Newton\'s Law of Motion',
                       textAlign: TextAlign.left,
@@ -205,30 +205,6 @@ class _Level1State extends State<Level1> {
                                 blurRadius: 6,
                               ),
                             ],
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: SizeConfig.safeBlockVertical! * 1.5,
-                                left: SizeConfig.safeBlockHorizontal! * 7),
-                            height: SizeConfig.safeBlockVertical! * 4,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                alignment: Alignment.topLeft,
-                                image:
-                                    AssetImage('assets/images/games/Back.png'),
-                              ),
-                            ),
                           ),
                         ),
                         Container(

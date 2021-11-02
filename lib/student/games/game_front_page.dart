@@ -245,7 +245,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 20.sp,
+                              fontSize: 17.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),

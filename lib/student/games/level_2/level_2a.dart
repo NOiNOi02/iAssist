@@ -187,7 +187,7 @@ class _Level2State extends State<Level2a> {
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
@@ -208,33 +208,9 @@ class _Level2State extends State<Level2a> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: SizeConfig.safeBlockVertical! * 1.5,
-                                left: SizeConfig.safeBlockHorizontal! * 7),
-                            height: SizeConfig.safeBlockVertical! * 4,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                alignment: Alignment.topLeft,
-                                image:
-                                    AssetImage('assets/images/games/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
-                          margin: EdgeInsets.only(top: 4.5.h, left: 22.w),
-                          height: SizeConfig.safeBlockVertical! * 25,
+                          margin: EdgeInsets.only(top: 15.h, left: 22.w),
+                          height: SizeConfig.safeBlockVertical! * 22,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -244,7 +220,7 @@ class _Level2State extends State<Level2a> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 20.h, left: 1.w),
+                          margin: EdgeInsets.only(top: 25.h, left: 5.w),
                           height: SizeConfig.safeBlockVertical! * 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(
