@@ -13,6 +13,7 @@ import 'package:iassist/student/games/game_front_page.dart';
 import 'package:sizer/sizer.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import '../../../selectionpage.dart';
+import 'package:responsive_grid/responsive_grid.dart';
 
 class NewtPuzzle extends StatefulWidget {
   @override
@@ -224,20 +225,21 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                             ),
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              top: size.height * newtMargin,
-                              left: size.width * newtMarginLeft),
-                          height: size.height * newtSize,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              alignment: newtAlignment,
-                              fit: BoxFit.contain,
-                              image: AssetImage(
-                                  'assets/images/games/Level1/robot.png'),
+                        if (showDialogBox)
+                          Container(
+                            margin: EdgeInsets.only(
+                                top: size.height * 0.33,
+                                left: size.width * 0.05),
+                            height: size.height * 0.35,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                alignment: Alignment.bottomLeft,
+                                fit: BoxFit.contain,
+                                image: AssetImage(
+                                    'assets/images/games/Level1/robot.png'),
+                              ),
                             ),
                           ),
-                        ),
                         if (showDialogBox)
                           Container(
                             margin: EdgeInsets.only(
@@ -268,51 +270,59 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                               ),
                             ),
                           ),
-                        for (int i = 0; i < 5 - getCurrentNumber(); i++)
+                        if (!showDialogBox)
                           Container(
-                            margin: (i == 0)
-                                ? EdgeInsets.only(
-                                    left: SizeConfig.safeBlockHorizontal! * 22,
-                                    top: SizeConfig.safeBlockVertical! * 32.3)
-                                : (i == 1)
-                                    ? EdgeInsets.only(
-                                        left: SizeConfig.safeBlockHorizontal! *
-                                            22,
-                                        top: SizeConfig.safeBlockVertical! *
-                                            48.5)
-                                    : (i == 2)
-                                        ? EdgeInsets.only(
-                                            left: SizeConfig.safeBlockHorizontal! *
-                                                54.5,
-                                            top: SizeConfig.safeBlockVertical! *
-                                                16)
-                                        : (i == 3)
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 17.w, vertical: 11.h),
+                            color: Colors.transparent,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 1.w, vertical: 5.h),
+                                  height:46.h,
+                                  width:100.w,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      alignment: Alignment.topCenter,
+                                      fit: BoxFit.contain,
+                                      image: AssetImage(
+                                          'assets/images/games/Level1/robot.png'),
+                                    ),
+                                  ),
+                                ),
+                                for (int i = 0; i < 5 - getCurrentNumber(); i++)
+                                  Container(
+                                    margin: (i == 0)
+                                        ? EdgeInsets.only(left: 0, top: 20.h)
+                                        : (i == 1)
                                             ? EdgeInsets.only(
-                                                left: SizeConfig
-                                                        .safeBlockHorizontal! *
-                                                    54.5,
-                                                top: SizeConfig
-                                                        .safeBlockVertical! *
-                                                    48.5)
-                                            : EdgeInsets.only(
-                                                left: SizeConfig
-                                                        .safeBlockHorizontal! *
-                                                    54.5,
-                                                top: SizeConfig
-                                                        .safeBlockVertical! *
-                                                    48.5),
-                            height: SizeConfig.safeBlockVertical! * 16.6,
-                            width: SizeConfig.safeBlockHorizontal! * 100,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                alignment: Alignment.centerLeft,
-                                fit: BoxFit.contain,
-                                image: (i == 0)
-                                    ? AssetImage(
-                                        'assets/images/games/Level1/rectangleLock.png')
-                                    : AssetImage(
-                                        'assets/images/games/Level1/squareLock.png'),
-                              ),
+                                                left: 0, top: 35.5.h)
+                                            : (i == 2)
+                                                ? EdgeInsets.only(
+                                                    left: 33.w, top: 4.5.h)
+                                                : (i == 3)
+                                                    ? EdgeInsets.only(
+                                                        left: 32.5.w,
+                                                        top: 35.5.h)
+                                                    : EdgeInsets.only(
+                                                        left: 32.5.w,
+                                                        top: 35.5.h),
+                                    height: 16.h,
+                                    width: 100.w,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        alignment: Alignment.centerLeft,
+                                        fit: BoxFit.contain,
+                                        image: (i == 0)
+                                            ? AssetImage(
+                                                'assets/images/games/Level1/rectangleLock.png')
+                                            : AssetImage(
+                                                'assets/images/games/Level1/squareLock.png'),
+                                      ),
+                                    ),
+                                  ),
+                              ],
                             ),
                           ),
                         Container(

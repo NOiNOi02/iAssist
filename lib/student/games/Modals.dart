@@ -108,7 +108,7 @@ void showLivesModal(
                   height: SizeConfig.safeBlockVertical! * 5,
                   alignment: Alignment.bottomCenter,
                   margin: EdgeInsets.only(
-                      top: SizeConfig.safeBlockHorizontal! * 61,
+                      top: 31.h,
                       left: SizeConfig.safeBlockVertical! * 11),
                   decoration: BoxDecoration(
                     boxShadow: [
@@ -308,7 +308,7 @@ void showNoLivesModal(
                   height: SizeConfig.safeBlockVertical! * 5,
                   alignment: Alignment.bottomCenter,
                   margin: EdgeInsets.only(
-                      top: SizeConfig.safeBlockHorizontal! * 59,
+                      top: 31.h,
                       left: SizeConfig.safeBlockVertical! * 5.5),
                   decoration: BoxDecoration(
                     boxShadow: [

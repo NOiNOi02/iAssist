@@ -725,7 +725,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     // setState(() {});
                                     int points = getCurrentPoints();
                                     setCurrentPoints(getCurrentLives());
-                                    if (getCurrentNumber() == 12) {
+                                    if (getCurrentNumber() == 9) {
                                       int correctAnswers =
                                           answer_result_multiple
                                               .where((item) => item == true)

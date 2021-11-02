@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 import '../Newton1st.dart';
 import 'inertia.dart';
 
@@ -26,7 +28,7 @@ class _LawOfInertiaState extends State<LawOfInertia> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -42,92 +44,103 @@ class _LawOfInertiaState extends State<LawOfInertia> {
             ),
           ),
         ),
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 30),
-            child: Center(
-              child: Text(
-                "LAW OF INERTIA",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Color(0xFFBA494B),
+            height: SizeConfig.safeBlockVertical! * 100,
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: SizeConfig.safeBlockVertical! * 10,
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  child: Center(
+                    child: Text(
+                      "LAW OF INERTIA",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.sp,
+                        color: Color(0xFFBA494B),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Law of Inertia states that: “An object at rest will remain at rest or an object in motion will remain in motion and travel in straight line unless acted upon by an unbalanced external net force."',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  height: SizeConfig.safeBlockVertical! * 29,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Law of Inertia states that: “An object at rest will remain at rest or an object in motion will remain in motion and travel in straight line unless acted upon by an unbalanced external net force."',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10, left: 25, right: 25),
-            height: size.height * .22,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage('assets/images/firstLawOfMotion/1.png'),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 3, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Source:https://lh3.googleusercontent.com/Zga7xqrgOCl6MLLUR0FP4KPvsfzcUHtufRJCOXylkKaBKUZTKnY8jbL6Q2_MWhHHUQED=s138',
-                style: const TextStyle(
-                  fontSize: 9,
-                  letterSpacing: 1.4,
-                  color: Color(0xFF888888),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 23.h),
+                  height: size.height * .22,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image: AssetImage('assets/images/firstLawOfMotion/1.png'),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'Figure 1. Motion of an object with and without outside forces applied.',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 14,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 44.7.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Source:https://lh3.googleusercontent.com/Zga7xqrgOCl6MLLUR0FP4KPvsfzcUHtufRJCOXylkKaBKUZTKnY8jbL6Q2_MWhHHUQED=s138',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 6.sp,
+                        letterSpacing: 1.4,
+                        color: Color(0xFF888888),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Let us consider a specific situation as shown in Figure 1. Object A is at rest and remains at rest of the absence of outside force. However object B, which is in motion, will remain in motion, unless an outside force will be applied to make it stop.',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 49.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Figure 1. Motion of an object with and without outside forces applied.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 9.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 37.h),
+                  height: SizeConfig.safeBlockVertical! * 50,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Let us consider a specific situation as shown in Figure 1. Object A is at rest and remains at rest of the absence of outside force. However object B, which is in motion, will remain in motion, unless an outside force will be applied to make it stop.',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ]),

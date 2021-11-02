@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 
 import '../studentlessons.dart';
 import '2ndLaw/acceleration.dart';
@@ -34,7 +36,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -50,388 +52,422 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
             ),
           ),
         ),
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 2.5.w)],
       ),
       body: SingleChildScrollView(
           child: Column(children: <Widget>[
         Container(
-          margin: const EdgeInsets.only(top: 30),
-          child: Center(
-            child: Text(
-              "NEWTON'S LAW OF MOTION",
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Color(0xFFBA494B),
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Sir Isaac Newton (1643-1727) is an English physicist and mathematician known for his discoveries in Optics and his formulation of the three laws of motions which become the basic principles of the modern physics. Newton published these laws of motion in 1687 in his book ‘Principia Mathematica’. His discoveries led to scientific revolution that led to the fundamental understanding of how bodies move through physical space.",
-              textAlign: TextAlign.justify,
-              style: const TextStyle(
-                fontSize: 16,
-                letterSpacing: 1.4,
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Newton's Second Law of Motion",
-              style: const TextStyle(
-                fontSize: 14,
-                color: Color(0xFF747474),
-              ),
-            ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LawOfAcceleration(),
-                ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
+          height: SizeConfig.safeBlockVertical! * 100,
+          child: Stack(
+            children: <Widget>[
+              Container(
+                // margin: EdgeInsets.only(top: 5.h, left: 5.w, right: 5.w),
+                height: SizeConfig.safeBlockVertical! * 10,
+                child: Center(
+                  child: Text(
+                    "NEWTON'S LAW OF MOTION",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.sp,
+                      color: Color(0xFFBA494B),
+                    ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10.0),
-                    child: Text("Law of Acceleration",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 18,
-                        )),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Notes in Law of Acceleration",
-              style: const TextStyle(
-                fontSize: 14,
-                color: Color(0xFF747474),
-              ),
-            ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Acceleration(),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 5.w),
+                height: SizeConfig.safeBlockVertical! * 40,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Sir Isaac Newton (1643-1727) is an English physicist and mathematician known for his discoveries in Optics and his formulation of the three laws of motions which become the basic principles of the modern physics. Newton published these laws of motion in 1687 in his book ‘Principia Mathematica’. His discoveries led to scientific revolution that led to the fundamental understanding of how bodies move through physical space.",
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      fontSize: 11.sp,
+                      letterSpacing: 1.4,
+                    ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10.0),
-                    child: Text("Acceleration",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 18,
-                        )),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Relationship of ",
-              style: const TextStyle(
-                fontSize: 14,
-                color: Color(0xFF747474),
-              ),
-            ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NetForceAndAcceleration(),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10.0),
-                    child: Text("Net Force and Acceleration",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 18,
-                        )),
-                  )
-                ],
               ),
-            ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MassAndAcceleration(),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 5.w),
+                height: SizeConfig.safeBlockVertical! * 75,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Newton's Second Law of Motion",
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Color(0xFF747474),
+                    ),
+                  ),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10.0),
-                    child: Text("Mass and Acceleration",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 18,
-                        )),
-                  )
-                ],
               ),
-            ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UnitOfForce(),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 39.h),
+                height: SizeConfig.safeBlockVertical! * 5,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LawOfAcceleration(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    // width: size.width * .9,
+                    // margin: const EdgeInsets.only(top: 8),
+                    decoration: BoxDecoration(
+                        border: Border(
+                      bottom: BorderSide(
+                          color: Color(0xFFBA494B).withOpacity(0.47)),
+                    )),
+                    child: Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 5.w),
+                          child: Text("Law of Acceleration",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFBA494B),
+                                fontSize: 13.sp,
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8, left: 35.0),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  Container(
-                    // margin: const EdgeInsets.only(),
-                    child: Text("- Units of Force",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 18,
-                        )),
-                  )
-                ],
               ),
-            ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SampleMathematicalProblem(),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 5.w),
+                height: SizeConfig.safeBlockVertical! * 95,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Notes in Law of Acceleration",
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Color(0xFF747474),
+                    ),
+                  ),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8, left: 35.0),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  Container(
-                    // margin: const EdgeInsets.only(),
-                    child: Text("- Sample Mathematical Problem",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 18,
-                        )),
-                  )
-                ],
               ),
-            ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FreeFallAndNewtonsSecondLawOfMotion(),
+              Container(
+                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 49.h),
+                height: SizeConfig.safeBlockVertical! * 5,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Acceleration(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    // width: size.width * .9,
+                    // margin: const EdgeInsets.only(top: 8),
+                    decoration: BoxDecoration(
+                        border: Border(
+                      bottom: BorderSide(
+                          color: Color(0xFFBA494B).withOpacity(0.47)),
+                    )),
+                    child: Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 5.w),
+                          child: Text("Acceleration",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFBA494B),
+                                fontSize: 13.sp,
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10.0),
-                    child: Text("Free Fall and Newton's Second Law of Motion",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 16,
-                        )),
-                  )
-                ],
               ),
-            ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      CircularMotionAndNewtonsSecondLawOfMotion(),
+              Container(
+                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 55.h),
+                height: SizeConfig.safeBlockVertical! * 5,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Relationship of ",
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Color(0xFF747474),
+                    ),
+                  ),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8, left: 35.0),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  Container(
-                    // margin: const EdgeInsets.only(),
-                    child: Text(
-                        "- Circular Motion and Newton’s Second Law of Motion.",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 13.5,
-                        )),
-                  )
-                ],
               ),
-            ),
+              Container(
+                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 61.h),
+                height: SizeConfig.safeBlockVertical! * 5,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NetForceAndAcceleration(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    // width: size.width * .9,
+                    // margin: const EdgeInsets.only(top: 8),
+                    decoration: BoxDecoration(
+                        border: Border(
+                      bottom: BorderSide(
+                          color: Color(0xFFBA494B).withOpacity(0.47)),
+                    )),
+                    child: Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 5.w),
+                          child: Text("Net Force and Acceleration",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFBA494B),
+                                fontSize: 13.sp,
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 67.h),
+                height: SizeConfig.safeBlockVertical! * 5,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MassAndAcceleration(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    // width: size.width * .9,
+                    // margin: const EdgeInsets.only(top: 8),
+                    decoration: BoxDecoration(
+                        border: Border(
+                      bottom: BorderSide(
+                          color: Color(0xFFBA494B).withOpacity(0.47)),
+                    )),
+                    child: Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 5.w),
+                          child: Text("Mass and Acceleration",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFBA494B),
+                                fontSize: 13.sp,
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 73.h),
+                height: SizeConfig.safeBlockVertical! * 5,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UnitOfForce(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    // width: size.width * .9,
+                    margin: EdgeInsets.only(left: 6.2.w),
+
+                    decoration: BoxDecoration(
+                        border: Border(
+                      bottom: BorderSide(
+                          color: Color(0xFFBA494B).withOpacity(0.47)),
+                    )),
+                    child: Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                        ),
+                        Container(
+                          // margin: const EdgeInsets.only(),
+                          child: Text("- Units of Force",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFBA494B),
+                                fontSize: 13.sp,
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 79.h),
+                height: SizeConfig.safeBlockVertical! * 5,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SampleMathematicalProblem(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    // width: size.width * .9,
+                    // margin: const EdgeInsets.only(top: 8, left: 35.0),
+                    margin: EdgeInsets.only(left: 6.2.w),
+                    decoration: BoxDecoration(
+                        border: Border(
+                      bottom: BorderSide(
+                          color: Color(0xFFBA494B).withOpacity(0.47)),
+                    )),
+                    child: Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                        ),
+                        Container(
+                          // margin: const EdgeInsets.only(),
+                          child: Text("- Sample Mathematical Problem",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFBA494B),
+                                fontSize: 13.sp,
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 85.h),
+                height: SizeConfig.safeBlockVertical! * 5,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            FreeFallAndNewtonsSecondLawOfMotion(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    // width: size.width * .9,
+                    // margin: const EdgeInsets.only(top: 8),
+                    decoration: BoxDecoration(
+                        border: Border(
+                      bottom: BorderSide(
+                          color: Color(0xFFBA494B).withOpacity(0.47)),
+                    )),
+                    child: Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 5.w),
+                          child: Text(
+                              "Free Fall and Newton's Second Law of Motion",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFBA494B),
+                                fontSize: 11.sp,
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    left: 5.w, right: 5.w, top: 91.h, bottom: 5.h),
+                height: SizeConfig.safeBlockVertical! * 5,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            CircularMotionAndNewtonsSecondLawOfMotion(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    // width: size.width * .9,
+                    // margin: const EdgeInsets.only(top: 8, left: 35.0),
+                    margin: EdgeInsets.only(left: 6.2.w),
+                    decoration: BoxDecoration(
+                        border: Border(
+                      bottom: BorderSide(
+                          color: Color(0xFFBA494B).withOpacity(0.47)),
+                    )),
+                    child: Row(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                        ),
+                        Container(
+                          // margin: const EdgeInsets.only(),
+                          child: Text(
+                              "- Circular Motion and Newton’s Second Law of Motion",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFBA494B),
+                                fontSize: 9.4.sp,
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ])),
