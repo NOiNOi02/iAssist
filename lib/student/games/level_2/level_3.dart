@@ -199,28 +199,6 @@ class _Level3State extends State<Level3> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image:
-                                    AssetImage('assets/images/games/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
                           margin: const EdgeInsets.only(top: 100, right: 25),
                           height: size.height * 0.60,

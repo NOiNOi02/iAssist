@@ -198,29 +198,6 @@ class _Level1State extends State<Level1> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                              margin: EdgeInsets.only(
-                                top: SizeConfig.safeBlockVertical!* 1.5, left: SizeConfig.safeBlockHorizontal! * 7),
-                            height:SizeConfig.safeBlockVertical! * 4,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                alignment: Alignment.topLeft,
-                                image:
-                                    AssetImage('assets/images/games/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
                           padding: EdgeInsets.only(top: 2.h),

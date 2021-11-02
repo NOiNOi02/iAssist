@@ -51,16 +51,144 @@ void showLivesModal(
                     color: Color(0xFFFEC192),
                     borderRadius: BorderRadius.circular(40),
                   ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: SizeConfig.safeBlockVertical! * 25,
+                        width: SizeConfig.safeBlockHorizontal! * 25,
+                        margin: EdgeInsets.symmetric(horizontal: 15.w),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            alignment: Alignment.center,
+                            fit: BoxFit.contain,
+                            image: AssetImage('assets/images/games/heart.png'),
+                          ),
+                        ),
+                        child: Text(
+                          '3',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.sp,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.bottomCenter,
+                        margin: EdgeInsetsDirectional.only(bottom: 5.h),
+                        child: Text(
+                          'Lives Remaining',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12.sp,
+                            color: Color(0xffCB2D3F),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
-                  height: SizeConfig.safeBlockVertical! * 25,
-                  width: SizeConfig.safeBlockHorizontal! * 25,
-                  margin: EdgeInsets.only(top: 7.h, left: 22.w),
                   alignment: Alignment.bottomCenter,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.contain,
-                      image: AssetImage('assets/images/games/heart.png'),
+                  // color: Colors.red,
+                  margin: EdgeInsets.symmetric(horizontal: 15.w),
+                  // #TODO: DI ko na ffloat si button, naccut kapag tg babaan ko ang margin
+                  child: Container(
+                    height: 5.h,
+                    alignment: Alignment.bottomCenter,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black26,
+                            offset: Offset(0, 4),
+                            blurRadius: 5.0)
+                      ],
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        stops: [0.0, 1.0],
+                        colors: [
+                          Color(0xFFBA494B),
+                          Color(0XFFFFB79D),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40.0),
+                          ),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                        // elevation: MaterialStateProperty.all(3),
+                        shadowColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                      ),
+                      onPressed: () {
+                        //if pushed proceeed to questions
+                        Navigator.pop(context);
+                        if (getCurrentLevel() == 1) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => QuestionsLevel1(),
+                            ),
+                          );
+                        }
+                        if (getCurrentLevel() == 2) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => QuestionsLevel2(),
+                            ),
+                          );
+                        }
+                        if (getCurrentLevel() == 3) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => QuestionsLevel3(),
+                            ),
+                          );
+                        }
+                        if (getCurrentLevel() == 4) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => QuestionsLevel4(),
+                            ),
+                          );
+                        }
+                        if (getCurrentLevel() == 5) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => QuestionsLevel5(),
+                            ),
+                          );
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: 1.h,
+                          bottom: 1.h,
+                        ),
+                        child: Text(
+                          "Okay",
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            // fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -74,131 +202,6 @@ void showLivesModal(
                       fontWeight: FontWeight.bold,
                       fontSize: 11.sp,
                       color: Color(0xffCB2D3F),
-                    ),
-                  ),
-                ),
-                Container(
-                  alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 25.h),
-                  child: Text(
-                    'Lives Remaining',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12.sp,
-                      color: Color(0xffCB2D3F),
-                    ),
-                  ),
-                ),
-                Container(
-                  alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 15.h),
-                  child: Text(
-                    '3',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22.sp,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: SizeConfig.safeBlockHorizontal! * 30,
-                  height: SizeConfig.safeBlockVertical! * 5,
-                  alignment: Alignment.bottomCenter,
-                  margin: EdgeInsets.only(
-                      top: 31.h,
-                      left: SizeConfig.safeBlockVertical! * 11),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black26,
-                          offset: Offset(0, 4),
-                          blurRadius: 5.0)
-                    ],
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      stops: [0.0, 1.0],
-                      colors: [
-                        Color(0xFFBA494B),
-                        Color(0XFFFFB79D),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  //#TODO: DI ko na ffloat si button, naccut kapag tg babaan ko ang margin
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40.0),
-                        ),
-                      ),
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.transparent),
-                      // elevation: MaterialStateProperty.all(3),
-                      shadowColor:
-                          MaterialStateProperty.all(Colors.transparent),
-                    ),
-                    onPressed: () {
-                      //if pushed proceeed to questions
-                      Navigator.pop(context);
-                      if (getCurrentLevel() == 1) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => QuestionsLevel1(),
-                          ),
-                        );
-                      }
-                      if (getCurrentLevel() == 2) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => QuestionsLevel2(),
-                          ),
-                        );
-                      }
-                      if (getCurrentLevel() == 3) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => QuestionsLevel3(),
-                          ),
-                        );
-                      }
-                      if (getCurrentLevel() == 4) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => QuestionsLevel4(),
-                          ),
-                        );
-                      }
-                      if (getCurrentLevel() == 5) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => QuestionsLevel5(),
-                          ),
-                        );
-                      }
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: 1.h,
-                        bottom: 1.h,
-                      ),
-                      child: Text(
-                        "Okay",
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          // fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                        ),
-                      ),
                     ),
                   ),
                 ),
@@ -251,16 +254,111 @@ void showNoLivesModal(
                     color: Color(0xFFFEC192),
                     borderRadius: BorderRadius.circular(40),
                   ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: SizeConfig.safeBlockVertical! * 25,
+                        width: SizeConfig.safeBlockHorizontal! * 25,
+                        margin: EdgeInsets.symmetric(horizontal: 15.w),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            alignment: Alignment.center,
+                            fit: BoxFit.contain,
+                            image: AssetImage('assets/images/games/heart.png'),
+                          ),
+                        ),
+                        child: Text(
+                          '0',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.sp,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.bottomCenter,
+                        margin: EdgeInsetsDirectional.only(bottom: 5.h),
+                        child: Text(
+                          'No Lives Remaining',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12.sp,
+                            color: Color(0xffCB2D3F),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
-                  height: SizeConfig.safeBlockVertical! * 25,
-                  width: SizeConfig.safeBlockHorizontal! * 25,
-                  margin: EdgeInsets.only(top: 7.h, left: 22.w),
                   alignment: Alignment.bottomCenter,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.contain,
-                      image: AssetImage('assets/images/games/heart.png'),
+                  // color: Colors.red,
+                  margin: EdgeInsets.symmetric(horizontal: 12.w),
+                  // #TODO: DI ko na ffloat si button, naccut kapag tg babaan ko ang margin
+                  child: Container(
+                    height: 5.h,
+                    alignment: Alignment.bottomCenter,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black26,
+                            offset: Offset(0, 4),
+                            blurRadius: 5.0)
+                      ],
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        stops: [0.0, 1.0],
+                        colors: [
+                          Color(0xFFBA494B),
+                          Color(0XFFFFB79D),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40.0),
+                          ),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                        // elevation: MaterialStateProperty.all(3),
+                        shadowColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                      ),
+                      onPressed: () {
+                        //if pushed proceeed to questions
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Leaderboards(),
+                          ),
+                        );
+                        resetCurrentLevel();
+                        showInputPlayerName(context, size);
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: 1.h,
+                          bottom: 1.h,
+                        ),
+                        child: Text(
+                          "Go to Leaderboards",
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            // fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -268,104 +366,12 @@ void showNoLivesModal(
                   alignment: Alignment.topCenter,
                   margin: EdgeInsets.only(top: 1.h),
                   child: Text(
-                    'You ran out of lives \nin this level',
+                    'You ran out of lives!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 11.sp,
                       color: Color(0xffCB2D3F),
-                    ),
-                  ),
-                ),
-                Container(
-                  alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 25.h),
-                  child: Text(
-                    'No Lives Remaining',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12.sp,
-                      color: Color(0xffCB2D3F),
-                    ),
-                  ),
-                ),
-                Container(
-                  alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 15.h),
-                  child: Text(
-                    '0',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22.sp,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: SizeConfig.safeBlockHorizontal! * 50,
-                  height: SizeConfig.safeBlockVertical! * 5,
-                  alignment: Alignment.bottomCenter,
-                  margin: EdgeInsets.only(
-                      top: 31.h,
-                      left: SizeConfig.safeBlockVertical! * 5.5),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black26,
-                          offset: Offset(0, 4),
-                          blurRadius: 5.0)
-                    ],
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      stops: [0.0, 1.0],
-                      colors: [
-                        Color(0xFFBA494B),
-                        Color(0XFFFFB79D),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  //#TODO: DI ko na ffloat si button, naccut kapag tg babaan ko ang margin
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40.0),
-                        ),
-                      ),
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.transparent),
-                      // elevation: MaterialStateProperty.all(3),
-                      shadowColor:
-                          MaterialStateProperty.all(Colors.transparent),
-                    ),
-                    onPressed: () {
-                      //if pushed proceeed to questions
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Leaderboards(),
-                        ),
-                      );
-                      resetCurrentLevel();
-                      showInputPlayerName(context, size);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: 1.h,
-                        bottom: 1.h,
-                      ),
-                      child: Text(
-                        "Go to Leaderboards",
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          // fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                        ),
-                      ),
                     ),
                   ),
                 ),
@@ -432,9 +438,9 @@ void showInputPlayerName(BuildContext context, Size size) {
                 // setState(() {
                 //   codeDialog = valueText;
                 Navigator.pop(context);
-                print(getTotalPoints().toString()+'points');
+                print(getTotalPoints().toString() + 'points');
                 setPlayerNamesAndScores(inputName, getTotalPoints());
-                 Navigator.push(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => Leaderboards(),

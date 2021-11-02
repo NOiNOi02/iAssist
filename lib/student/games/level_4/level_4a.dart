@@ -203,29 +203,7 @@ class _Level4State extends State<Level4a> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: SizeConfig.safeBlockVertical! * 1.5,
-                                left: SizeConfig.safeBlockHorizontal! * 7),
-                            height: SizeConfig.safeBlockVertical! * 4,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                alignment: Alignment.topLeft,
-                                image: AssetImage('assets/images/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
+                        
                         Container(
                           margin: EdgeInsets.only(top: 20.h, left: 5.w),
                           height: SizeConfig.safeBlockVertical! * 50,
