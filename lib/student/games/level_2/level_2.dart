@@ -206,10 +206,11 @@ class _Level2State extends State<Level2> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 2.5.h, left: 22.w),
-                          height: SizeConfig.safeBlockVertical! * 40,
+                          margin: EdgeInsets.only(top: 7.h, left: 22.w),
+                          height: SizeConfig.safeBlockVertical! * 37,
                           decoration: BoxDecoration(
                             image: DecorationImage(
+                              alignment: Alignment.centerLeft,
                               fit: BoxFit.contain,
                               image: AssetImage(
                                   'assets/images/games/level2/Group 56.png'),
@@ -217,7 +218,7 @@ class _Level2State extends State<Level2> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 20.h, left: 1.w),
+                          margin: EdgeInsets.only(top: 25.h, left: 5.w),
                           height: SizeConfig.safeBlockVertical! * 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(
