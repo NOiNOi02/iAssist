@@ -105,6 +105,7 @@ class _InteractionForcesVsBalancedForcesState
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Source:https://lh3.googleusercontent.com/2ok8jEccmnjzhI5TC061WMr63B9HRiQoJ5ghkTWSzoGJIx14BSxMYnV1DF-7zvWWHuIdg=s170',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 6.sp,
                         letterSpacing: 1.4,

@@ -119,6 +119,7 @@ class _CircularMotionAndNewtonsSecondLawOfMotionState
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Source:https://lh3.googleusercontent.com/lVLpm9oNA7icjT3SHgQpVVDhlg2MDn44LVlt27DQRW7hymloFKSAHXMG5mK2IVRHwVqshw=s121',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 6.sp,
                         letterSpacing: 1.4,

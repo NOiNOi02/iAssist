@@ -113,6 +113,7 @@ class _FluidFrictionState extends State<FluidFriction> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Source:https://lh3.googleusercontent.com/NzqnC5E28vL_AxlcqCSk5L3caQOnVVqyCbQvE6djwpArtLX4i-2Pd3h-VHTcABLjEf_72qA=s157',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 6.sp,
                         letterSpacing: 1.4,

@@ -162,6 +162,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Source: https://lh3.googleusercontent.com/6psRlTrRCa2f_cjhX5wfSdoXl1CE-RcGkQkIvSJXjuFJzP4DS6WNy9Keu6qOyZrFrWd5=s142',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 6.sp,
                           letterSpacing: 1.4,

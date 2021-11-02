@@ -102,6 +102,7 @@ class _NetForceAndAccelerationState extends State<NetForceAndAcceleration> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Source:https://lh3.googleusercontent.com/qJtywTEycUljGprYwmw7jXx2WKv5PJVUpXalfLb1f4e88C4CMRRVuBYZbAKCVVq_54ASrA=s113',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 6.sp,
                         letterSpacing: 1.4,

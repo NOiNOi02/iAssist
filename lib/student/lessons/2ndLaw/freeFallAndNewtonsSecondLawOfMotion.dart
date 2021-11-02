@@ -119,6 +119,7 @@ class _FreeFallAndNewtonsSecondLawOfMotionState
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Source:https://lh3.googleusercontent.com/jvEo8QXauvcT1t0mWCTWSKW5qhN1jSufotwwE0ZKeKOtzXRb9KO3K82-lubrb2ULe8yLg=s170',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 6.sp,
                         letterSpacing: 1.4,

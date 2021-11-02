@@ -101,6 +101,7 @@ class _MassAndAccelerationState extends State<MassAndAcceleration> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Source:https://lh3.googleusercontent.com/rrc6Ljg1pPQ8i_y1FpxVQwDMa_Rd119t8i6HMkCWk4qmWi3OHX-eLf7soCL45jlVCbdBxPA=s137',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 6.sp,
                         letterSpacing: 1.4,

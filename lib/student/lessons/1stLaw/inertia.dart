@@ -100,6 +100,7 @@ class _InertiaState extends State<Inertia> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Source:https://lh3.googleusercontent.com/Iuoy0bd7g6BFsj8lapWJO05Cc5SKL9IeQ6fMsm4e6ZiSGnvpMSzPZ7snUs8O-HxKQAJ=s113',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 6.sp,
                         letterSpacing: 1.4,
