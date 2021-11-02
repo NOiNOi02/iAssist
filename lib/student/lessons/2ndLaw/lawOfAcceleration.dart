@@ -92,14 +92,14 @@ class _LawOfAccelerationState extends State<LawOfAcceleration> {
                       'This can be expressed in the equation form as:',
                       textAlign: TextAlign.justify,
                       style: TextStyle(
-                        fontSize: 11.sp,
+                        fontSize: 10.5.sp,
                         letterSpacing: 1.4,
                       ),
                     ),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  margin: EdgeInsets.only(left: 10.w, right: 5.w),
                   height: SizeConfig.safeBlockVertical! * 59,
                   child: Center(
                     child: Text(
@@ -114,7 +114,7 @@ class _LawOfAccelerationState extends State<LawOfAcceleration> {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 32.5.h),
-                  height: size.height * .22,
+                  height: size.height * .19,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.contain,

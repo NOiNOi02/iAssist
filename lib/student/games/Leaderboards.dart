@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
@@ -12,6 +13,8 @@ import 'package:iassist/student/games/level_1/questions.dart';
 import 'package:iassist/student/games/Modals.dart';
 import 'package:iassist/student/studentfrontpage.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../selectionpage.dart';
 
 class Leaderboards extends StatefulWidget {
   @override
@@ -52,6 +55,76 @@ class _LeaderboardsState extends State<Leaderboards> {
           onPressed: () => Navigator.pop(context),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: Color(0xFFFFFFFF),
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -95,12 +168,11 @@ class _LeaderboardsState extends State<Leaderboards> {
                   ),
                   Container(
                     alignment: Alignment.topLeft,
-                    padding: EdgeInsets.only(
-                        top: 4.5.h, left: 23.w),
+                    padding: EdgeInsets.only(top: 4.5.h, left: 23.w),
                     child: Text(
                       'Leaderboards',
                       textAlign: TextAlign.left,
-                      style:  TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14.sp,
                         color: Colors.white,
@@ -114,7 +186,8 @@ class _LeaderboardsState extends State<Leaderboards> {
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockHorizontal!*5),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
                           height: size.height * 1,
                           decoration: BoxDecoration(
                             color: Color(0xffFCFBC2),
@@ -140,19 +213,19 @@ class _LeaderboardsState extends State<Leaderboards> {
                                 Text('Rank',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                       fontSize: 15.sp,
+                                        fontSize: 15.sp,
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xff6D5D5D))),
                                 Text('Player Name',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                       fontSize: 15.sp,
+                                        fontSize: 15.sp,
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xff6D5D5D))),
                                 Text('Score',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                       fontSize: 15.sp,
+                                        fontSize: 15.sp,
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xff6D5D5D))),
                               ]),
@@ -168,13 +241,13 @@ class _LeaderboardsState extends State<Leaderboards> {
                                   Text(getPlayerNames(i),
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
-                                         fontSize: 12.sp,
+                                          fontSize: 12.sp,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xffBA494B))),
                                   Text(getPlayerScores(i).toString(),
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                         fontSize: 12.sp,
+                                          fontSize: 12.sp,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xffBA494B))),
                                 ]),
@@ -183,7 +256,9 @@ class _LeaderboardsState extends State<Leaderboards> {
                         ),
                         Container(
                           width: size.width * 0.74,
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical!*75, left: SizeConfig.safeBlockHorizontal!*13),
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 75,
+                              left: SizeConfig.safeBlockHorizontal! * 13),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
@@ -53,66 +54,73 @@ class _Level1State extends State<Level1> {
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-             DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Color(0xFFBA494B),
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/SelectionHeader.png"),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'I-Assist',
-                style: TextStyle(
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
                     fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title:  Text(
-                'Home',
-                style:
-                     TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectionPage(),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title:   Text(
-                'Settings',
-                style:
-                      TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
+                ),
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app_outlined),
-              title:   Text(
-                'Exit',
-                style:   TextStyle(
-                    fontSize: 16.sp,
-                    // color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
               ),
-              onTap: () {
-                Future.delayed(const Duration(milliseconds: 1000), () {
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                });
-              },
-            ),
-          ],
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -132,7 +140,7 @@ class _Level1State extends State<Level1> {
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: SizeConfig.safeBlockHorizontal!* 30,
+                    height: SizeConfig.safeBlockHorizontal! * 30,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -170,7 +178,7 @@ class _Level1State extends State<Level1> {
                     child: Text(
                       'Level 1\nIntroduction to Newton\'s Law of Motion',
                       textAlign: TextAlign.left,
-                      style:  TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 12.sp,
                         color: Colors.white,
@@ -178,13 +186,14 @@ class _Level1State extends State<Level1> {
                     ),
                   ),
                   Positioned(
-                    top: SizeConfig.blockSizeVertical! *10.8,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
                           height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
@@ -208,9 +217,10 @@ class _Level1State extends State<Level1> {
                             );
                           },
                           child: Container(
-                              margin: EdgeInsets.only(
-                                top: SizeConfig.safeBlockVertical!* 1.5, left: SizeConfig.safeBlockHorizontal! * 7),
-                            height:SizeConfig.safeBlockVertical! * 4,
+                            margin: EdgeInsets.only(
+                                top: SizeConfig.safeBlockVertical! * 1.5,
+                                left: SizeConfig.safeBlockHorizontal! * 7),
+                            height: SizeConfig.safeBlockVertical! * 4,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -227,7 +237,7 @@ class _Level1State extends State<Level1> {
                           child: Text(
                             'Unlock the game\'s character by answering \n correctly the following questions',
                             textAlign: TextAlign.center,
-                            style:   TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 11.sp,
                               color: Color(0xFFBA494B),
@@ -235,7 +245,8 @@ class _Level1State extends State<Level1> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical!*9),
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 9),
                           height: SizeConfig.blockSizeVertical! * 60,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -248,7 +259,9 @@ class _Level1State extends State<Level1> {
                         Container(
                           alignment: Alignment.center,
                           width: SizeConfig.safeBlockHorizontal! * 75,
-                          margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical!* 70, left: SizeConfig.safeBlockHorizontal!* 12),
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 70,
+                              left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -292,7 +305,7 @@ class _Level1State extends State<Level1> {
                               showLivesModal(context, size);
                             },
                             child: Padding(
-                              padding:   EdgeInsets.only(
+                              padding: EdgeInsets.only(
                                 top: 1.h,
                                 bottom: 1.h,
                               ),
