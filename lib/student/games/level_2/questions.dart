@@ -407,9 +407,13 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                             margin: (getCurrentNumber() == 11)
                                 ? EdgeInsets.only(
                                     top: (i + 3.5) * 8.h.toDouble(), left: 53.5)
-                                : EdgeInsets.only(
-                                    top: (i + 6.5) * 8.h.toDouble(),
-                                    left: 53.5),
+                                : (choices[getCurrentNumber()].length >= 4)
+                                    ? EdgeInsets.only(
+                                        top: (i + 5.9) * 8.h.toDouble(),
+                                        left: 53.5)
+                                    : EdgeInsets.only(
+                                        top: (i + 6.5) * 8.h.toDouble(),
+                                        left: 53.5),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(

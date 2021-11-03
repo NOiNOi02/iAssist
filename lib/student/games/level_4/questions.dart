@@ -385,6 +385,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                           margin: EdgeInsets.only(
                               top: SizeConfig.safeBlockVertical! * 30),
                           height: SizeConfig.safeBlockVertical! * 15,
+                          width: SizeConfig.safeBlockVertical! * 50,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
