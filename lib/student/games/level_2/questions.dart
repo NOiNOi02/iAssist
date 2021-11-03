@@ -355,7 +355,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                 Container(
                                     alignment: Alignment(0.0, -1.0),
                                     padding: EdgeInsets.only(
-                                        top: 4.7.h, left: 30.w, right: 10.w),
+                                        top: 5.7.h, left: 30.w, right: 10.w),
                                     child: (!triviaFlag)
                                         ? AutoSizeText(
                                             //getting the questions based from what current number is
@@ -383,7 +383,9 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
 
                         Container(
                           margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 30, left:5.w, right:5.w),
+                              top: SizeConfig.safeBlockVertical! * 30,
+                              left: 5.w,
+                              right: 5.w),
                           height: SizeConfig.safeBlockVertical! * 15,
                           decoration: BoxDecoration(
                             image: DecorationImage(

@@ -205,10 +205,6 @@ class _Level3State extends State<Level3b> {
                             ],
                           ),
                         ),
-<<<<<<< HEAD
-=======
-                    
->>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
                         Container(
                           margin: EdgeInsets.only(top: 20.h, left: 5.w),
                           height: SizeConfig.safeBlockVertical! * 50,

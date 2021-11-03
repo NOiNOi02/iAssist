@@ -207,10 +207,6 @@ class _Level4State extends State<Level4a> {
                             ],
                           ),
                         ),
-<<<<<<< HEAD
-=======
-                        
->>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
                         Container(
                           margin: EdgeInsets.only(top: 20.h, left: 5.w),
                           height: SizeConfig.safeBlockVertical! * 50,

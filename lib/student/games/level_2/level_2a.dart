@@ -209,13 +209,8 @@ class _Level2State extends State<Level2a> {
                           ),
                         ),
                         Container(
-<<<<<<< HEAD
                           margin: EdgeInsets.only(top: 10.5.h, left: 17.w),
                           height: SizeConfig.safeBlockVertical! * 25,
-=======
-                          margin: EdgeInsets.only(top: 15.h, left: 22.w),
-                          height: SizeConfig.safeBlockVertical! * 22,
->>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -225,11 +220,7 @@ class _Level2State extends State<Level2a> {
                           ),
                         ),
                         Container(
-<<<<<<< HEAD
                           margin: EdgeInsets.only(top: 30.h, left: 1.w),
-=======
-                          margin: EdgeInsets.only(top: 25.h, left: 5.w),
->>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
                           height: SizeConfig.safeBlockVertical! * 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(

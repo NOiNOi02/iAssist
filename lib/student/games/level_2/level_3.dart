@@ -192,7 +192,7 @@ class _Level3State extends State<Level3> {
                     child: Stack(
                       children: <Widget>[
                         Container(
-                           margin: EdgeInsets.symmetric(
+                          margin: EdgeInsets.symmetric(
                               horizontal: SizeConfig.safeBlockHorizontal! * 5),
                           height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
@@ -208,11 +208,7 @@ class _Level3State extends State<Level3> {
                           ),
                         ),
                         Container(
-<<<<<<< HEAD
                           margin: EdgeInsets.only(top: 20.h, left: 5.w),
-=======
-                           margin: EdgeInsets.only(top: 15.h, left: 5.w),
->>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
                           height: SizeConfig.safeBlockVertical! * 50,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -280,11 +276,7 @@ class _Level3State extends State<Level3> {
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
-<<<<<<< HEAD
                                   fontSize: 12.sp,
-=======
-                                  fontSize: 14.sp,
->>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),

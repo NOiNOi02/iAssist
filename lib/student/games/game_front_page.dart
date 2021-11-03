@@ -56,20 +56,6 @@ class _GameFrontPageState extends State<GameFrontPage> {
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
       drawer: Drawer(
-<<<<<<< HEAD
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Color(0xFFBA494B),
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/SelectionHeader.png"),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'I-Assist',
-                style: TextStyle(
-=======
         child: Container(
           color: Theme.of(context).primaryColor,
           child: ListView(
@@ -84,48 +70,11 @@ class _GameFrontPageState extends State<GameFrontPage> {
                 child: Text(
                   'I-Assist',
                   style: TextStyle(
->>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
                     fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
                   ),
                 ),
               ),
-<<<<<<< HEAD
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text(
-                'Home',
-                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectionPage(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text(
-                'Settings',
-                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app_outlined),
-              title: Text(
-                'Exit',
-                style: TextStyle(
-                    fontSize: 16.sp,
-                    // color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
-=======
               ListTile(
                 leading: Icon(
                   Icons.home,
@@ -171,7 +120,6 @@ class _GameFrontPageState extends State<GameFrontPage> {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   });
                 },
->>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
               ),
             ],
           ),
@@ -294,8 +242,10 @@ class _GameFrontPageState extends State<GameFrontPage> {
                                 : (getCurrentLevel() == 2)
                                     ? 'Newton’s First Law of Motion: \nInertia'
                                     : (getCurrentLevel() == 3)
-                                        ? 'Second law of Motion: Law of Acceleration'
-                                        : 'Third law of Motion: Law of Interaction',
+                                        ? 'Second law of Motion: \nLaw of Acceleration'
+                                        : (getCurrentLevel() == 4)
+                                            ? 'Third law of Motion: \nLaw of Interaction'
+                                            : '',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
