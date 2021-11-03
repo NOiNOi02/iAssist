@@ -21,8 +21,14 @@ class MyThemes {
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.black87,
     primaryColor: Colors.black87,
+    iconTheme: IconThemeData(color: Colors.white70),
     primaryTextTheme: Typography().white,
-    textTheme: const TextTheme(bodyText2: TextStyle(color: Colors.white70)),
+    textTheme: const TextTheme(
+        bodyText2: TextStyle(color: Colors.white70),
+        headline6: TextStyle(
+          color: Colors.white70,
+        )),
+
     // textTheme: Typography().white,
   );
 

@@ -51,7 +51,7 @@ class _BalancedForcesState extends State<BalancedForces> {
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Container(
-              height: SizeConfig.safeBlockVertical! * 130,
+              height: SizeConfig.safeBlockVertical! * 140,
               child: Stack(
                 children: <Widget>[
                   Container(
@@ -191,7 +191,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 118.h),
-                    height: SizeConfig.safeBlockVertical! * 5,
+                    height: SizeConfig.safeBlockVertical! * 30,
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(

@@ -63,7 +63,6 @@ class _UnitOfForceState extends State<UnitOfForce> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 11.sp,
-                      color: Color(0xFF000000),
                     ),
                   ),
                 ),
@@ -108,7 +107,7 @@ class _UnitOfForceState extends State<UnitOfForce> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 10.w, right: 5.w, top: 37.5.h),
+                  margin: EdgeInsets.only(left: 9.w, right: 5.w, top: 37.5.h),
                   height: SizeConfig.safeBlockVertical! * 5,
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -137,8 +136,8 @@ class _UnitOfForceState extends State<UnitOfForce> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 47.h),
-                  height: size.height * .22,
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 49.h),
+                  height: size.height * .18,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.contain,

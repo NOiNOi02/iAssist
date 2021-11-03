@@ -56,6 +56,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
       drawer: Drawer(
+<<<<<<< HEAD
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -68,10 +69,28 @@ class _GameFrontPageState extends State<GameFrontPage> {
               child: Text(
                 'I-Assist',
                 style: TextStyle(
+=======
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
+>>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
                     fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
+                  ),
+                ),
               ),
+<<<<<<< HEAD
             ),
             ListTile(
               leading: Icon(Icons.home),
@@ -106,14 +125,56 @@ class _GameFrontPageState extends State<GameFrontPage> {
                     fontSize: 16.sp,
                     // color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
+=======
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
               ),
-              onTap: () {
-                Future.delayed(const Duration(milliseconds: 1000), () {
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                });
-              },
-            ),
-          ],
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+>>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -238,7 +299,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 20.sp,
+                              fontSize: 17.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),

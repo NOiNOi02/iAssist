@@ -54,69 +54,73 @@ class _Level3State extends State<Level3> {
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Color(0xFFBA494B),
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/SelectionHeader.png"),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'I-Assist',
-                style: TextStyle(
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
                     fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text(
-                'Home',
-                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
-              ),
-              onTap: () {
-                resetCurrentLevel();
-                resetCurrentLives();
-                resetCurrentNumber();
-                resetTotalPoints();
-                resetCurrentPoints();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectionPage(),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text(
-                'Settings',
-                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
+                ),
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app_outlined),
-              title: Text(
-                'Exit',
-                style: TextStyle(
-                    fontSize: 16.sp,
-                    // color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
               ),
-              onTap: () {
-                Future.delayed(const Duration(milliseconds: 1000), () {
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                });
-              },
-            ),
-          ],
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -157,12 +161,14 @@ class _Level3State extends State<Level3> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
-                    height: size.height * .08,
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+                        alignment: Alignment.topLeft,
                         fit: BoxFit.contain,
-                        image: AssetImage('assets/images/game1.png'),
+                        image: AssetImage('assets/images/games/game1.png'),
                       ),
                     ),
                   ),
@@ -170,7 +176,7 @@ class _Level3State extends State<Level3> {
                     alignment: Alignment(0.0, -1.0),
                     padding: EdgeInsets.only(top: 4.h, left: 15.w),
                     child: Text(
-                      'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
+                      'Level 2\nNewton\'s First Law of Motion: Inertia',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -180,14 +186,15 @@ class _Level3State extends State<Level3> {
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          height: size.height * 1,
+                           margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -201,10 +208,15 @@ class _Level3State extends State<Level3> {
                           ),
                         ),
                         Container(
+<<<<<<< HEAD
                           margin: EdgeInsets.only(top: 20.h, left: 5.w),
+=======
+                           margin: EdgeInsets.only(top: 15.h, left: 5.w),
+>>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
                           height: SizeConfig.safeBlockVertical! * 50,
                           decoration: BoxDecoration(
                             image: DecorationImage(
+                              alignment: Alignment.centerLeft,
                               fit: BoxFit.contain,
                               image: AssetImage(
                                   'assets/images/games/level3/Group 60.png'),
@@ -212,8 +224,11 @@ class _Level3State extends State<Level3> {
                           ),
                         ),
                         Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 555, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 70,
+                              left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -265,7 +280,11 @@ class _Level3State extends State<Level3> {
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
+<<<<<<< HEAD
                                   fontSize: 12.sp,
+=======
+                                  fontSize: 14.sp,
+>>>>>>> b271a5056472fca00ee32884fcde20ac79f39d9d
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),
