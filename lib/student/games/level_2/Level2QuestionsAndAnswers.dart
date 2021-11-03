@@ -69,9 +69,9 @@ var answers = [
   [0],
   [1],
   [1],
-  [3],
-  [3],
+  [2],
   [1],
+  [3],
   [0],
   [0, 2, 4],
   [0]
@@ -95,12 +95,12 @@ var images = [
 ];
 var trivia_image = [
   'assets/images/games/level2/trivia_image 1.png',
+  'assets/images/games/noImage.png',
   'assets/images/games/level2/trivia_image 2.png',
-  'assets/images/games/level2/trivia_image 3.png',
   'assets/images/games/level2/image 7.png',
   'assets/images/games/noImage.png',
   'assets/images/games/level2/image 8.png',
-  'assets/images/games/level2/image 9.png',
+  'assets/images/games/level2/trivia_image 3.png',
   'assets/images/games/level2/image 10.png',
   'assets/images/games/level2/image 11.png',
   'assets/images/games/level2/image 12.png',
@@ -158,7 +158,6 @@ void setCurrentPoints(int lives) {
     }
   }
 }
-
 
 void resetCurrentPoints() {
   currentPoints = 5;

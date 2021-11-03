@@ -94,10 +94,9 @@ class _Level2State extends State<Level2> {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title:   Text(
+              title: Text(
                 'Settings',
-                style:
-                      TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -105,9 +104,9 @@ class _Level2State extends State<Level2> {
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app_outlined),
-              title:   Text(
+              title: Text(
                 'Exit',
-                style:   TextStyle(
+                style: TextStyle(
                     fontSize: 16.sp,
                     // color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
@@ -205,31 +204,8 @@ class _Level2State extends State<Level2> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: SizeConfig.safeBlockVertical! * 1.5,
-                                left: SizeConfig.safeBlockHorizontal! * 7),
-                            height: SizeConfig.safeBlockVertical! * 4,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                alignment: Alignment.topLeft,
-                                image: AssetImage('assets/images/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
-                          margin: EdgeInsets.only(top: 2.5.h, left: 22.w),
+                          margin: EdgeInsets.only(top: 10.5.h, left: 17.w),
                           height: SizeConfig.safeBlockVertical! * 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -240,7 +216,7 @@ class _Level2State extends State<Level2> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 20.h, left: 1.w),
+                          margin: EdgeInsets.only(top: 30.h, left: 1.w),
                           height: SizeConfig.safeBlockVertical! * 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(

@@ -59,7 +59,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-             DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                   color: Color(0xFFBA494B),
                   image: DecorationImage(
@@ -75,10 +75,9 @@ class _GameFrontPageState extends State<GameFrontPage> {
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title:  Text(
+              title: Text(
                 'Home',
-                style:
-                     TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.push(
@@ -91,10 +90,9 @@ class _GameFrontPageState extends State<GameFrontPage> {
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title:   Text(
+              title: Text(
                 'Settings',
-                style:
-                      TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 16.sp, fontFamily: 'MyFlutterApp'),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -102,9 +100,9 @@ class _GameFrontPageState extends State<GameFrontPage> {
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app_outlined),
-              title:   Text(
+              title: Text(
                 'Exit',
-                style:   TextStyle(
+                style: TextStyle(
                     fontSize: 16.sp,
                     // color: Color(0xFFFFFFFF),
                     fontFamily: 'MyFlutterApp'),
@@ -155,13 +153,14 @@ class _GameFrontPageState extends State<GameFrontPage> {
                     ),
                   ),
                   Positioned(
-                    top:SizeConfig.safeBlockVertical! * 11,
+                    top: SizeConfig.safeBlockVertical! * 11,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
                           height: SizeConfig.safeBlockVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
@@ -186,8 +185,9 @@ class _GameFrontPageState extends State<GameFrontPage> {
                           },
                           child: Container(
                             margin: EdgeInsets.only(
-                                top: SizeConfig.safeBlockVertical!* 1.5, left: SizeConfig.safeBlockHorizontal! * 7),
-                            height:SizeConfig.safeBlockVertical! * 4,
+                                top: SizeConfig.safeBlockVertical! * 1.5,
+                                left: SizeConfig.safeBlockHorizontal! * 7),
+                            height: SizeConfig.safeBlockVertical! * 4,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 alignment: Alignment.topLeft,
@@ -199,7 +199,8 @@ class _GameFrontPageState extends State<GameFrontPage> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical!* 15),
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 15),
                           height: SizeConfig.safeBlockVertical! * 13.5,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -211,11 +212,11 @@ class _GameFrontPageState extends State<GameFrontPage> {
                         Container(
                           alignment: Alignment(0.0, -1.0),
                           padding: EdgeInsets.only(
-                            top: SizeConfig.safeBlockVertical!* 29,
+                            top: SizeConfig.safeBlockVertical! * 29,
                           ),
                           child: Text(
                             'Level ' + (getCurrentLevel()).toString(),
-                            style:  TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 17.sp,
                               color: Color(0xFFBA494B),
@@ -224,13 +225,16 @@ class _GameFrontPageState extends State<GameFrontPage> {
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: EdgeInsets.only(top:  SizeConfig.safeBlockVertical!* 35),
+                          padding: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 35),
                           child: Text(
                             (getCurrentLevel() == 1)
                                 ? 'Introduction to Newton\'s \nLaw of Motion'
                                 : (getCurrentLevel() == 2)
                                     ? 'Newton’s First Law of Motion: \nInertia'
-                                    : 'Second law of Motion: Law of Acceleration',
+                                    : (getCurrentLevel() == 3)
+                                        ? 'Second law of Motion: Law of Acceleration'
+                                        : 'Third law of Motion: Law of Interaction',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -241,7 +245,8 @@ class _GameFrontPageState extends State<GameFrontPage> {
                         ),
                         Container(
                           width: SizeConfig.safeBlockHorizontal! * 50,
-                          margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 50.h),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 25.w, vertical: 50.h),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -333,8 +338,8 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             },
                             child: Padding(
                               padding: EdgeInsets.only(
-                                top: SizeConfig.safeBlockVertical!* 1,
-                                bottom: SizeConfig.safeBlockVertical!* 1,
+                                top: SizeConfig.safeBlockVertical! * 1,
+                                bottom: SizeConfig.safeBlockVertical! * 1,
                               ),
                               child: Text(
                                 "START",

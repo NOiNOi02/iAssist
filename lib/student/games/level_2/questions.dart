@@ -402,7 +402,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                 ? EdgeInsets.only(
                                     top: (i + 3.5) * 8.h.toDouble(), left: 53.5)
                                 : EdgeInsets.only(
-                                    top: (i + 5.5) * 8.h.toDouble(),
+                                    top: (i + 6.5) * 8.h.toDouble(),
                                     left: 53.5),
                             decoration: BoxDecoration(
                               boxShadow: [

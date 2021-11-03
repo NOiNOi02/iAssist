@@ -189,7 +189,7 @@ class _Level2State extends State<Level2a> {
                     child: Stack(
                       children: <Widget>[
                         Container(
-                           margin: EdgeInsets.symmetric(
+                          margin: EdgeInsets.symmetric(
                               horizontal: SizeConfig.safeBlockHorizontal! * 5),
                           height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
@@ -204,32 +204,8 @@ class _Level2State extends State<Level2a> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: SizeConfig.safeBlockVertical! * 1.5,
-                                left: SizeConfig.safeBlockHorizontal! * 7),
-                            height: SizeConfig.safeBlockVertical! * 4,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                alignment: Alignment.topLeft,
-                                image:
-                                    AssetImage('assets/images/games/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
-                          margin: EdgeInsets.only(top: 4.5.h, left: 22.w),
+                          margin: EdgeInsets.only(top: 10.5.h, left: 17.w),
                           height: SizeConfig.safeBlockVertical! * 25,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -240,7 +216,7 @@ class _Level2State extends State<Level2a> {
                           ),
                         ),
                         Container(
-                           margin: EdgeInsets.only(top: 20.h, left: 1.w),
+                          margin: EdgeInsets.only(top: 30.h, left: 1.w),
                           height: SizeConfig.safeBlockVertical! * 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -301,7 +277,7 @@ class _Level2State extends State<Level2a> {
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 12.sp,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),
