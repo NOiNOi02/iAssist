@@ -101,8 +101,8 @@ class _LessonPlansState extends State<LessonPlans>
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 10.w, vertical: 22.w),
+                          margin:
+                              EdgeInsets.only(top: 13.h, right: 7.w, left: 7.w),
                           height: SizeConfig.safeBlockVertical! * 45,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
@@ -116,17 +116,18 @@ class _LessonPlansState extends State<LessonPlans>
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 13,
-                              left: 15.w,
-                              right: 15.w),
+                          margin: EdgeInsets.only(top: 5.h),
+                          // width: size.width * 1.w,
                           child: Stack(
                             children: <Widget>[
-                              Padding(
-                                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                                  child: Image.asset('images/book.png')),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(75, 30, 0, 0),
+                              Container(
+                                // height: size.height * .4,
+                                margin: EdgeInsets.only(top: 11.h, left: 23.w),
+                                child: (Image.asset('images/book.png')),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 15.h, left: 37.w),
+                                width: size.width * .6,
                                 child: Text(
                                   'LESSON PLANS',
                                   style: TextStyle(
@@ -135,16 +136,14 @@ class _LessonPlansState extends State<LessonPlans>
                                     color: Color(0xFFBA494B),
                                   ),
                                 ),
-                              ),
+                              )
                             ],
                           ),
                         ),
                         Container(
-                          width: size.width,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 27,
-                              left: 10.w,
-                              right: 10.w),
+                          alignment: Alignment.topLeft,
+                          margin:
+                              EdgeInsets.only(top: 30.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path = 'assets/documents/sample.pdf';
@@ -169,11 +168,9 @@ class _LessonPlansState extends State<LessonPlans>
                           ),
                         ),
                         Container(
-                          width: size.width,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 32,
-                              left: 10.w,
-                              right: 10.w),
+                          alignment: Alignment.topLeft,
+                          margin:
+                              EdgeInsets.only(top: 35.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path = 'assets/documents/sample.pdf';
@@ -199,11 +196,9 @@ class _LessonPlansState extends State<LessonPlans>
                           ),
                         ),
                         Container(
-                          width: size.width,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 37,
-                              left: 10.w,
-                              right: 10.w),
+                          alignment: Alignment.topLeft,
+                          margin:
+                              EdgeInsets.only(top: 40.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path = 'assets/documents/sample.pdf';
@@ -212,7 +207,7 @@ class _LessonPlansState extends State<LessonPlans>
                             },
                             icon: Icon(MyFlutterApp.pdf,
                                 color: Color(0xFFBA494B)),
-                            label: Text("LP #3 LESSON PLAN NEWTONS LAW",
+                            label: Text("LP #3 Law of Inertia",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),

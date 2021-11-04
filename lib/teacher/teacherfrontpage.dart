@@ -99,7 +99,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 11.w),
-                          height: SizeConfig.safeBlockVertical! * 67,
+                          height: SizeConfig.safeBlockVertical! * 63,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -114,7 +114,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                         ),
                         Container(
                           margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 4),
+                              top: SizeConfig.safeBlockVertical! * 2),
                           height: SizeConfig.safeBlockVertical! * 14,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -125,7 +125,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                         ),
                         Container(
                           padding: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 19,
+                              top: SizeConfig.safeBlockVertical! * 16,
                               left: 31.w,
                               right: 31.w),
                           child: Text(
@@ -139,11 +139,11 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                         ),
                         Container(
                           padding: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 23,
+                              top: SizeConfig.safeBlockVertical! * 20,
                               left: 14.w,
                               right: 14.w),
                           child: Text(
-                            'You can view the Lesson Plans, Powerpoint\nPresentations, and Worksheets here.',
+                            'You can view the Lesson Plans, Powerpoint Presentations, \nand Worksheets here.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,

@@ -57,7 +57,6 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         leading: IconButton(
-          // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFBA494B)),
           onPressed: () => Navigator.pop(context),
         ),
@@ -98,8 +97,8 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 10.w, vertical: 22.w),
+                          margin:
+                              EdgeInsets.only(top: 13.h, right: 7.w, left: 7.w),
                           height: SizeConfig.safeBlockVertical! * 70,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
@@ -113,17 +112,18 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 100,
-                              left: 15.w,
-                              right: 15.w),
+                          margin: EdgeInsets.only(top: 5.h),
+                          // width: size.width * 1.w,
                           child: Stack(
                             children: <Widget>[
-                              Padding(
-                                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                                  child: Image.asset('images/book.png')),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(75, 15, 0, 0),
+                              Container(
+                                // height: size.height * .4,
+                                margin: EdgeInsets.only(top: 11.h, left: 23.w),
+                                child: (Image.asset('images/book.png')),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 12.h, left: 37.w),
+                                width: size.width * .6,
                                 child: Text(
                                   'POWERPOINT PRESENTATION',
                                   style: TextStyle(
@@ -132,16 +132,14 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                                     color: Color(0xFFBA494B),
                                   ),
                                 ),
-                              ),
+                              )
                             ],
                           ),
                         ),
                         Container(
-                          width: size.width,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 27,
-                              left: 10.w,
-                              right: 10.w),
+                          alignment: Alignment.topLeft,
+                          margin:
+                              EdgeInsets.only(top: 30.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path = 'assets/documents/sample.pdf';
@@ -166,11 +164,9 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: size.width,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 32,
-                              left: 10.w,
-                              right: 10.w),
+                          alignment: Alignment.topLeft,
+                          margin:
+                              EdgeInsets.only(top: 35.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path = 'assets/documents/sample.pdf';
@@ -195,11 +191,9 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: size.width,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 37,
-                              left: 10.w,
-                              right: 10.w),
+                          alignment: Alignment.topLeft,
+                          margin:
+                              EdgeInsets.only(top: 40.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path = 'assets/documents/sample.pdf';
@@ -224,11 +218,9 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: size.width,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 42,
-                              left: 10.w,
-                              right: 10.w),
+                          alignment: Alignment.topLeft,
+                          margin:
+                              EdgeInsets.only(top: 45.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path = 'assets/documents/sample.pdf';
@@ -253,11 +245,11 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: size.width,
+                          alignment: Alignment.topLeft,
                           margin: EdgeInsets.only(
-                            top: SizeConfig.safeBlockVertical! * 47,
-                            left: 10.w,
-                            right: 10.w,
+                            top: 50.h,
+                            left: 7.w,
+                            right: 7.w,
                           ),
                           child: OutlinedButton.icon(
                             onPressed: () async {
@@ -283,11 +275,11 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: size.width,
+                          alignment: Alignment.topLeft,
                           margin: EdgeInsets.only(
-                            top: SizeConfig.safeBlockVertical! * 52,
-                            left: 10.w,
-                            right: 10.w,
+                            top: 55.h,
+                            left: 7.w,
+                            right: 7.w,
                           ),
                           child: OutlinedButton.icon(
                             onPressed: () async {
@@ -313,11 +305,11 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: size.width,
+                          alignment: Alignment.topLeft,
                           margin: EdgeInsets.only(
-                            top: SizeConfig.safeBlockVertical! * 57,
-                            left: 10.w,
-                            right: 10.w,
+                            top: 60.h,
+                            left: 7.w,
+                            right: 7.w,
                           ),
                           child: OutlinedButton.icon(
                             onPressed: () async {
@@ -343,11 +335,11 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: size.width,
+                          alignment: Alignment.topLeft,
                           margin: EdgeInsets.only(
-                            top: SizeConfig.safeBlockVertical! * 62,
-                            left: 10.w,
-                            right: 10.w,
+                            top: 65.h,
+                            left: 7.w,
+                            right: 7.w,
                           ),
                           child: OutlinedButton.icon(
                             onPressed: () async {
@@ -373,11 +365,11 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: size.width,
+                          alignment: Alignment.topLeft,
                           margin: EdgeInsets.only(
-                            top: SizeConfig.safeBlockVertical! * 67,
-                            left: 10.w,
-                            right: 10.w,
+                            top: 70.h,
+                            left: 7.w,
+                            right: 7.w,
                           ),
                           child: OutlinedButton.icon(
                             onPressed: () async {
@@ -403,11 +395,11 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: size.width,
+                          alignment: Alignment.topLeft,
                           margin: EdgeInsets.only(
-                            top: SizeConfig.safeBlockVertical! * 72,
-                            left: 10.w,
-                            right: 10.w,
+                            top: 75.h,
+                            left: 7.w,
+                            right: 7.w,
                           ),
                           child: OutlinedButton.icon(
                             onPressed: () async {

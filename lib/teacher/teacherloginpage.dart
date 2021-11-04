@@ -42,7 +42,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage>
         child: Column(
           children: <Widget>[
             Container(
-              height: SizeConfig.safeBlockVertical! * 100,
+              height: size.height,
               child: Stack(
                 children: <Widget>[
                   Container(
@@ -87,14 +87,15 @@ class _TeacherLoginPageState extends State<TeacherLoginPage>
                     ),
                   ),
                   Positioned(
-                    top: SizeConfig.safeBlockVertical! * 29.4,
+                    top: SizeConfig.safeBlockVertical! * 25,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
+                          // alignment: Alignment(0.0, -66.0),
                           margin: EdgeInsets.symmetric(horizontal: 12.w),
-                          height: SizeConfig.safeBlockVertical! * 55,
+                          height: SizeConfig.safeBlockVertical! * 57,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -155,7 +156,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage>
                         Container(
                           alignment: Alignment(0.0, -1.0),
                           margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 16),
+                              top: SizeConfig.safeBlockVertical! * 17),
                           child: Text(
                             'Please Login to your account.',
                             style: TextStyle(
@@ -183,7 +184,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage>
                         ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          margin: EdgeInsets.only(top: 35.5.h, right: 44.w),
+                          margin: EdgeInsets.only(top: 35.h, right: 44.w),
                           child: Text(
                             'Password',
                             style: TextStyle(
