@@ -78,7 +78,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                   ),
                 ),
               ),
-            ),
+            
             ListTile(
               leading: Icon(Icons.home, color: Color(0xFFBA494B),),
               title: Text(
@@ -150,6 +150,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                 'Exit',
                 style: TextStyle(fontSize: 13.sp, fontFamily: 'MyFlutterApp',color: Color(0xFFBA494B), fontWeight: FontWeight.bold),
               ),
+            ),
             ],
           ),
         ),
