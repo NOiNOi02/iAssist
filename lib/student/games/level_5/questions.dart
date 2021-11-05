@@ -296,8 +296,8 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                         //lives
                         for (int i = 0; i < getCurrentLives(); i++)
                           Container(
-                            height: 3.h,
-                            width: 6.w,
+                            height: size.height * 0.03,
+                            width: size.width * 0.06,
                             margin:
                                 EdgeInsets.only(left: (i + 1) * 7.w, top: 1.h),
                             decoration: BoxDecoration(

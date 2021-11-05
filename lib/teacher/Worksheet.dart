@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, prefer_const_constructors
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
@@ -73,7 +75,7 @@ class _WorksheetState extends State<Worksheet>
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('images/TeacherHeader.png'),
+                        image: AssetImage('assets/images/TeacherHeader.png'),
                       ),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(18),
@@ -114,10 +116,24 @@ class _WorksheetState extends State<Worksheet>
                           // width: size.width * 1.w,
                           child: Stack(
                             children: <Widget>[
-                              Container(
+                               Container(
                                 // height: size.height * .4,
-                                margin: EdgeInsets.only(top: 11.h, left: 23.w),
-                                child: (Image.asset('images/book.png')),
+                                margin: EdgeInsets.only(top: 10.h, left: 15.w),
+                                child: Container(
+                                  height: SizeConfig.safeBlockVertical! * 15,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.contain,
+                                      alignment: Alignment.centerLeft,
+                                      image: AssetImage(
+                                          'assets/images/book.png'),
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(18),
+                                      bottomRight: Radius.circular(18),
+                                    ),
+                                  ),
+                                ),
                               ),
                               Container(
                                 margin: EdgeInsets.only(top: 15.h, left: 37.w),
@@ -140,7 +156,7 @@ class _WorksheetState extends State<Worksheet>
                               EdgeInsets.only(top: 30.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path = 'assets/documents/ACT 1 ACTIVITY SHEET-Word-Search-Puzzle.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -167,7 +183,7 @@ class _WorksheetState extends State<Worksheet>
                               EdgeInsets.only(top: 35.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path = 'assets/documents/ACT 2 ACTIVITY SHEET-Experiment.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -195,7 +211,7 @@ class _WorksheetState extends State<Worksheet>
                               EdgeInsets.only(top: 40.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path = 'assets/documents/ACT 3 ACTIVITY SHEET Problem Solving.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },

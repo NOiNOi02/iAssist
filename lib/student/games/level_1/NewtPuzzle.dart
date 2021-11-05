@@ -255,22 +255,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                 alignment: Alignment.topRight,
                                 fit: BoxFit.contain,
                                 image: AssetImage(
-                                    'assets/images/games/Level1/dialogBox.png'),
-                              ),
-                            ),
-                          ),
-                        if (showDialogBox)
-                          Container(
-                            margin: EdgeInsets.only(
-                                left: SizeConfig.blockSizeHorizontal! * 45,
-                                top: SizeConfig.blockSizeVertical! * 21),
-                            child: Text(
-                              "Hi! My name is NEWT. I \nwill be your guide as you\nlearn Newton’s three laws \nof motion.",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 10.sp,
-                                // fontWeight: FontWeight.w700,
-                                color: Color(0xFFBA494B),
+                                    'assets/images/games/Level1/Group 84.png'),
                               ),
                             ),
                           ),
@@ -278,42 +263,34 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                           Container(
                             margin: EdgeInsets.symmetric(
                                 horizontal: 17.w, vertical: 11.h),
-                            color: Colors.transparent,
-                            child: Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 1.w, vertical: 5.h),
-                                  height: 46.h,
-                                  width: 100.w,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      alignment: Alignment.topCenter,
-                                      fit: BoxFit.contain,
-                                      image: AssetImage(
-                                          'assets/images/games/Level1/robot.png'),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 2.w),
-                                  height: 500,
-                                  width: 400,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        alignment: Alignment.center,
-                                        fit: BoxFit.contain,
-                                        image: (getCurrentNumber() != 5)
-                                            ? AssetImage(
-                                                'assets/images/games/Level1/' +
-                                                    (getCurrentNumber())
-                                                        .toString() +
-                                                    '.png')
-                                            : AssetImage(
-                                                'assets/images/games/Level1/noImage.png')),
-                                  ),
-                                ),
-                              ],
+                            height: 500,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  alignment: Alignment.center,
+                                  fit: BoxFit.contain,
+                                  image: (getCurrentNumber() != 5)
+                                      ? AssetImage(
+                                          'assets/images/games/Level1/' +
+                                              (getCurrentNumber()).toString() +
+                                              '.png')
+                                      : AssetImage(
+                                          'assets/images/games/Level1/noImage.png')),
+                            ),
+                          ),
+                        if (!showDialogBox)
+                          Container(
+                            margin:  EdgeInsets.symmetric(
+                                horizontal: 17.w, vertical: 11.h),
+                            height: 46.h,
+                            width: 100.w,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                alignment: Alignment.topCenter,
+                                fit: BoxFit.contain,
+                                image: AssetImage(
+                                    'assets/images/games/Level1/robot.png'),
+                              ),
                             ),
                           ),
                         Container(

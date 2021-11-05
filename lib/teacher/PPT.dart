@@ -1,5 +1,5 @@
 // ignore: file_names
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, use_key_in_widget_constructors, file_names
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -75,7 +75,7 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('images/TeacherHeader.png'),
+                        image: AssetImage('assets/images/TeacherHeader.png'),
                       ),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(18),
@@ -118,8 +118,22 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                             children: <Widget>[
                               Container(
                                 // height: size.height * .4,
-                                margin: EdgeInsets.only(top: 11.h, left: 23.w),
-                                child: (Image.asset('images/book.png')),
+                                margin: EdgeInsets.only(top: 10.h, left: 15.w),
+                                child: Container(
+                                  height: SizeConfig.safeBlockVertical! * 15,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.contain,
+                                      alignment: Alignment.centerLeft,
+                                      image:
+                                          AssetImage('assets/images/book.png'),
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(18),
+                                      bottomRight: Radius.circular(18),
+                                    ),
+                                  ),
+                                ),
                               ),
                               Container(
                                 margin: EdgeInsets.only(top: 12.h, left: 37.w),
@@ -142,7 +156,8 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               EdgeInsets.only(top: 30.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path =
+                                  'assets/documents/1ST-LAW-OF-MOTION-INERTIA.pptx.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -169,7 +184,8 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               EdgeInsets.only(top: 35.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path =
+                                  'assets/documents/2ND-LAW-OF-MOTION-ACCELERATION.pptx.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -196,7 +212,8 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               EdgeInsets.only(top: 40.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path =
+                                  'assets/documents/3RD-LAW-OF-MOTION-INTERACTION.pptx.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -223,7 +240,8 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               EdgeInsets.only(top: 45.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path =
+                                  'assets/documents/PPT 1 NEWTON’S THREE LAWS OF MOTION.pptx.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -253,7 +271,8 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path =
+                                  'assets/documents/PPT 2 NEWTON_S THREE LAWS OF MOTION.pptx.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -283,7 +302,8 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path =
+                                  'assets/documents/PPT 3 NEWTON_S THREE LAWS OF MOTION.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -313,7 +333,8 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path =
+                                  'assets/documents/PPT 4 NEWTON_S THREE LAWS OF MOTION.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -343,7 +364,8 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           ),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path =
+                                  'assets/documents/PPT 5 NEWTON_S THREE LAWS OF MOTION.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -352,66 +374,6 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               color: Color(0xFFBA494B),
                             ),
                             label: Text("LP #8 LESSON PLAN NEWTONS LAW",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                color: Colors.transparent,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          margin: EdgeInsets.only(
-                            top: 70.h,
-                            left: 7.w,
-                            right: 7.w,
-                          ),
-                          child: OutlinedButton.icon(
-                            onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
-                              final file = await PDFApi.loadAsset(path);
-                              openPDF(context, file);
-                            },
-                            icon: Icon(
-                              MyFlutterApp.pdf,
-                              color: Color(0xFFBA494B),
-                            ),
-                            label: Text("LP #9 LESSON PLAN NEWTONS LAW",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                color: Colors.transparent,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          margin: EdgeInsets.only(
-                            top: 75.h,
-                            left: 7.w,
-                            right: 7.w,
-                          ),
-                          child: OutlinedButton.icon(
-                            onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
-                              final file = await PDFApi.loadAsset(path);
-                              openPDF(context, file);
-                            },
-                            icon: Icon(
-                              MyFlutterApp.pdf,
-                              color: Color(0xFFBA494B),
-                            ),
-                            label: Text("LP #10 LESSON PLAN NEWTONS LAW",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),

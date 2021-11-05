@@ -32,7 +32,7 @@ class QuestionsLevel4 extends StatefulWidget {
 
 //color container for selected choices
 List<Color> _colorContainerText = [Color(0xFFBA494B), Colors.white];
-List<Color> _colorContainerButton = [Colors.white, Colors.black];
+List<Color> _colorContainerButton = [Colors.white, Color(0xFFBA494B)];
 DecorationImage checkImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,

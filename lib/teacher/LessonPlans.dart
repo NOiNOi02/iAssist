@@ -1,7 +1,7 @@
 // ignore: file_names
 // ignore: file_names
 // ignore: file_names
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, use_key_in_widget_constructors, file_names
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -79,7 +79,7 @@ class _LessonPlansState extends State<LessonPlans>
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('images/TeacherHeader.png'),
+                        image: AssetImage('assets/images/TeacherHeader.png'),
                       ),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(18),
@@ -122,8 +122,22 @@ class _LessonPlansState extends State<LessonPlans>
                             children: <Widget>[
                               Container(
                                 // height: size.height * .4,
-                                margin: EdgeInsets.only(top: 11.h, left: 23.w),
-                                child: (Image.asset('images/book.png')),
+                                margin: EdgeInsets.only(top: 10.h, left: 15.w),
+                                child: Container(
+                                  height: SizeConfig.safeBlockVertical! * 15,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.contain,
+                                      alignment: Alignment.centerLeft,
+                                      image: AssetImage(
+                                          'assets/images/book.png'),
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(18),
+                                      bottomRight: Radius.circular(18),
+                                    ),
+                                  ),
+                                ),
                               ),
                               Container(
                                 margin: EdgeInsets.only(top: 15.h, left: 37.w),
@@ -146,7 +160,7 @@ class _LessonPlansState extends State<LessonPlans>
                               EdgeInsets.only(top: 30.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path = 'assets/documents/5E Editedd LP 01.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -173,7 +187,7 @@ class _LessonPlansState extends State<LessonPlans>
                               EdgeInsets.only(top: 35.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path = 'assets/documents/Edited Lp 03.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -201,7 +215,7 @@ class _LessonPlansState extends State<LessonPlans>
                               EdgeInsets.only(top: 40.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/sample.pdf';
+                              final path = 'assets/documents/Editedd Lp 02.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },

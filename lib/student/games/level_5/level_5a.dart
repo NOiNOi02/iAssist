@@ -214,14 +214,15 @@ class _Level5aState extends State<Level5a> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 20.h, left: 1.w),
-                          height: SizeConfig.safeBlockVertical! * 45,
+                          margin: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+                          height: 500,
+                          width: 300,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              fit: BoxFit.contain,
-                              alignment: Alignment.topLeft,
+                              fit: BoxFit.cover,
+                              alignment: Alignment.center,
                               image: AssetImage(
-                                  'assets/images/games/level5/Group 75.png'),
+                                  'assets/images/games/level5/Group 83.png'),
                             ),
                           ),
                         ),
