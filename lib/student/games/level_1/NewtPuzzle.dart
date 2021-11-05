@@ -282,6 +282,20 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                             child: Stack(
                               children: [
                                 Container(
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 1.w, vertical: 5.h),
+                                  height: 46.h,
+                                  width: 100.w,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      alignment: Alignment.topCenter,
+                                      fit: BoxFit.contain,
+                                      image: AssetImage(
+                                          'assets/images/games/Level1/robot.png'),
+                                    ),
+                                  ),
+                                ),
+                                Container(
                                   margin: EdgeInsets.symmetric(horizontal: 2.w),
                                   height: 500,
                                   width: 400,
@@ -297,20 +311,6 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                                     '.png')
                                             : AssetImage(
                                                 'assets/images/games/Level1/noImage.png')),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 1.w, vertical: 5.h),
-                                  height: 46.h,
-                                  width: 100.w,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      alignment: Alignment.topCenter,
-                                      fit: BoxFit.contain,
-                                      image: AssetImage(
-                                          'assets/images/games/Level1/robot.png'),
-                                    ),
                                   ),
                                 ),
                               ],

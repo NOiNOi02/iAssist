@@ -304,7 +304,7 @@ class _LeaderboardsState extends State<Leaderboards> {
                                 bottom: 1.w,
                               ),
                               child: Text(
-                                "HOME!",
+                                "HOME",
                                 style: TextStyle(
                                   fontSize: 12.sp,
                                   // fontWeight: FontWeight.w700,
