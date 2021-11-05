@@ -278,6 +278,7 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                             isReverseAnimation: true,
                             ringColor: Color(0xFFEB9785),
                             fillColor: Color(0xFFBA494B),
+                            backgroundColor: Colors.white,
                             width: size.width * 0.15,
                             height: size.height * 0.15,
                             duration: 15,
