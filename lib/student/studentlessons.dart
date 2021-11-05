@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/selectionpage.dart';
@@ -332,7 +333,9 @@ class _StudentLessonsState extends State<StudentLessons>
                 icon: IconButton(
                   icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
                   onPressed: () {
-
+                    Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                    });
                   },
                 ),
               ),
