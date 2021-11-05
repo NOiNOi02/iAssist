@@ -51,22 +51,18 @@ var trivia = [
   'You\'re answer is correct! Foot pushing down on the sand',
   'You\'re answer is correct! The water pushes back on the swimmer',
   'You\'re answer is correct! The wall exerts an equal and opposite force against',
-  [
-    'You\'re answer is correct!\n A person tries to push a stuck car',
-    'The clothesline with hung clothes',
-    'Jumping from a raft into the water'
-  ]
+  'You\'re answer is correct!'
 ];
 var answers = [
-  0,
-  1,
-  1,
-  0,
-  0,
-  1,
-  1,
-  0,
-  1,
+  [0],
+  [1],
+  [1],
+  [0],
+  [0],
+  [1],
+  [1],
+  [0],
+  [1],
   [1, 3, 5]
 ];
 var currentNumber = 0;
@@ -109,12 +105,22 @@ int getCurrentPoints() {
 }
 
 void setCurrentPoints(int lives) {
-  if (lives == 3) {
-    currentPoints = 5;
-  } else if (lives == 2) {
-    currentPoints = 3;
-  } else if (lives == 1) {
-    currentPoints = 2;
+   if (currentNumber == 9) {
+    if (lives == 3) {
+      currentPoints = 9;
+    } else if (lives == 2) {
+      currentPoints = 6;
+    } else if (lives == 1) {
+      currentPoints = 3;
+    }
+  } else {
+    if (lives == 3) {
+      currentPoints = 5;
+    } else if (lives == 2) {
+      currentPoints = 3;
+    } else if (lives == 1) {
+      currentPoints = 2;
+    }
   }
 }
 
@@ -132,20 +138,29 @@ void resetCurrentNumber() {
 
 bool checkAnswer(int answer, int number) {
   //wll return true or false, depends on the answer and the correct answer
-  print("answer" + answer.toString());
-  for (int i = 1; i <= 5; i++) {
-    print(i.toString() + '==' + number.toString());
+  for (int i = 1; i <= 9; i++) {
     if (i == number) {
-      print(answer == answers[i - 1]);
-      print(answer.toString() + '==' + answers[i - 1].toString());
-      if (answer == answers[i - 1]) {
-        print('correct');
+      if (answer == answers[i - 1][0]) {
         return true;
       } else {
-        print('wrong');
         return false;
       }
     }
   }
   return false;
+}
+
+List<bool> checkMultipleAnswers(List<int> answer, int number) {
+  int counter = 0;
+  List<bool> temp = [false, false, false];
+  print("before loop");
+  for (int i = 0; i < answer.length; i++) {
+    if (answers[number - 1].contains(answer[i])) {
+      temp[i] = true;
+      counter++;
+    }
+  }
+  print("after loop");
+  print(temp);
+  return temp;
 }

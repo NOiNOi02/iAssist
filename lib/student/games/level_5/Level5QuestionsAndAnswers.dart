@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 //questions, choices and answers for level 1
 var questions = [
-  "Oh no! Newt needs to go home.\n Help him launch his backpack rocket! \nASAP",
+  "Oh no! Newt needs to go home.\n Help him launch his backpack rocket! ASAP",
   "Newt has a higher mass\nThe rocket needs to produce...?h",
   "Newt need to accelerate faster, \nyou have to...?",
   "Newt house is near. \nYet he is travelling so fast!",
@@ -75,17 +75,11 @@ void resetCurrentNumber() {
 
 bool checkAnswer(int answer, int number) {
   //wll return true or false, depends on the answer and the correct answer
-  print("answer" + answer.toString());
   for (int i = 1; i <= 5; i++) {
-    print(i.toString() + '==' + number.toString());
     if (i == number) {
-      print(answer == answers[i - 1]);
-      print(answer.toString() + '==' + answers[i - 1].toString());
       if (answer == answers[i - 1]) {
-        print('correct');
         return true;
       } else {
-        print('wrong');
         return false;
       }
     }

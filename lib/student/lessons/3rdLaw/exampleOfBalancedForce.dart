@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/lessons/3rdLaw/interactionForcesVsBalancedForces.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 
 import '../Newton3rd.dart';
 
@@ -27,7 +29,7 @@ class _ExampleOfBalancedForceState extends State<ExampleOfBalancedForce> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -43,65 +45,75 @@ class _ExampleOfBalancedForceState extends State<ExampleOfBalancedForce> {
             ),
           ),
         ),
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 30, left: 25, right: 25),
-            child: Center(
-              child: Text(
-                "EXAMPLE OF BALANCE FORCE",
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Color(0xFFBA494B),
+            height: SizeConfig.safeBlockVertical! * 100,
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: SizeConfig.safeBlockVertical! * 10,
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  child: Center(
+                    child: Text(
+                      "EXAMPLE OF BALANCE FORCE",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.sp,
+                        color: Color(0xFFBA494B),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Assume you're in a tug-of-war with your team starts by pulling with all its power. But the opposing team is also pushing hard and in the opposite direction. The flag in the rope's center doesn't move. The flag does not move since the force applied by your team is equivalent to the opposing side's force. The forces are opposing. The rope's forces are balanced. When the forces are balanced, the rope's flag will not move. A team must use more force than the other to win.",
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  height: SizeConfig.safeBlockVertical! * 45,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Assume you're in a tug-of-war with your team starts by pulling with all its power. But the opposing team is also pushing hard and in the opposite direction. The flag in the rope's center doesn't move. The flag does not move since the force applied by your team is equivalent to the opposing side's force. The forces are opposing. The rope's forces are balanced. When the forces are balanced, the rope's flag will not move. A team must use more force than the other to win.",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10, left: 25, right: 25),
-            height: size.height * .22,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage('assets/images/secondLawOfMotion/17.png'),
-              ),
-            ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 25),
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'Figure 2. Children playing tug-of-war',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 14,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 35.h),
+                  height: size.height * .22,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image:
+                          AssetImage('assets/images/secondLawOfMotion/17.png'),
+                    ),
+                  ),
                 ),
-              ),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 54.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Figure 2. Children playing tug-of-war',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 9.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
+          )
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(

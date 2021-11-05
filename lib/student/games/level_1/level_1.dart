@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
@@ -9,6 +10,8 @@ import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/questions.dart';
 import 'package:iassist/student/games/Modals.dart';
+import 'package:sizer/sizer.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 
 import '../../../selectionpage.dart';
 
@@ -29,7 +32,6 @@ class _Level1State extends State<Level1> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int current_level = getCurrentLevel();
-    //modal lives
     return Scaffold(
       // backgroundColor: Color(0xFFBA494B),
       resizeToAvoidBottomInset: false,
@@ -43,75 +45,82 @@ class _Level1State extends State<Level1> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Color(0xFFBA494B),
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/SelectionHeader.png"),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: const Text(
-                'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectionPage(),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: const Text(
-                'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                ),
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
-                'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
-                    // color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
               ),
-              onTap: () {
-                Future.delayed(const Duration(milliseconds: 1000), () {
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                });
-              },
-            ),
-          ],
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -131,7 +140,7 @@ class _Level1State extends State<Level1> {
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: size.height * 0.15,
+                    height: SizeConfig.safeBlockHorizontal! * 30,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -152,10 +161,12 @@ class _Level1State extends State<Level1> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
-                    height: size.height * .08,
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+                        alignment: Alignment.topLeft,
                         fit: BoxFit.contain,
                         image: AssetImage('assets/images/games/game1.png'),
                       ),
@@ -163,26 +174,27 @@ class _Level1State extends State<Level1> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 40, left: 35),
+                    margin: EdgeInsets.only(top: 4.h, left: 17.w),
                     child: Text(
                       'Level 1\nIntroduction to Newton\'s Law of Motion',
                       textAlign: TextAlign.left,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          height: size.height * 1,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -195,44 +207,23 @@ class _Level1State extends State<Level1> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image:
-                                    AssetImage('assets/images/games/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(top: 14),
+                          padding: EdgeInsets.only(top: 2.h),
                           child: Text(
                             'Unlock the game\'s character by answering \n correctly the following questions',
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 80),
-                          height: size.height * 0.57,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 9),
+                          height: SizeConfig.blockSizeVertical! * 60,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -242,8 +233,11 @@ class _Level1State extends State<Level1> {
                           ),
                         ),
                         Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 555, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 70,
+                              left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -287,14 +281,14 @@ class _Level1State extends State<Level1> {
                               showLivesModal(context, size);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.only(
-                                top: 10,
-                                bottom: 10,
+                              padding: EdgeInsets.only(
+                                top: 1.h,
+                                bottom: 1.h,
                               ),
                               child: Text(
                                 "Answer now!",
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 12.sp,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),

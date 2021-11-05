@@ -11,7 +11,8 @@ import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
 import 'package:iassist/student/games/level_1/NewtPuzzle.dart';
-
+import 'package:sizer/sizer.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import '../../../selectionpage.dart';
 
 class QuestionsLevel1 extends StatefulWidget {
@@ -28,7 +29,7 @@ class QuestionsLevel1 extends StatefulWidget {
 
 //color container for selected choices
 List<Color> _colorContainerText = [Color(0xFFBA494B), Colors.white];
-List<Color> _colorContainerButton = [Colors.white, Colors.black];
+List<Color> _colorContainerButton = [Colors.white, Color(0xFFBA494B)];
 DecorationImage checkImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
@@ -48,6 +49,16 @@ var prev_answer;
 var answerResult = null;
 
 class _QuestionsLevel1State extends State<QuestionsLevel1> {
+  void resetValues() {
+    answer = prev_answer = answerResult = null;
+    triviaFlag = false;
+    nextFlag = [1, 0, 0];
+    resetCurrentLives();
+    resetCurrentNumber();
+    resetTotalPoints();
+    resetCurrentPoints();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -70,75 +81,82 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Color(0xFFBA494B),
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/SelectionHeader.png"),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: const Text(
-                'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectionPage(),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: const Text(
-                'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                ),
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
-                'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
-                    // color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
               ),
-              onTap: () {
-                Future.delayed(const Duration(milliseconds: 1000), () {
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                });
-              },
-            ),
-          ],
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -178,15 +196,14 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                     ),
                   ),
                   Container(
-                    alignment: Alignment(0.0, -1.0),
-                    padding:
-                        const EdgeInsets.only(top: 40, left: 0, right: 100),
+                    alignment: Alignment(-1.0, -1.0),
+                    padding: EdgeInsets.only(top: 4.h, left: 5.w),
                     child: Text(
                       'Level 1\nIntroduction to Newton\'s \nLaw of Motion',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 25,
+                          fontSize: 18.sp,
                           color: Colors.white.withOpacity(0.72)),
                     ),
                   ),
@@ -197,8 +214,9 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          height: size.height * 1,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -214,28 +232,28 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                         //points
                         Container(
                           alignment: Alignment.center,
-                          padding: const EdgeInsets.only(top: 15),
+                          padding: EdgeInsets.only(top: 1.5.h),
                           child: Text(
                             "Current Points: " +
                                 getCurrentPoints().toString() +
                                 "pts",
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment.topRight,
-                          padding: const EdgeInsets.only(top: 15, right: 30),
+                          padding: EdgeInsets.only(top: 1.5.h, right: 6.w),
                           child: Text(
                             "Total Points: " + getTotalPoints().toString(),
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFF4785B4),
                             ),
                           ),
@@ -243,10 +261,10 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                         //lives
                         for (int i = 0; i < getCurrentLives(); i++)
                           Container(
-                            height: size.height * 0.03,
-                            width: size.width * 0.06,
+                            height: 3.h,
+                            width: 6.w,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 7.w, top: 1.h),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -261,10 +279,10 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                           ),
                         for (int i = 0; i < 3; i++)
                           Container(
-                            height: size.height * 0.03,
-                            width: size.width * 0.06,
+                            height: 3.h,
+                            width: 6.w,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 7.w, top: 1.h),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -280,15 +298,15 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                         //questions
                         Container(
                           alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(
-                              top: 50, left: 30, right: 30),
+                          padding:
+                              EdgeInsets.only(top: 7.h, left: 8.w, right: 8.w),
                           child: Text(
                             //getting the questions based from what current number is
                             questions[getCurrentNumber()],
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
@@ -296,18 +314,16 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                         //Trivias
                         if (triviaFlag)
                           Container(
-                            alignment: Alignment(0.0, -1.0),
+                            alignment: Alignment(0.0, 0.0),
                             padding: EdgeInsets.only(
-                                top: size.height * 0.47,
-                                left: size.width * 0.10,
-                                right: size.width * 0.10),
+                                top: 47.h, left: 10.w, right: 10.w),
                             child: Text(
                               //getting the questions based from what current number is
                               trivia[getCurrentNumber()],
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                                fontSize: 11.sp,
                                 color: Color(0xFFBA494B),
                               ),
                             ),
@@ -318,9 +334,10 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             i++)
                           //loop trough all choices and create a rectangle
                           Container(
-                            width: size.width * 0.74,
+                            alignment: Alignment.center,
+                            width: 74.w,
                             margin: EdgeInsets.only(
-                                top: (i + 2) * 80.toDouble(), left: 53.5),
+                                top: (i + 2) * 10.h.toDouble(), left: 12.5.w),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -378,7 +395,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                 child: Text(
                                   choices[getCurrentNumber()][i],
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 12.sp,
                                     // fontWeight: FontWeight.w700,
                                     color: (answerResult != null)
                                         ? (answerResult == true &&
@@ -398,8 +415,11 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                           ),
                         //next
                         Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 480, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 60,
+                              left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -469,7 +489,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     child: Text(
                                       "NEXT",
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 12.sp,
                                         // fontWeight: FontWeight.w700,
                                         color: Colors.white,
                                       ),
@@ -515,7 +535,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     child: Text(
                                       "NEXT",
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 12.sp,
                                         // fontWeight: FontWeight.w700,
                                         color: Colors.white,
                                       ),
@@ -545,10 +565,10 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     answer = prev_answer = answerResult = null;
                                     triviaFlag = false;
                                     nextFlag = [1, 0, 0];
+
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();
-                                      resetTotalPoints();
                                       resetCurrentPoints();
                                       //push to leaderboards
                                       // Navigator.push(
@@ -570,7 +590,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                     child: Text(
                                       incorrectMessage,
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 12.sp,
                                         // fontWeight: FontWeight.w700,
                                         color: Colors.white,
                                       ),

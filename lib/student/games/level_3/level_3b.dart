@@ -3,13 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/student/games/Modals.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_2/level_3.dart';
 import 'package:iassist/student/games/level_3/level_3a.dart';
 import 'package:iassist/student/games/level_3/questions.dart';
-
+import 'Level3QuestionsAndAnswers.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
+import 'package:sizer/sizer.dart';
 import '../../../selectionpage.dart';
 
 class Level3b extends StatefulWidget {
@@ -42,7 +45,7 @@ class _Level3State extends State<Level3b> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -51,66 +54,73 @@ class _Level3State extends State<Level3b> {
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Color(0xFFBA494B),
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/SelectionHeader.png"),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: const Text(
-                'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectionPage(),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: const Text(
-                'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                ),
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
-                'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
-                    // color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
               ),
-              onTap: () {
-                Future.delayed(const Duration(milliseconds: 1000), () {
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                });
-              },
-            ),
-          ],
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -162,26 +172,27 @@ class _Level3State extends State<Level3b> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 20, left: 15),
+                    padding: EdgeInsets.only(top: 2.5.h, left: 15.w),
                     child: Text(
                       'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
                       textAlign: TextAlign.left,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 13,
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          height: size.height * 1,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -194,42 +205,24 @@ class _Level3State extends State<Level3b> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image:
-                                    AssetImage('assets/images/games/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
-                          margin: const EdgeInsets.only(top: 100, right: 25),
-                          height: size.height * 0.60,
+                          margin: EdgeInsets.only(top: 20.h, left: 5.w),
+                          height: SizeConfig.safeBlockVertical! * 50,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
+                              alignment: Alignment.topLeft,
                               image: AssetImage(
                                   'assets/images/games/level3/Group 62.png'),
                             ),
                           ),
                         ),
                         Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 555, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 70,
+                              left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -264,12 +257,7 @@ class _Level3State extends State<Level3b> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => QuestionsLevel3(),
-                                ),
-                              );
+                              showLivesModal(context, size);
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -279,7 +267,7 @@ class _Level3State extends State<Level3b> {
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 12.sp,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
@@ -11,7 +12,8 @@ import 'package:iassist/student/games/level_2/level_3.dart';
 import 'package:iassist/student/games/level_3/level_4.dart';
 import 'package:iassist/student/games/level_3/Level3QuestionsAndAnswers.dart';
 import 'package:iassist/student/games/Modals.dart';
-
+import 'package:sizer/sizer.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import '../../../selectionpage.dart';
 
 class QuestionsLevel3 extends StatefulWidget {
@@ -28,7 +30,7 @@ class QuestionsLevel3 extends StatefulWidget {
 
 //color container for selected choices
 List<Color> _colorContainerText = [Color(0xFFBA494B), Colors.white];
-List<Color> _colorContainerButton = [Colors.white, Colors.black];
+List<Color> _colorContainerButton = [Colors.white,Color(0xFFBA494B)];
 DecorationImage checkImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
@@ -62,6 +64,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
     var questions = getQuestions();
     var choices = getChoices();
     var images = getImages();
+    var trivia = getTrivias();
     var triviaImages = getTriviaImages();
     // var trivia = getTrivias();
     var incorrectMessage = "Your answer is incorrect! Try again!";
@@ -79,7 +82,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -88,66 +91,73 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Color(0xFFBA494B),
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/SelectionHeader.png"),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: const Text(
-                'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectionPage(),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: const Text(
-                'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                ),
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
-                'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
-                    // color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
               ),
-              onTap: () {
-                Future.delayed(const Duration(milliseconds: 1000), () {
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                });
-              },
-            ),
-          ],
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -188,10 +198,12 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
-                    height: size.height * .08,
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+                        alignment: Alignment.topLeft,
                         fit: BoxFit.contain,
                         image: AssetImage('assets/images/games/game1.png'),
                       ),
@@ -199,18 +211,18 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 20, left: 15),
+                    padding: EdgeInsets.only(top: 20.h, left: 15.w),
                     child: Text(
                       'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Colors.white.withOpacity(0.72)),
+                          fontSize: 12.sp,
+                          color: Colors.white),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
@@ -232,18 +244,6 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                         ),
 
                         Container(
-                          margin: const EdgeInsets.only(top: 40),
-                          height: size.height * 0.30,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage(
-                                  'assets/images/games/level2/Group 59.png'),
-                            ),
-                          ),
-                        ),
-
-                        Container(
                           margin: const EdgeInsets.only(top: 255),
                           height: size.height * 0.10,
                           decoration: BoxDecoration(
@@ -258,28 +258,28 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                         //points
                         Container(
                           alignment: Alignment.center,
-                          padding: const EdgeInsets.only(top: 15),
+                          padding: EdgeInsets.only(top: 1.5.h),
                           child: Text(
                             "Current Points: " +
                                 getCurrentPoints().toString() +
                                 "pts",
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFFBA494B),
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment.topRight,
-                          padding: const EdgeInsets.only(top: 15, right: 30),
+                          padding: EdgeInsets.only(top: 1.5.h, right: 6.w),
                           child: Text(
                             "Total Points: " + getTotalPoints().toString(),
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 11.sp,
                               color: Color(0xFF4785B4),
                             ),
                           ),
@@ -301,17 +301,23 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                             textFormat: 's',
                             controller: _timerController,
                             onComplete: () {
-                              print("times up");
+                              setCurrentLives();
+                              setCurrentPoints(getCurrentLives());
+                              answerResult = false;
+                              answer_result_multiple = [false, false, false];
+                              nextFlag[0] = 0;
+                              nextFlag[2] = 1;
+                              setState(() {});
                             },
                           ),
                         ),
                         //lives
                         for (int i = 0; i < getCurrentLives(); i++)
                           Container(
-                            height: size.height * 0.03,
-                            width: size.width * 0.06,
+                            height: 3.h,
+                            width: 6.w,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 7.w, top: 1.h),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -326,10 +332,10 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                           ),
                         for (int i = 0; i < 3; i++)
                           Container(
-                            height: size.height * 0.03,
-                            width: size.width * 0.06,
+                            height: 3.h,
+                            width: 6.w,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
+                                EdgeInsets.only(left: (i + 1) * 7.w, top: 10),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
@@ -342,39 +348,80 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                               ),
                             ),
                           ),
-                        //questions
+
                         Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: const EdgeInsets.only(
-                              top: 100, left: 100, right: 10),
-                          child: Text(
-                            //getting the questions based from what current number is
-                            (triviaFlag)
-                                ? trivias[getCurrentNumber()]
-                                : questions[getCurrentNumber()],
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
-                              color: Color(0xFFBA494B),
+                            margin: EdgeInsets.only(
+                                top: SizeConfig.safeBlockHorizontal! * 12,
+                                right: SizeConfig.safeBlockHorizontal! * 8),
+                            height: SizeConfig.safeBlockVertical! * 25,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: AssetImage(
+                                    'assets/images/games/level2/Group 59.png'),
+                              ),
                             ),
+                            child: Stack(
+                              children: [
+                                //questions
+                                Container(
+                                    alignment: Alignment(0.0, -1.0),
+                                    padding: EdgeInsets.only(
+                                        top: 8.h, left: 30.w, right: 10.w),
+                                    child: (!triviaFlag)
+                                        ? AutoSizeText(
+                                            //getting the questions based from what current number is
+                                            questions[getCurrentNumber()],
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 11.sp,
+                                              color: Color(0xFFBA494B),
+                                            ),
+                                            maxLines: 3,
+                                          )
+                                        : AutoSizeText(
+                                            trivia[getCurrentNumber()],
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 6.sp,
+                                              color: Color(0xFFBA494B),
+                                            ),
+                                            maxLines: 9,
+                                          )),
+                              ],
+                            )),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 30),
+                          width: SizeConfig.safeBlockHorizontal! * 50,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.contain,
+                                alignment: Alignment.center,
+                                image: (!triviaFlag)
+                                    ? AssetImage(images[getCurrentNumber()])
+                                    : AssetImage(
+                                        triviaImage[getCurrentNumber()])),
                           ),
                         ),
-
                         //choices
                         for (int i = 0;
                             i < choices[getCurrentNumber()].length;
                             i++)
                           Container(
-                            width: size.width * 0.74,
-                            height: (getCurrentNumber() == 8)
+                            alignment: Alignment.center,
+                            width: 74.w,
+                            height: (getCurrentNumber() == 9)
                                 ? size.height * 0.06
                                 : size.height * 0.07,
-                            margin: (getCurrentNumber() == 8)
+                            margin: (getCurrentNumber() == 9)
                                 ? EdgeInsets.only(
-                                    top: (i + 5) * 52.toDouble(), left: 53.5)
+                                    top: (i + 3.5) * 8.h.toDouble(), left: 53.5)
                                 : EdgeInsets.only(
-                                    top: (i + 5) * 75.toDouble(), left: 53.5),
+                                    top: (i + 6.5) * 8.h.toDouble(),
+                                    left: 53.5),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -528,10 +575,15 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                           ),
                         //next
                         Container(
-                          width: size.width * 0.74,
-                          margin: (getCurrentNumber() == 8)
-                              ? EdgeInsets.only(top: 575, left: 53.5)
-                              : EdgeInsets.only(top: 550, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: (choices[getCurrentNumber()].length >= 4)
+                              ? EdgeInsets.only(
+                                  top: SizeConfig.blockSizeVertical! * 80,
+                                  left: SizeConfig.safeBlockHorizontal! * 12)
+                              : EdgeInsets.only(
+                                  top: SizeConfig.blockSizeVertical! * 70,
+                                  left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -579,10 +631,12 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                                   checkMultipleAnswers(
                                                       number9Answers,
                                                       getCurrentNumber() + 1);
-
-                                              if (answer_result_multiple[0] &&
-                                                  answer_result_multiple[1] &&
-                                                  answer_result_multiple[2]) {
+                                              int correctAnswers =
+                                                  answer_result_multiple
+                                                      .where((item) =>
+                                                          item == true)
+                                                      .length;
+                                              if (correctAnswers >= 1) {
                                                 //the answer is corret, proceed to showing of trivia
                                                 triviaFlag = true;
                                                 nextFlag[0] = 0;
@@ -673,14 +727,35 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     nextFlag = [1, 0, 0];
                                     setCurrentNumber();
                                     // setState(() {});
+                                    int points = getCurrentPoints();
+                                    setCurrentPoints(getCurrentLives());
+                                    if (getCurrentNumber() == 9) {
+                                      int correctAnswers =
+                                          answer_result_multiple
+                                              .where((item) => item == true)
+                                              .length;
+                                      points =
+                                          getCurrentLives() * correctAnswers;
+                                    }
                                     setTotalPoints(getCurrentPoints());
                                     _timerController.restart(duration: 15);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => QuestionsLevel3(),
-                                      ),
-                                    );
+                                    if (getCurrentNumber() == 9) {
+                                      resetCurrentNumber();
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Level4(),
+                                        ),
+                                      );
+                                    } else {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              QuestionsLevel3(),
+                                        ),
+                                      );
+                                    }
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(
@@ -720,20 +795,11 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                     answer = prev_answer = answerResult = null;
                                     triviaFlag = false;
                                     nextFlag = [1, 0, 0];
+                                    _timerController.restart(duration: 15);
                                     if (getCurrentLives() <= 0) {
                                       resetCurrentLives();
                                       resetCurrentNumber();
-                                      resetTotalPoints();
                                       resetCurrentPoints();
-                                      _timerController.restart();
-
-                                      //push to leaderboards
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) => (),
-                                      //   ),
-                                      // );
                                       showNoLivesModal(context, size);
                                     } else {
                                       setState(() {});

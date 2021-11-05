@@ -3,12 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
+import 'package:iassist/student/games/level_2/Level2QuestionsAndAnswers.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_2/level_2.dart';
 import 'package:iassist/student/games/level_2/level_2a.dart';
 import 'package:iassist/student/games/level_2/questions.dart';
+import 'package:iassist/student/games/Modals.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../selectionpage.dart';
 
@@ -51,66 +55,73 @@ class _Level2State extends State<Level2a> {
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Color(0xFFBA494B),
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/SelectionHeader.png"),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: const Text(
-                'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectionPage(),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: const Text(
-                'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                ),
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
-                'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
-                    // color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
               ),
-              onTap: () {
-                Future.delayed(const Duration(milliseconds: 1000), () {
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                });
-              },
-            ),
-          ],
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -151,38 +162,40 @@ class _Level2State extends State<Level2a> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
-                    height: size.height * .08,
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+                        alignment: Alignment.topLeft,
                         fit: BoxFit.contain,
-                        image:
-                            AssetImage('assets/images/games/Level 1/game1.png'),
+                        image: AssetImage('assets/images/games/game1.png'),
                       ),
                     ),
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 40, left: 35),
+                    padding: EdgeInsets.only(top: 4.h, left: 15.w),
                     child: Text(
                       'Level 2\nNewton\'s First Law of Motion: Inertia',
                       textAlign: TextAlign.left,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          height: size.height * 1,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -195,31 +208,9 @@ class _Level2State extends State<Level2a> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                top: 10, right: (size.width * 1) - 80),
-                            height: size.height * .03,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image: AssetImage(
-                                    'assets/images/games/Level 1/Back.png'),
-                              ),
-                            ),
-                          ),
-                        ),
                         Container(
-                          margin: const EdgeInsets.only(top: 90, left: 90),
-                          height: size.height * 0.25,
+                          margin: EdgeInsets.only(top: 10.5.h, left: 17.w),
+                          height: SizeConfig.safeBlockVertical! * 25,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -229,11 +220,11 @@ class _Level2State extends State<Level2a> {
                           ),
                         ),
                         Container(
-                          margin: const EdgeInsets.only(
-                              top: 180, left: 5, right: 150),
-                          height: size.height * 0.48,
+                          margin: EdgeInsets.only(top: 30.h, left: 1.w),
+                          height: SizeConfig.safeBlockVertical! * 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(
+                              alignment: Alignment.topLeft,
                               fit: BoxFit.contain,
                               image: AssetImage(
                                   'assets/images/games/level2/Character.png'),
@@ -241,8 +232,11 @@ class _Level2State extends State<Level2a> {
                           ),
                         ),
                         Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 555, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 70,
+                              left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -277,12 +271,7 @@ class _Level2State extends State<Level2a> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => QuestionsLevel2(),
-                                ),
-                              );
+                              showLivesModal(context, size);
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -292,7 +281,7 @@ class _Level2State extends State<Level2a> {
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 12.sp,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),

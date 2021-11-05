@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 
 import '../Newton1st.dart';
 import 'fluidFriction.dart';
@@ -28,7 +30,7 @@ class _RollingFrictionState extends State<RollingFriction> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -44,103 +46,115 @@ class _RollingFrictionState extends State<RollingFriction> {
             ),
           ),
         ),
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top: 30),
-            child: Text(
-              "TYPES OF FRICTION",
-              textAlign: TextAlign.left,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 30),
-            child: Center(
-              child: Text(
-                "ROLLING FRICTION",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Color(0xFFBA494B),
+            height: SizeConfig.safeBlockVertical! * 100,
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: SizeConfig.safeBlockVertical! * 15,
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 3.h),
+                  child: Text(
+                    "TYPES OF FRICTION",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 11.sp,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Rolling friction occurs when one body rolls across the surface of another. It is the force acting on rolling objects and is less than kinetic friction. Roller skates, ball bearings, etc. are examples of rolling friction.",
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  height: SizeConfig.safeBlockVertical! * 20,
+                  child: Center(
+                    child: Text(
+                      "ROLLING FRICTION",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.sp,
+                        color: Color(0xFFBA494B),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10, left: 25, right: 25),
-            height: size.height * .22,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage('assets/images/firstLawOfMotion/9.png'),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 3, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Source:https://lh3.googleusercontent.com/vIwqG99PNevr6UeveiwtWKLJLdyvMa2wnXv5_C5LGz1dkq6izjIyvU7FObjZd8GXu8JbQPk=s170',
-                style: const TextStyle(
-                  fontSize: 9,
-                  letterSpacing: 1.4,
-                  color: Color(0xFF888888),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 4.5.h),
+                  height: SizeConfig.safeBlockVertical! * 30,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Rolling friction occurs when one body rolls across the surface of another. It is the force acting on rolling objects and is less than kinetic friction. Roller skates, ball bearings, etc. are examples of rolling friction.",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, left: 25, right: 25),
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'Figure 9. Rolling friction on wheel',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 14,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 25.5.h),
+                  height: size.height * .22,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image: AssetImage('assets/images/firstLawOfMotion/9.png'),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Shown in Figure 9 the direction of the rolling friction which occurs on the wheel opposite to the direction of its motion.',
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.4,
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 46.5.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Source:https://lh3.googleusercontent.com/vIwqG99PNevr6UeveiwtWKLJLdyvMa2wnXv5_C5LGz1dkq6izjIyvU7FObjZd8GXu8JbQPk=s170',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 6.sp,
+                        letterSpacing: 1.4,
+                        color: Color(0xFF888888),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 49.5.h),
+                  height: SizeConfig.safeBlockVertical! * 5,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Figure 9. Rolling friction on wheel',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 9.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 53.5.h),
+                  height: SizeConfig.safeBlockVertical! * 10,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Shown in Figure 9 the direction of the rolling friction which occurs on the wheel opposite to the direction of its motion.',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 11.sp,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ]),

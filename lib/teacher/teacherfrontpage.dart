@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/pdf_api.dart';
-import 'package:iassist/pdf_viewer_example.dart';
+import 'package:iassist/pdf_viewer.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/selectionpage.dart';
 import 'package:iassist/teacher/LessonPlans.dart';
@@ -26,17 +26,18 @@ class TeacherFrontPage extends StatefulWidget {
   }
 }
 
-class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerProviderStateMixin {
+class _TeacherFrontPageState extends State<TeacherFrontPage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     _tabController.dispose();
   }
@@ -47,27 +48,23 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: 
-          Text('TEACHER MODE',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Color(0xFFBA494B),
-                fontSize: 12.sp,
-              ),
-            ),
+        title: Text(
+          'TEACHER MODE',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color(0xFFBA494B),
+            fontSize: 12.sp,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         leading: IconButton(
           // alignment: center,
-          icon: Icon(Icons.arrow_back_rounded,
-          color: Color(0xFFBA494B)), 
+          icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFBA494B)),
           onPressed: () => Navigator.pop(context),
         ),
-        actions: <Widget>[
-          ChangeThemeButtonWidget(),
-          SizedBox(width: 3.5.w)
-        ], 
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -75,7 +72,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
             Container(
               height: SizeConfig.safeBlockVertical! * 100,
               child: Stack(
-                children:<Widget>[
+                children: <Widget>[
                   Container(
                     height: SizeConfig.safeBlockVertical! * 16,
                     decoration: BoxDecoration(
@@ -104,7 +101,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 11.w),
-                          height: SizeConfig.safeBlockVertical! * 67,
+                          height: SizeConfig.safeBlockVertical! * 63,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -118,7 +115,8 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 4),
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 2),
                           height: SizeConfig.safeBlockVertical! * 14,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -129,9 +127,11 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                         ),
                         Container(
                           padding: EdgeInsets.only(
-                            top: SizeConfig.safeBlockVertical! * 19,
-                            left: 31.w, right: 31.w),
-                          child: Text('Hello Teacher!',
+                              top: SizeConfig.safeBlockVertical! * 16,
+                              left: 31.w,
+                              right: 31.w),
+                          child: Text(
+                            'Hello Teacher!',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 17.sp,
@@ -140,8 +140,12 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 23, left: 14.w, right: 14.w),
-                          child: Text('You can view the Lesson Plans, Powerpoint\nPresentations, and Worksheets here.', 
+                          padding: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 20,
+                              left: 14.w,
+                              right: 14.w),
+                          child: Text(
+                            'You can view the Lesson Plans, Powerpoint Presentations, \nand Worksheets here.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -152,81 +156,118 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 30, left: 20.w, right: 20.w),
-                          child:OutlinedButton.icon(onPressed:() async {
-                            final path = '';
-                            final file = await PDFApi.loadAsset(path);
-                            openPDF(context, file);
-                          },
-                            icon: Icon(MyFlutterApp.lessonplans, color: Color(0xFFBA494B),), 
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 30,
+                              left: 20.w,
+                              right: 20.w),
+                          child: OutlinedButton.icon(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LessonPlans(),
+                                ),
+                              );
+                            },
+                            icon: Icon(
+                              MyFlutterApp.lessonplans,
+                              color: Color(0xFFBA494B),
+                            ),
                             label: Text("LESSON PLANS",
-                              textAlign: TextAlign.center,   
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFBA494B),
-                                fontSize: 15.sp,
-                              )),
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                  width: 2.5,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    
-                                  ),padding: EdgeInsets.only(left: 2.w, right: 2.w, top: 2.5.h, bottom: 2.5.h),
-                                ),
+                                  fontSize: 15.sp,
+                                )),
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.5,
+                                color: Color(0xFFBA494B),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              padding: EdgeInsets.only(
+                                  left: 2.w,
+                                  right: 2.w,
+                                  top: 2.5.h,
+                                  bottom: 2.5.h),
+                            ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 41, left: 20.w, right: 20.w),
-                          child:OutlinedButton.icon(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => PPT(),),);
-                          },
-                            icon: Icon(MyFlutterApp.ppt, color: Color(0xFFBA494B)), 
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 41,
+                              left: 20.w,
+                              right: 20.w),
+                          child: OutlinedButton.icon(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PPT(),
+                                ),
+                              );
+                            },
+                            icon: Icon(MyFlutterApp.ppt,
+                                color: Color(0xFFBA494B)),
                             label: Text("POWERPOINT\nPRESENTATIONS",
-                              // textAlign: TextAlign.center,   
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFBA494B),
-                                fontSize: 15.sp,
-                              )),
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                  width: 2.5,
+                                // textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    
-                                  ),padding: EdgeInsets.only(left: 1.w, top: 2.h, bottom: 2.h),
-                                ),
+                                  fontSize: 15.sp,
+                                )),
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.5,
+                                color: Color(0xFFBA494B),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              padding: EdgeInsets.only(
+                                  left: 1.w, top: 2.h, bottom: 2.h),
+                            ),
                           ),
                         ),
                         Container(
                           width: size.width * .6,
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 54, left: 20.w, right: 20.w),
-                          child:OutlinedButton.icon(onPressed:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Worksheet(),),);
-                          },
-                            icon: Icon(MyFlutterApp.wrksht, color: Color(0xFFBA494B)), 
-                            label: Text("WORKSHEETS",
-                              textAlign: TextAlign.center,   
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFBA494B),
-                                fontSize: 15.sp,
-                              )),
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                  width: 2.5,
-                                  color: Color(0xFFBA494B),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),padding: EdgeInsets.only(right: 5.w, top: 2.5.h, bottom: 2.5.h),
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 54,
+                              left: 20.w,
+                              right: 20.w),
+                          child: OutlinedButton.icon(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Worksheet(),
                                 ),
+                              );
+                            },
+                            icon: Icon(MyFlutterApp.wrksht,
+                                color: Color(0xFFBA494B)),
+                            label: Text("WORKSHEETS",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFFBA494B),
+                                  fontSize: 15.sp,
+                                )),
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.5,
+                                color: Color(0xFFBA494B),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              padding: EdgeInsets.only(
+                                  right: 5.w, top: 2.5.h, bottom: 2.5.h),
+                            ),
                           ),
                         ),
                       ],
@@ -315,27 +356,22 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                 ),
               ),
             ],
-            controller:  _tabController,
+            controller: _tabController,
           ),
-              decoration: BoxDecoration(  
-                color: Theme.of(context).primaryColor,
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
             // border: Border.all(color: Colors.black, width: 2),
-                borderRadius: BorderRadius.all(Radius.circular(15.0)),        
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade500.withOpacity(.7),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      
-                    ),
-                  ],
-                ),         
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.shade500.withOpacity(.7),
+                spreadRadius: 2,
+                blurRadius: 5,
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
-
-   void openPDF(BuildContext context, File file) => Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),
-      );
 }

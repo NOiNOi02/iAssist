@@ -1,8 +1,11 @@
-int level = 4;
+
+
+int level = 5;
 var currentLives = 3;
 var totalPoints = 0;
 List<String> playerNames = [];
 List<int> playerScores = [];
+
 int getCurrentLevel() {
   return level;
 }
@@ -42,8 +45,9 @@ void setCurrentLives() {
 void setCurrentLevel() {
   level++;
 }
+
 void resetCurrentLevel() {
-  level = 0;
+  level = 1;
 }
 
 void setPlayerNamesAndScores(String name, int score) {

@@ -9,7 +9,9 @@ import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_3/level_4.dart';
 import 'package:iassist/student/games/level_4/level_4a.dart';
 import 'package:iassist/student/games/level_4/questions.dart';
-
+import 'package:iassist/responsive/sizeconfig.dart';
+import 'package:sizer/sizer.dart';
+import 'Level3QuestionsAndAnswers.dart';
 import '../../../selectionpage.dart';
 
 class Level4 extends StatefulWidget {
@@ -42,7 +44,7 @@ class _Level4State extends State<Level4> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -51,66 +53,73 @@ class _Level4State extends State<Level4> {
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                  color: Color(0xFFBA494B),
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/SelectionHeader.png"),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'I-Assist',
-                style: const TextStyle(
-                    fontSize: 24,
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
+                    fontSize: 20.sp,
                     color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: const Text(
-                'Home',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectionPage(),
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: const Text(
-                'Settings',
-                style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                ),
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
-                'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
-                    // color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
               ),
-              onTap: () {
-                Future.delayed(const Duration(milliseconds: 1000), () {
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                });
-              },
-            ),
-          ],
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -130,7 +139,7 @@ class _Level4State extends State<Level4> {
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: size.height * 0.15,
+                    height: SizeConfig.safeBlockVertical! * 17,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -151,8 +160,9 @@ class _Level4State extends State<Level4> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
-                    height: size.height * .08,
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
@@ -162,26 +172,27 @@ class _Level4State extends State<Level4> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: const EdgeInsets.only(top: 20, left: 15),
+                    padding: EdgeInsets.only(top: 4.h, left: 15.w),
                     child: Text(
                       'Level 4\nNewton\'s Third Law of Motion: \nLaw of Interaction',
                       textAlign: TextAlign.left,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 13,
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.108,
+                    top: SizeConfig.blockSizeVertical! * 10.8,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          height: size.height * 1,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
+                          height: SizeConfig.blockSizeVertical! * 100,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -194,30 +205,24 @@ class _Level4State extends State<Level4> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GameFrontPage(),
-                              ),
-                            );
-                          },
-                        ),
                         Container(
-                          margin: const EdgeInsets.only(top: 100, right: 25),
-                          height: size.height * 0.60,
+                          margin: EdgeInsets.only(top: 2.5.h, left: 22.w),
+                          height: SizeConfig.safeBlockVertical! * 40,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
+                              alignment: Alignment.topLeft,
                               image: AssetImage(
                                   'assets/images/games/level4/Group 65.png'),
                             ),
                           ),
                         ),
                         Container(
-                          width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 555, left: 53.5),
+                          alignment: Alignment.center,
+                          width: SizeConfig.safeBlockHorizontal! * 75,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical! * 70,
+                              left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -252,10 +257,12 @@ class _Level4State extends State<Level4> {
                             ),
                             onPressed: () {
                               //if pushed proceeed to questions
+                              setCurrentLevel();
+                              resetCurrentLives();
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Level4a(),
+                                  builder: (context) => GameFrontPage(),
                                 ),
                               );
                             },
@@ -267,7 +274,7 @@ class _Level4State extends State<Level4> {
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 12.sp,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),

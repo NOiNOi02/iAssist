@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, file_names, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iassist/icon.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/games/game_front_page.dart';
@@ -10,6 +12,9 @@ import 'package:iassist/student/games/level_1/level_1.dart';
 import 'package:iassist/student/games/level_1/questions.dart';
 import 'package:iassist/student/games/Modals.dart';
 import 'package:iassist/student/studentfrontpage.dart';
+import 'package:sizer/sizer.dart';
+
+import '../../selectionpage.dart';
 
 class Leaderboards extends StatefulWidget {
   @override
@@ -38,24 +43,89 @@ class _LeaderboardsState extends State<Leaderboards> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFBA494B),
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        leading: IconButton(
-          // alignment: center,
-          icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFBA494B)),
-          onPressed: () => Navigator.pop(context),
-        ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Color(0xFFBA494B),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/SelectionHeader.png"),
+                        fit: BoxFit.cover)),
+                child: Text(
+                  'I-Assist',
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: Color(0xFFFFFFFF),
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: 0),
+              margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 0),
               decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
@@ -66,41 +136,40 @@ class _LeaderboardsState extends State<Leaderboards> {
                 children: <Widget>[
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height * 0.001, right: size.width * 0.77),
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
                     height: size.height * .08,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+                        alignment: Alignment.topLeft,
                         fit: BoxFit.contain,
                         image:
                             AssetImage('assets/images/games/Level1/game1.png'),
                       ),
                     ),
                   ),
-                    Container(
-                        margin: EdgeInsets.only(
-                        top: size.height * 0.02),
-                      alignment: Alignment.topRight,
-                   
+                  Container(
+                    margin:
+                        EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 2),
+                    alignment: Alignment.topRight,
                     height: size.height * .08,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         alignment: Alignment.topRight,
                         fit: BoxFit.contain,
-                        image:
-                            AssetImage('assets/images/logo.png'),
+                        image: AssetImage('assets/images/logo.png'),
                       ),
                     ),
                   ),
                   Container(
                     alignment: Alignment.topLeft,
-                    padding: EdgeInsets.only(
-                        top: size.height * 0.03, left: size.width * 0.2),
+                    padding: EdgeInsets.only(top: 4.5.h, left: 23.w),
                     child: Text(
                       'Leaderboards',
                       textAlign: TextAlign.left,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        fontSize: 14.sp,
                         color: Colors.white,
                       ),
                     ),
@@ -112,7 +181,8 @@ class _LeaderboardsState extends State<Leaderboards> {
                     child: Stack(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.safeBlockHorizontal! * 5),
                           height: size.height * 1,
                           decoration: BoxDecoration(
                             color: Color(0xffFCFBC2),
@@ -130,7 +200,7 @@ class _LeaderboardsState extends State<Leaderboards> {
                         ),
                         Container(
                           color: Colors.transparent,
-                          padding: EdgeInsets.only(top: 20, left: 50),
+                          padding: EdgeInsets.only(top: 2.h, left: 10.w),
                           child: Table(
                             border: TableBorder.all(style: BorderStyle.none),
                             children: [
@@ -138,16 +208,19 @@ class _LeaderboardsState extends State<Leaderboards> {
                                 Text('Rank',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
+                                        fontSize: 15.sp,
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xff6D5D5D))),
                                 Text('Player Name',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
+                                        fontSize: 15.sp,
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xff6D5D5D))),
                                 Text('Score',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
+                                        fontSize: 15.sp,
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xff6D5D5D))),
                               ]),
@@ -157,16 +230,19 @@ class _LeaderboardsState extends State<Leaderboards> {
                                   Text((i + 1).toString(),
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
+                                          fontSize: 12.sp,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xffBA494B))),
                                   Text(getPlayerNames(i),
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
+                                          fontSize: 12.sp,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xffBA494B))),
                                   Text(getPlayerScores(i).toString(),
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
+                                          fontSize: 12.sp,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xffBA494B))),
                                 ]),
@@ -175,7 +251,9 @@ class _LeaderboardsState extends State<Leaderboards> {
                         ),
                         Container(
                           width: size.width * 0.74,
-                          margin: const EdgeInsets.only(top: 555, left: 53.5),
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 75,
+                              left: SizeConfig.safeBlockHorizontal! * 13),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -221,14 +299,14 @@ class _LeaderboardsState extends State<Leaderboards> {
                               resetTotalPoints();
                             },
                             child: Padding(
-                              padding: const EdgeInsets.only(
-                                top: 10,
-                                bottom: 10,
+                              padding: EdgeInsets.only(
+                                top: 1.h,
+                                bottom: 1.w,
                               ),
                               child: Text(
-                                "HOME!",
+                                "HOME",
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 12.sp,
                                   // fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),

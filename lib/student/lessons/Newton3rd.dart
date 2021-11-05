@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
+import 'package:sizer/sizer.dart';
 
 import '../studentlessons.dart';
 import '3rdLaw/actionForceAndReactionForce.dart';
@@ -30,7 +32,7 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 12.sp,
           ),
         ),
         centerTitle: true,
@@ -46,218 +48,235 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
             ),
           ),
         ),
-        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 25)],
+        actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
       body: SingleChildScrollView(
           child: Column(children: <Widget>[
         Container(
-          margin: const EdgeInsets.only(top: 30),
-          child: Center(
-            child: Text(
-              "NEWTON'S LAW OF MOTION",
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Color(0xFFBA494B),
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Sir Isaac Newton (1643-1727) is an English physicist and mathematician known for his discoveries in Optics and his formulation of the three laws of motions which become the basic principles of the modern physics. Newton published these laws of motion in 1687 in his book ‘Principia Mathematica’. His discoveries led to scientific revolution that led to the fundamental understanding of how bodies move through physical space.",
-              textAlign: TextAlign.justify,
-              style: const TextStyle(
-                fontSize: 16,
-                letterSpacing: 1.4,
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Newton's Third Law of Motion",
-              style: const TextStyle(
-                fontSize: 14,
-                color: Color(0xFF747474),
-              ),
-            ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LawOfInteraction(),
-                ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
+          height: SizeConfig.safeBlockVertical! * 100,
+          child: Stack(children: <Widget>[
+            Container(
+              height: SizeConfig.safeBlockVertical! * 10,
+              child: Center(
+                child: Text(
+                  "NEWTON'S LAW OF MOTION",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12.sp,
+                    color: Color(0xFFBA494B),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10.0),
-                    child: Text("Law of Interaction",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 18,
-                        )),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Notes in Law of Interaction",
-              style: const TextStyle(
-                fontSize: 14,
-                color: Color(0xFF747474),
-              ),
-            ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ActionForceAndReactionForce(),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10.0),
-                    child: Text("Action Force and Reaction Force",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 18,
-                        )),
-                  )
-                ],
               ),
             ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => InteractionForcesVsBalancedForces(),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 5.w),
+              height: SizeConfig.safeBlockVertical! * 40,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Sir Isaac Newton (1643-1727) is an English physicist and mathematician known for his discoveries in Optics and his formulation of the three laws of motions which become the basic principles of the modern physics. Newton published these laws of motion in 1687 in his book ‘Principia Mathematica’. His discoveries led to scientific revolution that led to the fundamental understanding of how bodies move through physical space.",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    fontSize: 11.sp,
+                    letterSpacing: 1.4,
+                  ),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10.0),
-                    child: Text("Interaction Forces vs Balanced Forces",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 18,
-                        )),
-                  )
-                ],
               ),
             ),
-          ),
-        ),
-        Container(
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ExampleOfBalancedForce(),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 5.w),
+              height: SizeConfig.safeBlockVertical! * 75,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Newton's Third Law of Motion",
+                  style: TextStyle(
+                    fontSize: 9.sp,
+                    color: Color(0xFF747474),
+                  ),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-              width: size.width * .9,
-              margin: const EdgeInsets.only(top: 8),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
-              )),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10.0),
-                    child: Text("Example of Balance Force",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFBA494B),
-                          fontSize: 18,
-                        )),
-                  )
-                ],
               ),
             ),
-          ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 39.h),
+              height: SizeConfig.safeBlockVertical! * 5,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LawOfInteraction(),
+                    ),
+                  );
+                },
+                child: Container(
+                  // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  // width: size.width * .9,
+                  // margin: const EdgeInsets.only(top: 8),
+                  decoration: BoxDecoration(
+                      border: Border(
+                    bottom:
+                        BorderSide(color: Color(0xFFBA494B).withOpacity(0.47)),
+                  )),
+                  child: Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.w),
+                        child: Text("Law of Interaction",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFBA494B),
+                              fontSize: 13.sp,
+                            )),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 5.w),
+              height: SizeConfig.safeBlockVertical! * 95,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Notes in Law of Interaction",
+                  style: TextStyle(
+                    fontSize: 9.sp,
+                    color: Color(0xFF747474),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 49.h),
+              height: SizeConfig.safeBlockVertical! * 5,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ActionForceAndReactionForce(),
+                    ),
+                  );
+                },
+                child: Container(
+                  // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  // width: size.width * .9,
+                  // margin: const EdgeInsets.only(top: 8),
+                  decoration: BoxDecoration(
+                      border: Border(
+                    bottom:
+                        BorderSide(color: Color(0xFFBA494B).withOpacity(0.47)),
+                  )),
+                  child: Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.w),
+                        child: Text("Action Force and Reaction Force",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFBA494B),
+                              fontSize: 13.sp,
+                            )),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 55.h),
+              height: SizeConfig.safeBlockVertical! * 5,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => InteractionForcesVsBalancedForces(),
+                    ),
+                  );
+                },
+                child: Container(
+                  // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  // width: size.width * .9,
+                  // margin: const EdgeInsets.only(top: 8),
+                  decoration: BoxDecoration(
+                      border: Border(
+                    bottom:
+                        BorderSide(color: Color(0xFFBA494B).withOpacity(0.47)),
+                  )),
+                  child: Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.w),
+                        child: Text("Interaction Forces vs Balanced Forces",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFBA494B),
+                              fontSize: 13.sp,
+                            )),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  left: 5.w, right: 5.w, top: 61.h, bottom: 5.h),
+              height: SizeConfig.safeBlockVertical! * 5,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExampleOfBalancedForce(),
+                    ),
+                  );
+                },
+                child: Container(
+                  // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  // width: size.width * .9,
+                  // margin: const EdgeInsets.only(top: 8),
+                  decoration: BoxDecoration(
+                      border: Border(
+                    bottom: BorderSide(
+                        width: 1.0, color: Color(0xFFBA494B).withOpacity(0.47)),
+                  )),
+                  child: Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 5.w),
+                        child: Text("Example of Balance Force",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFBA494B),
+                              fontSize: 13.sp,
+                            )),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ]),
         ),
       ])),
     );

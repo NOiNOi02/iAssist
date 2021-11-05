@@ -10,31 +10,33 @@ import 'package:sizer/sizer.dart';
 
 TextEditingController usernameController = new TextEditingController();
 TextEditingController passwordController = new TextEditingController();
-class TeacherLoginPage extends StatefulWidget{
+
+class TeacherLoginPage extends StatefulWidget {
   @override
   _TeacherLoginPageState createState() => _TeacherLoginPageState();
 }
 
-class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerProviderStateMixin{
+class _TeacherLoginPageState extends State<TeacherLoginPage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     _tabController.dispose();
   }
+
   bool obscuretext = true;
   @override
-  Widget build(BuildContext context){
-    
+  Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    
+
     return Scaffold(
       // backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -44,7 +46,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
             Container(
               height: size.height,
               child: Stack(
-                children:<Widget>[
+                children: <Widget>[
                   Container(
                     height: SizeConfig.safeBlockVertical! * 30,
                     decoration: BoxDecoration(
@@ -66,8 +68,9 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 5.h, left:6.w),
-                    child: Text('Welcome to I-Assist', 
+                    margin: EdgeInsets.only(top: 5.h, left: 6.w),
+                    child: Text(
+                      'Welcome to I-Assist',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 26.sp,
@@ -76,8 +79,9 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 11.2.h, left:6.5.w),
-                    child: Text('Offline educational application designed\nfor Eight Graders to learn more about\nthe concept of Newton’s Law of Motion',
+                    margin: EdgeInsets.only(top: 11.2.h, left: 6.5.w),
+                    child: Text(
+                      'Offline educational application designed\nfor Eight Graders to learn more about\nthe concept of Newton’s Law of Motion',
                       style: TextStyle(
                         fontSize: 12.sp,
                         color: Colors.white,
@@ -85,12 +89,13 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                     ),
                   ),
                   Positioned(
-                    top: SizeConfig.safeBlockVertical! * 29.4,
+                    top: SizeConfig.safeBlockVertical! * 25,
                     left: 0,
                     right: 0,
                     child: Stack(
                       children: <Widget>[
                         Container(
+                          // alignment: Alignment(0.0, -66.0),
                           margin: EdgeInsets.symmetric(horizontal: 12.w),
                           height: SizeConfig.safeBlockVertical! * 54,
                           decoration: BoxDecoration(
@@ -380,21 +385,20 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                 ),
               ),
             ],
-            controller:  _tabController,
+            controller: _tabController,
           ),
-              decoration: BoxDecoration(  
-                color: Theme.of(context).primaryColor,
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
             // border: Border.all(color: Colors.black, width: 2),
-                borderRadius: BorderRadius.all(Radius.circular(15.0)),        
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade500.withOpacity(.7),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      
-                    ),
-                  ],
-                ),         
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.shade500.withOpacity(.7),
+                spreadRadius: 2,
+                blurRadius: 5,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -409,16 +413,14 @@ class TextFieldContainer extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
-      return Container(
+  Widget build(BuildContext context) {
+    return Container(
       padding: EdgeInsets.only(left: 1.5.w),
       width: SizeConfig.safeBlockHorizontal! * 60,
       height: 6.h,
       decoration: BoxDecoration(
-        border: Border.all(
-          width: 1.5,
-          color: const Color(0xFFBA494B)),
-        borderRadius: BorderRadius.circular(3), 
+        border: Border.all(width: 1.5, color: const Color(0xFFBA494B)),
+        borderRadius: BorderRadius.circular(3),
       ),
       child: child,
     );
@@ -454,8 +456,8 @@ class RoundedInputField extends StatelessWidget {
           hintStyle: TextStyle(fontSize: 12.sp, color: Color(0xFF4785B4)),
         ),
       ),
-    ),
+    )
     );
+    
   }
 }
-
