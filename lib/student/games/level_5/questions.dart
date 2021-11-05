@@ -299,7 +299,7 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                             height: size.height * 0.03,
                             width: size.width * 0.06,
                             margin:
-                                EdgeInsets.only(left: (i + 1) * 7.w, top: 1.h),
+                                EdgeInsets.only(left: (i + 1) * 30, top: 10),
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.contain,
