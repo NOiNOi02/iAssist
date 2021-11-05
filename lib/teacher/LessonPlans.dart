@@ -129,8 +129,8 @@ class _LessonPlansState extends State<LessonPlans>
                                     image: DecorationImage(
                                       fit: BoxFit.contain,
                                       alignment: Alignment.centerLeft,
-                                      image: AssetImage(
-                                          'assets/images/book.png'),
+                                      image:
+                                          AssetImage('assets/images/book.png'),
                                     ),
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(18),
@@ -160,7 +160,8 @@ class _LessonPlansState extends State<LessonPlans>
                               EdgeInsets.only(top: 30.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/5E Editedd LP 01.pdf';
+                              final path =
+                                  'assets/documents/5E Editedd LP 01.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
