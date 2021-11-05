@@ -282,6 +282,24 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                             child: Stack(
                               children: [
                                 Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 2.w),
+                                  height: 500,
+                                  width: 400,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        alignment: Alignment.center,
+                                        fit: BoxFit.contain,
+                                        image: (getCurrentNumber() != 5)
+                                            ? AssetImage(
+                                                'assets/images/games/Level1/' +
+                                                    (getCurrentNumber())
+                                                        .toString() +
+                                                    '.png')
+                                            : AssetImage(
+                                                'assets/images/games/Level1/noImage.png')),
+                                  ),
+                                ),
+                                Container(
                                   margin: EdgeInsets.symmetric(
                                       horizontal: 1.w, vertical: 5.h),
                                   height: 46.h,
@@ -295,37 +313,6 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                     ),
                                   ),
                                 ),
-                                for (int i = 0; i < 5 - getCurrentNumber(); i++)
-                                  Container(
-                                    margin: (i == 0)
-                                        ? EdgeInsets.only(left: 0, top: 20.h)
-                                        : (i == 1)
-                                            ? EdgeInsets.only(
-                                                left: 0, top: 35.5.h)
-                                            : (i == 2)
-                                                ? EdgeInsets.only(
-                                                    left: 33.w, top: 4.5.h)
-                                                : (i == 3)
-                                                    ? EdgeInsets.only(
-                                                        left: 32.5.w,
-                                                        top: 35.5.h)
-                                                    : EdgeInsets.only(
-                                                        left: 32.5.w,
-                                                        top: 35.5.h),
-                                    height: 16.h,
-                                    width: (i == 0) ? 100.w : 50.w,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        alignment: Alignment.centerLeft,
-                                        fit: BoxFit.contain,
-                                        image: (i == 0)
-                                            ? AssetImage(
-                                                'assets/images/games/Level1/rectangleLock.png')
-                                            : AssetImage(
-                                                'assets/images/games/Level1/squareLock.png'),
-                                      ),
-                                    ),
-                                  ),
                               ],
                             ),
                           ),
