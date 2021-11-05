@@ -2,6 +2,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
@@ -545,7 +546,9 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                 icon: IconButton(
                   icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
                   onPressed: () {
-
+                    Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                    });
                   },
                 ),
               ),
