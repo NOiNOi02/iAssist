@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:iassist/audioplayer_with_local_asset.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/student/games/level_3/level_3a.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:iassist/student/studentfrontpage.dart';
 import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_1/level_1.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../selectionpage.dart';
 import 'package:iassist/student/games/level_2/level_2.dart';
@@ -73,11 +75,11 @@ class _GameFrontPageState extends State<GameFrontPage> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: const Text(
+              leading: Icon(Icons.home, color: Color(0xFFBA494B),),
+              title: Text(
                 'Home',
                 style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                    TextStyle(fontSize: 13.sp, fontFamily: 'MyFlutterApp',color: Color(0xFFBA494B), fontWeight: FontWeight.bold),
               ),
               onTap: () {
                 Navigator.push(
@@ -89,24 +91,59 @@ class _GameFrontPageState extends State<GameFrontPage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: const Text(
+              leading: Icon(Icons.settings,color: Color(0xFFBA494B),),
+              title: Text(
                 'Settings',
                 style:
-                    const TextStyle(fontSize: 20, fontFamily: 'MyFlutterApp'),
+                    TextStyle(fontSize: 13.sp, fontFamily: 'MyFlutterApp',color: Color(0xFFBA494B), fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                Navigator.pop(context);
+                showDialog(
+                      context: context,
+                      builder: (context){
+                        return Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3.h),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Settings',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Color(0xFF4785B4), fontSize: 16.sp, fontWeight: FontWeight.bold,),
+                                ),
+                                SizedBox(height: 2.h,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Dark Mode\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
+                                    ChangeThemeButtonWidget(),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Music \t\t\t\t\t\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
+                                    AudioPlayerWithLocalAsset(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }
+                    );
               },
             ),
             ListTile(
-              leading: Icon(Icons.exit_to_app_outlined),
-              title: const Text(
+              leading: Icon(Icons.exit_to_app_outlined,color: Color(0xFFBA494B),),
+              title: Text(
                 'Exit',
-                style: const TextStyle(
-                    fontSize: 20,
-                    // color: Color(0xFFFFFFFF),
-                    fontFamily: 'MyFlutterApp'),
+                style: TextStyle(fontSize: 13.sp, fontFamily: 'MyFlutterApp',color: Color(0xFFBA494B), fontWeight: FontWeight.bold),
               ),
               onTap: () {
                 Future.delayed(const Duration(milliseconds: 1000), () {

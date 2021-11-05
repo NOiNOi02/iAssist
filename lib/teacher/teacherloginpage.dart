@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, curly_braces_in_flow_control_structures
 import 'package:flutter/material.dart';
+import 'package:iassist/audioplayer_with_local_asset.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/selectionpage.dart';
 import 'package:iassist/teacher/teacherfrontpage.dart';
+import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:sizer/sizer.dart';
 
 TextEditingController usernameController = new TextEditingController();
@@ -90,7 +92,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 12.w),
-                          height: SizeConfig.safeBlockVertical! * 60,
+                          height: SizeConfig.safeBlockVertical! * 54,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -103,187 +105,194 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          // behavior: HitTestBehavior.translucent,
-                          onTap: () { usernameController.clear();passwordController.clear();Navigator.pop(context);},
-                          child: AbsorbPointer(
-                          child: Container(
-                            margin: EdgeInsets.only(top: 1.h,left: SizeConfig.safeBlockHorizontal! * 14),
-                            child: Icon(
-                              Icons.logout_outlined,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),),
-                        ),
-                        Container(
-                          height: SizeConfig.safeBlockVertical! * 12,
-                          width: SizeConfig.safeBlockHorizontal! * 26,
-                          margin: EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockHorizontal! * 37),
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage('assets/images/LetsGetStarted.png'),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment(0.0,-1.0),
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 12),
-                          child: Text('Welcome', 
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17.sp,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment(0.0,-1.0),
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 16),
-                          child: Text('Please Login to your account.', 
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 11.sp,
-                              color: Color(0xFFFFB79D),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment(0.0,-1.0),
-                          margin: EdgeInsets.only(top: 20.h, right: 44.w),
-                          child: Text('Username', 
-                            style: TextStyle(
-                              // fontWeight: FontWeight.bold,
-                              fontSize: 11.5.sp,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        RoundedInputField(
-                          onChanged: (value) {},
-                          hintText: 'Enter username or E-mail',
-                        ),
-                        Container(
-                          alignment: Alignment(0.0,-1.0),
-                          margin: EdgeInsets.only(top: 33.5.h, right: 44.w),
-                          child: Text('Password', 
-                            style: TextStyle(
-                              // fontWeight: FontWeight.bold,
-                              fontSize: 11.5.sp,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 20.w, right: 20.w, top: SizeConfig.safeBlockVertical! * 39),
-                          child: TextFieldContainer(
-                            child: TextField(
-                              controller: passwordController,
-                              onChanged: (value){},
-                              decoration: InputDecoration(
-                                icon: Icon(
-                                  Icons.vpn_key_sharp,
-                                  color: Color(0xFFBA494B,),
+                        // GestureDetector(
+                        //   // behavior: HitTestBehavior.translucent,
+                        //   onTap: () { usernameController.clear();passwordController.clear();Navigator.pop(context);},
+                        //   child: AbsorbPointer(
+                        //   child: Container(
+                        //     margin: EdgeInsets.only(top: 1.h,left: SizeConfig.safeBlockHorizontal! * 14),
+                        //     child: Icon(
+                        //       Icons.logout_outlined,
+                        //       color: Color(0xFFBA494B),
+                        //     ),
+                        //   ),),
+                        // ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: SizeConfig.safeBlockVertical! * 12,
+                              width: SizeConfig.safeBlockHorizontal! * 26,
+                              // margin: EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockHorizontal! * 37),
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.contain,
+                                  image: AssetImage('assets/images/LetsGetStarted.png'),
                                 ),
-                                suffixIcon: Padding(padding: EdgeInsets.only(left:0.w),
-                                child: InkWell(
-                                onTap: () =>
-                                  setState((){
-                                    obscuretext =! obscuretext;
-                                  }),
-                                child: Icon(obscuretext
-                                  ? Icons.visibility_off_outlined
-                                  : Icons.visibility_outlined,
-                                  color: Color(0xFFBA494B).withOpacity(0.8),
-                                  size: 2.3.h,
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment(0.0,-1.0),
+                              // margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 12),
+                              child: Text('Welcome', 
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17.sp,
+                                  color: Color(0xFFBA494B),
                                 ),
-                                ),),
-                                hintText: 'Enter Password',
                               ),
-                              obscureText: obscuretext,
                             ),
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomRight,
-                              colors: <Color>[
-                                Color(0xFFBA494B),
-                                Color(0xFFFFB79D),
-                              ],
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(.8),
-                                spreadRadius: 1,
-                                offset: Offset(1,1),
-                                blurRadius: 4,
-                              )
-                            ],
-                          ),
-                          alignment: Alignment(0.0,-1.0),
-                          width: 100,
-                          margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 50, left: 40.w, right: 40.w),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 2.w,
-                                vertical: 1.h
+                            Container(
+                              alignment: Alignment(0.0,-1.0),
+                              // margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 16),
+                              child: Text('Please Login to your account.', 
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 11.sp,
+                                  color: Color(0xFFFFB79D),
+                                ),
                               ),
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              primary: Colors.transparent,
-                              shadowColor: Colors.transparent,
-                              elevation: 0,
                             ),
-                            onPressed: () {
-                              if(usernameController.text == "Username" && passwordController.text == "Password") {
-                                usernameController.clear();passwordController.clear();
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherFrontPage()));}
-                              else if(usernameController.text != "Username" && passwordController.text == "Password") showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    content: Text('Invalid Username!',
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                            Container(
+                              alignment: Alignment(0.0,-1.0),
+                              margin: EdgeInsets.only(top:2.h,right: 44.w),//top: 20.h, 
+                              child: Text('Username', 
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.bold,
+                                  fontSize: 11.5.sp,
+                                  color: Color(0xFFBA494B),
+                                ),
+                              ),
+                            ),
+                            RoundedInputField(
+                              onChanged: (value) {},
+                              hintText: 'Enter username or E-mail',
+                            ),
+                            Container(
+                              alignment: Alignment(0.0,-1.0),
+                              margin: EdgeInsets.only(top:2.h,right: 44.w),//top: 33.5.h, 
+                              child: Text('Password', 
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.bold,
+                                  fontSize: 11.5.sp,
+                                  color: Color(0xFFBA494B),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 20.w, right: 20.w, ),//top: SizeConfig.safeBlockVertical! * 39
+                              child: TextFieldContainer(
+                                child: TextField(
+                                  style: TextStyle(fontSize: 12.sp, color: Color(0xFF4785B4),),
+                                  controller: passwordController,
+                                  onChanged: (value){},
+                                  decoration: InputDecoration(
+                                    icon: Icon(
+                                      Icons.vpn_key_sharp,
+                                      color: Color(0xFFBA494B,),
                                     ),
-                                  );
-                                },
-                              );
-                              else if(passwordController.text != "Password" && usernameController.text == "Username") showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    content: Text('Invalid Password!',
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                    suffixIcon: Padding(padding: EdgeInsets.only(left:0.w),
+                                    child: InkWell(
+                                    onTap: () =>
+                                      setState((){
+                                        obscuretext =! obscuretext;
+                                      }),
+                                    child: Icon(obscuretext
+                                      ? Icons.visibility_off_outlined
+                                      : Icons.visibility_outlined,
+                                      color: Color(0xFFBA494B).withOpacity(0.8),
+                                      size: 2.3.h,
                                     ),
+                                    ),),
+                                    hintText: 'Enter Password',
+                                    hintStyle: TextStyle(fontSize: 12.sp, color: Color(0xFF4785B4))
+                                  ),
+                                  obscureText: obscuretext,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomRight,
+                                  colors: <Color>[
+                                    Color(0xFFBA494B),
+                                    Color(0xFFFFB79D),
+                                  ],
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(.8),
+                                    spreadRadius: 1,
+                                    offset: Offset(1,1),
+                                    blurRadius: 4,
+                                  )
+                                ],
+                              ),
+                              alignment: Alignment(0.0,-1.0),
+                              width: 100,
+                              margin: EdgeInsets.only(left: 40.w, right: 40.w, top: 4.h),//top: SizeConfig.safeBlockVertical! * 50
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 2.w,
+                                    vertical: 1.h
+                                  ),
+                                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                  primary: Colors.transparent,
+                                  shadowColor: Colors.transparent,
+                                  elevation: 0,
+                                ),
+                                onPressed: () {
+                                  if(usernameController.text == "Admin" && passwordController.text == "AdminPassword") {
+                                    usernameController.clear();passwordController.clear();
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherFrontPage()));}
+                                  else if(usernameController.text != "Admin" && passwordController.text == "AdminPassword") showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        content: Text('Invalid Username!',
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   );
-                                },
-                              );
-                              else showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    content: Text('Invalid Username and Password!',
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
+                                  else if(passwordController.text != "AdminPassword" && usernameController.text == "Admin") showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        content: Text('Invalid Password!',
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   );
-                                },
-                              );
-                          },
-                            child: Text('Login'),
-                          ),
+                                  else showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        content: Text('Invalid Username and Password!',
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                              },
+                                child: Text('Login'),
+                              ),
+                            ),
+                          ],  
                         ),
                       ],
                     ),
@@ -298,24 +307,77 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> with SingleTickerPr
         padding: EdgeInsets.only(left: 7.w, right: 7.w, bottom: 3.h),
         child: Container(
           child: TabBar(
+            padding: EdgeInsets.all(1.h),
             labelColor: Color(0xFF4785B4),
-            unselectedLabelColor: Color(0xFFBA494B),
-            labelStyle:TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold) ,
+            unselectedLabelColor: Color(0xFF4785B4),
             indicator: UnderlineTabIndicator(
-              borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
+              borderSide: BorderSide(color: Colors.transparent, width: 0.0)
             ),
             tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.info_outline),
-                text: 'About',
+                icon: IconButton(
+                  icon: Icon(Icons.home_rounded, size: 4.h),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  )
+                ),
               ),
               Tab(
-                icon: Icon(Icons.settings),
-                text: 'Settings',
+                icon: IconButton(
+                  onPressed: (){
+                    showDialog(
+                      context: context,
+                      builder: (context){
+                        return Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3.h),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Settings',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Color(0xFF4785B4), fontSize: 16.sp, fontWeight: FontWeight.bold,),
+                                ),
+                                SizedBox(height: 2.h,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Dark Mode\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
+                                    ChangeThemeButtonWidget(),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Music \t\t\t\t\t\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
+                                    AudioPlayerWithLocalAsset(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
+                  },
+                  icon: Icon(Icons.settings, size: 4.h)
+                )
               ),
+              // AudioPlayerrr(),
               Tab(
-                icon: Icon(Icons.exit_to_app_outlined),
-                text: 'Exit',
+                icon: IconButton(
+                  icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
+                  onPressed: () {
+
+                  },
+                ),
               ),
             ],
             controller:  _tabController,
@@ -377,9 +439,10 @@ class RoundedInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-    margin: EdgeInsets.only(left: 20.w, right: 20.w, top: SizeConfig.safeBlockVertical! * 25),
+    margin: EdgeInsets.only(left: 20.w, right: 20.w,),// top: SizeConfig.safeBlockVertical! * 25
     child: TextFieldContainer(
       child: TextField(
+        style: TextStyle(fontSize: 12.sp, color: Color(0xFF4785B4),),
         controller: usernameController,
         onChanged: onChanged,
         decoration: InputDecoration(
@@ -388,6 +451,7 @@ class RoundedInputField extends StatelessWidget {
             color: Color(0xFFBA494B),
           ),
           hintText: hintText,
+          hintStyle: TextStyle(fontSize: 12.sp, color: Color(0xFF4785B4)),
         ),
       ),
     ),

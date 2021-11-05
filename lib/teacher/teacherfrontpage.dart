@@ -3,10 +3,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:iassist/audioplayer_with_local_asset.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/pdf_api.dart';
 import 'package:iassist/pdf_viewer_example.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
+import 'package:iassist/selectionpage.dart';
 import 'package:iassist/teacher/LessonPlans.dart';
 import 'package:iassist/teacher/PPT.dart';
 import 'package:iassist/teacher/Worksheet.dart';
@@ -144,7 +146,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 11.sp,
-                              color: Color(0xFFFFB79D),
+                              color: Color(0xFF4785B4),
                             ),
                           ),
                         ),
@@ -152,7 +154,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                           width: size.width * .6,
                           margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 30, left: 20.w, right: 20.w),
                           child:OutlinedButton.icon(onPressed:() async {
-                            final path = 'assets/sample.pdf';
+                            final path = '';
                             final file = await PDFApi.loadAsset(path);
                             openPDF(context, file);
                           },
@@ -223,7 +225,6 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
                                   ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
-                                    
                                   ),padding: EdgeInsets.only(right: 5.w, top: 2.5.h, bottom: 2.5.h),
                                 ),
                           ),
@@ -241,24 +242,77 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>with SingleTickerPro
         padding: EdgeInsets.only(left: 7.w, right: 7.w, bottom: 3.h),
         child: Container(
           child: TabBar(
+            padding: EdgeInsets.all(1.h),
             labelColor: Color(0xFF4785B4),
-            unselectedLabelColor: Color(0xFFBA494B),
-            labelStyle:TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold) ,
+            unselectedLabelColor: Color(0xFF4785B4),
             indicator: UnderlineTabIndicator(
-              borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)
+              borderSide: BorderSide(color: Colors.transparent, width: 0.0)
             ),
             tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.home_rounded),
-                text: 'Home',
+                icon: IconButton(
+                  icon: Icon(Icons.home_rounded, size: 4.h),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  )
+                ),
               ),
               Tab(
-                icon: Icon(Icons.settings),
-                text: 'Settings',
+                icon: IconButton(
+                  onPressed: (){
+                    showDialog(
+                      context: context,
+                      builder: (context){
+                        return Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3.h),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Settings',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Color(0xFF4785B4), fontSize: 16.sp, fontWeight: FontWeight.bold,),
+                                ),
+                                SizedBox(height: 2.h,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Dark Mode\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
+                                    ChangeThemeButtonWidget(),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Music \t\t\t\t\t\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
+                                    AudioPlayerWithLocalAsset(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
+                  },
+                  icon: Icon(Icons.settings, size: 4.h)
+                )
               ),
+              // AudioPlayerrr(),
               Tab(
-                icon: Icon(Icons.exit_to_app_outlined),
-                text: 'Exit',
+                icon: IconButton(
+                  icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
+                  onPressed: () {
+
+                  },
+                ),
               ),
             ],
             controller:  _tabController,

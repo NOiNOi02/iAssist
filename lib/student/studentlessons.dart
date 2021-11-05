@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
+import 'package:iassist/selectionpage.dart';
 import 'package:iassist/student/lessons/Newton1st.dart';
 import 'package:iassist/student/lessons/Newton2nd.dart';
 import 'package:iassist/student/lessons/Newton3rd.dart';
@@ -25,7 +26,8 @@ class StudentLessons extends StatefulWidget {
 class _StudentLessonsState extends State<StudentLessons>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
+  
+ 
   @override
   void initState() {
     super.initState();
@@ -102,7 +104,7 @@ class _StudentLessonsState extends State<StudentLessons>
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 11.w),
-                          height: SizeConfig.safeBlockVertical! * 69,
+                          height: SizeConfig.safeBlockVertical! * 66,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -115,145 +117,139 @@ class _StudentLessonsState extends State<StudentLessons>
                             ],
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 5.w),
-                          height: SizeConfig.safeBlockVertical! * 16,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage(
-                                  'assets/images/StudentLessonsPic.png'),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment(0.0, -1.0),
-                          margin: EdgeInsets.only(
-                            top: 18.5.h,
-                          ),
-                          child: Text(
-                            'Newton’s\nLaw of Motion',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17.sp,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * .6,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 30,
-                              left: 20.w,
-                              right: 20.w),
-                          child: OutlinedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => FirstNewtonLaw(),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: 5.w),
+                              height: SizeConfig.safeBlockVertical! * 16,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.contain,
+                                  image: AssetImage(
+                                      'assets/images/StudentLessonsPic.png'),
                                 ),
-                              );
-                            },
-                            child: Text("1st Law of Motion",
+                              ),
+                            ),
+                            Container(
+                              // alignment: Alignment(0.0, -1.0),
+                              margin: EdgeInsets.only(top: 1.h,),
+                              child: Text(
+                                'Newton’s\nLaw of Motion',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
+                                  fontSize: 17.sp,
                                   color: Color(0xFFBA494B),
-                                  fontSize: 16.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                width: 2.5,
-                                color: Color(0xFFBA494B),
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              padding: EdgeInsets.only(
-                                  left: 2.5.w,
-                                  right: 2.5.w,
-                                  top: 2.5.h,
-                                  bottom: 2.5.h),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * .6,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 43,
-                              left: 20.w,
-                              right: 20.w),
-                          child: OutlinedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => SecondNewtonLaw(),
                                 ),
-                              );
-                            },
-                            child: Text("2nd Law of Motion",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 16.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                width: 2.5,
-                                color: Color(0xFFBA494B),
                               ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              padding: EdgeInsets.only(
-                                  left: 2.5.w,
-                                  right: 2.5.w,
-                                  top: 2.5.h,
-                                  bottom: 2.5.h),
                             ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * .6,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 56,
-                              left: 20.w,
-                              right: 20.w),
-                          child: OutlinedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ThirdNewtonLaw(),
+                            Container(
+                              width: size.width * .6,
+                              margin: EdgeInsets.only(top: 2.5.h),
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => FirstNewtonLaw(),
+                                    ),
+                                  );
+                                },
+                                child: Text("1st Law of Motion",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFBA494B),
+                                      fontSize: 16.sp,
+                                    )),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    width: 2.5,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  padding: EdgeInsets.only(
+                                      left: 2.5.w,
+                                      right: 2.5.w,
+                                      top: 2.5.h,
+                                      bottom: 2.5.h),
                                 ),
-                              );
-                            },
-                            child: Text("3rd Law of Motion",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 16.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                width: 2.5,
-                                color: Color(0xFFBA494B),
                               ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              padding: EdgeInsets.only(
-                                  left: 2.5.w,
-                                  right: 2.5.w,
-                                  top: 2.5.h,
-                                  bottom: 2.5.h),
                             ),
-                          ),
+                            Container(
+                              width: size.width * .6,
+                              margin: EdgeInsets.only(top: 2.5.h),
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SecondNewtonLaw(),
+                                    ),
+                                  );
+                                },
+                                child: Text("2nd Law of Motion",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFBA494B),
+                                      fontSize: 16.sp,
+                                    )),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    width: 2.5,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  padding: EdgeInsets.only(
+                                      left: 2.5.w,
+                                      right: 2.5.w,
+                                      top: 2.5.h,
+                                      bottom: 2.5.h),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: size.width * .6,
+                              margin: EdgeInsets.only(top: 2.5.h),
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ThirdNewtonLaw(),
+                                    ),
+                                  );
+                                },
+                                child: Text("3rd Law of Motion",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFBA494B),
+                                      fontSize: 16.sp,
+                                    )),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    width: 2.5,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  padding: EdgeInsets.only(
+                                      left: 2.5.w,
+                                      right: 2.5.w,
+                                      top: 2.5.h,
+                                      bottom: 2.5.h),
+                                ),
+                              ),
+                            ),
+                         ],
                         ),
                       ],
                     ),
@@ -270,17 +266,75 @@ class _StudentLessonsState extends State<StudentLessons>
           child: TabBar(
             padding: EdgeInsets.all(1.h),
             labelColor: Color(0xFF4785B4),
-            unselectedLabelColor: Color(0xFFBA494B),
-            labelStyle: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold),
+            unselectedLabelColor: Color(0xFF4785B4),
             indicator: UnderlineTabIndicator(
-                borderSide: BorderSide(color: Color(0xFF4785B4), width: 0.0)),
+              borderSide: BorderSide(color: Colors.transparent, width: 0.0)
+            ),
             tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.home_rounded, size: 4.h),
+                icon: IconButton(
+                  icon: Icon(Icons.home_rounded, size: 4.h),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  )
+                ),
               ),
-              AudioPlayerWithLocalAsset(),
               Tab(
-                icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
+                icon: IconButton(
+                  onPressed: (){
+                    showDialog(
+                      context: context,
+                      builder: (context){
+                        return Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3.h),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Settings',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Color(0xFF4785B4), fontSize: 16.sp, fontWeight: FontWeight.bold,),
+                                ),
+                                SizedBox(height: 2.h,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Dark Mode\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
+                                    ChangeThemeButtonWidget(),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Music \t\t\t\t\t\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
+                                    AudioPlayerWithLocalAsset(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
+                  },
+                  icon: Icon(Icons.settings, size: 4.h)
+                )
+              ),
+              // AudioPlayerrr(),
+              Tab(
+                icon: IconButton(
+                  icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
+                  onPressed: () {
+
+                  },
+                ),
               ),
             ],
             controller: _tabController,

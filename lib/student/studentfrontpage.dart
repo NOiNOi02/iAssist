@@ -88,7 +88,7 @@ class _StudentFrontPageState extends State<StudentFrontPage> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 12.w),
-                          height: SizeConfig.safeBlockVertical! * 70,
+                          height: SizeConfig.safeBlockVertical! * 65,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -101,120 +101,117 @@ class _StudentFrontPageState extends State<StudentFrontPage> {
                             ],
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 5.h),
-                          height: SizeConfig.safeBlockVertical! * 15,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image:
-                                  AssetImage('assets/images/StudentHeader.png'),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: EdgeInsets.only(
-                            top: 20.h,
-                          ),
-                          child: Text(
-                            'Hello Student',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17.sp,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment(0.0, -1.0),
-                          padding: EdgeInsets.only(top: 24.h),
-                          child: Text(
-                            'You can read the lessons first and then\nplay games!',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 11.sp,
-                              color: Color(0xFFFFB79D),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * .6,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 35,
-                              left: 20.w,
-                              right: 20.w),
-                          child: OutlinedButton.icon(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => StudentLessons(),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: 5.h),
+                              height: SizeConfig.safeBlockVertical! * 15,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.contain,
+                                  image:
+                                      AssetImage('assets/images/StudentHeader.png'),
                                 ),
-                              );
-                            },
-                            icon: Icon(MyFlutterApp.lessons,
-                                color: Color(0xFFBA494B), size: 37.sp),
-                            label: Text("LESSONS",
+                              ),
+                            ),
+                            Container(
+                              // alignment: Alignment(0.0, -1.0),
+                              margin: EdgeInsets.only(top: 1.h,),
+                              child: Text(
+                                'Hello Student',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17.sp,
+                                  color: Color(0xFFBA494B),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              // alignment: Alignment(0.0, -1.0),
+                              margin: EdgeInsets.only(top: 1.h),
+                              child: Text(
+                                'You can read the lessons first and then\nplay games!',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 20.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                width: 2.5,
-                                color: Color(0xFFBA494B),
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              padding: EdgeInsets.only(
-                                  left: 3.w,
-                                  right: 3.w,
-                                  top: 2.5.h,
-                                  bottom: 2.5.h),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * .6,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 51,
-                              left: 20.w,
-                              right: 20.w),
-                          child: OutlinedButton.icon(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => GameFrontPage(),
+                                  fontSize: 11.sp,
+                                  color: Color(0xFF4785B4),
                                 ),
-                              );
-                            },
-                            icon: Icon(MyFlutterApp.games,
-                                color: Color(0xFFBA494B), size: 37.sp),
-                            label: Text("GAMES",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 20.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                width: 2.5,
-                                color: Color(0xFFBA494B),
                               ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              padding: EdgeInsets.only(
-                                  right: 2.w, top: 2.5.h, bottom: 2.5.h),
                             ),
-                          ),
+                            Container(
+                              width: size.width * .6,
+                              margin: EdgeInsets.only(top: 2.5.h),
+                              child: OutlinedButton.icon(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => StudentLessons(),
+                                    ),
+                                  );
+                                },
+                                icon: Icon(MyFlutterApp.lessons,
+                                    color: Color(0xFFBA494B), size: 37.sp),
+                                label: Text("LESSONS",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFBA494B),
+                                      fontSize: 20.sp,
+                                    )),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    width: 2.5,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  padding: EdgeInsets.only(
+                                      left: 3.w,
+                                      right: 3.w,
+                                      top: 2.5.h,
+                                      bottom: 2.5.h),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: size.width * .6,
+                              margin: EdgeInsets.only(top: 3.h),
+                              child: OutlinedButton.icon(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => GameFrontPage(),
+                                    ),
+                                  );
+                                },
+                                icon: Icon(MyFlutterApp.games,
+                                    color: Color(0xFFBA494B), size: 37.sp),
+                                label: Text("GAMES",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFBA494B),
+                                      fontSize: 20.sp,
+                                    )),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    width: 2.5,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  padding: EdgeInsets.only(
+                                      right: 2.w, top: 2.5.h, bottom: 2.5.h),
+                                ),
+                              ),
+                            ),
+                         ],
                         ),
                       ],
                     ),

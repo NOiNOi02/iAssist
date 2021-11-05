@@ -12,9 +12,9 @@ class ChangeThemeButtonWidget extends StatelessWidget {
         activeThumbImage: AssetImage('assets/images/darkmodeicon.png'),
         activeColor: Colors.white,
         // activeColor: Color(0xFFBA494B),
-        inactiveThumbColor: Color(0xFFffb79d),
-        inactiveTrackColor: Color(0xFFffb79d).withOpacity(0.5),
-        activeTrackColor: Color(0xFFffb79d).withOpacity(0.4),
+        inactiveThumbColor: Color(0xFF4785B4),
+        inactiveTrackColor: Color(0xFF4785B4).withOpacity(0.5),
+        activeTrackColor: Color(0xFF4785B4).withOpacity(0.4),
         value: themeProvider.isDarkMode, 
         onChanged: (bool value) {  
           final provider = Provider.of<ThemeProvider>(context, listen: false);

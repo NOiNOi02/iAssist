@@ -60,37 +60,6 @@ class _HomePageState extends State<HomePage>{
               ),
             ),
           ),
-          // Container(
-          //   height: MediaQuery.of(context).size.height * 1,
-          //   decoration: BoxDecoration(
-          //     image: DecorationImage(
-          //       fit: BoxFit.fitHeight,
-          //       image: AssetImage('assets/images/Bubbles.png'),
-          //       alignment: new Alignment(-4.3, 0),
-          //     ),
-          //   ),
-          // ),
-          Container(
-            margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 45.5, left: 5.w),
-            child:OutlinedButton(onPressed:(){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SelectionPage(),),);
-            }, child: Text("Let's Start!",  
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.sp,
-                )),
-                  style: OutlinedButton.styleFrom(
-                    side: BorderSide(
-                    width: 2.5,
-                    color: Colors.white
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(28.0),
-                      
-                    ),padding: EdgeInsets.only(left: 6.w, right: 6.w, top: 1.7.h, bottom: 1.7.h),
-                  ),
-            ),
-          ),
           Container(
             margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 55, left: 17.w, right: 17.w),
             width: SizeConfig.safeBlockHorizontal! * 66,
@@ -113,24 +82,50 @@ class _HomePageState extends State<HomePage>{
               ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 26, left:4.w),
-            child: Text('Welcome to I-Assist', 
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24.sp,
-                color: Colors.white,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 26, left:4.w), 
+                child: Text('Welcome to I-Assist', 
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24.sp,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 32, left:4.w),
-            child: Text('An offline educational application\ndesigned for Eight Graders to\nlearn more about the concept\nof Newton\'s Law of Motion.',
-              style: TextStyle(
-                fontSize: 13.sp,
-                color: Colors.white,
+              Container(
+                margin: EdgeInsets.only(left:4.w),//top: SizeConfig.safeBlockVertical! * 32, 
+                child: Text('An offline educational application\ndesigned for Eight Graders to\nlearn more about the concept\nof Newton\'s Law of Motion.',
+                  style: TextStyle(
+                    fontSize: 13.sp,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                margin: EdgeInsets.only(top:1.h,),//top: SizeConfig.safeBlockVertical! * 47, 
+                child:OutlinedButton(onPressed:(){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SelectionPage(),),);
+                }, child: Text("Let's Start!",  
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.sp,
+                    )),
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide(
+                        width: 2.5,
+                        color: Colors.white
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(28.0),
+                          
+                        ),padding: EdgeInsets.only(left: 6.w, right: 6.w, top: 1.7.h, bottom: 1.7.h),
+                      ),
+                ),
+              ),
+           ],
           ),
         ],
       ),

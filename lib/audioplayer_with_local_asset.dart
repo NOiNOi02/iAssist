@@ -7,14 +7,15 @@ class AudioPlayerWithLocalAsset extends StatefulWidget {
 
   @override
   _AudioPlayerWithLocalAssetState createState() => _AudioPlayerWithLocalAssetState();
+
 }
 
-class _AudioPlayerWithLocalAssetState extends State<AudioPlayerWithLocalAsset> {
-  
   AudioPlayer audioPlayer = AudioPlayer();
   PlayerState audioPlayerState = PlayerState.PAUSED;
-  static AudioCache audioCache = AudioCache();
-  String path = 'sample.mp3';
+  AudioCache audioCache = AudioCache();
+
+class _AudioPlayerWithLocalAssetState extends State<AudioPlayerWithLocalAsset> {
+  String path = 'music.mp3';
 
   @override
   void initState(){
@@ -36,16 +37,18 @@ class _AudioPlayerWithLocalAssetState extends State<AudioPlayerWithLocalAsset> {
   // }
 
   playMusic() async {
+    audioCache = AudioCache(fixedPlayer: audioPlayer);
     await audioCache.loop(path);
   }
 
   pauseMusic() async {
     await audioPlayer.pause();
   }
+
   resumeMusic() async {
     await audioPlayer.resume();
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     return Tab(
@@ -54,12 +57,12 @@ class _AudioPlayerWithLocalAssetState extends State<AudioPlayerWithLocalAsset> {
         onPressed: () {
           audioPlayerState == PlayerState.PLAYING 
             ? pauseMusic()
-            : playMusic();    
+            : playMusic();   
         },
         icon: Icon(audioPlayerState == PlayerState.PLAYING 
           ? Icons.music_note 
           : Icons.music_off,
-        ),
+        color: Color(0xFF4785B4),),
       ), 
     );
   }
