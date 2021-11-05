@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/pdf_api.dart';
@@ -101,7 +102,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 11.w),
-                          height: SizeConfig.safeBlockVertical! * 63,
+                          height: SizeConfig.safeBlockVertical! * 65,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -114,161 +115,150 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                             ],
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 2),
-                          height: SizeConfig.safeBlockVertical! * 14,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage('assets/images/TeacherPic.png'),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 16,
-                              left: 31.w,
-                              right: 31.w),
-                          child: Text(
-                            'Hello Teacher!',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17.sp,
-                              color: Color(0xFFBA494B),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 20,
-                              left: 14.w,
-                              right: 14.w),
-                          child: Text(
-                            'You can view the Lesson Plans, Powerpoint Presentations, \nand Worksheets here.',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 11.sp,
-                              color: Color(0xFF4785B4),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * .6,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 30,
-                              left: 20.w,
-                              right: 20.w),
-                          child: OutlinedButton.icon(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LessonPlans(),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 2),
+                              height: SizeConfig.safeBlockVertical! * 14,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.contain,
+                                  image: AssetImage('assets/images/TeacherPic.png'),
                                 ),
-                              );
-                            },
-                            icon: Icon(
-                              MyFlutterApp.lessonplans,
-                              color: Color(0xFFBA494B),
+                              ),
                             ),
-                            label: Text("LESSON PLANS",
+                            Container(
+                              padding: EdgeInsets.only(top: 1.h),
+                              child: Text(
+                                'Hello Teacher!',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17.sp,
+                                  color: Color(0xFFBA494B),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(top: 1.h),
+                              child: Text('You can view the Lesson Plans, Powerpoint\nPresentations, and Worksheets here.',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 15.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                width: 2.5,
-                                color: Color(0xFFBA494B),
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              padding: EdgeInsets.only(
-                                  left: 2.w,
-                                  right: 2.w,
-                                  top: 2.5.h,
-                                  bottom: 2.5.h),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * .6,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 41,
-                              left: 20.w,
-                              right: 20.w),
-                          child: OutlinedButton.icon(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => PPT(),
+                                  fontSize: 11.sp,
+                                  color: Color(0xFF4785B4),
                                 ),
-                              );
-                            },
-                            icon: Icon(MyFlutterApp.ppt,
-                                color: Color(0xFFBA494B)),
-                            label: Text("POWERPOINT\nPRESENTATIONS",
-                                // textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 15.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                width: 2.5,
-                                color: Color(0xFFBA494B),
                               ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              padding: EdgeInsets.only(
-                                  left: 1.w, top: 2.h, bottom: 2.h),
                             ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * .6,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 54,
-                              left: 20.w,
-                              right: 20.w),
-                          child: OutlinedButton.icon(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Worksheet(),
+                            Container(
+                              width: size.width * .6,
+                              margin: EdgeInsets.only(
+                                  top: 2.h),
+                              child: OutlinedButton.icon(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LessonPlans(),
+                                    ),
+                                  );
+                                },
+                                icon: Icon(
+                                  MyFlutterApp.lessonplans,
+                                  color: Color(0xFFBA494B),
                                 ),
-                              );
-                            },
-                            icon: Icon(MyFlutterApp.wrksht,
-                                color: Color(0xFFBA494B)),
-                            label: Text("WORKSHEETS",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 15.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                width: 2.5,
-                                color: Color(0xFFBA494B),
+                                label: Text("LESSON PLANS",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFBA494B),
+                                      fontSize: 15.sp,
+                                    )),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    width: 2.5,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  padding: EdgeInsets.only(
+                                      left: 2.w,
+                                      right: 2.w,
+                                      top: 2.5.h,
+                                      bottom: 2.5.h),
+                                ),
                               ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              padding: EdgeInsets.only(
-                                  right: 5.w, top: 2.5.h, bottom: 2.5.h),
                             ),
-                          ),
+                            Container(
+                              width: size.width * .6,
+                              margin: EdgeInsets.only(top: 2.h),
+                              child: OutlinedButton.icon(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PPT(),
+                                    ),
+                                  );
+                                },
+                                icon: Icon(MyFlutterApp.ppt,
+                                    color: Color(0xFFBA494B)),
+                                label: Text("POWERPOINT\nPRESENTATIONS",
+                                    // textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFBA494B),
+                                      fontSize: 15.sp,
+                                    )),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    width: 2.5,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  padding: EdgeInsets.only(
+                                      left: 1.w, top: 2.h, bottom: 2.h),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: size.width * .6,
+                              margin: EdgeInsets.only(top: 2.h),
+                              child: OutlinedButton.icon(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Worksheet(),
+                                    ),
+                                  );
+                                },
+                                icon: Icon(MyFlutterApp.wrksht,
+                                    color: Color(0xFFBA494B)),
+                                label: Text("WORKSHEETS",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFBA494B),
+                                      fontSize: 15.sp,
+                                    )),
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    width: 2.5,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  padding: EdgeInsets.only(
+                                      right: 5.w, top: 2.5.h, bottom: 2.5.h),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -351,7 +341,9 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                 icon: IconButton(
                   icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
                   onPressed: () {
-
+                    Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                    });
                   },
                 ),
               ),

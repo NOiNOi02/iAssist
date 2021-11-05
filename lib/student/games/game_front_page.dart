@@ -78,34 +78,37 @@ class _GameFrontPageState extends State<GameFrontPage> {
                   ),
                 ),
               ),
-            
-            ListTile(
-              leading: Icon(Icons.home, color: Color(0xFFBA494B),),
-              title: Text(
-                'Home',
-                style:
-                    TextStyle(fontSize: 13.sp, fontFamily: 'MyFlutterApp',color: Color(0xFFBA494B), fontWeight: FontWeight.bold),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Color(0xFFBA494B),
+                ),
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectionPage(),
+                    ),
+                  );
+                },
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SelectionPage(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings,color: Color(0xFFBA494B),),
-              title: Text(
-                'Settings',
-                style:
-                    TextStyle(fontSize: 13.sp, fontFamily: 'MyFlutterApp',color: Color(0xFFBA494B), fontWeight: FontWeight.bold),
-              ),
-              onTap: () {
-                showDialog(
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Color(0xFFBA494B),
+                ),
+                title: Text(
+                  'Settings',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  showDialog(
                       context: context,
-                      builder: (context){
+                      builder: (context) {
                         return Dialog(
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -117,22 +120,39 @@ class _GameFrontPageState extends State<GameFrontPage> {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('Settings',
+                                Text(
+                                  'Settings',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(color: Color(0xFF4785B4), fontSize: 16.sp, fontWeight: FontWeight.bold,),
+                                  style: TextStyle(
+                                    color: Color(0xFF4785B4),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                                SizedBox(height: 2.h,),
+                                SizedBox(
+                                  height: 2.h,
+                                ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text('Dark Mode\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
+                                    Text('Dark Mode\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
                                     ChangeThemeButtonWidget(),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text('Music \t\t\t\t\t\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
+                                    Text('Music \t\t\t\t\t\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
                                     AudioPlayerWithLocalAsset(),
                                   ],
                                 ),
@@ -140,17 +160,24 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             ),
                           ),
                         );
-                      }
-                    );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app_outlined,color: Color(0xFFBA494B),),
-              title: Text(
-                'Exit',
-                style: TextStyle(fontSize: 13.sp, fontFamily: 'MyFlutterApp',color: Color(0xFFBA494B), fontWeight: FontWeight.bold),
+                      });
+                },
               ),
-            ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: Color(0xFFBA494B),
+                ),
+                title: Text(
+                  'Exit',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                onTap: () {
+                  Future.delayed(const Duration(milliseconds: 1000), () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  });
+                },
+              ),
             ],
           ),
         ),
