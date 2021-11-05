@@ -102,7 +102,7 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                         Container(
                           margin:
                               EdgeInsets.only(top: 13.h, right: 7.w, left: 7.w),
-                          height: SizeConfig.safeBlockVertical! * 70,
+                          height: SizeConfig.safeBlockVertical! * 77,
                           decoration: BoxDecoration(
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -121,9 +121,9 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                             children: <Widget>[
                               Container(
                                 // height: size.height * .4,
-                                margin: EdgeInsets.only(top: 10.h, left: 15.w),
+                                margin: EdgeInsets.only(top: 11.h, left: 19.w),
                                 child: Container(
-                                  height: SizeConfig.safeBlockVertical! * 15,
+                                  height: SizeConfig.safeBlockVertical! * 10,
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
                                       fit: BoxFit.contain,
@@ -168,11 +168,11 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               MyFlutterApp.pdf,
                               color: Color(0xFFBA494B),
                             ),
-                            label: Text("LP #1 LESSON PLAN NEWTONS LAW",
+                            label: Text("PPT #1 1ST LAW OF MOTION INERTIA",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
+                                  fontSize: 10.5.sp,
                                 )),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -184,7 +184,7 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                         Container(
                           alignment: Alignment.topLeft,
                           margin:
-                              EdgeInsets.only(top: 35.h, left: 7.w, right: 7.w),
+                              EdgeInsets.only(top: 37.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
@@ -196,11 +196,11 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               MyFlutterApp.pdf,
                               color: Color(0xFFBA494B),
                             ),
-                            label: Text("LP #2 LESSON PLAN NEWTONS LAW",
+                            label: Text("PPT #2 2ND LAW OF MOTION ACCELERATION",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
+                                  fontSize: 10.5.sp,
                                 )),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -212,7 +212,7 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                         Container(
                           alignment: Alignment.topLeft,
                           margin:
-                              EdgeInsets.only(top: 40.h, left: 7.w, right: 7.w),
+                              EdgeInsets.only(top: 44.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
@@ -224,11 +224,11 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               MyFlutterApp.pdf,
                               color: Color(0xFFBA494B),
                             ),
-                            label: Text("LP #3 LESSON PLAN NEWTONS LAW",
+                            label: Text("PPT #3 3RD LAW OF MOTION INTERACTION",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
+                                  fontSize: 10.5.sp,
                                 )),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -240,7 +240,7 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                         Container(
                           alignment: Alignment.topLeft,
                           margin:
-                              EdgeInsets.only(top: 45.h, left: 7.w, right: 7.w),
+                              EdgeInsets.only(top: 51.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
@@ -252,11 +252,12 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               MyFlutterApp.pdf,
                               color: Color(0xFFBA494B),
                             ),
-                            label: Text("LP #4 LESSON PLAN NEWTONS LAW",
+                            label: Text(
+                                "PPT #4 PPT 1 NEWTON’S THREE LAWS OF MOTION",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
+                                  fontSize: 10.5.sp,
                                 )),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -268,7 +269,7 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                         Container(
                           alignment: Alignment.topLeft,
                           margin: EdgeInsets.only(
-                            top: 50.h,
+                            top: 58.h,
                             left: 7.w,
                             right: 7.w,
                           ),
@@ -283,73 +284,12 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               MyFlutterApp.pdf,
                               color: Color(0xFFBA494B),
                             ),
-                            label: Text("LP #5 LESSON PLAN NEWTONS LAW",
+                            label: Text(
+                                "PPT #5 PPT 2 NEWTON'S THREE LAWS OF MOTION",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                color: Colors.transparent,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          margin: EdgeInsets.only(
-                            top: 55.h,
-                            left: 7.w,
-                            right: 7.w,
-                          ),
-                          child: OutlinedButton.icon(
-                            onPressed: () async {
-                              final path =
-                                  'assets/documents/PPT 3 NEWTON_S THREE LAWS OF MOTION.pdf';
-                              final file = await PDFApi.loadAsset(path);
-                              openPDF(context, file);
-                            },
-                            icon: Icon(
-                              MyFlutterApp.pdf,
-                              color: Color(0xFFBA494B),
-                            ),
-                            label: Text("LP #6 LESSON PLAN NEWTONS LAW",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
-                                )),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                color: Colors.transparent,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          margin: EdgeInsets.only(
-                            top: 60.h,
-                            left: 7.w,
-                            right: 7.w,
-                          ),
-                          child: OutlinedButton.icon(
-                            onPressed: () async {
-                              final path =
-                                  'assets/documents/PPT 4 NEWTON_S THREE LAWS OF MOTION.pdf';
-                              final file = await PDFApi.loadAsset(path);
-                              openPDF(context, file);
-                            },
-                            icon: Icon(
-                              MyFlutterApp.pdf,
-                              color: Color(0xFFBA494B),
-                            ),
-                            label: Text("LP #7 LESSON PLAN NEWTONS LAW",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
+                                  fontSize: 10.5.sp,
                                 )),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -368,6 +308,71 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
+                                  "assets/documents/PPT 3 NEWTON'S THREE LAWS OF MOTION.pdf";
+                              final file = await PDFApi.loadAsset(path);
+                              openPDF(context, file);
+                            },
+                            icon: Icon(
+                              MyFlutterApp.pdf,
+                              color: Color(0xFFBA494B),
+                            ),
+                            label: Text(
+                                "PPT #6 PPT 3 NEWTON'S THREE LAWS OF MOTION",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFFBA494B),
+                                  fontSize: 10.5.sp,
+                                )),
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(
+                                color: Colors.transparent,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only(
+                            top: 72.h,
+                            left: 7.w,
+                            right: 7.w,
+                          ),
+                          child: OutlinedButton.icon(
+                            onPressed: () async {
+                              final path =
+                                  'assets/documents/PPT 4 NEWTON_S THREE LAWS OF MOTION.pdf';
+                              final file = await PDFApi.loadAsset(path);
+                              openPDF(context, file);
+                            },
+                            icon: Icon(
+                              MyFlutterApp.pdf,
+                              color: Color(0xFFBA494B),
+                            ),
+                            label: Text(
+                                "PPT #7 PPT 4 NEWTON'S THREE LAWS OF MOTION",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFFBA494B),
+                                  fontSize: 10.5.sp,
+                                )),
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(
+                                color: Colors.transparent,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only(
+                            top: 79.h,
+                            left: 7.w,
+                            right: 7.w,
+                            bottom: 7.w,
+                          ),
+                          child: OutlinedButton.icon(
+                            onPressed: () async {
+                              final path =
                                   'assets/documents/PPT 5 NEWTON_S THREE LAWS OF MOTION.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
@@ -376,11 +381,12 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                               MyFlutterApp.pdf,
                               color: Color(0xFFBA494B),
                             ),
-                            label: Text("LP #8 LESSON PLAN NEWTONS LAW",
+                            label: Text(
+                                "PPT #8 PPT 5 NEWTON'S THREE LAWS OF MOTION",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
+                                  fontSize: 10.5.sp,
                                 )),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -406,72 +412,88 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
             labelColor: Color(0xFF4785B4),
             unselectedLabelColor: Color(0xFF4785B4),
             indicator: UnderlineTabIndicator(
-              borderSide: BorderSide(color: Colors.transparent, width: 0.0)
-            ),
+                borderSide: BorderSide(color: Colors.transparent, width: 0.0)),
             tabs: <Widget>[
               Tab(
                 icon: IconButton(
-                  icon: Icon(Icons.home_rounded, size: 4.h),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SelectionPage(),
-                    ),
-                  )
-                ),
+                    icon: Icon(Icons.home_rounded, size: 4.h),
+                    onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SelectionPage(),
+                          ),
+                        )),
               ),
               Tab(
-                icon: IconButton(
-                  onPressed: (){
-                    showDialog(
-                      context: context,
-                      builder: (context){
-                        return Dialog(
-                          backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3.h),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('Settings',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(color: Color(0xFF4785B4), fontSize: 16.sp, fontWeight: FontWeight.bold,),
+                  icon: IconButton(
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Dialog(
+                                backgroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
-                                SizedBox(height: 2.h,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('Dark Mode\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
-                                    ChangeThemeButtonWidget(),
-                                  ],
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 3.h),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Settings',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 2.h,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text('Dark Mode\t\t',
+                                              style: TextStyle(
+                                                color: Color(0xFF4785B4),
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.bold,
+                                              )),
+                                          ChangeThemeButtonWidget(),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text('Music \t\t\t\t\t\t\t',
+                                              style: TextStyle(
+                                                color: Color(0xFF4785B4),
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.bold,
+                                              )),
+                                          AudioPlayerWithLocalAsset(),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('Music \t\t\t\t\t\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
-                                    AudioPlayerWithLocalAsset(),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      });
-                  },
-                  icon: Icon(Icons.settings, size: 4.h)
-                )
-              ),
+                              );
+                            });
+                      },
+                      icon: Icon(Icons.settings, size: 4.h))),
               // AudioPlayerrr(),
               Tab(
                 icon: IconButton(
                   icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
                   onPressed: () {
                     Future.delayed(const Duration(milliseconds: 1000), () {
-                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                      SystemChannels.platform
+                          .invokeMethod('SystemNavigator.pop');
                     });
                   },
                 ),
