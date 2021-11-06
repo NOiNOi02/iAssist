@@ -47,22 +47,6 @@ class _AudioPlayerWithLocalAssetState extends State<AudioPlayerWithLocalAsset> {
   //   audioCache.clearAll();
   // }
 
-<<<<<<< HEAD
-=======
-  playMusic() async {
-    audioCache = AudioCache(fixedPlayer: audioPlayer);
-    await audioCache.loop(path, volume: 0.3);
-  }
-
-  pauseMusic() async {
-    await audioPlayer.pause();
-  }
-
-  resumeMusic() async {
-    await audioPlayer.resume();
-  }
-
->>>>>>> 0b082c8de1a599ca78de9cf0d47a189215119f88
   @override
   Widget build(BuildContext context) {
     return Tab(
