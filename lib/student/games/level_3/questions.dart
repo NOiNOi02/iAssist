@@ -360,7 +360,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                             backgroundColor: Colors.white,
                             width: size.width * 0.15,
                             height: size.height * 0.15,
-                            duration:  (getCurrentNumber() == 8) ? 30 : 15,
+                            duration: (getCurrentNumber() == 8) ? 30 : 15,
                             autoStart: true,
                             textFormat: 's',
                             controller: _timerController,
@@ -481,7 +481,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                 ? size.height * 0.06
                                 : size.height * 0.07,
                             margin: (getCurrentNumber() == 8)
-                               ? EdgeInsets.only(
+                                ? EdgeInsets.only(
                                     top: (i + 3.5) * 8.h.toDouble(), left: 53.5)
                                 : (choices[getCurrentNumber()].length >= 4)
                                     ? EdgeInsets.only(
@@ -612,7 +612,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                   choices[getCurrentNumber()][i],
                                   style: TextStyle(
                                     fontSize:
-                                        (getCurrentNumber() == 8) ? 12 : 14,
+                                        (getCurrentNumber() == 8) ? 8.sp : 9.sp,
                                     // fontWeight: FontWeight.w700,
                                     // fontWeight: FontWeight.w700,
                                     color: (answerResult != null)
