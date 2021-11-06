@@ -333,10 +333,10 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                                           'assets/images/games/Level1/noImage.png')),
                             ),
                           ),
-                        if (!showDialogBox)
+                        if (getCurrentNumber() == 5 && !showDialogBox)
                           Container(
                             margin: EdgeInsets.symmetric(
-                                horizontal: 17.w, vertical: 11.h),
+                                horizontal: 17.w, vertical: 13.h),
                             height: 46.h,
                             width: 100.w,
                             decoration: BoxDecoration(
