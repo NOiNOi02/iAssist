@@ -6,8 +6,11 @@ import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/selectionpage.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+<<<<<<< HEAD
 import 'package:iassist/audioplayer_with_local_asset.dart';
 import 'dart:async';
+=======
+>>>>>>> 0b082c8de1a599ca78de9cf0d47a189215119f88
 
 void main() {
   runApp(MyApp());
@@ -68,7 +71,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     WidgetsBinding.instance!.removeObserver(this);
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     playMusic();
