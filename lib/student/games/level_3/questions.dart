@@ -468,12 +468,12 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                           Container(
                             alignment: Alignment.center,
                             width: 74.w,
-                            height: (getCurrentNumber() == 9)
-                                ? size.height * 0.06
+                            height: (getCurrentNumber() == 8)
+                                ? size.height * 0.085
                                 : size.height * 0.07,
-                            margin: (getCurrentNumber() == 9)
+                            margin: (getCurrentNumber() == 8)
                                 ? EdgeInsets.only(
-                                    top: (i + 3.5) * 8.h.toDouble(), left: 53.5)
+                                    top: (i + 3.9) * 8.h.toDouble(), left: 53.5)
                                 : EdgeInsets.only(
                                     top: (i + 6.5) * 8.h.toDouble(),
                                     left: 53.5),
