@@ -600,7 +600,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                   choices[getCurrentNumber()][i],
                                   style: TextStyle(
                                     fontSize:
-                                        (getCurrentNumber() == 8) ? 12 : 14,
+                                        (getCurrentNumber() == 8) ? 8.sp : 9.sp,
                                     // fontWeight: FontWeight.w700,
                                     // fontWeight: FontWeight.w700,
                                     color: (answerResult != null)
