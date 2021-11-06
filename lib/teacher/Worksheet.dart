@@ -160,7 +160,7 @@ class _WorksheetState extends State<Worksheet>
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
-                                  'assets/documents/ACT 1 ACTIVITY SHEET-Word-Search-Puzzle.pdf';
+                                  'assets/documents/Activity 1 Word Search Puzzle.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -168,7 +168,7 @@ class _WorksheetState extends State<Worksheet>
                               MyFlutterApp.pdf,
                               color: Color(0xFFBA494B),
                             ),
-                            label: Text("WS #1 ACTIVITY 1 ACTIVITY SHEET",
+                            label: Text("WS #1 ACTIVITY 1 WORD SEARCH PUZZLE",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
@@ -188,13 +188,13 @@ class _WorksheetState extends State<Worksheet>
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
-                                  'assets/documents/ACT 2 ACTIVITY SHEET-Experiment.pdf';
+                                  'assets/documents/Activity 2 Experiment.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
                             icon: Icon(MyFlutterApp.pdf,
                                 color: Color(0xFFBA494B)),
-                            label: Text("WS #2 ACTIVITY 2 ACTIVITY SHEET",
+                            label: Text("WS #2 ACTIVITY 2 EXPERIMENT",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
@@ -217,13 +217,13 @@ class _WorksheetState extends State<Worksheet>
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
-                                  'assets/documents/ACT 3 ACTIVITY SHEET Problem Solving.pdf';
+                                  'assets/documents/Activity 3 Problem Solving.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
                             icon: Icon(MyFlutterApp.pdf,
                                 color: Color(0xFFBA494B)),
-                            label: Text("WS #3 ACTIVITY 3 ACTIVITY SHEET",
+                            label: Text("WS #3 ACTIVITY 3 PROBLEM SOLVING",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),

@@ -160,7 +160,7 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
-                                  'assets/documents/1ST-LAW-OF-MOTION-INERTIA.pptx.pdf';
+                                  'assets/documents/1ST LAW OF MOTION INERTIA.pptx.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -188,7 +188,7 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
-                                  'assets/documents/2ND-LAW-OF-MOTION-ACCELERATION.pptx.pdf';
+                                  'assets/documents/2ND LAW OF MOTION ACCELERATION.pptx.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -216,7 +216,7 @@ class _PPTState extends State<PPT> with SingleTickerProviderStateMixin {
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
-                                  'assets/documents/3RD-LAW-OF-MOTION-INTERACTION.pptx.pdf';
+                                  'assets/documents/3RD LAW OF MOTION INTERACTION.pptx.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },

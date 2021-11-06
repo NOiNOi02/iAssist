@@ -163,7 +163,7 @@ class _LessonPlansState extends State<LessonPlans>
                           child: OutlinedButton.icon(
                             onPressed: () async {
                               final path =
-                                  'assets/documents/5E Editedd LP 01.pdf';
+                                  'assets/documents/5E Lesson Plan.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -191,7 +191,8 @@ class _LessonPlansState extends State<LessonPlans>
                               EdgeInsets.only(top: 37.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/Edited Lp 03.pdf';
+                              final path =
+                                  'assets/documents/Detailed Lesson Plan.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -219,7 +220,8 @@ class _LessonPlansState extends State<LessonPlans>
                               EdgeInsets.only(top: 44.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/Editedd Lp 02.pdf';
+                              final path =
+                                  'assets/documents/Semi-Detailed Lesson Plan.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
