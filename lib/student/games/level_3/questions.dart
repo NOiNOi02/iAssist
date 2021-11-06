@@ -121,6 +121,11 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

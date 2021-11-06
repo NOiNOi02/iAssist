@@ -83,6 +83,11 @@ class _Level4State extends State<Level4> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
