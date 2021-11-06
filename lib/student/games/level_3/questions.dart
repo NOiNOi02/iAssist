@@ -299,8 +299,11 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                         ),
 
                         Container(
-                          margin: const EdgeInsets.only(top: 255),
-                          height: size.height * 0.10,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 30,
+                              left: 5.w,
+                              right: 5.w),
+                          height: SizeConfig.safeBlockVertical! * 15,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -469,15 +472,19 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                           Container(
                             alignment: Alignment.center,
                             width: 74.w,
-                            height: (getCurrentNumber() == 9)
+                            height: (getCurrentNumber() == 8)
                                 ? size.height * 0.06
                                 : size.height * 0.07,
-                            margin: (getCurrentNumber() == 9)
-                                ? EdgeInsets.only(
+                            margin: (getCurrentNumber() == 8)
+                               ? EdgeInsets.only(
                                     top: (i + 3.5) * 8.h.toDouble(), left: 53.5)
-                                : EdgeInsets.only(
-                                    top: (i + 6.5) * 8.h.toDouble(),
-                                    left: 53.5),
+                                : (choices[getCurrentNumber()].length >= 4)
+                                    ? EdgeInsets.only(
+                                        top: (i + 5.9) * 8.h.toDouble(),
+                                        left: 53.5)
+                                    : EdgeInsets.only(
+                                        top: (i + 6.5) * 8.h.toDouble(),
+                                        left: 53.5),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
