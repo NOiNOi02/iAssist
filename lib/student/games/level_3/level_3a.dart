@@ -84,6 +84,11 @@ class _Level3State extends State<Level3a> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -263,8 +268,8 @@ class _Level3State extends State<Level3a> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 20.h, left: 10.w),
-                          height: SizeConfig.safeBlockVertical! * 50,
+                          margin: EdgeInsets.only(top: 10.h, left: 2.w),
+                          height: SizeConfig.safeBlockVertical! * 60,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,

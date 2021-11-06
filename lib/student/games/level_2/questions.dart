@@ -120,6 +120,11 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -339,7 +344,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                             backgroundColor: Colors.white,
                             width: size.width * 0.15,
                             height: size.height * 0.15,
-                            duration: 15,
+                            duration: (getCurrentNumber() == 11) ? 30 : 15,
                             autoStart: true,
                             textFormat: 's',
                             controller: _timerController,

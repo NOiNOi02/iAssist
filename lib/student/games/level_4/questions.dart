@@ -123,6 +123,11 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -342,7 +347,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             backgroundColor: Colors.white,
                             width: size.width * 0.15,
                             height: size.height * 0.15,
-                            duration: 15,
+                            duration:  (getCurrentNumber() == 9) ? 30 : 15,
                             autoStart: true,
                             textFormat: 's',
                             controller: _timerController,
@@ -438,10 +443,11 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             )),
 
                         Container(
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 30),
+                           margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 33,
+                              left: 5.w,
+                              right: 5.w),
                           height: SizeConfig.safeBlockVertical! * 15,
-                          width: SizeConfig.safeBlockVertical! * 50,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -457,11 +463,15 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             alignment: Alignment.center,
                             width: 74.w,
                             margin: (getCurrentNumber() == 9)
-                                ? EdgeInsets.only(
-                                    top: (i + 4.5) * 8.h.toDouble(), left: 53.5)
-                                : EdgeInsets.only(
-                                    top: (i + 6.5) * 8.h.toDouble(),
-                                    left: 53.5),
+                               ? EdgeInsets.only(
+                                    top: (i + 4) * 8.h.toDouble(), left: 53.5)
+                                : (choices[getCurrentNumber()].length >= 4)
+                                    ? EdgeInsets.only(
+                                        top: (i + 5.9) * 8.h.toDouble(),
+                                        left: 53.5)
+                                    : EdgeInsets.only(
+                                        top: (i + 6.5) * 8.h.toDouble(),
+                                        left: 53.5),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -615,10 +625,10 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                           width: SizeConfig.safeBlockHorizontal! * 75,
                           margin: (choices[getCurrentNumber()].length >= 4)
                               ? EdgeInsets.only(
-                                  top: SizeConfig.blockSizeVertical! * 85,
+                                  top: SizeConfig.blockSizeVertical! * 80,
                                   left: SizeConfig.safeBlockHorizontal! * 12)
                               : EdgeInsets.only(
-                                  top: SizeConfig.blockSizeVertical! * 80,
+                                  top: SizeConfig.blockSizeVertical! * 70,
                                   left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [

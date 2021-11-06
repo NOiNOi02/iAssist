@@ -18,6 +18,17 @@ import 'package:iassist/student/games/level_2/level_3.dart';
 import 'package:iassist/student/games/level_3/level_4.dart';
 import 'package:iassist/student/games/level_4/level_4a.dart';
 import 'package:iassist/student/games/level_5/level_5.dart';
+import 'package:iassist/student/games/level_1/Level1QuestionsAndAnswers.dart'
+    as level1;
+import 'package:iassist/student/games/level_2/Level2QuestionsAndAnswers.dart'
+    as level2;
+import 'package:iassist/student/games/level_3/Level3QuestionsAndAnswers.dart'
+    as level3;
+import 'package:iassist/student/games/level_4/Level4QuestionsAndAnswers.dart'
+    as level4;
+import 'package:iassist/student/games/level_5/Level5QuestionsAndAnswers.dart'
+    as level5;
+
 import 'package:sizer/sizer.dart';
 
 class GameFrontPage extends StatefulWidget {
@@ -88,6 +99,24 @@ class _GameFrontPageState extends State<GameFrontPage> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                  resetCurrentLevel();
+                  resetCurrentLives();
+                  //for level 1
+                  level1.resetCurrentNumber();
+                  level1.resetCurrentPoints();
+                  //for level 2
+                  level2.resetCurrentNumber();
+                  level2.resetCurrentPoints();
+                  //for level 3
+                  level3.resetCurrentNumber();
+                  level3.resetCurrentPoints();
+                  //for level 4
+                  level4.resetCurrentNumber();
+                  level4.resetCurrentPoints();
+                  //for level 5
+                  level5.resetCurrentNumber();
+                  level5.resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

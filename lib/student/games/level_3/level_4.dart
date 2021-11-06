@@ -83,6 +83,11 @@ class _Level4State extends State<Level4> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -220,6 +225,7 @@ class _Level4State extends State<Level4> {
                     height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+                        alignment: Alignment.topLeft,
                         fit: BoxFit.contain,
                         image: AssetImage('assets/images/games/game1.png'),
                       ),
@@ -227,9 +233,9 @@ class _Level4State extends State<Level4> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: EdgeInsets.only(top: 4.h, left: 15.w),
+                    padding: EdgeInsets.only(top: 2.5.h, left: 15.w),
                     child: Text(
-                      'Level 4\nNewton\'s Third Law of Motion: \nLaw of Interaction',
+                      'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -260,9 +266,9 @@ class _Level4State extends State<Level4> {
                             ],
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 2.5.h, left: 22.w),
-                          height: SizeConfig.safeBlockVertical! * 40,
+                   Container(
+                          margin: EdgeInsets.only(top: 20.h, left: 5.w),
+                          height: SizeConfig.safeBlockVertical! * 50,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
