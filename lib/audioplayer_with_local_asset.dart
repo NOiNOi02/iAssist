@@ -16,7 +16,7 @@ PlayerState audioPlayerState = PlayerState.PLAYING;
 AudioCache audioCache = AudioCache();
 playMusic() async {
   audioCache = AudioCache(fixedPlayer: audioPlayer);
-  await audioCache.loop(path, volume: 0.1);
+  await audioCache.loop(path, volume: 0.3);
 }
 
 pauseMusic() async {
