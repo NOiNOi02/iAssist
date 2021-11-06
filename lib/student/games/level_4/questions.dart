@@ -342,7 +342,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             backgroundColor: Colors.white,
                             width: size.width * 0.15,
                             height: size.height * 0.15,
-                            duration: 15,
+                            duration:  (getCurrentNumber() == 9) ? 30 : 15,
                             autoStart: true,
                             textFormat: 's',
                             controller: _timerController,
