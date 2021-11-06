@@ -184,6 +184,7 @@ class _Level5aState extends State<Level5a> {
                   Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   });
+                  pauseMusic();
                 },
               ),
             ],

@@ -179,6 +179,7 @@ class _Level4State extends State<Level4c> {
                   Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   });
+                  pauseMusic();
                 },
               ),
             ],

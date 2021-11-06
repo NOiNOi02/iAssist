@@ -548,6 +548,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                   onPressed: () {
                     Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                    pauseMusic();
                     });
                   },
                 ),

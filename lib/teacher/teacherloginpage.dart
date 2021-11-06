@@ -440,6 +440,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage>
                       SystemChannels.platform
                           .invokeMethod('SystemNavigator.pop');
                     });
+                    pauseMusic();
                   },
                 ),
               ),

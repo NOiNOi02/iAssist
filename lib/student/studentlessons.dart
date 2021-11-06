@@ -336,6 +336,7 @@ class _StudentLessonsState extends State<StudentLessons>
                     Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                     });
+                    pauseMusic();
                   },
                 ),
               ),

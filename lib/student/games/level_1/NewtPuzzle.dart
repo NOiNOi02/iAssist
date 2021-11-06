@@ -182,6 +182,7 @@ class _NewtPuzzleState extends State<NewtPuzzle> {
                   Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   });
+                  pauseMusic();
                 },
               ),
             ],

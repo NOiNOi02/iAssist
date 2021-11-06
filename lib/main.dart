@@ -6,6 +6,7 @@ import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/selectionpage.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:iassist/audioplayer_with_local_asset.dart';
 
 
 void main() {
@@ -43,6 +44,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>{
   @override
   Widget build(BuildContext context) {
+    playMusic();
     SizeConfig().init(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,

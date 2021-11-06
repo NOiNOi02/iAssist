@@ -213,6 +213,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                   Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   });
+                  pauseMusic();
                 },
               ),
             ],
