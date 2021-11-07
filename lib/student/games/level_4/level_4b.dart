@@ -282,7 +282,6 @@ class _Level4State extends State<Level4b> {
                           ),
                         ),
                         Container(
-                          alignment: Alignment.center,
                           width: SizeConfig.safeBlockHorizontal! * 75,
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical! * 70,

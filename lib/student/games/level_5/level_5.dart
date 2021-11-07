@@ -283,7 +283,6 @@ class _Level5State extends State<Level5> {
                           ),
                         ),
                         Container(
-                          alignment: Alignment.center,
                           width: SizeConfig.safeBlockHorizontal! * 75,
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical! * 70,

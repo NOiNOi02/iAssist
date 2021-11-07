@@ -476,7 +476,6 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                             i < choices[getCurrentNumber()].length;
                             i++)
                           Container(
-                            alignment: Alignment.center,
                             width: 74.w,
                             height: (getCurrentNumber() == 8)
                                 ? size.height * 0.06
@@ -644,7 +643,6 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                           ),
                         //next
                         Container(
-                          alignment: Alignment.center,
                           width: SizeConfig.safeBlockHorizontal! * 75,
                           margin: (choices[getCurrentNumber()].length >= 4)
                               ? EdgeInsets.only(
@@ -684,6 +682,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                             BorderRadius.circular(20.0),
                                       ),
                                     ),
+                                     fixedSize:  MaterialStateProperty.all(Size.fromWidth(320)),
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.transparent),
                                     // elevation: MaterialStateProperty.all(3),
@@ -692,7 +691,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                   ),
                                   onPressed: (answer == null)
                                       //Multiple: ini pa
-                                      ? (getCurrentNumber() == 8)
+                                      ? (getCurrentNumber() == 8 && !number9Answers.contains(-1))
                                           ? () {
                                               //if pushed proceeed to questions
 
@@ -783,6 +782,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                             BorderRadius.circular(20.0),
                                       ),
                                     ),
+                                     fixedSize:  MaterialStateProperty.all(Size.fromWidth(320)),
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.transparent),
                                     // elevation: MaterialStateProperty.all(3),
@@ -852,6 +852,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                             BorderRadius.circular(20.0),
                                       ),
                                     ),
+                                     fixedSize:  MaterialStateProperty.all(Size.fromWidth(320)),
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.transparent),
                                     // elevation: MaterialStateProperty.all(3),

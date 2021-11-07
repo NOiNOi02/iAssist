@@ -395,7 +395,6 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                             i++)
                           //loop trough all choices and create a rectangle
                           Container(
-                            alignment: Alignment.center,
                             width: 74.w,
                             margin: EdgeInsets.only(
                                 top: (i + 2) * 10.h.toDouble(), left: 12.5.w),
@@ -476,7 +475,6 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                           ),
                         //next
                         Container(
-                          alignment: Alignment.center,
                           width: SizeConfig.safeBlockHorizontal! * 75,
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical! * 60,
@@ -512,6 +510,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                             BorderRadius.circular(20.0),
                                       ),
                                     ),
+                                    fixedSize:  MaterialStateProperty.all(Size.fromWidth(320)),
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.transparent),
                                     // elevation: MaterialStateProperty.all(3),
@@ -568,6 +567,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                             BorderRadius.circular(20.0),
                                       ),
                                     ),
+                                     fixedSize:  MaterialStateProperty.all(Size.fromWidth(320)),
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.transparent),
                                     // elevation: MaterialStateProperty.all(3),
@@ -614,6 +614,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                             BorderRadius.circular(20.0),
                                       ),
                                     ),
+                                     fixedSize:  MaterialStateProperty.all(Size.fromWidth(320)),
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.transparent),
                                     // elevation: MaterialStateProperty.all(3),
