@@ -113,9 +113,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           ),
           Container(
             margin: EdgeInsets.only(
-                top: SizeConfig.safeBlockVertical! * 55,
-                left: 17.w,
-                right: 17.w),
+                top: SizeConfig.safeBlockVertical! * 55,left: 17.w,right: 17.w),
             width: SizeConfig.safeBlockHorizontal! * 66,
             height: SizeConfig.safeBlockVertical! * 66,
             decoration: BoxDecoration(
@@ -127,9 +125,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           ),
           Container(
             margin: EdgeInsets.only(
-                top: SizeConfig.safeBlockVertical! * 55,
-                left: 20.w,
-                right: 20.w),
+                top: SizeConfig.safeBlockVertical! * 55,left: 20.w,right: 20.w),
             width: SizeConfig.safeBlockHorizontal! * 55,
             height: SizeConfig.safeBlockVertical! * 55,
             decoration: BoxDecoration(
@@ -140,7 +136,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             ),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 margin: EdgeInsets.only(
@@ -156,7 +152,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    left: 4.w), //top: SizeConfig.safeBlockVertical! * 32,
+                    top: .3.h, left: 6.5.w), //top: SizeConfig.safeBlockVertical! * 32,
                 child: Text(
                   'An offline educational application\ndesigned for Eight Graders to\nlearn more about the concept\nof Newton\'s Law of Motion.',
                   style: TextStyle(
@@ -167,7 +163,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  top: 1.h,
+                  top: 1.3.h, left: 7.w
                 ), //top: SizeConfig.safeBlockVertical! * 47,
                 child: OutlinedButton(
                   onPressed: () {
