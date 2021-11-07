@@ -78,7 +78,7 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 5.w),
               // margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
-              height: SizeConfig.safeBlockVertical! * 40,
+              height: SizeConfig.safeBlockVertical! * 45,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -94,7 +94,7 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
             Container(
               // margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
               margin: EdgeInsets.symmetric(horizontal: 5.w),
-              height: SizeConfig.safeBlockVertical! * 75,
+              height: SizeConfig.safeBlockVertical! * 80,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -107,7 +107,7 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 39.h),
+              margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 41.h),
               height: SizeConfig.safeBlockVertical! * 5,
               child: TextButton(
                 onPressed: () {
@@ -151,7 +151,7 @@ class _FirstNewtonLawState extends State<FirstNewtonLaw> {
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 5.w),
-              height: SizeConfig.safeBlockVertical! * 95,
+              height: SizeConfig.safeBlockVertical! * 96,
               // margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
               child: Align(
                 alignment: Alignment.centerLeft,

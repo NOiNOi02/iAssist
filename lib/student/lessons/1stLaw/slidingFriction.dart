@@ -141,7 +141,7 @@ class _SlidingFrictionState extends State<SlidingFriction> {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 58.h),
-                  height: SizeConfig.safeBlockVertical! * 10,
+                  height: SizeConfig.safeBlockVertical! * 20,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
