@@ -368,7 +368,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             style: ButtonStyle(
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
+                                RoundedRectangleBorder( 
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                               ),
