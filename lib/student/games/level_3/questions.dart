@@ -121,7 +121,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
-                    resetCurrentLevel();
+                  resetCurrentLevel();
                   resetCurrentLives();
                   resetCurrentNumber();
                   resetCurrentPoints();
@@ -272,7 +272,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: EdgeInsets.only(top: 20.h, left: 15.w),
+                    padding: EdgeInsets.only(top: 3.5.h, left: 15.w),
                     child: Text(
                       'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
                       textAlign: TextAlign.left,
