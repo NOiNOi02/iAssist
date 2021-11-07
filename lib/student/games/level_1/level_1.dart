@@ -343,8 +343,8 @@ class _Level1State extends State<Level1> {
                             },
                             child: Padding(
                               padding: EdgeInsets.only(
-                                top: 1.h,
-                                bottom: 1.h,
+                                top: SizeConfig.safeBlockVertical! * 1,
+                                bottom: SizeConfig.safeBlockVertical! * 1,
                               ),
                               child: Text(
                                 "Answer now!",

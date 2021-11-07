@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
@@ -52,11 +54,8 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
       ),
       body: SingleChildScrollView(
           child: Column(children: <Widget>[
-        Container(
-          height: SizeConfig.safeBlockVertical! * 100,
-          child: Stack(children: <Widget>[
             Container(
-              height: SizeConfig.safeBlockVertical! * 10,
+              margin: EdgeInsets.only(top:2.h, bottom: 1.h),
               child: Center(
                 child: Text(
                   "NEWTON'S LAW OF MOTION",
@@ -70,7 +69,6 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 5.w),
-              height: SizeConfig.safeBlockVertical! * 45,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -84,8 +82,7 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 5.w),
-              height: SizeConfig.safeBlockVertical! * 80,
+              margin: EdgeInsets.only(left: 5.w,right: 5.w,top: 2.h),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -98,8 +95,7 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 41.h),
-              height: SizeConfig.safeBlockVertical! * 5,
+              margin: EdgeInsets.symmetric(horizontal: 5.w,),
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
@@ -140,7 +136,6 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 5.w),
-              height: SizeConfig.safeBlockVertical! * 96,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -153,8 +148,7 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 49.h),
-              height: SizeConfig.safeBlockVertical! * 5,
+              margin: EdgeInsets.only(left: 5.w, right: 5.w,),
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
@@ -194,8 +188,7 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 55.h),
-              height: SizeConfig.safeBlockVertical! * 5,
+              margin: EdgeInsets.only(left: 5.w, right: 5.w,),
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
@@ -236,8 +229,7 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
             ),
             Container(
               margin: EdgeInsets.only(
-                  left: 5.w, right: 5.w, top: 61.h, bottom: 5.h),
-              height: SizeConfig.safeBlockVertical! * 5,
+                  left: 5.w, right: 5.w,),
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
@@ -276,8 +268,6 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
                 ),
               ),
             ),
-          ]),
-        ),
       ])),
     );
   }
