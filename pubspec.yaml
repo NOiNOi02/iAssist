@@ -74,7 +74,6 @@ flutter:
   assets:
     - assets/
     - assets/music.mp3
-    - assets/iassist_logo.png
     - assets/documents/
     - assets/images/
     - assets/images/games/
