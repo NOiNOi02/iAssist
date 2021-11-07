@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, override_on_non_overriding_member, use_key_in_widget_constructors, sized_box_for_whitespace, unused_local_variable, file_names
+
 import 'package:flutter/material.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
@@ -55,14 +57,10 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 2.5.w)],
       ),
       body: SingleChildScrollView(
-          child: Column(children: <Widget>[
-        Container(
-          height: SizeConfig.safeBlockVertical! * 100,
-          child: Stack(
+          child: Column(
             children: <Widget>[
               Container(
-                // margin: EdgeInsets.only(top: 5.h, left: 5.w, right: 5.w),
-                height: SizeConfig.safeBlockVertical! * 10,
+                margin: EdgeInsets.only(top: 2.h, bottom:1.h),
                 child: Center(
                   child: Text(
                     "NEWTON'S LAW OF MOTION",
@@ -76,7 +74,6 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 5.w),
-                height: SizeConfig.safeBlockVertical! * 45,
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -90,8 +87,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 5.w),
-                height: SizeConfig.safeBlockVertical! * 80,
+                margin: EdgeInsets.only(left: 5.w, right: 5.w, top:2.h),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -104,8 +100,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 41.h),
-                height: SizeConfig.safeBlockVertical! * 5,
+                margin: EdgeInsets.symmetric(horizontal: 5.w,),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -146,7 +141,6 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 5.w),
-                height: SizeConfig.safeBlockVertical! * 96,
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -159,8 +153,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 49.h),
-                height: SizeConfig.safeBlockVertical! * 5,
+                margin: EdgeInsets.only(left: 5.w, right: 5.w,),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -200,8 +193,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 55.h),
-                height: SizeConfig.safeBlockVertical! * 5,
+                margin: EdgeInsets.only(left: 5.w, right: 5.w,),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -214,8 +206,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 61.h),
-                height: SizeConfig.safeBlockVertical! * 5,
+                margin: EdgeInsets.only(left: 5.w, right: 5.w,),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -255,8 +246,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 67.h),
-                height: SizeConfig.safeBlockVertical! * 5,
+                margin: EdgeInsets.only(left: 5.w, right: 5.w,),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -296,8 +286,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 73.h),
-                height: SizeConfig.safeBlockVertical! * 5,
+                margin: EdgeInsets.only(left: 5.w, right: 5.w,),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -338,8 +327,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 79.h),
-                height: SizeConfig.safeBlockVertical! * 5,
+                margin: EdgeInsets.only(left: 5.w, right: 5.w,),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -380,8 +368,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 85.h),
-                height: SizeConfig.safeBlockVertical! * 5,
+                margin: EdgeInsets.only(left: 5.w, right: 5.w,),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -424,8 +411,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    left: 5.w, right: 5.w, top: 91.h, bottom: 5.h),
-                height: SizeConfig.safeBlockVertical! * 5,
+                    left: 5.w, right: 5.w,),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -440,7 +426,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                     // padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                     // width: size.width * .9,
                     // margin: const EdgeInsets.only(top: 8, left: 35.0),
-                    margin: EdgeInsets.only(left: 6.2.w),
+                    margin: EdgeInsets.only(left: 6.2.w, bottom: 2.h),
                     decoration: BoxDecoration(
                         border: Border(
                       bottom: BorderSide(
@@ -467,9 +453,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
+            
       ])),
     );
   }
