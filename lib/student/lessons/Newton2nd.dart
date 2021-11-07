@@ -76,7 +76,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 5.w),
-                height: SizeConfig.safeBlockVertical! * 40,
+                height: SizeConfig.safeBlockVertical! * 45,
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -91,7 +91,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 5.w),
-                height: SizeConfig.safeBlockVertical! * 75,
+                height: SizeConfig.safeBlockVertical! * 80,
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -104,7 +104,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 39.h),
+                margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 41.h),
                 height: SizeConfig.safeBlockVertical! * 5,
                 child: TextButton(
                   onPressed: () {
@@ -146,7 +146,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 5.w),
-                height: SizeConfig.safeBlockVertical! * 95,
+                height: SizeConfig.safeBlockVertical! * 96,
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
