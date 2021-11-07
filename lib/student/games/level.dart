@@ -1,6 +1,4 @@
-
-
-int level = 5;
+int level = 1;
 var currentLives = 3;
 var totalPoints = 0;
 List<String> playerNames = [];

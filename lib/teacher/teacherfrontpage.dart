@@ -344,6 +344,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                     Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                     });
+                    stopMusic();
                   },
                 ),
               ),

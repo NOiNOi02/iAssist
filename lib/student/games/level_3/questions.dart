@@ -14,6 +14,7 @@ import 'package:iassist/student/games/level_3/Level3QuestionsAndAnswers.dart';
 import 'package:iassist/student/games/Modals.dart';
 import 'package:sizer/sizer.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../../audioplayer_with_local_asset.dart';
 import '../../../selectionpage.dart';
 
 class QuestionsLevel3 extends StatefulWidget {
@@ -30,7 +31,7 @@ class QuestionsLevel3 extends StatefulWidget {
 
 //color container for selected choices
 List<Color> _colorContainerText = [Color(0xFFBA494B), Colors.white];
-List<Color> _colorContainerButton = [Colors.white,Color(0xFFBA494B)];
+List<Color> _colorContainerButton = [Colors.white, Color(0xFFBA494B)];
 DecorationImage checkImage = DecorationImage(
     alignment: Alignment.centerLeft,
     fit: BoxFit.scaleDown,
@@ -113,13 +114,18 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
               ListTile(
                 leading: Icon(
                   Icons.home,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Home',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -131,20 +137,74 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
               ListTile(
                 leading: Icon(
                   Icons.settings,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Settings',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3.h),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Settings',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xFF4785B4),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 2.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Dark Mode\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                    ChangeThemeButtonWidget(),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Music \t\t\t\t\t\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                    AudioPlayerWithLocalAsset(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
                 },
               ),
               ListTile(
                 leading: Icon(
                   Icons.exit_to_app_outlined,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Exit',
@@ -154,6 +214,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                   Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   });
+                  stopMusic();
                 },
               ),
             ],
@@ -244,8 +305,11 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                         ),
 
                         Container(
-                          margin: const EdgeInsets.only(top: 255),
-                          height: size.height * 0.10,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 30,
+                              left: 5.w,
+                              right: 5.w),
+                          height: SizeConfig.safeBlockVertical! * 15,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -294,9 +358,10 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                             isReverseAnimation: true,
                             ringColor: Color(0xFFEB9785),
                             fillColor: Color(0xFFBA494B),
+                            backgroundColor: Colors.white,
                             width: size.width * 0.15,
                             height: size.height * 0.15,
-                            duration: 15,
+                            duration: (getCurrentNumber() == 8) ? 30 : 15,
                             autoStart: true,
                             textFormat: 's',
                             controller: _timerController,
@@ -413,15 +478,19 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                           Container(
                             alignment: Alignment.center,
                             width: 74.w,
-                            height: (getCurrentNumber() == 9)
+                            height: (getCurrentNumber() == 8)
                                 ? size.height * 0.06
                                 : size.height * 0.07,
-                            margin: (getCurrentNumber() == 9)
+                            margin: (getCurrentNumber() == 8)
                                 ? EdgeInsets.only(
                                     top: (i + 3.5) * 8.h.toDouble(), left: 53.5)
-                                : EdgeInsets.only(
-                                    top: (i + 6.5) * 8.h.toDouble(),
-                                    left: 53.5),
+                                : (choices[getCurrentNumber()].length >= 4)
+                                    ? EdgeInsets.only(
+                                        top: (i + 5.9) * 8.h.toDouble(),
+                                        left: 53.5)
+                                    : EdgeInsets.only(
+                                        top: (i + 6.5) * 8.h.toDouble(),
+                                        left: 53.5),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -544,7 +613,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                   choices[getCurrentNumber()][i],
                                   style: TextStyle(
                                     fontSize:
-                                        (getCurrentNumber() == 8) ? 12 : 14,
+                                        (getCurrentNumber() == 8) ? 8.sp : 9.sp,
                                     // fontWeight: FontWeight.w700,
                                     // fontWeight: FontWeight.w700,
                                     color: (answerResult != null)

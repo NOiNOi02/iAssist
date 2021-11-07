@@ -15,6 +15,7 @@ import 'package:iassist/student/games/level_2/Level2QuestionsAndAnswers.dart';
 import 'package:sizer/sizer.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+import '../../../audioplayer_with_local_asset.dart';
 import '../../../selectionpage.dart';
 
 class QuestionsLevel2 extends StatefulWidget {
@@ -112,13 +113,18 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
               ListTile(
                 leading: Icon(
                   Icons.home,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Home',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -130,20 +136,74 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
               ListTile(
                 leading: Icon(
                   Icons.settings,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Settings',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3.h),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Settings',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xFF4785B4),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 2.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Dark Mode\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                    ChangeThemeButtonWidget(),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Music \t\t\t\t\t\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                    AudioPlayerWithLocalAsset(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
                 },
               ),
               ListTile(
                 leading: Icon(
                   Icons.exit_to_app_outlined,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Exit',
@@ -153,6 +213,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                   Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   });
+                  stopMusic();
                 },
               ),
             ],
@@ -284,7 +345,7 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                             backgroundColor: Colors.white,
                             width: size.width * 0.15,
                             height: size.height * 0.15,
-                            duration: 15,
+                            duration: (getCurrentNumber() == 11) ? 30 : 15,
                             autoStart: true,
                             textFormat: 's',
                             controller: _timerController,

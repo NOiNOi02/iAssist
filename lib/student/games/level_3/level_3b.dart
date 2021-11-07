@@ -10,6 +10,7 @@ import 'package:iassist/student/games/level.dart';
 import 'package:iassist/student/games/level_2/level_3.dart';
 import 'package:iassist/student/games/level_3/level_3a.dart';
 import 'package:iassist/student/games/level_3/questions.dart';
+import '../../../audioplayer_with_local_asset.dart';
 import 'Level3QuestionsAndAnswers.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:sizer/sizer.dart';
@@ -76,13 +77,18 @@ class _Level3State extends State<Level3b> {
               ListTile(
                 leading: Icon(
                   Icons.home,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Home',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -94,20 +100,74 @@ class _Level3State extends State<Level3b> {
               ListTile(
                 leading: Icon(
                   Icons.settings,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Settings',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3.h),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Settings',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xFF4785B4),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 2.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Dark Mode\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                    ChangeThemeButtonWidget(),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Music \t\t\t\t\t\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                    AudioPlayerWithLocalAsset(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
                 },
               ),
               ListTile(
                 leading: Icon(
                   Icons.exit_to_app_outlined,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Exit',
@@ -117,6 +177,7 @@ class _Level3State extends State<Level3b> {
                   Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   });
+                  stopMusic();
                 },
               ),
             ],

@@ -11,6 +11,7 @@ import 'package:iassist/student/games/level_4/level_4a.dart';
 import 'package:iassist/student/games/level_4/questions.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:sizer/sizer.dart';
+import '../../../audioplayer_with_local_asset.dart';
 import 'Level3QuestionsAndAnswers.dart';
 import '../../../selectionpage.dart';
 
@@ -75,13 +76,18 @@ class _Level4State extends State<Level4> {
               ListTile(
                 leading: Icon(
                   Icons.home,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Home',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -93,20 +99,74 @@ class _Level4State extends State<Level4> {
               ListTile(
                 leading: Icon(
                   Icons.settings,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Settings',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3.h),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Settings',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xFF4785B4),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 2.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Dark Mode\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                    ChangeThemeButtonWidget(),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Music \t\t\t\t\t\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                    AudioPlayerWithLocalAsset(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
                 },
               ),
               ListTile(
                 leading: Icon(
                   Icons.exit_to_app_outlined,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Exit',
@@ -116,6 +176,7 @@ class _Level4State extends State<Level4> {
                   Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   });
+                  stopMusic();
                 },
               ),
             ],
@@ -165,6 +226,7 @@ class _Level4State extends State<Level4> {
                     height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+                        alignment: Alignment.topLeft,
                         fit: BoxFit.contain,
                         image: AssetImage('assets/images/games/game1.png'),
                       ),
@@ -172,9 +234,9 @@ class _Level4State extends State<Level4> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: EdgeInsets.only(top: 4.h, left: 15.w),
+                    padding: EdgeInsets.only(top: 2.5.h, left: 15.w),
                     child: Text(
-                      'Level 4\nNewton\'s Third Law of Motion: \nLaw of Interaction',
+                      'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -205,9 +267,9 @@ class _Level4State extends State<Level4> {
                             ],
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 2.5.h, left: 22.w),
-                          height: SizeConfig.safeBlockVertical! * 40,
+                   Container(
+                          margin: EdgeInsets.only(top: 20.h, left: 5.w),
+                          height: SizeConfig.safeBlockVertical! * 50,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,

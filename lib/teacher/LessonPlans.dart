@@ -124,15 +124,15 @@ class _LessonPlansState extends State<LessonPlans>
                             children: <Widget>[
                               Container(
                                 // height: size.height * .4,
-                                margin: EdgeInsets.only(top: 10.h, left: 15.w),
+                                margin: EdgeInsets.only(top: 11.h, left: 19.w),
                                 child: Container(
-                                  height: SizeConfig.safeBlockVertical! * 15,
+                                  height: SizeConfig.safeBlockVertical! * 10,
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
                                       fit: BoxFit.contain,
                                       alignment: Alignment.centerLeft,
-                                      image: AssetImage(
-                                          'assets/images/book.png'),
+                                      image:
+                                          AssetImage('assets/images/book.png'),
                                     ),
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(18),
@@ -162,7 +162,8 @@ class _LessonPlansState extends State<LessonPlans>
                               EdgeInsets.only(top: 30.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/5E Editedd LP 01.pdf';
+                              final path =
+                                  'assets/documents/5E Lesson Plan.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
@@ -170,11 +171,12 @@ class _LessonPlansState extends State<LessonPlans>
                               MyFlutterApp.pdf,
                               color: Color(0xFFBA494B),
                             ),
-                            label: Text("LP #1 LESSON PLAN NEWTONS LAW",
+                            label: Text(
+                                "LP #1 5E’s LESSON PLAN IN NEWTON’S LAWS OF MOTION",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
+                                  fontSize: 10.5.sp,
                                 )),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -186,20 +188,21 @@ class _LessonPlansState extends State<LessonPlans>
                         Container(
                           alignment: Alignment.topLeft,
                           margin:
-                              EdgeInsets.only(top: 35.h, left: 7.w, right: 7.w),
+                              EdgeInsets.only(top: 37.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/Edited Lp 03.pdf';
+                              final path =
+                                  'assets/documents/Detailed Lesson Plan.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
                             icon: Icon(MyFlutterApp.pdf,
                                 color: Color(0xFFBA494B)),
-                            label: Text("LP #2 LESSON PLAN NEWTONS LAW",
+                            label: Text("LP #2 DETAILED LESSSON",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
+                                  fontSize: 10.5.sp,
                                 )),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -214,20 +217,21 @@ class _LessonPlansState extends State<LessonPlans>
                         Container(
                           alignment: Alignment.topLeft,
                           margin:
-                              EdgeInsets.only(top: 40.h, left: 7.w, right: 7.w),
+                              EdgeInsets.only(top: 44.h, left: 7.w, right: 7.w),
                           child: OutlinedButton.icon(
                             onPressed: () async {
-                              final path = 'assets/documents/Editedd Lp 02.pdf';
+                              final path =
+                                  'assets/documents/Semi-Detailed Lesson Plan.pdf';
                               final file = await PDFApi.loadAsset(path);
                               openPDF(context, file);
                             },
                             icon: Icon(MyFlutterApp.pdf,
                                 color: Color(0xFFBA494B)),
-                            label: Text("LP #3 Law of Inertia",
+                            label: Text("LP #3 SEMI-DETAILED LESSON PLAN",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFFBA494B),
-                                  fontSize: 11.sp,
+                                  fontSize: 10.5.sp,
                                 )),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -253,72 +257,88 @@ class _LessonPlansState extends State<LessonPlans>
             labelColor: Color(0xFF4785B4),
             unselectedLabelColor: Color(0xFF4785B4),
             indicator: UnderlineTabIndicator(
-              borderSide: BorderSide(color: Colors.transparent, width: 0.0)
-            ),
+                borderSide: BorderSide(color: Colors.transparent, width: 0.0)),
             tabs: <Widget>[
               Tab(
                 icon: IconButton(
-                  icon: Icon(Icons.home_rounded, size: 4.h),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SelectionPage(),
-                    ),
-                  )
-                ),
+                    icon: Icon(Icons.home_rounded, size: 4.h),
+                    onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SelectionPage(),
+                          ),
+                        )),
               ),
               Tab(
-                icon: IconButton(
-                  onPressed: (){
-                    showDialog(
-                      context: context,
-                      builder: (context){
-                        return Dialog(
-                          backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3.h),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('Settings',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(color: Color(0xFF4785B4), fontSize: 16.sp, fontWeight: FontWeight.bold,),
+                  icon: IconButton(
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Dialog(
+                                backgroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
-                                SizedBox(height: 2.h,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('Dark Mode\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
-                                    ChangeThemeButtonWidget(),
-                                  ],
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 3.h),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Settings',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 2.h,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text('Dark Mode\t\t',
+                                              style: TextStyle(
+                                                color: Color(0xFF4785B4),
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.bold,
+                                              )),
+                                          ChangeThemeButtonWidget(),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text('Music \t\t\t\t\t\t\t',
+                                              style: TextStyle(
+                                                color: Color(0xFF4785B4),
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.bold,
+                                              )),
+                                          AudioPlayerWithLocalAsset(),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('Music \t\t\t\t\t\t\t', style: TextStyle(color: Color(0xFF4785B4), fontSize: 14.sp, fontWeight: FontWeight.bold,)),
-                                    AudioPlayerWithLocalAsset(),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      });
-                  },
-                  icon: Icon(Icons.settings, size: 4.h)
-                )
-              ),
+                              );
+                            });
+                      },
+                      icon: Icon(Icons.settings, size: 4.h))),
               // AudioPlayerrr(),
               Tab(
                 icon: IconButton(
                   icon: Icon(Icons.exit_to_app_outlined, size: 4.h),
                   onPressed: () {
                     Future.delayed(const Duration(milliseconds: 1000), () {
-                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                      SystemChannels.platform
+                          .invokeMethod('SystemNavigator.pop');
                     });
                   },
                 ),

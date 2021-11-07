@@ -16,6 +16,7 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:sizer/sizer.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../../audioplayer_with_local_asset.dart';
 import '../../../selectionpage.dart';
 
 class QuestionsLevel4 extends StatefulWidget {
@@ -115,13 +116,18 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
               ListTile(
                 leading: Icon(
                   Icons.home,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Home',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
+                    resetCurrentLevel();
+                  resetCurrentLives();
+                  resetCurrentNumber();
+                  resetCurrentPoints();
+                  resetTotalPoints();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -133,20 +139,74 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
               ListTile(
                 leading: Icon(
                   Icons.settings,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Settings',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3.h),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Settings',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xFF4785B4),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 2.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Dark Mode\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                    ChangeThemeButtonWidget(),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Music \t\t\t\t\t\t\t',
+                                        style: TextStyle(
+                                          color: Color(0xFF4785B4),
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                    AudioPlayerWithLocalAsset(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
                 },
               ),
               ListTile(
                 leading: Icon(
                   Icons.exit_to_app_outlined,
-                  color: Theme.of(context).iconTheme.color,
+                  color: Color(0xFFBA494B),
                 ),
                 title: Text(
                   'Exit',
@@ -156,6 +216,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                   Future.delayed(const Duration(milliseconds: 1000), () {
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   });
+                  stopMusic();
                 },
               ),
             ],
@@ -284,9 +345,10 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             isReverseAnimation: true,
                             ringColor: Color(0xFFEB9785),
                             fillColor: Color(0xFFBA494B),
+                            backgroundColor: Colors.white,
                             width: size.width * 0.15,
                             height: size.height * 0.15,
-                            duration: 15,
+                            duration:  (getCurrentNumber() == 9) ? 30 : 15,
                             autoStart: true,
                             textFormat: 's',
                             controller: _timerController,
@@ -382,10 +444,11 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             )),
 
                         Container(
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.safeBlockVertical! * 30),
+                           margin: EdgeInsets.only(
+                              top: SizeConfig.safeBlockVertical! * 33,
+                              left: 5.w,
+                              right: 5.w),
                           height: SizeConfig.safeBlockVertical! * 15,
-                          width: SizeConfig.safeBlockVertical! * 50,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.contain,
@@ -401,11 +464,15 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                             alignment: Alignment.center,
                             width: 74.w,
                             margin: (getCurrentNumber() == 9)
-                                ? EdgeInsets.only(
-                                    top: (i + 4.5) * 8.h.toDouble(), left: 53.5)
-                                : EdgeInsets.only(
-                                    top: (i + 6.5) * 8.h.toDouble(),
-                                    left: 53.5),
+                               ? EdgeInsets.only(
+                                    top: (i + 4) * 8.h.toDouble(), left: 53.5)
+                                : (choices[getCurrentNumber()].length >= 4)
+                                    ? EdgeInsets.only(
+                                        top: (i + 5.9) * 8.h.toDouble(),
+                                        left: 53.5)
+                                    : EdgeInsets.only(
+                                        top: (i + 6.5) * 8.h.toDouble(),
+                                        left: 53.5),
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -559,10 +626,10 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                           width: SizeConfig.safeBlockHorizontal! * 75,
                           margin: (choices[getCurrentNumber()].length >= 4)
                               ? EdgeInsets.only(
-                                  top: SizeConfig.blockSizeVertical! * 85,
+                                  top: SizeConfig.blockSizeVertical! * 80,
                                   left: SizeConfig.safeBlockHorizontal! * 12)
                               : EdgeInsets.only(
-                                  top: SizeConfig.blockSizeVertical! * 80,
+                                  top: SizeConfig.blockSizeVertical! * 70,
                                   left: SizeConfig.safeBlockHorizontal! * 12),
                           decoration: BoxDecoration(
                             boxShadow: [
