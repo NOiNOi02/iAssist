@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:iassist/fade_transition.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/student/games/Game_Front_Page.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/studentlessons.dart';
-import 'package:iassist/student/games/Game_Front_Page.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:sizer/sizer.dart';
 
@@ -44,12 +44,7 @@ class _StudentFrontPageState extends State<StudentFrontPage> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFBA494B)),
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SelectionPage(),
-            ),
-          ),
+          onPressed: () => Navigator.of(context).push(CustomPageRoute(SelectionPage())),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
@@ -145,12 +140,7 @@ class _StudentFrontPageState extends State<StudentFrontPage> {
                               margin: EdgeInsets.only(top: 2.5.h),
                               child: OutlinedButton.icon(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => StudentLessons(),
-                                    ),
-                                  );
+                                  Navigator.of(context).push(CustomPageRoute(StudentLessons()));
                                 },
                                 icon: Icon(MyFlutterApp.lessons,
                                     color: Color(0xFFBA494B), size: 37.sp),
@@ -182,12 +172,7 @@ class _StudentFrontPageState extends State<StudentFrontPage> {
                               margin: EdgeInsets.only(top: 3.h),
                               child: OutlinedButton.icon(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => GameFrontPage(),
-                                    ),
-                                  );
+                                  Navigator.of(context).push(CustomPageRoute(GameFrontPage()));
                                 },
                                 icon: Icon(MyFlutterApp.games,
                                     color: Color(0xFFBA494B), size: 37.sp),

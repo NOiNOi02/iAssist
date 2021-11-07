@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, override_on_non_overriding_member, use_key_in_widget_constructors, sized_box_for_whitespace, unused_local_variable, file_names
 
 import 'package:flutter/material.dart';
+import 'package:iassist/fade_transition.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:sizer/sizer.dart';
@@ -47,12 +48,7 @@ class _SecondNewtonLawState extends State<SecondNewtonLaw> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => StudentLessons(),
-            ),
-          ),
+          onPressed: () => Navigator.of(context).push(CustomPageRoute(StudentLessons())),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 2.5.w)],
       ),

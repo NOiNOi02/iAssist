@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
+import 'package:iassist/fade_transition.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/selectionpage.dart';
@@ -280,11 +281,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage>
                                           "iAssist2021") {
                                     usernameController.clear();
                                     passwordController.clear();
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                TeacherFrontPage()));
+                                    Navigator.of(context).push(CustomPageRoute(TeacherFrontPage()));
                                   } else if (usernameController.text !=
                                           "AdminAssist" &&
                                       passwordController.text == "iAssist2021")
@@ -362,12 +359,7 @@ class _TeacherLoginPageState extends State<TeacherLoginPage>
               Tab(
                 icon: IconButton(
                     icon: Icon(Icons.home_rounded, size: 4.h),
-                    onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SelectionPage(),
-                          ),
-                        )),
+                    onPressed: () => Navigator.of(context).push(CustomPageRoute(SelectionPage()))),
               ),
               Tab(
                   icon: IconButton(

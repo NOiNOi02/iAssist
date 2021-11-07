@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:iassist/fade_transition.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
 import 'package:sizer/sizer.dart';
@@ -43,12 +44,7 @@ class _ThirdNewtonLawState extends State<ThirdNewtonLaw> {
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => StudentLessons(),
-            ),
-          ),
+          onPressed: () => Navigator.of(context).push(CustomPageRoute(StudentLessons())),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),

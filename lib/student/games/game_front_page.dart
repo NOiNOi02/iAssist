@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
+import 'package:iassist/fade_transition.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/student/games/level_3/level_3a.dart';
 import 'package:iassist/widget/change_theme_button_widget.dart';
@@ -117,12 +118,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                   level5.resetCurrentNumber();
                   level5.resetCurrentPoints();
                   resetTotalPoints();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SelectionPage(),
-                    ),
-                  );
+                  Navigator.of(context).push(CustomPageRoute(SelectionPage()));
                 },
               ),
               ListTile(
@@ -272,12 +268,7 @@ class _GameFrontPageState extends State<GameFrontPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => StudentFrontPage(),
-                              ),
-                            );
+                            Navigator.of(context).push(CustomPageRoute(StudentFrontPage()));
                           },
                           child: Container(
                             margin: EdgeInsets.only(
@@ -381,40 +372,15 @@ class _GameFrontPageState extends State<GameFrontPage> {
                             onPressed: () {
                               //navigate to what level is the current level
                               if (current_level == 1) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level1(),
-                                  ),
-                                );
+                                Navigator.of(context).push(CustomPageRoute(Level1()));
                               } else if (current_level == 2) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level2(),
-                                  ),
-                                );
+                                Navigator.of(context).push(CustomPageRoute(Level2()));
                               } else if (current_level == 3) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level3a(),
-                                  ),
-                                );
+                                Navigator.of(context).push(CustomPageRoute(Level3a()));
                               } else if (current_level == 4) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level4a(),
-                                  ),
-                                );
+                                Navigator.of(context).push(CustomPageRoute(Level4a()));
                               } else if (current_level == 5) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Level5(),
-                                  ),
-                                );
+                                Navigator.of(context).push(CustomPageRoute(Level5()));
                               }
                               // else if (current_level == 3) {
                               //   // Navigator.push(

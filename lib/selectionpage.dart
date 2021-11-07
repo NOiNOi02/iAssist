@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
+import 'package:iassist/fade_transition.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/student/games/level_1/NewtPuzzle.dart';
@@ -145,7 +146,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                               width: size.width * 0.6,
                               margin: EdgeInsets.only(top:2.h, left: 20.w, right: 20.w),//top: SizeConfig.safeBlockVertical! * 25,
                               child:OutlinedButton.icon(onPressed:(){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => StudentFrontPage(),),);
+                                Navigator.of(context).push(CustomPageRoute(StudentFrontPage()));
                               },
                                 icon: const Icon(MyFlutterApp.studentbtn, color: Color(0xFFBA494B),), 
                                 label: Text("STUDENT",  
@@ -169,7 +170,7 @@ class _SelectionPageState extends State<SelectionPage> with SingleTickerProvider
                               width: size.width * .6,
                               margin: EdgeInsets.only(top:3.h, left: 20.w, right: 20.w), //top: SizeConfig.safeBlockVertical! * 37,
                               child:OutlinedButton.icon(onPressed:(){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => TeacherLoginPage(),),);
+                                Navigator.of(context).push(CustomPageRoute(TeacherLoginPage()));
                               },
                                 icon: Icon(MyFlutterApp.teacherbtn, color: Color(0xFFBA494B),), 
                                 label: Text(" TEACHER",  

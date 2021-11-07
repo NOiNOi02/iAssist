@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
+import 'package:iassist/fade_transition.dart';
 import 'package:iassist/responsive/sizeconfig.dart';
 import 'package:iassist/selectionpage.dart';
 import 'package:iassist/student/lessons/Newton1st.dart';
@@ -61,12 +62,7 @@ class _StudentLessonsState extends State<StudentLessons>
         leading: IconButton(
           // alignment: center,
           icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFBA494B)),
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => StudentFrontPage(),
-            ),
-          ),
+          onPressed: () => Navigator.of(context).push(CustomPageRoute(StudentFrontPage())),
         ),
         actions: <Widget>[ChangeThemeButtonWidget(), SizedBox(width: 3.5.w)],
       ),
@@ -150,12 +146,7 @@ class _StudentLessonsState extends State<StudentLessons>
                               margin: EdgeInsets.only(top: 2.5.h),
                               child: OutlinedButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => FirstNewtonLaw(),
-                                    ),
-                                  );
+                                  Navigator.of(context).push(CustomPageRoute(FirstNewtonLaw()));
                                 },
                                 child: Text("1st Law of Motion",
                                     textAlign: TextAlign.center,
@@ -185,12 +176,7 @@ class _StudentLessonsState extends State<StudentLessons>
                               margin: EdgeInsets.only(top: 2.5.h),
                               child: OutlinedButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SecondNewtonLaw(),
-                                    ),
-                                  );
+                                  Navigator.of(context).push(CustomPageRoute(SecondNewtonLaw()));
                                 },
                                 child: Text("2nd Law of Motion",
                                     textAlign: TextAlign.center,
@@ -220,12 +206,7 @@ class _StudentLessonsState extends State<StudentLessons>
                               margin: EdgeInsets.only(top: 2.5.h),
                               child: OutlinedButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ThirdNewtonLaw(),
-                                    ),
-                                  );
+                                  Navigator.of(context).push(CustomPageRoute(ThirdNewtonLaw()));
                                 },
                                 child: Text("3rd Law of Motion",
                                     textAlign: TextAlign.center,
@@ -275,12 +256,7 @@ class _StudentLessonsState extends State<StudentLessons>
               Tab(
                 icon: IconButton(
                   icon: Icon(Icons.home_rounded, size: 4.h),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SelectionPage(),
-                    ),
-                  )
+                  onPressed: () => Navigator.of(context).push(CustomPageRoute(SelectionPage()))
                 ),
               ),
               Tab(

@@ -7,6 +7,7 @@ import 'package:iassist/selectionpage.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
+import 'package:iassist/fade_transition.dart';
 void main() {
   runApp(MyApp());
 }
@@ -90,6 +91,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
   @override
   Widget build(BuildContext context) {
+    final page = SelectionPage();
+
     if(_first == true){
     playMusic();
     _first=false;
@@ -167,12 +170,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 ), //top: SizeConfig.safeBlockVertical! * 47,
                 child: OutlinedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SelectionPage(),
-                      ),
-                    );
+                    Navigator.of(context).push(CustomPageRoute(page));
                   },
                   child: Text("Let's Start!",
                       style: TextStyle(

@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iassist/audioplayer_with_local_asset.dart';
+import 'package:iassist/fade_transition.dart';
 import 'package:iassist/icon.dart';
 import 'package:iassist/pdf_api.dart';
 import 'package:iassist/pdf_viewer.dart';
@@ -156,12 +157,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                                   top: 2.h),
                               child: OutlinedButton.icon(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => LessonPlans(),
-                                    ),
-                                  );
+                                  Navigator.of(context).push(CustomPageRoute(LessonPlans()));
                                 },
                                 icon: Icon(
                                   MyFlutterApp.lessonplans,
@@ -195,12 +191,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                               margin: EdgeInsets.only(top: 2.h),
                               child: OutlinedButton.icon(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => PPT(),
-                                    ),
-                                  );
+                                  Navigator.of(context).push(CustomPageRoute(PPT()));
                                 },
                                 icon: Icon(MyFlutterApp.ppt,
                                     color: Color(0xFFBA494B)),
@@ -229,12 +220,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
                               margin: EdgeInsets.only(top: 2.h),
                               child: OutlinedButton.icon(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Worksheet(),
-                                    ),
-                                  );
+                                  Navigator.of(context).push(CustomPageRoute(Worksheet()));
                                 },
                                 icon: Icon(MyFlutterApp.wrksht,
                                     color: Color(0xFFBA494B)),
@@ -283,12 +269,7 @@ class _TeacherFrontPageState extends State<TeacherFrontPage>
               Tab(
                 icon: IconButton(
                   icon: Icon(Icons.home_rounded, size: 4.h),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SelectionPage(),
-                    ),
-                  )
+                  onPressed: () => Navigator.of(context).push(CustomPageRoute(SelectionPage()))
                 ),
               ),
               Tab(
