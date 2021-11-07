@@ -38,7 +38,7 @@ class _AudioPlayerWithLocalAssetState extends State<AudioPlayerWithLocalAsset> {
 
   playMusic() async {
     audioCache = AudioCache(fixedPlayer: audioPlayer);
-    await audioCache.loop(path);
+    await audioCache.loop(path, volume: .5);
   }
 
   pauseMusic() async {
