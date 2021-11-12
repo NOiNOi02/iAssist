@@ -111,7 +111,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 0.h),
+                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 3.h),
                     height: SizeConfig.safeBlockVertical! * 99,
                     child: Align(
                       alignment: Alignment.center,
@@ -129,7 +129,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 21.h),
+                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 24.h),
                     height: SizeConfig.safeBlockVertical! * 100,
                     child: Align(
                       alignment: Alignment.centerLeft,
@@ -145,7 +145,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 90.h),
+                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 93.h),
                     height: size.height * .19,
                     decoration: BoxDecoration(
                       image: DecorationImage(
@@ -156,7 +156,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 109.h),
+                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 112.h),
                     height: SizeConfig.safeBlockVertical! * 5,
                     child: Align(
                       alignment: Alignment.centerLeft,
@@ -172,7 +172,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 113.h),
+                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 117.h),
                     height: SizeConfig.safeBlockVertical! * 5,
                     child: Align(
                       alignment: Alignment.center,
@@ -190,7 +190,7 @@ class _BalancedForcesState extends State<BalancedForces> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 118.h),
+                    margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 120.h),
                     height: SizeConfig.safeBlockVertical! * 30,
                     child: Align(
                       alignment: Alignment.centerLeft,

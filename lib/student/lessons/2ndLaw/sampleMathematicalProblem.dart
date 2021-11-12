@@ -144,7 +144,7 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Therefore,the accelertion of the ball will be 20(m/s^2)',
+                      'Therefore,the acceleration of the ball will be 20(m/s^2)',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 11.sp,
@@ -228,7 +228,7 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 99.h),
-                  height: SizeConfig.safeBlockVertical! * 5,
+                  height: SizeConfig.safeBlockVertical! * 10,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -242,7 +242,7 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 105.h),
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 110.h),
                   height: size.height * .22,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -254,7 +254,7 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                      left: 10.w, right: 5.w, top: 130.h, bottom: 5.h),
+                      left: 10.w, right: 5.w, top: 135.h, bottom: 5.h),
                   height: SizeConfig.safeBlockVertical! * 5,
                   child: Align(
                     alignment: Alignment.centerLeft,

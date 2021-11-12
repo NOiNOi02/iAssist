@@ -81,8 +81,8 @@ class _UnitOfForceState extends State<UnitOfForce> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 14.h),
-                  height: SizeConfig.safeBlockVertical! * 5,
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 8.h),
+                  height: SizeConfig.safeBlockVertical! * 20,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -96,7 +96,7 @@ class _UnitOfForceState extends State<UnitOfForce> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 18.h),
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 20.h),
                   height: size.height * .22,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -107,7 +107,7 @@ class _UnitOfForceState extends State<UnitOfForce> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 9.w, right: 5.w, top: 37.5.h),
+                  margin: EdgeInsets.only(left: 9.w, right: 5.w, top: 39.5.h),
                   height: SizeConfig.safeBlockVertical! * 5,
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -122,7 +122,7 @@ class _UnitOfForceState extends State<UnitOfForce> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 43.5.h),
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 45.5.h),
                   height: SizeConfig.safeBlockVertical! * 5,
                   child: Center(
                     child: Text(
@@ -136,7 +136,7 @@ class _UnitOfForceState extends State<UnitOfForce> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 49.h),
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 51.h),
                   height: size.height * .18,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -147,7 +147,7 @@ class _UnitOfForceState extends State<UnitOfForce> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 35.h),
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 37.h),
                   height: SizeConfig.safeBlockVertical! * 100,
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -162,7 +162,7 @@ class _UnitOfForceState extends State<UnitOfForce> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 85.h),
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 87.h),
                   height: SizeConfig.safeBlockVertical! * 5,
                   child: Center(
                     child: Text(
@@ -177,7 +177,7 @@ class _UnitOfForceState extends State<UnitOfForce> {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                      left: 5.w, right: 5.w, top: 90.h, bottom: 5.w),
+                      left: 5.w, right: 5.w, top: 92.h, bottom: 5.w),
                   height: size.height * .22,
                   decoration: BoxDecoration(
                     image: DecorationImage(
