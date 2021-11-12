@@ -26,13 +26,14 @@ void showLivesModal(
     transitionDuration: Duration(milliseconds: 700),
     context: context,
     pageBuilder: (_, __, ___) {
-      return Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
+      return Stack(
+        alignment: Alignment.center,
+        children: [ 
+          Container(
             height: SizeConfig.safeBlockVertical! * 40,
             width: SizeConfig.safeBlockHorizontal! * 70,
             margin: EdgeInsets.only(
-                bottom: SizeConfig.safeBlockVertical! * 30,
+                // bottom: SizeConfig.safeBlockVertical! * 30,
                 left: SizeConfig.safeBlockHorizontal! * 12,
                 right: SizeConfig.safeBlockHorizontal! * 12),
             decoration: BoxDecoration(
@@ -91,14 +92,32 @@ void showLivesModal(
                     ],
                   ),
                 ),
+                
                 Container(
-                  alignment: Alignment.bottomCenter,
+                  alignment: Alignment.topCenter,
+                  margin: EdgeInsets.only(top: 1.h),
+                  child: Text(
+                    'You will have 3 lives \nin this level',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 11.sp,
+                      color: Color(0xffCB2D3F),
+                    ),
+                  ),
+                ),
+              ],
+            )),
+            Container(
+                  margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 39,),
+                  // alignment: Alignment.center,
                   // color: Colors.red,
-                  margin: EdgeInsets.symmetric(horizontal: 15.w),
+                  // margin: EdgeInsets.symmetric(horizontal: 15.w),
                   // #TODO: DI ko na ffloat si button, naccut kapag tg babaan ko ang margin
                   child: Container(
                     height: 5.h,
-                    alignment: Alignment.bottomCenter,
+                    width: 40.w,
+                    // alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -192,22 +211,7 @@ void showLivesModal(
                     ),
                   ),
                 ),
-                Container(
-                  alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 1.h),
-                  child: Text(
-                    'You will have 3 lives \nin this level',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 11.sp,
-                      color: Color(0xffCB2D3F),
-                    ),
-                  ),
-                ),
-              ],
-            )),
-      );
+        ]);
     },
     transitionBuilder: (_, anim, __, child) {
       return SlideTransition(
@@ -229,13 +233,13 @@ void showNoLivesModal(
     transitionDuration: Duration(milliseconds: 700),
     context: context,
     pageBuilder: (_, __, ___) {
-      return Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
+      return Stack(
+        alignment: Alignment.center,
+        children: [ Container(
             height: SizeConfig.safeBlockVertical! * 40,
             width: SizeConfig.safeBlockHorizontal! * 70,
             margin: EdgeInsets.only(
-                bottom: SizeConfig.safeBlockVertical! * 30,
+                // bottom: SizeConfig.safeBlockVertical! * 30,
                 left: SizeConfig.safeBlockHorizontal! * 12,
                 right: SizeConfig.safeBlockHorizontal! * 12),
             decoration: BoxDecoration(
@@ -294,14 +298,31 @@ void showNoLivesModal(
                     ],
                   ),
                 ),
+                
                 Container(
-                  alignment: Alignment.bottomCenter,
+                  alignment: Alignment.topCenter,
+                  margin: EdgeInsets.only(top: 1.h),
+                  child: Text(
+                    'You ran out of lives!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 11.sp,
+                      color: Color(0xffCB2D3F),
+                    ),
+                  ),
+                ),
+              ],
+            )),
+            Container(
+                  // alignment: Alignment.bottomCenter,
                   // color: Colors.red,
-                  margin: EdgeInsets.symmetric(horizontal: 12.w),
+                  margin: EdgeInsets.only(top: SizeConfig.safeBlockVertical! * 39,),
                   // #TODO: DI ko na ffloat si button, naccut kapag tg babaan ko ang margin
                   child: Container(
                     height: 5.h,
-                    alignment: Alignment.bottomCenter,
+                    width: 40.w,
+                    // alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -353,7 +374,7 @@ void showNoLivesModal(
                         child: Text(
                           "Go to Leaderboards",
                           style: TextStyle(
-                            fontSize: 12.sp,
+                            fontSize: 10.sp,
                             // fontWeight: FontWeight.w700,
                             color: Colors.white,
                           ),
@@ -362,22 +383,7 @@ void showNoLivesModal(
                     ),
                   ),
                 ),
-                Container(
-                  alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(top: 1.h),
-                  child: Text(
-                    'You ran out of lives!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 11.sp,
-                      color: Color(0xffCB2D3F),
-                    ),
-                  ),
-                ),
-              ],
-            )),
-      );
+        ]);
     },
     transitionBuilder: (_, anim, __, child) {
       return SlideTransition(
