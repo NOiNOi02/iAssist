@@ -6,7 +6,7 @@ var questions = [
   "What are the 2 unseen forces acting on the block at a rest position?",
   "The golf ball will ______ on top of the tee.",
   "What will happen to the egg if you hit the paper plate?",
-  "The golf ball will continue to move forward and in constant motion",
+  "The golf ball will continue to move forward and in constant motion.",
   "Why then, do we observe everyday objects in motion slowing down and becoming motionless seemingly without an outside force?",
   "The ball will continue to move as it rolls down the cliff.",
   "You slide a book across the table from left to right. What is the force acting on the book to slow it down to bring it to rest?",
@@ -18,10 +18,10 @@ var questions = [
   "Which has greater inertia?"
 ];
 var choices = [
-  ["Force of gravity and normal force", "Normal force and friction"],
+  ["Force of gravity and normal force.", "Normal force and friction."],
   ["Move", "Stay"],
   [
-    "It will fell straight into the water",
+    "It will fell straight into the water.",
     "It will move together with the roll of tissue and the paper plate."
   ],
   ["True", "False"],
@@ -36,30 +36,30 @@ var choices = [
   ["Fluid Friction", "Static Friction", "Sliding Friction", "Rolling Friction"],
   ["Fluid Friction", "Static Friction", "Sliding Friction", "Rolling Friction"],
   [
-    "A car that is pushed from opposite sides with equal force",
-    "The taking-off of a Rocket",
-    "A lizard on a wall in a vertical position",
-    "Apple falling on the ground",
-    "An airplane in steady wings level flight",
-    "The up and down movement in a seesaw"
+    "A car that is pushed from opposite sides with equal force.",
+    "The taking-off of a Rocket.",
+    "A lizard on a wall in a vertical position.",
+    "Apple falling on the ground.",
+    "An airplane in steady wings level flight.",
+    "The up and down movement in a seesaw."
   ],
   ["The jet airplane sitting on a runway.", "A speeding car."]
 ];
 
 var trivia = [
-  'You\'re answer is correct! The unseen forces acting on the block are the force of gravity and the normal reaction by the surface. The vertical forces are equal and cancels out each other making the block at a rest position',
-  'You\'re answer is correct! Unless acted upon by an unbalanced force, the golf ball would sit still on the tee forever',
+  'You\'re answer is correct! The unseen forces acting on the block are the force of gravity and the normal reaction by the surface. The vertical forces are equal and cancels out each other making the block at a rest position.',
+  'You\'re answer is correct! Unless acted upon by an unbalanced force, the golf ball would sit still on the tee forever.',
   'You\'re answer is correct! It will fell straight into the water due to its inertia and the gravity pulling it down.',
-  'You\'re answer is correct! The golf ball will eventually stop moving and in decreases its motion',
-  'You\'re answer is correct! An object in motion will slow down if acted on by a force in the direction of motion',
-  'You\'re answer is correct! The ball ceases to move as it bumps into the rock giving it an external force',
-  'You\'re answer is correct! FRICTION is the force that opposes motion and brings ANY object to a rest position',
-  'You\'re answer is correct! SLIDING friction is a friction acting on objects sliding on a surface',
-  'You\'re answer is correct! STATIC friction is a force acting on stationary/ at rest objects',
-  'You\'re answer is correct! ROLLING friction is the friction acting on rolling objects',
-  'You\'re answer is correct! FLUID friction is the friction acting on objects going through a fluid either in water or air',
+  'You\'re answer is correct! The golf ball will eventually stop moving and in decreases its motion.',
+  'You\'re answer is correct! An object in motion will slow down if acted on by a force in the direction of motion.',
+  'You\'re answer is correct! The ball ceases to move as it bumps into the rock giving it an external force.',
+  'You\'re answer is correct! FRICTION is the force that opposes motion and brings ANY object to a rest position.',
+  'You\'re answer is correct! SLIDING friction is a friction acting on objects sliding on a surface.',
+  'You\'re answer is correct! STATIC friction is a force acting on stationary/ at rest objects.',
+  'You\'re answer is correct! ROLLING friction is the friction acting on rolling objects.',
+  'You\'re answer is correct! FLUID friction is the friction acting on objects going through a fluid either in water or air.',
   'You\'re answer is correct! ',
-  'You\'re answer is correct! The jet airplane sitting on a runway will have greater inertia than a speeding car due to its larger mass'
+  'You\'re answer is correct! The jet airplane sitting on a runway will have greater inertia than a speeding car due to its larger mass.'
 ];
 var answers = [
   [0],

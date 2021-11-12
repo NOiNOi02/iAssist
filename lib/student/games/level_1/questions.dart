@@ -120,7 +120,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 onTap: () {
-                    resetCurrentLevel();
+                  resetCurrentLevel();
                   resetCurrentLives();
                   resetCurrentNumber();
                   resetCurrentPoints();
@@ -292,33 +292,42 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                         ),
                         //points
                         Container(
-                          alignment: Alignment.center,
                           padding: EdgeInsets.only(top: 1.5.h),
-                          child: Text(
-                            "Current Points: " +
-                                getCurrentPoints().toString() +
-                                "pts",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 11.sp,
-                              color: Color(0xFFBA494B),
-                            ),
+                          alignment: Alignment.center,
+                          child: Stack(
+                            children: [
+                              Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Current Points: " +
+                                      getCurrentPoints().toString() +
+                                      "pts",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 9.sp,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: 7.w),
+                                alignment: Alignment.topRight,
+                                child: Text(
+                                  "Total Points: " +
+                                      getTotalPoints().toString(),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 9.sp,
+                                    color: Color(0xFF4785B4),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          alignment: Alignment.topRight,
-                          padding: EdgeInsets.only(top: 1.5.h, right: 6.w),
-                          child: Text(
-                            "Total Points: " + getTotalPoints().toString(),
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 11.sp,
-                              color: Color(0xFF4785B4),
-                            ),
-                          ),
-                        ),
+
                         //lives
                         for (int i = 0; i < getCurrentLives(); i++)
                           Container(
@@ -487,11 +496,10 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                   blurRadius: 5.0)
                             ],
                             gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              stops: [0.0, 1.0],
-                              colors: [Color(0xFFBA494B), Color(0XFFFFB79D)]
-                            ),
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                stops: [0.0, 1.0],
+                                colors: [Color(0xFFBA494B), Color(0XFFFFB79D)]),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Column(
@@ -507,7 +515,8 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                             BorderRadius.circular(20.0),
                                       ),
                                     ),
-                                    fixedSize:  MaterialStateProperty.all(Size.fromWidth(320)),
+                                    fixedSize: MaterialStateProperty.all(
+                                        Size.fromWidth(320)),
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.transparent),
                                     // elevation: MaterialStateProperty.all(3),
@@ -564,7 +573,8 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                             BorderRadius.circular(20.0),
                                       ),
                                     ),
-                                     fixedSize:  MaterialStateProperty.all(Size.fromWidth(320)),
+                                    fixedSize: MaterialStateProperty.all(
+                                        Size.fromWidth(320)),
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.transparent),
                                     // elevation: MaterialStateProperty.all(3),
@@ -611,7 +621,8 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                                             BorderRadius.circular(20.0),
                                       ),
                                     ),
-                                     fixedSize:  MaterialStateProperty.all(Size.fromWidth(320)),
+                                    fixedSize: MaterialStateProperty.all(
+                                        Size.fromWidth(320)),
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.transparent),
                                     // elevation: MaterialStateProperty.all(3),

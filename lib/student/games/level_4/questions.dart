@@ -308,33 +308,42 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                         ),
                         //points
                         Container(
+                          padding: EdgeInsets.only(top: 1.5.h),
                           alignment: Alignment.center,
-                          padding: const EdgeInsets.only(top: 15),
-                          child: Text(
-                            "Current Points: " +
-                                getCurrentPoints().toString() +
-                                "pts",
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Color(0xFFBA494B),
-                            ),
+                          child: Stack(
+                            children: [
+                              Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Current Points: " +
+                                      getCurrentPoints().toString() +
+                                      "pts",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 9.sp,
+                                    color: Color(0xFFBA494B),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: 7.w),
+                                alignment: Alignment.topRight,
+                                child: Text(
+                                  "Total Points: " +
+                                      getTotalPoints().toString(),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 9.sp,
+                                    color: Color(0xFF4785B4),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          alignment: Alignment.topRight,
-                          padding: const EdgeInsets.only(top: 15, right: 30),
-                          child: Text(
-                            "Total Points: " + getTotalPoints().toString(),
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Color(0xFF4785B4),
-                            ),
-                          ),
-                        ),
+
                         //timer
                         Container(
                           height: size.height * 0.12,
