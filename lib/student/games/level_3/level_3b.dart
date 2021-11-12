@@ -221,10 +221,9 @@ class _Level3State extends State<Level3b> {
                     ),
                   ),
                   Container(
-                   margin: EdgeInsets.only(
-                        top: SizeConfig.safeBlockVertical! * 2,
-                        left: SizeConfig.safeBlockHorizontal! * 5),
-                    height: SizeConfig.safeBlockVertical! * 9,
+                    margin: EdgeInsets.only(
+                        top: size.height * 0.03, right: size.width * 0.77),
+                    height: size.height * .08,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,

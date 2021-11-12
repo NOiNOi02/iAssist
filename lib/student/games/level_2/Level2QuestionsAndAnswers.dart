@@ -55,7 +55,7 @@ var trivia = [
   'You\'re answer is correct! The ball ceases to move as it bumps into the rock giving it an external force.',
   'You\'re answer is correct! FRICTION is the force that opposes motion and brings ANY object to a rest position.',
   'You\'re answer is correct! SLIDING friction is a friction acting on objects sliding on a surface.',
-  'You\'re answer is correct! STATIC friction is a force acting on stationary/ at rest objects.',
+  'You\'re answer is correct! STATIC friction is a force acting on stationary at rest objects.',
   'You\'re answer is correct! ROLLING friction is the friction acting on rolling objects.',
   'You\'re answer is correct! FLUID friction is the friction acting on objects going through a fluid either in water or air.',
   'You\'re answer is correct! ',
