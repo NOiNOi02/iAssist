@@ -255,7 +255,7 @@ class _SampleMathematicalProblemState extends State<SampleMathematicalProblem> {
                 Container(
                   margin: EdgeInsets.only(
                       left: 10.w, right: 5.w, top: 135.h, bottom: 5.h),
-                  height: SizeConfig.safeBlockVertical! * 5,
+                  height: SizeConfig.safeBlockVertical! * 10,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(

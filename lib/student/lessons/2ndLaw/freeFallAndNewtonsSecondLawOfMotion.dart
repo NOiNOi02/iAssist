@@ -113,7 +113,7 @@ class _FreeFallAndNewtonsSecondLawOfMotionState
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 55.5.h),
+                  margin: EdgeInsets.only(left: 5.w, right: 5.w, top: 57.5.h),
                   height: SizeConfig.safeBlockVertical! * 5,
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -130,7 +130,7 @@ class _FreeFallAndNewtonsSecondLawOfMotionState
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                      left: 5.w, right: 5.w, top: 59.h, bottom: 5.h),
+                      left: 5.w, right: 5.w, top: 63.h, bottom: 5.h),
                   height: SizeConfig.safeBlockVertical! * 5,
                   child: Align(
                     alignment: Alignment.center,
@@ -148,7 +148,7 @@ class _FreeFallAndNewtonsSecondLawOfMotionState
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                      left: 5.w, right: 5.w, top: 65.h, bottom: 5.h),
+                      left: 5.w, right: 5.w, top: 69.h, bottom: 5.h),
                   height: SizeConfig.safeBlockVertical! * 20,
                   child: Align(
                     alignment: Alignment.centerLeft,
