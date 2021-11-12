@@ -490,10 +490,7 @@ class _QuestionsLevel1State extends State<QuestionsLevel1> {
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                               stops: [0.0, 1.0],
-                              colors: [
-                                Color(0xFFBA494B),
-                                Color(0XFFFFB79D),
-                              ],
+                              colors: [Color(0xFFBA494B), Color(0XFFFFB79D)]
                             ),
                             borderRadius: BorderRadius.circular(5),
                           ),
