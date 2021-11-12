@@ -234,7 +234,7 @@ class _Level4State extends State<Level4> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: EdgeInsets.only(top: 2.5.h, left: 15.w),
+                    padding: EdgeInsets.only(top: 2.5.h, left: 12.w),
                     child: Text(
                       'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
                       textAlign: TextAlign.left,

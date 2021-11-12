@@ -240,8 +240,8 @@ class _Level4State extends State<Level4d> {
                     ),
                   ),
                   Container(
-                    alignment: Alignment(0.0, -1.0),
-                    padding: EdgeInsets.only(top: 1.h, left: 15.w),
+                         alignment: Alignment(0.0, -1.0),
+                    padding: EdgeInsets.only(top: 2.5.h, left: 12.w),
                     child: Text(
                       'Level 4\nNewton\'s Third Law of Motion: \nLaw of Interaction',
                       textAlign: TextAlign.left,

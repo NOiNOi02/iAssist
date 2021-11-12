@@ -263,7 +263,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                     margin: EdgeInsets.only(
                         top: SizeConfig.safeBlockVertical! * 2,
                         left: SizeConfig.safeBlockHorizontal! * 5),
-                    height: SizeConfig.safeBlockVertical! * 7,
+                    height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         alignment: Alignment.topLeft,
@@ -273,8 +273,8 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                     ),
                   ),
                   Container(
-                    alignment: Alignment(0.0, -1.0),
-                    padding: EdgeInsets.only(top: 1.h, left: 15.w),
+                         alignment: Alignment(0.0, -1.0),
+                    padding: EdgeInsets.only(top: 2.5.h, left: 12.w),
                     child: Text(
                       'Level 4\nNewton\'s Third Law of Motion: \nLaw of Interaction',
                       textAlign: TextAlign.left,
@@ -426,7 +426,7 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                                 Container(
                                     alignment: Alignment(0.0, -1.0),
                                     padding: EdgeInsets.only(
-                                        top: 8.h, left: 30.w, right: 10.w),
+                                        top: 10.h, left: 32.w, right: 10.w),
                                     child: (!triviaFlag)
                                         ? AutoSizeText(
                                             //getting the questions based from what current number is
@@ -444,10 +444,10 @@ class _QuestionsLevel4State extends State<QuestionsLevel4> {
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 6.sp,
+                                              fontSize: 11.sp,
                                               color: Color(0xFFBA494B),
                                             ),
-                                            maxLines: 9,
+                                            maxLines: 3,
                                           )),
                               ],
                             )),

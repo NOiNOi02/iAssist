@@ -433,10 +433,10 @@ class _QuestionsLevel2State extends State<QuestionsLevel2> {
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 11.sp,
+                                              fontSize: 10.sp,
                                               color: Color(0xFFBA494B),
                                             ),
-                                            maxLines: 3,
+                                            maxLines: 5,
                                           )
                                         : AutoSizeText(
                                             trivia[getCurrentNumber()],

@@ -221,9 +221,10 @@ class _Level3State extends State<Level3b> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(
-                        top: size.height * 0.03, right: size.width * 0.77),
-                    height: size.height * .08,
+                   margin: EdgeInsets.only(
+                        top: SizeConfig.safeBlockVertical! * 2,
+                        left: SizeConfig.safeBlockHorizontal! * 5),
+                    height: SizeConfig.safeBlockVertical! * 9,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.contain,
@@ -233,7 +234,7 @@ class _Level3State extends State<Level3b> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: EdgeInsets.only(top: 2.5.h, left: 15.w),
+                    padding: EdgeInsets.only(top: 2.5.h, left: 12.w),
                     child: Text(
                       'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
                       textAlign: TextAlign.left,

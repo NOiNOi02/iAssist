@@ -423,7 +423,7 @@ class _QuestionsLevel5State extends State<QuestionsLevel5> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 9.sp,
+                                        fontSize: 12.sp,
                                         color: Color(0xFFBA494B),
                                       ),
                                       maxLines: 3,

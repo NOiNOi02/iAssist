@@ -272,7 +272,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                   ),
                   Container(
                     alignment: Alignment(0.0, -1.0),
-                    padding: EdgeInsets.only(top: 3.5.h, left: 15.w),
+                    padding: EdgeInsets.only(top: 2.5.h, left: 12.w),
                     child: Text(
                       'Level 3\nNewton\'s Second Law of Motion: \nLaw of Acceleration',
                       textAlign: TextAlign.left,
@@ -459,7 +459,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 6.sp,
+                                              fontSize: 7.sp,
                                               color: Color(0xFFBA494B),
                                             ),
                                             maxLines: 9,
@@ -621,7 +621,7 @@ class _QuestionsLevel3State extends State<QuestionsLevel3> {
                                   choices[getCurrentNumber()][i],
                                   style: TextStyle(
                                     fontSize:
-                                        (getCurrentNumber() == 8) ? 8.sp : 9.sp,
+                                        (getCurrentNumber() == 8) ? 9.sp : 10.sp,
                                     // fontWeight: FontWeight.w700,
                                     // fontWeight: FontWeight.w700,
                                     color: (answerResult != null)

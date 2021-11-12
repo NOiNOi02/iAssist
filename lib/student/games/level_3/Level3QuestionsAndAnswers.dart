@@ -7,9 +7,9 @@ var questions = [
   "The acceleration of an object \nexperiences directly proportional \nto applied force.",
   "What is the relationship of \nthe objects acceleration \nto its mass?",
   "Two bottles are drop at the \nsame time. Which bottle \nwill reach the end \nof the ramp first?",
-  "What is a NET FORCE",
-  "Using the formula F=ma, \nwhat is the blocks",
-  "Which of the following experience \nthe Law of Acceleration? \nChoose 3",
+  "What is a NET FORCE?",
+  "Using the formula F=ma, \nwhat is the blocks?",
+  "Which of the following experience \nthe Law of Acceleration? \nChoose 3.",
 ];
 var choices = [
   ["Newton", "Joules"],
@@ -20,18 +20,18 @@ var choices = [
     "The objects acceleration is directly proportional to its mass.",
     "The objects acceleration is inversely proportional to its mass."
   ],
-  ["Empty juice bottle", "Full juice bottle"],
+  ["Empty juice bottle.", "Full juice bottle."],
   [
-    "The sum of all forces acting on a body",
-    "The difference of forces acting on a body"
+    "The sum of all forces acting on a body.",
+    "The difference of forces acting on a body."
   ],
   ["5 m/s2", "10 m/s2"],
   [
-    "Two people are pushing on an object on opposite sides, put the object doesn\'t move or change at all.",
+    "Two people are pushing on an object on opposite sides, put the object doesn't move or change at all.",
     "Two teams are playing tug-of-war. Team A wins.",
     "You use the same force to push a truck and a car, the car accelerates than the truck.",
     "Two balls rolling down a cliff reach the ground at the same time.",
-    "Two people are walking and among the two people, if one is heavier than the other",
+    "Two people are walking and among the two people, if one is heavier than the other.",
     "To boys pushing at a brick wall."
   ],
 ];
@@ -61,15 +61,15 @@ var images = [
 ];
 
 var trivia = [
-  "NEWTON is the SI unit of force \nwhere 1N = (1kg) (1m/s2)",
+  "NEWTON is the SI unit of force \nwhere 1N = (1kg) (1m/s2).",
   "Acceleration is the rate of change \nin the velocity of an object.",
   "Heavier objects require more force \nto accelerate than lighter objects.",
-  "If the net force were doubled, \nthe acceleration of the object\n would be twice as large",
+  "If the net force were doubled, \nthe acceleration of the object\n would be twice as large.",
   "The acceleration an object experiences \nis inversely proportional to its mass.",
   "The full juice bottle reached the ramp \nfirst because it has greater mass than \nthe empty juice bottle.",
   "The sum of all forces acting on a body.",
-  "Using the formula F=ma, \nwhat is the blocks",
-  "Which of the following experience \nthe Law of Acceleration? \nChoose 3"
+  "Using the formula F=ma, \nwhat is the blocks?",
+  "Which of the following experience \nthe Law of Acceleration? \nChoose 3."
 ];
 
 var triviaImage = [
