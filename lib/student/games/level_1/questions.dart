@@ -48,6 +48,7 @@ var triviaFlag = false;
 var answer;
 var prev_answer;
 var answerResult = null;
+var colors = [Colors.grey.shade700, Colors.white70];
 
 class _QuestionsLevel1State extends State<QuestionsLevel1> {
   void resetValues() {
